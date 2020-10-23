@@ -1,0 +1,20 @@
+{
+    "name": "htmlburger/theme-help",
+    "description": "A tiny helper to render the theme readme.html in the WP Admin.",
+    "type": "library",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "htmlburger",
+            "email": "info@htmlburger.com"
+        }
+    ],
+    "require": {
+        "erusev/parsedown": "^1.6"
+    },
+    "autoload": {
+        "files": [
+            "theme-help.php"
+        ]
+    }
+}

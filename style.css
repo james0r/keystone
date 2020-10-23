@@ -1,0 +1,19 @@
+/*!
+Theme Name: Wauble Starter theme
+Author: James Auble
+Author URI: https://www.jamesauble.com
+Description: Developed by James Auble
+Version: 0.0.3
+Special thanks to Mark Serrano for providing inspiration for this theme.
+*/
+
+/*
+	Source scss styles are located in the ~/_dev directory.
+	The compiled bundles are output to ~/assets/; The README.md
+	file contains instructions how to get the compilation
+	process up & running.
+
+	If you need to make a quick fix, feel free to add CSS
+	below this comment. It will override bundled styles.
+*/
+

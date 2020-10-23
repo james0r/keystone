@@ -1,0 +1,45 @@
+#theme-help-markdown { position: relative; padding-right: 320px; }
+
+#theme-help-markdown h1,
+#theme-help-markdown h2,
+#theme-help-markdown h3,
+#theme-help-markdown h4,
+#theme-help-markdown h5,
+#theme-help-markdown h6 { font-weight: 400; padding: 10px 0; margin: 10px 0; }
+
+#theme-help-markdown h1,
+#theme-help-markdown li.list-heading-1 { font-size: 23px; }
+#theme-help-markdown h2,
+#theme-help-markdown li.list-heading-2 { font-size: 20px; }
+#theme-help-markdown h3,
+#theme-help-markdown li.list-heading-3 { font-size: 18px; }
+#theme-help-markdown h4,
+#theme-help-markdown li.list-heading-4 { font-size: 16px; }
+#theme-help-markdown h5,
+#theme-help-markdown li.list-heading-5 { font-size: 14px; }
+#theme-help-markdown h6,
+#theme-help-markdown li.list-heading-6 { font-size: 12px; }
+
+#theme-help-markdown p { font-size: 14px; margin: 0 0 10px 0; padding: 0; }
+
+#theme-help-markdown > h2 { margin-top: 20px; border-bottom: 1px solid #d5d5d5; }
+
+#theme-help-markdown ol,
+#theme-help-markdown ul { font: normal 18px; margin-left: 30px; }
+#theme-help-markdown ul { list-style: disc; }
+#theme-help-markdown ol li,
+#theme-help-markdown ul li { padding: 0; margin: 0 0 10px 0; }
+
+#theme-help-markdown pre code { display: block; background: #FFFFE0; border: solid 1px #ddd; margin: 10px 0; padding: 5px; white-space: pre-wrap; font: bold normal 14px/16px "Courier New", Courier; }
+
+#theme-help-markdown .theme-readme-anchor { display: block; position: relative; top: -50px; }
+
+#theme-help-markdown .summary { box-sizing: border-box; position: absolute; right: 0; top: 0; bottom: 0; width: 300px; padding: 0 20px; background: #FFFFFF; border: 1px solid #DDD; overflow-y: auto; }
+#theme-help-markdown .summary ol,
+#theme-help-markdown .summary ul { margin: 0 0 0 30px; padding: 0; }
+#theme-help-markdown .summary li { margin: 0; padding: 0; line-height: 1.8em; }
+
+@media (max-width: 767px) {
+	#theme-help-markdown { padding-right: 0; }
+	#theme-help-markdown .summary { position: static; width: auto; padding: 0; background: none; border: 0; }
+}
