@@ -1,5 +1,5 @@
 <?php
-define( 'WAUBLE_THEME_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
+define( 'KEYSTONE_THEME_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 define( 'THEME_ASSETS', get_stylesheet_directory_uri() . '/assets' );
 
 if ( file_exists( dirname( __FILE__ ) . '/includes/libs/cmb2/init.php' ) ) {
@@ -8,16 +8,16 @@ if ( file_exists( dirname( __FILE__ ) . '/includes/libs/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/includes/libs/CMB2/init.php';
 }
 
-if ( file_exists( WAUBLE_THEME_DIR . '/includes/custom-modules.php' ) ) {
-  require_once WAUBLE_THEME_DIR . '/includes/custom-modules.php';
+if ( file_exists( KEYSTONE_THEME_DIR . '/includes/custom-modules.php' ) ) {
+  require_once KEYSTONE_THEME_DIR . '/includes/custom-modules.php';
 }
 
 add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
 
 function cmb2_sample_metaboxes() {
-  require_once WAUBLE_THEME_DIR . '/includes/meta/meta-standard.php';
-  require_once WAUBLE_THEME_DIR . '/includes/meta/meta-modules.php';
-  require_once WAUBLE_THEME_DIR . '/includes/theme-options.php';
+  require_once KEYSTONE_THEME_DIR . '/includes/meta/meta-standard.php';
+  require_once KEYSTONE_THEME_DIR . '/includes/meta/meta-modules.php';
+  require_once KEYSTONE_THEME_DIR . '/includes/theme-options.php';
 }
 
 // ================================================ DASHBOARD WIDGET
@@ -28,7 +28,7 @@ add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
 function my_custom_dashboard_widgets() {
 global $wp_meta_boxes;
  
-wp_add_dashboard_widget('custom_help_widget', 'Wauble Theme Support', 'custom_dashboard_help');
+wp_add_dashboard_widget('custom_help_widget', 'keystone Theme Support', 'custom_dashboard_help');
 }
  
 function custom_dashboard_help() {
@@ -74,7 +74,7 @@ add_image_size( 'small-thumbnail', 720, 720, true );
 add_image_size( 'square-thumbnail', 80, 80, true );
 add_image_size( 'banner-image', 1024, 1024, true );
 
-// ================================================ WAUBLE THEME DEFAULTS
+// ================================================ keystone THEME DEFAULTS
 
 
 
@@ -82,17 +82,17 @@ function wauble_theme_setup() {
   
   // ================================================ LIBRARIES & INCLUDES
 
-  if ( file_exists(  WAUBLE_THEME_DIR . 'includes/post-types.php' ) ) {
-    require_once  WAUBLE_THEME_DIR . 'includes/post-types.php';
+  if ( file_exists(  KEYSTONE_THEME_DIR . 'includes/post-types.php' ) ) {
+    require_once  KEYSTONE_THEME_DIR . 'includes/post-types.php';
   }
-  if ( file_exists(  WAUBLE_THEME_DIR . 'includes/shortcodes.php' ) ) {
-    require_once  WAUBLE_THEME_DIR . 'includes/shortcodes.php';
+  if ( file_exists(  KEYSTONE_THEME_DIR . 'includes/shortcodes.php' ) ) {
+    require_once  KEYSTONE_THEME_DIR . 'includes/shortcodes.php';
   }
-  if ( file_exists(  WAUBLE_THEME_DIR . 'includes/taxonomies.php' ) ) {
-    require_once  WAUBLE_THEME_DIR . 'includes/taxonomies.php';
+  if ( file_exists(  KEYSTONE_THEME_DIR . 'includes/taxonomies.php' ) ) {
+    require_once  KEYSTONE_THEME_DIR . 'includes/taxonomies.php';
   }
-  if ( file_exists(  WAUBLE_THEME_DIR . '/includes/utils.php' ) ) {
-    require_once  WAUBLE_THEME_DIR . 'includes/utils.php';
+  if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/utils.php' ) ) {
+    require_once  KEYSTONE_THEME_DIR . 'includes/utils.php';
   }
   
   function condensed_body_class($classes) {
@@ -221,7 +221,7 @@ function wauble_theme_setup() {
   }
   add_action('admin_menu', 'remove_menus');
 
-  //Put version numbers for Wauble and active design style in wp admin footer
+  //Put version numbers for keystone and active design style in wp admin footer
   function change_admin_footer(){
     $theme_data = wp_get_theme();
     echo $theme_data->get( 'Name' ).' v '.$theme_data->get( 'Version' );

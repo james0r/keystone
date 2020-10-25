@@ -1,12 +1,13 @@
 <?php
 
 	/**
-	 * Registering meta fields for Theme Options
-   *  IMPORTANT: Don't change option_key from cmb_main_options or it will break helper function
-	 */
+	 * Registering Meta fields for Theme Options
+   * IMPORTANT: Don't change option_key from cmb_main_options or it will break helper function
+  **/
+  
 	$args = array(
 		'id'           => 'cmb_main_options_page',
-		'title'        => 'Theme Options',
+		'title'        => 'Clinic Info',
 		'object_types' => array( 'options-page' ),
 		'option_key'   => 'cmb_main_options',
 		'tab_group'    => 'cmb_main_options',
@@ -25,6 +26,7 @@
 	 * to be unique within this box.
 	 * Prefix is not needed.
 	 */
+
 	$main_options->add_field( array(
 		'name'    => 'Desktop Logo',
 		'id'      => 'cmb_desktop_logo',
@@ -40,6 +42,7 @@
 	/**
 	 * Registers secondary options page, and set main item as parent.
 	 */
+
 	$args = array(
 		'id'           => 'cmb_secondary_options_page',
 		'menu_title'   => 'Footer Options', // Use menu title, & not title to hide main h2.

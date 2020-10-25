@@ -18,7 +18,7 @@ const sass = require('gulp-sass');
 Theme Name
 -------------------------------------------------------------------------------------------------- */
 
-const themeName = 'wauble';
+const themeName = 'keystone';
 
 /* -------------------------------------------------------------------------------------------------
 Header & Footer JavaScript Boundles
@@ -34,8 +34,8 @@ Development Tasks
 function devServer() {
 
   browserSync({
-    logPrefix: '🎈 Wauble',
-    proxy: 'wauble/',
+    logPrefix: '🎈 keystone',
+    proxy: 'keystone/',
     host: '127.0.0.1',
     port: '3010',
     open: 'external',
