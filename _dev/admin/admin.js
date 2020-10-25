@@ -1,7 +1,5 @@
 jQuery(document).ready(function($){
 	
-	console.log('admin scripts loading');
-	
 /*
 	$('.hpmb-header a').on('click',function(e){
 		e.preventDefault();

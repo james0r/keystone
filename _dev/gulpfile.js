@@ -35,7 +35,7 @@ function devServer() {
 
   browserSync({
     logPrefix: '🎈 keystone',
-    proxy: 'keystone/',
+    proxy: 'keystone1/',
     host: '127.0.0.1',
     port: '3010',
     open: 'external',

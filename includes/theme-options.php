@@ -10,8 +10,7 @@
 		'title'        => 'Clinic Info',
 		'object_types' => array( 'options-page' ),
 		'option_key'   => 'cmb_main_options',
-		'tab_group'    => 'cmb_main_options',
-		'tab_title'    => 'Header',
+    'icon_url'    => 'dashicons-store'
 	);
 
 	// 'tab_group' property is supported in > 2.4.0.
@@ -49,8 +48,6 @@
 		'object_types' => array( 'options-page' ),
 		'option_key'   => 'cmb_secondary_options',
 		'parent_slug'  => 'cmb_main_options',
-		'tab_group'    => 'cmb_main_options',
-		'tab_title'    => 'Footer'
 	);
 
 	// 'tab_group' property is supported in > 2.4.0.
@@ -73,9 +70,7 @@
 		'title'        => 'Company Info',
 		'object_types' => array( 'options-page' ),
 		'option_key'   => 'cmb_tertiary_options',
-    'tab_group'    => 'cmb_main_options',
     'parent_slug'  => 'cmb_main_options',
-    'tab_title'    => 'Company Info',
     'icon_url'     => 'dashicons-building',
 	);
 
@@ -139,8 +134,6 @@
 		'object_types' => array( 'options-page' ),
 		'option_key'   => 'cmb_social_links',
 		'parent_slug'  => 'cmb_main_options',
-		'tab_group'    => 'cmb_main_options',
-    'tab_title'    => 'Social Links',
     'title'        => 'Social Links'
 	);
 

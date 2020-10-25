@@ -8,6 +8,10 @@ if ( file_exists( dirname( __FILE__ ) . '/includes/libs/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/includes/libs/CMB2/init.php';
 }
 
+if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/ReduxCore/framework.php' ) ) {
+  require_once  KEYSTONE_THEME_DIR . '/includes/ReduxCore/framework.php';
+}
+
 if ( file_exists( KEYSTONE_THEME_DIR . '/includes/custom-modules.php' ) ) {
   require_once KEYSTONE_THEME_DIR . '/includes/custom-modules.php';
 }
@@ -37,7 +41,7 @@ echo '<p>Welcome to your new site! Need help? Contact a developer <a href="mailt
 
 // ================================================ SCRIPTS	AND STYLESHEETS
 
-function wauble_resources() {
+function keystone_resources() {
   wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/main.css' );
   wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/all.min.css' );
   wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/style.css' );
@@ -45,7 +49,7 @@ function wauble_resources() {
   wp_enqueue_script( 'footer_js', get_template_directory_uri() . '/assets/footer-bundle.js', null, 1.0, true );
 }
 
-add_action( 'wp_enqueue_scripts', 'wauble_resources' );
+add_action( 'wp_enqueue_scripts', 'keystone_resources' );
 
 function admin_scripts_styles() {
   wp_enqueue_style('admin-styles', get_template_directory_uri().'/_dev/admin/admin.css');
@@ -78,7 +82,7 @@ add_image_size( 'banner-image', 1024, 1024, true );
 
 
 
-function wauble_theme_setup() {
+function keystone_theme_setup() {
   
   // ================================================ LIBRARIES & INCLUDES
 
@@ -91,8 +95,11 @@ function wauble_theme_setup() {
   if ( file_exists(  KEYSTONE_THEME_DIR . 'includes/taxonomies.php' ) ) {
     require_once  KEYSTONE_THEME_DIR . 'includes/taxonomies.php';
   }
-  if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/utils.php' ) ) {
-    require_once  KEYSTONE_THEME_DIR . 'includes/utils.php';
+  if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/helpers.php' ) ) {
+    require_once  KEYSTONE_THEME_DIR . 'includes/helpers.php';
+  }
+  if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/barebones-config.php' ) ) {
+    require_once  KEYSTONE_THEME_DIR . '/includes/barebones-config.php';
   }
   
   function condensed_body_class($classes) {
@@ -307,7 +314,7 @@ function head_meta_additions() {
   
 }
 
-add_action( 'after_setup_theme', 'wauble_theme_setup' );
+add_action( 'after_setup_theme', 'keystone_theme_setup' );
 
  //AUTO GENERATE MODULES TABLE
  function createModulesTable(){

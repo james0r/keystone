@@ -1,5 +1,5 @@
 (function($) {
   $(window).ready(function() {
-    console.log('keystone Wordpress Starter Theme');
+    console.log('Keystone Theme ©️ https://www.jamesauble.com');
   })
 })(jQuery);
