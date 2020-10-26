@@ -2,14 +2,16 @@
 define( 'KEYSTONE_THEME_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 define( 'THEME_ASSETS', get_stylesheet_directory_uri() . '/assets' );
 
+// ================================================ CMB2 Lib and configs
+
 if ( file_exists( dirname( __FILE__ ) . '/includes/libs/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/includes/libs/cmb2/init.php';
 } elseif ( file_exists( dirname( __FILE__ ) . '/includes/libs/CMB2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/includes/libs/CMB2/init.php';
 }
 
-if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/ReduxCore/framework.php' ) ) {
-  require_once  KEYSTONE_THEME_DIR . '/includes/ReduxCore/framework.php';
+if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-radio-image.php' ) ) {
+  require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-radio-image.php';
 }
 
 if ( file_exists( KEYSTONE_THEME_DIR . '/includes/custom-modules.php' ) ) {
@@ -32,11 +34,11 @@ add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
 function my_custom_dashboard_widgets() {
 global $wp_meta_boxes;
  
-wp_add_dashboard_widget('custom_help_widget', 'keystone Theme Support', 'custom_dashboard_help');
+wp_add_dashboard_widget('custom_help_widget', 'Keystone Theme Support', 'custom_dashboard_help');
 }
  
 function custom_dashboard_help() {
-echo '<p>Welcome to your new site! Need help? Contact a developer <a href="mailto:support@jamesauble.com">here</a>. For WordPress Tutorials visit: <a href="https://www.wpbeginner.com" target="_blank">WPBeginner</a></p>';
+echo '<p>Welcome to your new site! Need help? Contact a developer <a href="mailto:james.auble@gmail.com">here</a>. For WordPress Tutorials visit: <a href="https://www.wpbeginner.com" target="_blank">WPBeginner</a></p>';
 }
 
 // ================================================ SCRIPTS	AND STYLESHEETS
@@ -97,9 +99,6 @@ function keystone_theme_setup() {
   }
   if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/helpers.php' ) ) {
     require_once  KEYSTONE_THEME_DIR . 'includes/helpers.php';
-  }
-  if ( file_exists(  KEYSTONE_THEME_DIR . '/includes/barebones-config.php' ) ) {
-    require_once  KEYSTONE_THEME_DIR . '/includes/barebones-config.php';
   }
   
   function condensed_body_class($classes) {
