@@ -33,8 +33,6 @@
 /* CMB2 OVERRIDES AND IMPROVEMENTS */
 .cmb-row.hide{display: none;}
 .cmb-row.double-rule{border-bottom: 4px solid rgba(0,0,0,0.2) !important;}
-
-
   
 /* HOMEPAGE MANAGER */
 .module-manager{}
