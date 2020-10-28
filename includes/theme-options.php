@@ -19,7 +19,7 @@
 
   $args = [
       'id'           => 'cmb_company_info_page',
-      'title'        => 'Clinic Info',
+      'title'        => __('Clinic Settings', 'keystone'),
       'object_types' => ['options-page'],
       'option_key'   => 'cmb_main_options',
       'icon_url'     => 'dashicons-building',
@@ -184,26 +184,43 @@ $prefix = 'yourprefix_demo_';
 $cmb_demo = new_cmb2_box([
     'id'            => $prefix . 'metabox',
     'option_key'    => 'cmb_homepage_layout',
-    'title'         => __('Test Metabox', 'cmb2'),
+    'title'         => __('Homepage Layout', 'keystone'),
     'object_types'  => ['options-page'], // Post type
     'parent_slug'   => 'cmb_main_options',
     'show_names'    => true
 ]);
 
 $cmb_demo->add_field([
-    'name'             => __('Test Radio Image', 'cmb2'),
-    'desc'             => __('field description (optional)', 'cmb2'),
+    'name'             => __('Homepage Layout', 'cmb2'),
     'id'               => $prefix . 'radioimg',
     'type'             => 'radio_image',
     'options'          => [
-        'multipage-layout-1'    => __('Full Width', 'cmb2'),
-        'multipage-layout-2'    => __('Left Sidebar', 'cmb2'),
-        'multipage-layout-3'    => __('Right Sidebar', 'cmb2'),
+        'multipage-layout-1'    => __('Multipage Layout 1', 'keystone'),
+        'multipage-layout-2'    => __('Multipage Layout 2', 'keystone'),
+        'multipage-layout-3'    => __('Multipage Layout 3', 'keystone'),
+        'multipage-layout-4'    => __('Multipage Layout 4', 'keystone'),
+        'multipage-layout-5'    => __('Multipage Layout 5', 'keystone'),
+        'multipage-layout-6'    => __('Multipage Layout 6', 'keystone'),
+        'multipage-layout-7'    => __('Multipage Layout 7', 'keystone'),
+        'multipage-layout-8'    => __('Multipage Layout 8', 'keystone'),
+        'multipage-layout-9'    => __('Multipage Layout 9', 'keystone'),
+        'multipage-layout-10'    => __('Multipage Layout 10', 'keystone'),
+        'multipage-layout-11'    => __('Multipage Layout 11', 'keystone'),
+        'multipage-layout-12'    => __('Multipage Layout 12', 'keystone'),
     ],
     'images_path'      => get_template_directory_uri(),
     'images'           => [
         'multipage-layout-1'    => 'assets/images/meta/multipage-1.png',
         'multipage-layout-2'    => 'assets/images/meta/multipage-2.png',
         'multipage-layout-3'    => 'assets/images/meta/multipage-3.png',
+        'multipage-layout-4'    => 'assets/images/meta/multipage-4.jpg',
+        'multipage-layout-5'    => 'assets/images/meta/multipage-5.jpg',
+        'multipage-layout-6'    => 'assets/images/meta/multipage-6.jpg',
+        'multipage-layout-7'    => 'assets/images/meta/multipage-7.jpg',
+        'multipage-layout-8'    => 'assets/images/meta/multipage-8.jpg',
+        'multipage-layout-9'    => 'assets/images/meta/multipage-9.jpg',
+        'multipage-layout-10'    => 'assets/images/meta/multipage-10.jpg',
+        'multipage-layout-11'    => 'assets/images/meta/multipage-11.jpg',
+        'multipage-layout-12'    => 'assets/images/meta/multipage-12.jpg',
     ]
 ]);

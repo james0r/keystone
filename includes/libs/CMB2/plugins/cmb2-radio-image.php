@@ -33,7 +33,7 @@ if( !class_exists( 'CMB2_Radio_Image' ) ) {
                 foreach ($field->args['images'] as $field_id => $image) {
                     if ($field_id == $args['value']) {
                         $image = trailingslashit($field->args['images_path']) . $image;
-                        $args['label'] = '<img src="' . $image . '" alt="' . $args['value'] . '" title="' . $args['label'] . '" />';
+                        $args['label'] = '<img style="max-width: 200px;" src="' . $image . '" alt="' . $args['value'] . '" title="' . $args['label'] . '" /><div class="layout-real-label">'.$args['label'].'</div>';
                     }
                 }
             }
@@ -45,9 +45,15 @@ if( !class_exists( 'CMB2_Radio_Image' ) ) {
             ?>
             <style>
                 .cmb-type-radio-image .cmb2-radio-list {
-                    display: block;
+                    display: flex;
+                    flex-wrap: wrap;
                     clear: both;
                     overflow: hidden;
+                    justify-content: space-evenly;
+                }
+
+                .cmb2-radio-list li {
+                  margin-bottom: 40px !important;
                 }
 
                 .cmb-type-radio-image .cmb2-radio-list input[type="radio"] {
@@ -60,17 +66,49 @@ if( !class_exists( 'CMB2_Radio_Image' ) ) {
                 }
 
                 .cmb-type-radio-image .cmb2-radio-list input[type="radio"] + label {
-                    border: 3px solid #eee;
                     display: block;
                 }
 
                 .cmb-type-radio-image .cmb2-radio-list input[type="radio"] + label:hover,
                 .cmb-type-radio-image .cmb2-radio-list input[type="radio"]:checked + label {
-                    border-color: #ccc;
-                }
+                    border-color: darkgray;
+                    border-width: 5px;
+                  }
+                  
+                  .cmb-type-radio-image .cmb2-radio-list input[type="radio"]:checked + label {
+                    border-color: #23282d;
+                    position: relative;
+                  }
+
+                  .cmb-type-radio-image .cmb2-radio-list input[type="radio"]:checked + label:after {
+                    content: '✓';
+                    font-weight: bold;
+                    font-size: 72px;
+                    color: white;
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                  }
+                  .cmb-type-radio-image .cmb2-radio-list input[type="radio"]:checked + label:before {
+                    content: '';
+                    display: block;
+                    background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3));
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    top: 0;
+                  }
 
                 .cmb-type-radio-image .cmb2-radio-list li label img {
                     display: block;
+                }
+
+                .layout-real-label {
+                  line-height: 40px;
+                  text-align: center;
                 }
             </style>
             <?php
