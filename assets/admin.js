@@ -1,28 +1,4 @@
 jQuery(document).ready(function($){
-	
-/*
-	$('.hpmb-header a').on('click',function(e){
-		e.preventDefault();
-		if($(this).hasClass('active')){
-			$(this).parent().next().slideUp('slow');
-			$(this).removeClass('active');
-		}else{
-			$(this).parent().next().slideDown('slow');
-			$(this).addClass('active');
-		}
-	});
-*/
-
-$(document).on('carbonFields.apiLoaded', function(e, api) {
-  // Hook to all field changes and log the changed field's name and new value
-  $(document).on('carbonFields.fieldUpdated', function(e, fieldName) {
-      console.log('---');
-      console.log('Field updated: ' + fieldName);
-      console.log('New value:');
-      console.log(api.getFieldValue(fieldName))
-      console.log('---');
-  });
-});
 
 	$( "#sortable" ).sortable({
 		update: function( event, ui ) {
@@ -175,17 +151,18 @@ $(document).on('carbonFields.apiLoaded', function(e, api) {
 	      } 
 	 }); 
 
-	
+   // Allow either under construction or coming soon page, not both.
+
+   $('.coming-soon-toggle input[type="checkbox"]').on("change", function(){
+     if (this.checked) {
+       $('.under-construction-toggle input[type="checkbox"]').removeAttr('checked');
+     }
+   })
+
+   $('.under-construction-toggle input[type="checkbox"]').on("change", function(){
+    if (this.checked) {
+      $('.coming-soon-toggle input[type="checkbox"]').removeAttr('checked');
+    }
+   });
 });
 
-
-jQuery(document).on('carbonFields.apiLoaded', function(e, api) {
-  // Hook to all field changes and log the changed field's name and new value
-  $(document).on('carbonFields.fieldUpdated', function(e, fieldName) {
-      console.log('---');
-      console.log('Field updated: ' + fieldName);
-      console.log('New value:');
-      console.log(api.getFieldValue(fieldName))
-      console.log('---');
-  });
-});

@@ -14,6 +14,10 @@ if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-radio-i
   require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-radio-image.php';
 }
 
+if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-switch-button.php' ) ) {
+  require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-switch-button.php';
+}
+
 if ( file_exists( KEYSTONE_THEME_DIR . '/includes/custom-modules.php' ) ) {
   require_once KEYSTONE_THEME_DIR . '/includes/custom-modules.php';
 }
@@ -54,9 +58,10 @@ function keystone_resources() {
 add_action( 'wp_enqueue_scripts', 'keystone_resources' );
 
 function admin_scripts_styles() {
-  wp_enqueue_style('admin-styles', get_template_directory_uri().'/_dev/admin/admin.css');
-  wp_enqueue_script('jquery-ui', get_template_directory_uri().'/_dev/admin/jquery-ui.min.js');
-  wp_enqueue_script('admin-scripts', get_template_directory_uri().'/_dev/admin/admin.js');
+  wp_enqueue_style('admin-styles', get_template_directory_uri().'/assets/admin.css');
+  wp_enqueue_script('jquery-ui', get_template_directory_uri().'/assets/jquery-ui.min.js');
+  wp_enqueue_script('admin-scripts', get_template_directory_uri().'/assets/admin.js', null, 1.0, true);
+  wp_enqueue_script('cmb2-conditional-logic', get_template_directory_uri().'/assets/cmb2-conditional-logic.js', null, 1.0, true);
 }
 
 add_action('admin_enqueue_scripts', 'admin_scripts_styles');
