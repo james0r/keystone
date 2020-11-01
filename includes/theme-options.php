@@ -139,23 +139,21 @@
   $cmb_theme_colors = new_cmb2_box($args);
 
   $cmb_theme_colors->add_field([
-      'name'    => 'Default Text Color',
-      'id'      => 'cmb_text_color',
+      'name'    => 'Primary Color',
+      'id'      => 'cmb_primary_color',
       'type'    => 'colorpicker',
-      'default' => '#000000',
-      'options' => [
-          'alpha' => true, // Make this a rgba color picker.
-      ]
   ]);
 
   $cmb_theme_colors->add_field([
-      'name'    => 'Brand / Link Default Color',
-      'id'      => 'cmb_brand_color',
+      'name'    => 'Secondary Color',
+      'id'      => 'cmb_secondary_color',
       'type'    => 'colorpicker',
-      'default' => '#0000ff',
-      'options' => [
-          'alpha' => true, // Make this a rgba color picker.
-      ]
+  ]);
+
+  $cmb_theme_colors->add_field([
+      'name'    => 'Background Color',
+      'id'      => 'cmb_background_color',
+      'type'    => 'colorpicker',
   ]);
 
 

@@ -106,43 +106,63 @@ function get_nav( $menu_name, $args = array() ) {
   return $return;
 }
 
-// Adds a toast in the bottom right corner displaying current template while logged into admin
+// COLOR HELPER FUNCTIONS
 
-function display_template_toast() {
-	if ( is_super_admin() ) {
-		global $template;
 
-		$markup = '<div class="wp-template-toast">
-						%s
-						</div>
-						<style>
-							.wp-template-toast {
-								position: fixed;
-								height: 20px;
-								width: 150px;
-								background: rgba(255,0,0,.5);
-								color: white;
-								bottom: 0px;
-								display: flex;
-								justify-content: center;
-								font-size: 12px;
-								right: 0px;
-								border-radius: 5px;
-								animation: fadeout 1s 2s forwards;
-							}
-							@keyframes fadeout {
-								from {
-									opacity: 1;
-								}
+function hex2hsl($hex)
+{
+    $red = hexdec(substr($hex, 0, 2)) / 255;
+    $green = hexdec(substr($hex, 2, 2)) / 255;
+    $blue = hexdec(substr($hex, 4, 2)) / 255;
 
-								to {
-									opacity: 0;
-								}
-							}
-						</style>';
+    $cmin = min($red, $green, $blue);
+    $cmax = max($red, $green, $blue);
+    $delta = $cmax - $cmin;
 
-			echo sprintf($markup, basename($template));
-	}
+    if ($delta === 0) {
+        $hue = 0;
+    } elseif ($cmax === $red && $delta > 0) {
+        $hue = (($green - $blue) / $delta) % 6;
+    } elseif ($cmax === $green && $delta > 0) {
+        $hue = ($blue - $red) / $delta + 2;
+    } elseif ($delta > 0) {
+        $hue = ($red - $green) / $delta + 4;
+    }
+
+    $hue = round($hue * 60);
+    if ($hue < 0) {
+        $hue += 360;
+    }
+
+    $lightness = (($cmax + $cmin) / 2) * 100;
+    $saturation = $delta === 0 ? 0 : ($delta / (1 - abs(2 * $lightness - 1))) * 100;
+    if ($saturation < 0) {
+        $saturation += 100;
+    }
+
+    $lightness = round($lightness);
+    $saturation = round($saturation);
+
+    return array(
+      0 => $hue,
+      1 => $saturation,
+      2 => $lightness
+    );
 }
- 
-add_action( 'wp_footer', 'display_template_toast' );
+
+function hex2rgb( $colour ) {
+  if ( $colour[0] == '#' ) {
+          $colour = substr( $colour, 1 );
+  }
+  if ( strlen( $colour ) == 6 ) {
+          list( $r, $g, $b ) = array( $colour[0] . $colour[1], $colour[2] . $colour[3], $colour[4] . $colour[5] );
+  } elseif ( strlen( $colour ) == 3 ) {
+          list( $r, $g, $b ) = array( $colour[0] . $colour[0], $colour[1] . $colour[1], $colour[2] . $colour[2] );
+  } else {
+          return false;
+  }
+  $r = hexdec( $r );
+  $g = hexdec( $g );
+  $b = hexdec( $b );
+  return array( 'red' => $r, 'green' => $g, 'blue' => $b );
+}

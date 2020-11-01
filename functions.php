@@ -367,3 +367,44 @@ function create_page_on_theme_activation(){
     update_option( 'page_on_front', $front_page->ID );
     update_option( 'show_on_front', 'page' );
 }
+
+// Adds a toast in the bottom right corner displaying current template while logged into admin
+
+function display_template_toast() {
+	if ( is_super_admin() ) {
+		global $template;
+
+		$markup = '<div class="wp-template-toast">
+						%s
+						</div>
+						<style>
+							.wp-template-toast {
+								position: fixed;
+								height: 20px;
+								width: 150px;
+								background: rgba(255,0,0,.5);
+								color: white;
+								bottom: 0px;
+								display: flex;
+								justify-content: center;
+								font-size: 12px;
+								right: 0px;
+								border-radius: 5px;
+								animation: fadeout 1s 2s forwards;
+							}
+							@keyframes fadeout {
+								from {
+									opacity: 1;
+								}
+
+								to {
+									opacity: 0;
+								}
+							}
+						</style>';
+
+			echo sprintf($markup, basename($template));
+	}
+}
+ 
+add_action( 'wp_footer', 'display_template_toast' );

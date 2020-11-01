@@ -164,5 +164,13 @@ jQuery(document).ready(function($){
       $('.coming-soon-toggle input[type="checkbox"]').removeAttr('checked');
     }
    });
-});
+
+  });
+  
+  jQuery(document).ready(function($){
+    $('#wide-load').iris({
+        width: 400,
+        hide: false
+    });
+  });
 
