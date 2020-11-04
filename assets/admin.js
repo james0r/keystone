@@ -168,9 +168,8 @@ jQuery(document).ready(function($){
   });
   
   jQuery(document).ready(function($){
-    $('#wide-load').iris({
-        width: 400,
-        hide: false
-    });
+    $('.select2-hidden-accessible').each(function(index) {
+      $(this).val($(this).attr('data-selected'));
+    })
   });
 

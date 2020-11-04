@@ -9,6 +9,13 @@
 
   $parent_box = new_cmb2_box($args);
 
+  $parent_box->add_field( array(
+    'name' => 'Test Title',
+    'desc' => 'This is a title description',
+    'type' => 'title',
+    'id'   => 'wiki_test_title'
+  ) );
+
   // Company Theme Options
 
   $args = [
@@ -133,7 +140,7 @@
       'object_types' => ['options-page'],
       'option_key'   => 'cmb_theme_colors',
       'parent_slug'  => 'cmb_options_parent',
-      'title'        => 'Theme Colors'
+      'title'        => 'Color & Typography'
   ];
 
   $cmb_theme_colors = new_cmb2_box($args);
@@ -155,6 +162,28 @@
       'id'      => 'cmb_background_color',
       'type'    => 'colorpicker',
   ]);
+
+  $cmb_theme_colors->add_field( array(
+		'name'          => __( 'Body Font', 'keystone' ),
+		'desc'          => __( 'Choose from these Google fonts.', 'keystone' ),
+    'id'            => 'cmb2_id_body_font',
+    'after_field'   => 'Current: ' . cmb2_get_option('cmb_theme_colors', 'cmb2_id_body_font'),
+		'type'          => 'font',
+		'attributes'    => array(
+		    'data-placeholder' => __( 'Choose a font', 'keystone' ),
+		)
+	) );
+
+  $cmb_theme_colors->add_field( array(
+		'name'          => __( 'Header Font', 'keystone' ),
+		'desc'          => __( 'Choose from these Google fonts.', 'keystone' ) . cmb2_get_option('cmb_theme_colors', 'cmb2_id_header_font'),
+    'id'            => 'cmb2_id_header_font',
+    'after_field'   => 'Current: ' . cmb2_get_option('cmb_theme_colors', 'cmb2_id_header_font'),
+		'type'          => 'font',
+		'attributes'    => array(
+		    'data-placeholder' => __( 'Choose a font', 'keystone' ),
+		)
+	) );
 
 
   // Homapage Layout Inputs

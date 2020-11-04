@@ -56,7 +56,7 @@ function Reload(done) {
 function stylesDev() {
   return src('./scss/main.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass({ includePaths: 'node_modules' }).on("error", sass.logError))
+    .pipe(sass({ includePaths: 'node_modules', outputStyle: 'expanded' }).on("error", sass.logError))
     .pipe(sourcemaps.write('.'))
     .pipe(dest('../assets/'))
     .pipe(browserSync.stream({ match: '**/*.css' }));

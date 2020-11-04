@@ -18,9 +18,38 @@ if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-switch-
   require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-switch-button.php';
 }
 
+if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php' ) ) {
+  require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php';
+}
+
 if ( file_exists( KEYSTONE_THEME_DIR . '/includes/custom-modules.php' ) ) {
   require_once KEYSTONE_THEME_DIR . '/includes/custom-modules.php';
 }
+
+function cmb2_font_picker_scripts() {
+  wp_register_script( 'cmb-font-webfont', get_template_directory_uri() . '/includes/libs/CMB2/plugins/cmb-field-font/js/webfont.js', array( 'jquery' ), 1, true );
+  wp_enqueue_script( 'cmb-font-webfont' );
+  
+  // https://select2.org/
+  wp_register_script( 'cmb-font-select2', get_template_directory_uri() . '/includes/libs/CMB2/plugins/cmb-field-font/js/select2.full.min.js', array( 'jquery' ), 1, true );
+  wp_enqueue_script( 'cmb-font-select2' );
+  
+  wp_enqueue_style( 'cmb-font-select2', get_template_directory_uri() . '/includes/libs/CMB2/plugins/cmb-field-font/css/select2.min.css', array(), 1 );
+  wp_enqueue_style( 'cmb-font-select2' );
+  
+  // https://github.com/saadqbal/HiGoogleFonts
+  // Note: HiGoogleFonts has been modified to add search box, custom placeholder and use select2 default theme (instead of the horrible classic theme)
+  wp_register_script( 'cmb-font-higooglefonts', get_template_directory_uri(). '/includes/libs/CMB2/plugins/cmb-field-font/js/higooglefonts.js', array( 'jquery', 'cmb-font-webfont', 'cmb-font-select2' ), 1, true );
+  wp_enqueue_script( 'cmb-font-higooglefonts' );
+  
+  wp_register_script( 'cmb-field-font', get_template_directory_uri() . '/includes/libs/CMB2/plugins/cmb-field-font/js/font.js', array( 'jquery' ), 1, true );
+  wp_enqueue_script( 'cmb-field-font' );
+  
+  wp_enqueue_style( 'cmb-field-font', get_template_directory_uri() . '/includes/libs/CMB2/plugins/cmb-field-font/css/font.css', array(), 1 );
+  wp_enqueue_style( 'cmb-field-font' );
+
+}
+add_action('cmb2_admin_init', 'cmb2_font_picker_scripts');
 
 add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
 

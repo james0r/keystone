@@ -7,6 +7,7 @@
 
 <div style="color: var(--keystone-primary-color);">Primary Color</div>
 <div style="color: var(--keystone-secondary-color);">Secondary Color</div>
+<a href="https://www.google.com">This is a link</a>
 
 <div class="<?php echo slugify($pagename); ?>">
   <div class="<?php echo slugify($pagename); ?>-inner">
