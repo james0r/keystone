@@ -102,6 +102,39 @@
    --keystone-background-color-d8: hsl(var(--keystone-background-color-h), var(--keystone-background-color-s), calc(var(--keystone-background-color-l) - 40%));
    <?php
   }
+
+  if (!empty(cmb2_get_option('cmb_theme_colors', 'cmb_dark_background_color'))) {
+    $dark_background_color_hex = cmb2_get_option('cmb_theme_colors', 'cmb_dark_background_color');
+    $dark_background_color_hex_no_hash = sanitize_hex_color_no_hash($dark_background_color_hex);
+    $dark_background_color_hsl = hex2hsl($dark_background_color_hex_no_hash);
+    ?>
+
+    --keystone-dark-background-color-h: <?php echo $background_color_hsl[0] ?>;
+    --keystone-dark-background-color-s: <?php echo $background_color_hsl[1] . '%' ?>;
+    --keystone-dark-background-color-l: <?php echo $background_color_hsl[2] . '%' ?>;
+
+    <?php
+  ?>
+
+   --keystone-dark-background-color: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), var(--keystone-dark-background-color-l));
+   --keystone-dark-background-color-l1: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 5%));
+   --keystone-dark-background-color-l2: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 10%));
+   --keystone-dark-background-color-l3: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 15%));
+   --keystone-dark-background-color-l4: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 20%));
+   --keystone-dark-background-color-l5: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 25%));
+   --keystone-dark-background-color-l6: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 30%));
+   --keystone-dark-background-color-l7: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 35%));
+   --keystone-dark-background-color-l8: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) + 40%));
+   --keystone-dark-background-color-d1: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 5%));
+   --keystone-dark-background-color-d2: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 10%));
+   --keystone-dark-background-color-d3: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 15%));
+   --keystone-dark-background-color-d4: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 20%));
+   --keystone-dark-background-color-d5: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 25%));
+   --keystone-dark-background-color-d6: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 30%));
+   --keystone-dark-background-color-d7: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 35%));
+   --keystone-dark-background-color-d8: hsl(var(--keystone-dark-background-color-h), var(--keystone-dark-background-color-s), calc(var(--keystone-dark-background-color-l) - 40%));
+   <?php
+  }
 ?>
 }
 </style>

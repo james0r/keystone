@@ -1,32 +1,37 @@
 <?php
 define( 'KEYSTONE_THEME_DIR', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 define( 'THEME_ASSETS', get_stylesheet_directory_uri() . '/assets' );
+define('THEME_DIRECTORY', KEYSTONE_THEME_DIR);
 
-// ================================================ CMB2 Lib and configs
+/*----------------------------------------------------
+KEYSTONE CORE OOP ADDITIONS
+-----------------------------------------------------*/
 
-if ( file_exists( dirname( __FILE__ ) . '/includes/libs/cmb2/init.php' ) ) {
-	require_once dirname( __FILE__ ) . '/includes/libs/cmb2/init.php';
-} elseif ( file_exists( dirname( __FILE__ ) . '/includes/libs/CMB2/init.php' ) ) {
-	require_once dirname( __FILE__ ) . '/includes/libs/CMB2/init.php';
-}
+require get_template_directory() . '/includes/keystone-core.php';
 
-if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-radio-image.php' ) ) {
-  require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-radio-image.php';
-}
+$keystone = new Keystone;
 
-if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-switch-button.php' ) ) {
-  require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb2-switch-button.php';
-}
+$keystone->addNavMenus([
+    'menu-1' => 'Primary',
+]);
 
-if ( file_exists( KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php' ) ) {
-  require_once KEYSTONE_THEME_DIR . '/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php';
-}
 
-if ( file_exists( KEYSTONE_THEME_DIR . '/includes/custom-modules.php' ) ) {
-  require_once KEYSTONE_THEME_DIR . '/includes/custom-modules.php';
-}
+/*----------------------------------------------------
+THEME INCLUDES
+-----------------------------------------------------*/
 
-function cmb2_font_picker_scripts() {
+$keystone->requireOnce('includes/libs/cmb2/init.php')
+->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
+->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php')
+->requireOnce('/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php')
+->requireOnce('/includes/custom-modules.php');
+
+/*----------------------------------------------------
+CMB2 FUNCTIONS
+-----------------------------------------------------*/
+
+function cmb2_meta_init() {
+
   wp_register_script( 'cmb-font-webfont', get_template_directory_uri() . '/includes/libs/CMB2/plugins/cmb-field-font/js/webfont.js', array( 'jquery' ), 1, true );
   wp_enqueue_script( 'cmb-font-webfont' );
   
@@ -48,19 +53,16 @@ function cmb2_font_picker_scripts() {
   wp_enqueue_style( 'cmb-field-font', get_template_directory_uri() . '/includes/libs/CMB2/plugins/cmb-field-font/css/font.css', array(), 1 );
   wp_enqueue_style( 'cmb-field-font' );
 
-}
-add_action('cmb2_admin_init', 'cmb2_font_picker_scripts');
-
-add_action( 'cmb2_admin_init', 'cmb2_sample_metaboxes' );
-
-function cmb2_sample_metaboxes() {
   require_once KEYSTONE_THEME_DIR . '/includes/meta/meta-standard.php';
   require_once KEYSTONE_THEME_DIR . '/includes/meta/meta-modules.php';
   require_once KEYSTONE_THEME_DIR . '/includes/theme-options.php';
 }
 
-// ================================================ DASHBOARD WIDGET
+add_action( 'cmb2_admin_init', 'cmb2_meta_init' );
 
+/*----------------------------------------------------
+DASHBOARD WIDGETS
+-----------------------------------------------------*/
 
 add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
   
@@ -74,49 +76,47 @@ function custom_dashboard_help() {
 echo '<p>Welcome to your new site! Need help? Contact a developer <a href="mailto:james.auble@gmail.com">here</a>. For WordPress Tutorials visit: <a href="https://www.wpbeginner.com" target="_blank">WPBeginner</a></p>';
 }
 
-// ================================================ SCRIPTS	AND STYLESHEETS
+/*----------------------------------------------------
+ENQUEUE SCRIPTS
+-----------------------------------------------------*/
 
-function keystone_resources() {
-  wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/main.css' );
-  wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/all.min.css' );
-  wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/style.css' );
-  wp_enqueue_script( 'header_js', get_template_directory_uri() . '/assets/header-bundle.js', null, 1.0, false );
-  wp_enqueue_script( 'footer_js', get_template_directory_uri() . '/assets/footer-bundle.js', null, 1.0, true );
-}
+$keystone->addStyle('style', get_template_directory_uri() . '/assets/main.css')
+->addStyle('font-awesome', get_template_directory_uri() . '/assets/all.min.css')
+->addStyle('theme-styles', get_template_directory_uri() . '/style.css')
+->addScript('header_js', get_template_directory_uri() . '/assets/header-bundle.js', null, 1.0, false)
+->addScript('footer_js', get_template_directory_uri() . '/assets/footer-bundle.js', null, 1.0, true);
 
-add_action( 'wp_enqueue_scripts', 'keystone_resources' );
+$keystone->addAdminStyle('admin-styles', get_template_directory_uri() . '/assets/admin.css')
+->addAdminScript('jquery-ui', get_template_directory_uri() . '/assets/jquery-ui.min.js')
+->addAdminScript('admin-scripts', get_template_directory_uri() . '/assets/admin.js', null, 1.0, true)
+->addAdminScript('cmb2-conditional-logic', get_template_directory_uri() . '/assets/cmb2-conditional-logic.js', null, 1.0, true);
 
-function admin_scripts_styles() {
-  wp_enqueue_style('admin-styles', get_template_directory_uri().'/assets/admin.css');
-  wp_enqueue_script('jquery-ui', get_template_directory_uri().'/assets/jquery-ui.min.js');
-  wp_enqueue_script('admin-scripts', get_template_directory_uri().'/assets/admin.js', null, 1.0, true);
-  wp_enqueue_script('cmb2-conditional-logic', get_template_directory_uri().'/assets/cmb2-conditional-logic.js', null, 1.0, true);
-}
+/*----------------------------------------------------
+THEME SUPPORTS
+-----------------------------------------------------*/
 
-add_action('admin_enqueue_scripts', 'admin_scripts_styles');
+$keystone->addSupport('post-thumbnails')
+->addSupport('automatic-feed-links')
+->addSupport('post-thumbnails')
+->addSupport('title-tag')
+->addSupport('menus')
+->addSupport('html5', ['gallery'])
+->addSupport('align-wide')
+->addSupport('editor-styles')
+->addSupport('wp-block-styles')
+->addSupport('dark-editor-style')
+->addSupport('responsive-embed');
 
-// ================================================ THEME SUPPORTS
+/*----------------------------------------------------
+REGISTER IMAGE SIZES
+-----------------------------------------------------*/
 
-add_theme_support( 'automatic-feed-links' );
-add_theme_support( 'post-thumbnails' );
-add_theme_support( 'title-tag' );
-add_theme_support( 'menus' );
-add_theme_support( 'html5', array( 'gallery' ) );
-add_theme_support( 'align-wide' );
-add_theme_support( 'editor-styles' );
-add_theme_support( 'wp-block-styles' );
-add_theme_support( 'dark-editor-style' );
-add_theme_support( 'responsive-embed' );
-
-// ================================================ IMAGE SIZES
-
-add_image_size( 'small-thumbnail', 720, 720, true );
-add_image_size( 'square-thumbnail', 80, 80, true );
-add_image_size( 'banner-image', 1024, 1024, true );
+$keystone->addImageSize('full-width', 1600)
+->addImageSize('small-thumbnail', 720, 720, true)
+->addImageSize('square-thumbnail', 80, 80, true)
+->addImageSize('banner-image', 1024, 1024, true);
 
 // ================================================ keystone THEME DEFAULTS
-
-
 
 function keystone_theme_setup() {
   
@@ -248,18 +248,6 @@ function keystone_theme_setup() {
     $wp_admin_bar->remove_menu('comments');
   }
   add_action( 'wp_before_admin_bar_render', 'remove_comment_bubble' );
-
-  //Remove Comments and Links from WP Admin Main Nav
-  function remove_menus(){
-  global $menu;
-    $restricted = array(__('Links'), __('Comments'));
-    end ($menu);
-    while (prev($menu)){
-      $value = explode(' ',$menu[key($menu)][0]);
-      if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
-    }
-  }
-  add_action('admin_menu', 'remove_menus');
 
   //Put version numbers for keystone and active design style in wp admin footer
   function change_admin_footer(){
