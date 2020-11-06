@@ -1,5 +1,6 @@
 <?php
 
+
 class Keystone {
     private function actionAfterSetup($function) {
         add_action('after_setup_theme', function () use ($function) {
@@ -47,6 +48,7 @@ class Keystone {
       } else {
         throw new Exception($path . 'File Not Found');
       }
+      return $this; // Return class instance for method chaining
     }
 
     public function addSupport($feature, $options = null) {
