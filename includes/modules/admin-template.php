@@ -1,4 +1,7 @@
 <?php
+/**
+* THIS FILE CONTAINS FUNCTIONS FOR DYANMIC MODULES
+*/
 
 add_action( 'edit_form_after_editor', 'generate_block_cta' );
 	

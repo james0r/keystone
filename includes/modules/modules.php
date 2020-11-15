@@ -27,20 +27,16 @@ foreach ($modules as $m) {
     //for all blocks
 
     switch ($m->module) {
-          // ===============================================================================
+      case 'name':
 
-          case 'name':
+          require __DIR__ . '/sections/name.php';
 
-              require __DIR__ . '/modules/name.php';
+          break;
 
-              break;
+      case 'date':
 
-          // ===============================================================================
+          require __DIR__ . '/sections/date.php';
 
-          case 'date':
-
-              require __DIR__ . '/modules/date.php';
-
-              break;
-      } //end switch
+          break;
+    }
 }
