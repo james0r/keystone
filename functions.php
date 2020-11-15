@@ -24,6 +24,11 @@ function Keystone() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionN
 
 Keystone();
 
+Keystone()->requireOnce('/includes/libs/CMB2/init.php');
+
+new Keystone_CMB2;
+new Keystone_Modules;
+
 require_once wp_normalize_path(get_template_directory() . '/includes/helper-functions.php');
 
 Keystone()->addNavMenus([
@@ -35,22 +40,11 @@ Keystone()->addNavMenus([
 //==========================================
 
 Keystone()->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
-->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php')
-->requireOnce('/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php');
-
+->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
 
 //==========================================
 // ENQUEUE SCRIPTS
 //==========================================
-
-// CMB2 Font Picker
-Keystone()->addScript('cmb-font-webfont', $template_dir_uri . '/includes/libs/CMB2/plugins/cmb-field-font/js/webfont.js', ['jquery'], 1, true)
-->addScript('cmb-font-select2', $template_dir_uri . '/includes/libs/CMB2/plugins/cmb-field-font/js/select2.full.min.js', ['jquery'], 1, true)
-->addScript('cmb-font-higooglefonts', $template_dir_uri . '/includes/libs/CMB2/plugins/cmb-field-font/js/higooglefonts.js', ['jquery', 'cmb-font-webfont', 'cmb-font-select2'], 1, true)
-->addScript('cmb-field-font', $template_dir_uri . '/includes/libs/CMB2/plugins/cmb-field-font/js/font.js', ['jquery'], 1, true)
-->addStyle('cmb-font-select2', $template_dir_uri . '/includes/libs/CMB2/plugins/cmb-field-font/css/select2.min.css', [], 1)
-->addStyle('cmb-field-font', $template_dir_uri . '/includes/libs/CMB2/plugins/cmb-field-font/css/font.css', [], 1)
-->addAdminScript('cmb2-conditional-logic', get_template_directory_uri() . '/assets/cmb2-conditional-logic.js', null, 1.0, true);
 
 // Main Theme Styles and Scripts
 Keystone()->addStyle('style', get_template_directory_uri() . '/assets/main.css')

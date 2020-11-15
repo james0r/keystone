@@ -63,28 +63,6 @@ if( !class_exists( 'CMB2_Field_Font' ) ) {
          */
         public function setup_admin_scripts() {
 
-            // https://github.com/typekit/webfontloader
-            wp_register_script( 'cmb-font-webfont', KEYSTONE_THEME_DIR . 'includes/libs/CMB2/plugins/cmb-field-font/js/webfont.js', array( 'jquery' ), self::VERSION, true );
-            wp_enqueue_script( 'cmb-font-webfont' );
-
-            // https://select2.org/
-            wp_register_script( 'cmb-font-select2', KEYSTONE_THEME_DIR . 'includes/libs/CMB2/plugins/cmb-field-font/js/select2.full.min.js', array( 'jquery' ), self::VERSION, true );
-            wp_enqueue_script( 'cmb-font-select2' );
-
-            wp_enqueue_style( 'cmb-font-select2', KEYSTONE_THEME_DIR . 'includes/libs/CMB2/plugins/cmb-field-font/css/select2.min.css', array(), self::VERSION );
-            wp_enqueue_style( 'cmb-font-select2' );
-
-            // https://github.com/saadqbal/HiGoogleFonts
-            // Note: HiGoogleFonts has been modified to add search box, custom placeholder and use select2 default theme (instead of the horrible classic theme)
-            wp_register_script( 'cmb-font-higooglefonts', KEYSTONE_THEME_DIR . 'includes/libs/CMB2/plugins/cmb-field-font/js/higooglefonts.js', array( 'jquery', 'cmb-font-webfont', 'cmb-font-select2' ), self::VERSION, true );
-            wp_enqueue_script( 'cmb-font-higooglefonts' );
-
-            wp_register_script( 'cmb-field-font', KEYSTONE_THEME_DIR . 'includes/libs/CMB2/plugins/cmb-field-font/js/font.js', array( 'jquery' ), self::VERSION, true );
-            wp_enqueue_script( 'cmb-field-font' );
-
-            wp_enqueue_style( 'cmb-field-font', KEYSTONE_THEME_DIR . 'includes/libs/CMB2/plugins/cmb-field-font/css/font.css', array(), self::VERSION );
-            wp_enqueue_style( 'cmb-field-font' );
-
         }
 
     }

@@ -12,14 +12,16 @@ class Keystone extends Wauble {
 
     private function __construct() {
 
-        $this->cmb2 = new Keystone_CMB2;
-        $this->modules = new Keystone_Modules;
+        $this->removeSupport('core-block-patterns');
+
+        add_filter('use_block_editor_for_post', '__return_false', 10);
 
         parent::__construct();
     }
 
     // The object is created from within the class itself
     // only if the class has no instance.
+
     public static function getInstance() {
         if (self::$instance == null) {
             self::$instance = new Keystone();
