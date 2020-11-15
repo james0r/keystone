@@ -7,19 +7,17 @@
 */
 
 class Wauble {
-    protected static $instance = null;
+    public static $template_dir_path = '';
 
-    protected static $template_dir_path = '';
+    public static $template_dir_url = '';
 
-    protected static $template_dir_url = '';
+    public static $stylesheet_dir_path = '';
 
-    protected static $stylesheet_dir_path = '';
+    public static $stylesheet_dir_url = '';
 
-    protected static $stylesheet_dir_url = '';
+    public static $scripts_dir_path = '';
 
-    protected static $scripts_dir_path = '';
-
-    protected static $scripts_dir_url = '';
+    public static $scripts_dir_url = '';
 
     private function actionAfterSetup($function) {
         add_action('after_setup_theme', function () use ($function) {
@@ -72,6 +70,9 @@ class Wauble {
              ])
              ->addStyle('theme-styles', get_stylesheet_uri())
              ->addCommentScript();
+
+        $this->requireOnce('includes/libs/cmb2/init.php')
+             ->requireOnce('includes/modules/admin-template.php');
     }
 
     public function requireOnce($path = '', $base = THEME_DIRECTORY) {
