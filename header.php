@@ -10,5 +10,5 @@
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(KEYSTONE_THEME_CLASSES); ?>>
+<body <?php body_class(); ?>>
 <?php echo '<pre>' . var_export(KEYSTONE_THEME_CLASSES, true) . '</pre>'; ?>

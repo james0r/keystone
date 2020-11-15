@@ -1,7 +1,26 @@
 <?php
 
+/**
+* THIS OBJECT HAS APIS FOR ESSENTIAL THEME SETUP FOR
+* FOR ALL WAUBLE BASED THEMES. THIS CLASS SHOUD BE
+* EXTENDED BY THE THEMES ACTUAL UNIQUE PARENT CLASS.
+*/
 
-class Keystone {
+class Wauble {
+    protected static $instance = null;
+
+    protected static $template_dir_path = '';
+
+    protected static $template_dir_url = '';
+
+    protected static $stylesheet_dir_path = '';
+
+    protected static $stylesheet_dir_url = '';
+
+    protected static $scripts_dir_path = '';
+
+    protected static $scripts_dir_url = '';
+
     private function actionAfterSetup($function) {
         add_action('after_setup_theme', function () use ($function) {
             $function();
@@ -21,12 +40,25 @@ class Keystone {
     }
 
     private function ifFileExists($full_path) {
-      if ( file_exists( $full_path ) ) {
-        return true;
-      }
+        if (file_exists($full_path)) {
+            return true;
+        }
     }
 
     public function __construct() {
+        if ('' === self::$template_dir_path) {
+            self::$template_dir_path = wp_normalize_path(get_template_directory());
+        }
+        if ('' === self::$template_dir_url) {
+            self::$template_dir_url = get_template_directory_uri();
+        }
+        if ('' === self::$stylesheet_dir_path) {
+            self::$stylesheet_dir_path = wp_normalize_path(get_stylesheet_directory());
+        }
+        if ('' === self::$stylesheet_dir_url) {
+            self::$stylesheet_dir_url = get_stylesheet_directory_uri();
+        }
+
         $this->addSupport('title-tag')
              ->addSupport('custom-logo')
              ->addSupport('post-thumbnails')
@@ -43,12 +75,12 @@ class Keystone {
     }
 
     public function requireOnce($path = '', $base = THEME_DIRECTORY) {
-      if ($this->ifFileExists($base . $path)) {
-        require_once $base . $path;
-      } else {
-        throw new Exception($path . 'File Not Found');
-      }
-      return $this; // Return class instance for method chaining
+        if ($this->ifFileExists($base . $path)) {
+            require_once $base . $path;
+        } else {
+            throw new Exception($path . 'File Not Found');
+        }
+        return $this; // Return class instance for method chaining
     }
 
     public function addSupport($feature, $options = null) {
@@ -117,7 +149,6 @@ class Keystone {
         });
         return $this;
     }
-
 
     public function addCommentScript() {
         $this->actionEnqueueScripts(function () {
