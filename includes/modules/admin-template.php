@@ -12,7 +12,7 @@ function generate_block_cta( $post ) {
 	  <h2>Keystone Dynamic Sections</h2>
 	  <div class="inside clearfix">
 		  <?php if(!empty($_GET['post'])){ ?>
-	  		<p>Add and order any sections from the keystone dynamic sections library.</p>
+	  		<p>Add and order sections from the Keystone Dynamic Sections library.</p>
 				<a href="/wp-admin/admin.php?page=manage-modules&editing=<?php echo $_GET['post']; ?>" class="button button-primary button-large">Manage Dynamic Sections</a>
 			<?php } else { ?>
 				<p>Please publish this post or save to a draft before adding sections.</p>

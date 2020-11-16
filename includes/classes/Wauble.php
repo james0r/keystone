@@ -57,6 +57,7 @@ class Wauble {
             self::$stylesheet_dir_url = get_stylesheet_directory_uri();
         }
 
+        // Register support for specific wordpress features
         $this->addSupport('title-tag')
              ->addSupport('custom-logo')
              ->addSupport('post-thumbnails')
@@ -68,14 +69,49 @@ class Wauble {
                  'gallery',
                  'caption'
              ])
-             ->addStyle('theme-styles', get_stylesheet_uri())
-             ->addCommentScript();
+            ->addSupport('automatic-feed-links')
+            ->addSupport('menus')
+            ->addSupport('align-wide')
+            ->addSupport('editor-styles')
+            ->addSupport('wp-block-styles')
+            ->addSupport('dark-editor-style')
+            ->addSupport('responsive-embed');
 
-        $this->requireOnce('includes/libs/cmb2/init.php')
-             ->requireOnce('includes/modules/admin-template.php');
+
+        $this->addCommentScript();
+
+        // Register wordpress image sizes
+        $this->addImageSize('full-width', 1600)
+            ->addImageSize('small-thumbnail', 720, 720, true)
+            ->addImageSize('square-thumbnail', 80, 80, true)
+            ->addImageSize('banner-image', 1024, 1024, true);
+
+        // Initialize CMB2
+        $this->requireOnce('/includes/libs/cmb2/init.php');
+
+        // Enqueue critical stylesheets
+        $this->addStyle('style', get_template_directory_uri() . '/assets/main.css')
+              ->addStyle('font-awesome', get_template_directory_uri() . '/assets/all.min.css')
+              ->addStyle('user-styles', get_template_directory_uri() . '/style.css');
+
+        $this->addAdminStyle('admin-styles', get_template_directory_uri() . '/assets/admin.css')
+              ->addAdminScript('jquery-ui', get_template_directory_uri() . '/assets/jquery-ui.min.js')
+              ->addAdminScript('admin-scripts', get_template_directory_uri() . '/assets/admin.js', null, 1.0, true);
+
+        $this->addNavMenus([
+            'primary-navigation' => 'Primary Navigation',
+        ]);
     }
 
-    public function requireOnce($path = '', $base = THEME_DIRECTORY) {
+    public function requireOnce($path = '', $base = '') {
+        if ($base === '') {
+          $base = self::$template_dir_path;
+        }
+
+        if (strpos($path, '/') != 0) {
+          $path = '/' . $path;
+        }
+
         if ($this->ifFileExists($base . $path)) {
             require_once $base . $path;
         } else {

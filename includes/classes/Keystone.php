@@ -12,8 +12,6 @@ class Keystone extends Wauble {
 
     private function __construct() {
 
-        $this->removeSupport('core-block-patterns');
-
         add_filter('use_block_editor_for_post', '__return_false', 10);
 
         parent::__construct();

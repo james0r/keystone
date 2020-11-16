@@ -166,3 +166,24 @@ function hex2rgb( $colour ) {
   $b = hexdec( $b );
   return array( 'red' => $r, 'green' => $g, 'blue' => $b );
 }
+
+function getColorLightness($hex = 'No Color Provided'){
+	global $post;
+	$id = $post->ID;
+	
+	//if meta id is present, get that, if not get primary color
+	if(empty($hex)){
+		$color = '#ffffff';
+	} elseif($hex != 'No Color Provided'){
+		$color = $hex;
+	} else { 
+		$color = site_ops_brand_color(false); 
+	}
+	
+	$color_nohash = str_replace('#', '', $color);
+		
+	//get background lightness
+	$hsl = hexToHsl($color_nohash);
+	$lightness = $hsl[2]*1000;
+	return $lightness;
+}
