@@ -77,7 +77,6 @@ class Wauble {
             ->addSupport('dark-editor-style')
             ->addSupport('responsive-embed');
 
-
         $this->addCommentScript();
 
         // Register wordpress image sizes
@@ -101,15 +100,54 @@ class Wauble {
         $this->addNavMenus([
             'primary-navigation' => 'Primary Navigation',
         ]);
+
+        add_action( 'wp_footer', [$this, 'display_template_toast'] );
+    }
+
+    // Adds a toast in the bottom right corner displaying current template while logged into admin
+    public static function display_template_toast() {
+        if (is_super_admin()) {
+            global $template;
+
+            $markup = '<div class="wp-template-toast">
+						%s
+						</div>
+						<style>
+							.wp-template-toast {
+								position: fixed;
+								height: 20px;
+								width: 150px;
+								background: rgba(255,0,0,.5);
+								color: white;
+								bottom: 0px;
+								display: flex;
+								justify-content: center;
+								font-size: 12px;
+								right: 0px;
+								border-radius: 5px;
+								animation: fadeout 1s 2s forwards;
+							}
+							@keyframes fadeout {
+								from {
+									opacity: 1;
+								}
+								to {
+									opacity: 0;
+								}
+							}
+						</style>';
+
+            echo sprintf($markup, basename($template));
+        }
     }
 
     public function requireOnce($path = '', $base = '') {
         if ($base === '') {
-          $base = self::$template_dir_path;
+            $base = self::$template_dir_path;
         }
 
         if (strpos($path, '/') != 0) {
-          $path = '/' . $path;
+            $path = '/' . $path;
         }
 
         if ($this->ifFileExists($base . $path)) {
