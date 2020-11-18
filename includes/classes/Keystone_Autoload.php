@@ -1,6 +1,7 @@
 <?php
 /**
  * Autoloader for Keystone classes.
+ * All files in /includes/classes/ with a Keystone_ prefix will be autoloaded.
  */
 
 // Do not allow directly accessing this file.
@@ -26,9 +27,9 @@ class Keystone_Autoload {
 
 		// If the class exists in our hardcoded array of classes
 		// then get the path and return it immediately.
-		if ( ! self::$class_map ) {
-			self::$class_map = $this->get_class_map();
-		}
+		// if ( ! self::$class_map ) {
+		// 	self::$class_map = $this->get_class_map();
+		// }
 		if ( isset( self::$class_map[ $class_name ] ) ) {
 			include_once self::$class_map[ $class_name ];
 			return;
@@ -71,10 +72,12 @@ class Keystone_Autoload {
 	/**
 	 * Get a class-map for some standard classes.
 	 */
-	public function get_class_map() {
-		$template_dir_path = Keystone::$template_dir_path;
-		return [
-			'Keystone_CMB2'    => $template_dir_path . '/includes/classes/Keystone_CMB2.php',
-		];
-	}
+	// public function get_class_map() {
+	// 	$template_dir_path = Keystone::$template_dir_path;
+	// 	return [
+  //     'Keystone_CMB2'    => $template_dir_path . '/includes/classes/Keystone_CMB2.php',
+  //     'Keystone_Modules' => $template_dir_path . '/includes/classes/Keystone_Modules.php',
+  //     'Keystone_Options' => $template_dir_path . '/includes/classes/Keystone_Options.php'
+	// 	];
+	// }
 }

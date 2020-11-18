@@ -184,7 +184,7 @@ function keystone_getColorLightness($hex = 'No Color Provided') {
     $color_nohash = str_replace('#', '', $color);
 
     //get background lightness
-    $hsl = hexToHsl($color_nohash);
+    $hsl = keystone_hex2hsl($color_nohash);
     $lightness = $hsl[2] * 1000;
     return $lightness;
 }

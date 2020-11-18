@@ -85,9 +85,6 @@ class Wauble {
             ->addImageSize('square-thumbnail', 80, 80, true)
             ->addImageSize('banner-image', 1024, 1024, true);
 
-        // Initialize CMB2
-        $this->requireOnce('/includes/libs/cmb2/init.php');
-
         // Enqueue critical stylesheets
         $this->addStyle('style', get_template_directory_uri() . '/assets/main.css')
               ->addStyle('font-awesome', get_template_directory_uri() . '/assets/all.min.css')
@@ -100,6 +97,8 @@ class Wauble {
         $this->addNavMenus([
             'primary-navigation' => 'Primary Navigation',
         ]);
+
+        $this->requireOnce('/includes/helper-functions.php');
 
         add_action( 'wp_footer', [$this, 'display_template_toast'] );
     }

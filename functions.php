@@ -20,10 +20,3 @@ function Keystone() {
 }
 
 Keystone();
-
-Keystone()->requireOnce('/includes/libs/CMB2/init.php');
-
-new Keystone_CMB2;
-new Keystone_Modules;
-
-require_once wp_normalize_path(get_template_directory() . '/includes/helper-functions.php');

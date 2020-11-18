@@ -10,7 +10,11 @@ require_once wp_normalize_path(get_template_directory() . '/includes/classes/Wau
 class Keystone extends Wauble {
     public static $instance = null;
 
+    private static $theme_prefix;
+
     private function __construct() {
+
+        self::$theme_prefix = 'keystone';
 
         add_filter('use_block_editor_for_post', '__return_false', 10);
 
@@ -23,8 +27,17 @@ class Keystone extends Wauble {
     public static function getInstance() {
         if (self::$instance == null) {
             self::$instance = new Keystone();
+
+            self::$instance->cmb2 = new Keystone_CMB2;
+            self::$instance->modules = new Keystone_Modules;
+            self::$instance->options = new Keystone_Options;
+            self::$instance->body_classes = new Keystone_Body_Classes;
         }
 
         return self::$instance;
+    }
+
+    public function getPrefix() {
+      return self::$theme_prefix;
     }
 }

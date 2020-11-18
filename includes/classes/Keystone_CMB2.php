@@ -17,34 +17,10 @@ class Keystone_CMB2 {
         $this->enqueue_scripts();
         $this->enqueue_styles();
 
-        Keystone()->requireOnce('/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php')
+        Keystone()->requireOnce('/includes/libs/CMB2/init.php')
+        ->requireOnce('/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
-
-        add_action('cmb2_admin_init', [$this, 'init_sections']);
-    }
-
-    public static function init_sections() {
-        $sections = self::get_sections_map();
-        $section_base_path = '/includes/theme-options/';
-
-        foreach ($sections as $section) {
-            $path = $section_base_path . $section . '.php';
-            Keystone()->requireOnce($path);
-        }
-    }
-
-    protected static function get_sections_map() {
-        return [
-            'clinic',
-            'homepage-layout',
-            'colors-fonts',
-            'social',
-            'blog',
-            'header',
-            'footer',
-            'advanced',
-        ];
     }
 
     protected static function enqueue_scripts() {

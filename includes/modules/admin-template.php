@@ -7,7 +7,7 @@ add_action( 'edit_form_after_editor', 'generate_block_cta' );
 	
 function generate_block_cta( $post ) {
 ?>
-  <?php if (basename(get_page_template()) == 'dynamic-sections.php'): ?>
+  <?php if (get_post_type() == 'page'): ?>
   <div class="block-cta postbox">
 	  <h2>Keystone Dynamic Sections</h2>
 	  <div class="inside clearfix">

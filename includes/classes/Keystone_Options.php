@@ -14,6 +14,7 @@ class Keystone_Options {
     private static $instance = null;
 
     public function __construct() {
+        add_action('cmb2_admin_init', [$this, 'init_sections']);
     }
 
     // The object is created from within the class itself
@@ -24,5 +25,28 @@ class Keystone_Options {
         }
 
         return self::$instance;
+    }
+
+    public static function init_sections() {
+        $sections = self::get_sections_map();
+        $section_base_path = '/includes/theme-options/';
+
+        foreach ($sections as $section) {
+            $path = $section_base_path . $section . '.php';
+            Keystone()->requireOnce($path);
+        }
+    }
+
+    protected static function get_sections_map() {
+        return [
+            'clinic',
+            'homepage-layout',
+            'colors-fonts',
+            'social',
+            'blog',
+            'header',
+            'footer',
+            'advanced',
+        ];
     }
 }
