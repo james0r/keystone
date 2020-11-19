@@ -25,9 +25,9 @@ const themeName = 'keystone';
 /* -------------------------------------------------------------------------------------------------
 Header & Footer JavaScript Boundles
 -------------------------------------------------------------------------------------------------- */
-const headerJS = ['./node_modules/jquery/dist/jquery.js'];
+const headerJS = ['./js/_header.js'];
 
-const footerJS = ['./js/**'];
+const footerJS = ['./js/**', '!./js/_header.js'];
 
 /* -------------------------------------------------------------------------------------------------
 Development Tasks
@@ -65,12 +65,16 @@ function stylesDev() {
 }
 
 function headerScriptsDev() {
-  return src(headerJS)
-    .pipe(plumber({ errorHandler: onError }))
-    .pipe(sourcemaps.init())
-    .pipe(concat('header-bundle.js'))
-    .pipe(sourcemaps.write('.'))
-    .pipe(dest('../assets/js/'));
+  if (headerJS.length) {
+    return src(headerJS)
+      .pipe(plumber({ errorHandler: onError }))
+      .pipe(sourcemaps.init())
+      .pipe(concat('header-bundle.js'))
+      .pipe(sourcemaps.write('.'))
+      .pipe(dest('../assets/js/'));
+  } else {
+    return del(['../assets/js/header-bundle.js', '../assets/js/header-bundle.js.map'], {force: true});
+  }
 }
 
 function footerScriptsDev() {
@@ -107,12 +111,16 @@ function stylesProd() {
     .pipe(dest('../assets/css/'));
 }
 
-function headerScriptsProd() {
-  return src(headerJS)
-    .pipe(plumber({ errorHandler: onError }))
-    .pipe(concat('header-bundle.js'))
-    .pipe(uglify())
-    .pipe(dest('../assets/js/'));
+function headerScriptsProd(cb) {
+  if (headerJS.length) {
+    return src(headerJS)
+      .pipe(plumber({ errorHandler: onError }))
+      .pipe(concat('header-bundle.js'))
+      .pipe(uglify())
+      .pipe(dest('../assets/js/'));
+  } else {
+    return del(['../assets/js/header-bundle.js', '../assets/js/header-bundle.js.map'], {force: true});
+  }
 }
 
 function footerScriptsProd() {
