@@ -86,13 +86,16 @@ class Wauble {
             ->addImageSize('banner-image', 1024, 1024, true);
 
         // Enqueue critical stylesheets
-        $this->addStyle('style', get_template_directory_uri() . '/assets/main.css')
-              ->addStyle('font-awesome', get_template_directory_uri() . '/assets/all.min.css')
-              ->addStyle('user-styles', get_template_directory_uri() . '/style.css');
+        $this->addStyle('style', get_template_directory_uri() . '/assets/css/main.css')
+              ->addStyle('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css')
+              ->addStyle('user-styles', get_template_directory_uri() . '/style.css')
+              ->addScript('header_js', get_template_directory_uri() . '/assets/js/header-bundle.js', null, 1.0, false)
+              ->addScript('footer_js', get_template_directory_uri() . '/assets/js/footer-bundle.js', null, 1.0, true);
 
-        $this->addAdminStyle('admin-styles', get_template_directory_uri() . '/assets/admin.css')
-              ->addAdminScript('jquery-ui', get_template_directory_uri() . '/assets/jquery-ui.min.js')
-              ->addAdminScript('admin-scripts', get_template_directory_uri() . '/assets/admin.js', null, 1.0, true);
+
+        $this->addAdminStyle('admin-styles', get_template_directory_uri() . '/assets/admin/admin.css')
+              ->addAdminScript('jquery-ui', get_template_directory_uri() . '/assets/admin/jquery-ui.min.js')
+              ->addAdminScript('admin-scripts', get_template_directory_uri() . '/assets/admin/admin.js', null, 1.0, true);
 
         $this->addNavMenus([
             'primary-navigation' => 'Primary Navigation',

@@ -32,6 +32,7 @@ class Keystone extends Wauble {
             self::$instance->modules = new Keystone_Modules;
             self::$instance->options = new Keystone_Options;
             self::$instance->body_classes = new Keystone_Body_Classes;
+            self::$instance->dynamic_css = new Keystone_Dynamic_CSS;
         }
 
         return self::$instance;

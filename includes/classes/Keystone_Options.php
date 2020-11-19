@@ -11,20 +11,8 @@ class Keystone_Options {
 
     private static $fields;
 
-    private static $instance = null;
-
     public function __construct() {
         add_action('cmb2_admin_init', [$this, 'init_sections']);
-    }
-
-    // The object is created from within the class itself
-    // only if the class has no instance.
-    public static function getInstance() {
-        if (self::$instance == null) {
-            self::$instance = new Keystone();
-        }
-
-        return self::$instance;
     }
 
     public static function init_sections() {

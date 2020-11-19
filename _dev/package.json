@@ -56,5 +56,8 @@
 		"gulp-vinyl-zip": "^2.2.0",
 		"jquery": "^3.4.1",
 		"stylelint": "^13.3.0"
+	},
+	"devDependencies": {
+		"gulp-clean-css": "^4.3.0"
 	}
 }

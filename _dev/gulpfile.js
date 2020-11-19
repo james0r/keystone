@@ -13,6 +13,8 @@ const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const zip = require('gulp-vinyl-zip');
 const sass = require('gulp-sass');
+const cleanCSS = require('gulp-clean-css');
+
 
 /* -------------------------------------------------------------------------------------------------
 Theme Name
@@ -58,8 +60,8 @@ function stylesDev() {
     .pipe(sourcemaps.init())
     .pipe(sass({ includePaths: 'node_modules', outputStyle: 'expanded' }).on("error", sass.logError))
     .pipe(sourcemaps.write('.'))
-    .pipe(dest('../assets/'))
-    .pipe(browserSync.stream({ match: '**/*.css' }));
+    .pipe(dest('../assets/css/'))
+    .pipe(browserSync.stream({ match: '**/css/*.css' }));
 }
 
 function headerScriptsDev() {
@@ -68,7 +70,7 @@ function headerScriptsDev() {
     .pipe(sourcemaps.init())
     .pipe(concat('header-bundle.js'))
     .pipe(sourcemaps.write('.'))
-    .pipe(dest('../assets/'));
+    .pipe(dest('../assets/js/'));
 }
 
 function footerScriptsDev() {
@@ -82,7 +84,7 @@ function footerScriptsDev() {
     )
     .pipe(concat('footer-bundle.js'))
     .pipe(sourcemaps.write('.'))
-    .pipe(dest('../assets/'));
+    .pipe(dest('../assets/js/'));
 }
 
 exports.dev = series(
@@ -98,8 +100,11 @@ Production Tasks
 
 function stylesProd() {
   return src('./scss/main.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass({ includePaths: 'node_modules' }).on("error", sass.logError))
-    .pipe(dest('../assets/'));
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write('.', { sourceRoot: './scss/' }))
+    .pipe(dest('../assets/css/'));
 }
 
 function headerScriptsProd() {
@@ -107,7 +112,7 @@ function headerScriptsProd() {
     .pipe(plumber({ errorHandler: onError }))
     .pipe(concat('header-bundle.js'))
     .pipe(uglify())
-    .pipe(dest('../assets/'));
+    .pipe(dest('../assets/js/'));
 }
 
 function footerScriptsProd() {
@@ -120,7 +125,7 @@ function footerScriptsProd() {
     )
     .pipe(concat('footer-bundle.js'))
     .pipe(uglify())
-    .pipe(dest('../assets/'));
+    .pipe(dest('../assets/js/'));
 }
 
 // async function cleanProd() {
