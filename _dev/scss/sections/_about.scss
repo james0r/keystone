@@ -11,17 +11,55 @@ ABOUT MODULE
     flex-direction: row;
     height: 434px;
 
+    @include md {
+      flex-direction: column;
+    }
+
     .start {
       max-height: 350px;
+
+      @include xl {
+        max-height: 274px;
+      }
+
+      @include md {
+        min-height: unset;
+        max-height: unset;
+        width: 100%;
+        height: calc((100vw - 30px) * .764);
+      }
       
       .image-wrapper {
         height: 350px;
         width: 458px;
+
+        @include xl {
+          width: 374px;
+          max-height: 274px;
+        }
+
+        @include md {
+          width: 100%;
+          max-height: unset;
+          height: calc((100vw - 30px) * .764);
+        }
+
+        img {
+          @include md {
+            width: 100%;
+            height: calc((100vw - 30px) * .764);
+          }
+        }
       }
     }
 
     .end {
       padding-left: 30px;
+
+      @include md {
+        padding-left: 0px;
+        padding-top: 30px;
+      }
 
       .content {
         height: 100%;
@@ -29,8 +67,25 @@ ABOUT MODULE
         flex-direction: column;
         justify-content: flex-start;
 
+        .about-header {
+          margin-bottom: 10px;
+        }
+
         .about-body {
           font-size: 18px;
+          margin-bottom: 20px;
+        }
+
+        .about-thumbnail-list-item {
+          padding: 0px 5px;
+
+          &:first-child {
+            padding-left: 0px;
+          }
+        }
+
+        .btn {
+          margin-top: 30px;
         }
       }
 
