@@ -1,0 +1,45 @@
+/*----------------------------------------------------
+ABOUT MODULE
+-----------------------------------------------------*/
+
+.module-about {
+  width: 100%;
+  padding: 60px 15px;
+
+  .flex {
+    display: flex;
+    flex-direction: row;
+    height: 434px;
+
+    .start {
+      max-height: 350px;
+      
+      .image-wrapper {
+        height: 350px;
+        width: 458px;
+      }
+    }
+
+    .end {
+      padding-left: 30px;
+
+      .content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .about-body {
+          font-size: 18px;
+        }
+      }
+
+      ul {
+        list-style: none;
+        li {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
