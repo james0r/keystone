@@ -31,8 +31,13 @@ function get_meta($id, $key) {
     return $value[$key][0];
 }
 
-function get_the_meta($key, $single = true) {
+function keystone_get_the_meta($key, $single = true) {
     $value = get_post_meta(get_the_ID(), $key, $single);
+    return $value;
+}
+
+function keystone_gtmwi($key, $instance, $single = true) {
+    $value = get_post_meta(get_the_ID(), $key . '_' . $instance, $single);
     return $value;
 }
 

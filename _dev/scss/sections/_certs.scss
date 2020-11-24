@@ -1,0 +1,33 @@
+/*----------------------------------------------------
+CERTIFICATION MODULE STYLES
+-----------------------------------------------------*/
+
+.module-certs {
+  background-color: var(--keystone-background-color-d1);
+  padding: 60px 15px;
+}
+
+.certs-module-container {
+  &-inner {
+    .certs-slider-inner {
+      li {
+        display: inline-block;
+        margin: auto;
+
+        img {
+          margin: auto;
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          margin-top: 30px;
+        }
+      }
+      
+    }
+  }
+}

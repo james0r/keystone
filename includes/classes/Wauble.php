@@ -85,12 +85,15 @@ class Wauble {
             ->addImageSize('square-thumbnail', 80, 80, true)
             ->addImageSize('banner-image', 1024, 1024, true);
 
+
         // Enqueue critical stylesheets
         $this->addStyle('style', get_template_directory_uri() . '/assets/css/main.css')
               ->addStyle('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css')
               ->addStyle('user-styles', get_template_directory_uri() . '/style.css')
+              ->addScript('jquery-3.5.1', get_template_directory_uri() . '/assets/js/jquery-3.5.1.min.js', null, 1.0, false)
               ->addScript('header_js', get_template_directory_uri() . '/assets/js/header-bundle.js', null, 1.0, false)
-              ->addScript('footer_js', get_template_directory_uri() . '/assets/js/footer-bundle.js', null, 1.0, true);
+              ->addScript('knockout', get_template_directory_uri() . '/assets/js/knockout-3.5.1.js', ['jquery-3.5.1'], 1.0, true)
+              ->addScript('footer_js', get_template_directory_uri() . '/assets/js/footer-bundle.js', ['jquery-3.5.1'], 1.0, true);
 
 
         $this->addAdminStyle('admin-styles', get_template_directory_uri() . '/assets/admin/admin.css')

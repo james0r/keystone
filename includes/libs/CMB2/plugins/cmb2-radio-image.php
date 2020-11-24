@@ -53,7 +53,7 @@ if( !class_exists( 'CMB2_Radio_Image' ) ) {
                 }
 
                 .cmb2-radio-list li {
-                  margin-bottom: 40px !important;
+                  margin-bottom: 10px !important;
                 }
 
                 .cmb-type-radio-image .cmb2-radio-list input[type="radio"] {

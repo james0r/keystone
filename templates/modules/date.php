@@ -15,5 +15,5 @@ $style_dependencies = array(
 ?>
 
 <div class="date-module-contents">
-  <?php echo get_the_meta('cmb_event_date_'.$instance); ?>
+  <?php echo keystone_get_the_meta('cmb_event_date_'.$instance); ?>
 </div>

@@ -7,11 +7,7 @@
 get_header();
 ?>
 
-<div class="<?php echo slugify($pagename); ?>">
-  <div class="<?php echo slugify($pagename); ?>-inner">
-    <?php keystone_get_template('module-loop'); ?>
-  </div>
-</div>
+<?php keystone_get_template('module-loop'); ?>
 
 <?php
 get_footer();

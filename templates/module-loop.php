@@ -5,17 +5,18 @@
 		if(get_the_id() == $m->page){
 		//get the module instance
     $instance = $m->id;
-    	
+      
+    echo sprintf('<!-- Section: %s -->', ucfirst($m->module));
 		//open the module container
-		echo '<div id="i'.$instance.'" class="module '.$m->module.'">';
+		echo '<section id="i'.$instance.'" class="module module-'.$m->module.' module-instance-'.$m->id.'">';
 				
 			//get the guts of the module
-			echo "<div class='module-content'>";
+			echo "<div class='module-inner'>";
         keystone_get_template('modules/'.$m->module, array('instance' => $m->id));
 			echo "</div>";
 			
 		//close the module container
-		echo '</div>';
+		echo '</section>';
 		}
   } 
 ?>

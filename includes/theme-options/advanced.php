@@ -15,7 +15,7 @@ $cmb2_box_advanced_settings = new_cmb2_box([
 $cmb2_box_advanced_settings->add_field([
   'name'             => esc_html__( 'Show Popup Promo Box', 'keystone' ),
   'id'               => 'cmb2_id_field_popup_promo_box',
-  'desc'             => esc_html__('Visitors to your site will see a popup window with everything else grayed out. This kind of window is typically used for a newsletter signup or perhaps an important notice. A cookie is stored in the user\'s browser so that promo wont be shown twice.', 'keystone'),
+  'desc'             => esc_html__('Visitors to your site will see a popup window with everything else grayed out. This kind of window is typically used for a newsletter signup or perhaps an important notice. A cookie is stored in the user\'s browser so that the promo wont be shown twice.', 'keystone'),
   'type'	           => 'switch',
   'default'          => false, //If it's checked by default 
   'active_value'     => true,
@@ -27,7 +27,7 @@ $cmb2_box_advanced_settings->add_field([
   'id'               => 'cmb2_id_field_preloader_toggle',
   'desc'             => esc_html__('Visitors to your site will see the animation you choose while the page downloads from the internet.', 'keystone'),
   'type'	           => 'switch',
-  'default'          => false, //If it's checked by default 
+  'default'          => true, //If it's checked by default 
   'active_value'     => true,
   'inactive_value'   => false
 ]);
@@ -35,9 +35,9 @@ $cmb2_box_advanced_settings->add_field([
 $cmb2_box_advanced_settings->add_field([
   'name'             => esc_html__( 'Enable Mega Menu', 'keystone' ),
   'id'               => 'cmb2_id_field_enable_mega_menu',
-  'desc'             => __('Adds a large flydown menu to your site\'s main menu.') . '<span style="color: red;">You must add the <b>mega-menu</b> class to the corresponding menu item.</span>',
+  'desc'             => __('Adds a large flydown menu to your site\'s main menu.') . '<br><span style="color: red;">You must add the <b>mega-menu</b> class to the corresponding menu item.</span>',
   'type'	           => 'switch',
-  'default'          => false, //If it's checked by default 
+  'default'          => true, //If it's checked by default 
   'active_value'     => true,
   'inactive_value'   => false
 ]);
@@ -139,3 +139,17 @@ $cmb2_box_advanced_settings->add_field([
       'side-push-panel-right-push'              => __('Right Push', 'keystone'),
   ]
 ]);
+
+$cmb2_box_advanced_settings->add_field( array(
+	'name' => __( 'Module Max-Width in Pixels', 'keystone' ),
+	'desc' => '<br>' . __( 'Number of pixels for the maximum width of section containers.', 'keystone' ) . '<br><span style="color:red;">' . __('EXPERTS ONLY. Changing this can break your website!') .'</span>',
+  'id'   => 'cmb2_id_field_container_max_width',
+  'default' => 1170,
+	'type' => 'text_small',
+	'attributes' => array(
+		'type' => 'number',
+		'pattern' => '\d*',
+	),
+	'sanitization_cb' => 'absint',
+        'escape_cb'       => 'absint',
+) );

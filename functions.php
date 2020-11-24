@@ -20,10 +20,3 @@ function Keystone() {
 }
 
 Keystone();
-
-add_action( 'cmb2_save_options-page_fields_cmb_company_info_page', 'my_post_save_function', 10, 3 );
-
-function my_post_save_function( string $object_id, array $updated, CMB2 $cmb )
-{
-    
-}

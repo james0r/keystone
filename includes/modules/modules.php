@@ -29,13 +29,29 @@ foreach ($modules as $m) {
     switch ($m->module) {
       case 'name':
 
-          require __DIR__ . '/sections/name.php';
+          require __DIR__ . '/metaboxes/name.php';
 
           break;
 
       case 'date':
 
-          require __DIR__ . '/sections/date.php';
+          require __DIR__ . '/metaboxes/date.php';
+
+          break;
+      case 'about':
+
+          require __DIR__ . '/metaboxes/about.php';
+
+          break;
+      case 'certs':
+
+          require __DIR__ . '/metaboxes/certs.php';
+
+          break;
+      case 'hero-slider-swiper':
+
+          require __DIR__ . '/metaboxes/hero-slider-swiper.php';
+          require __DIR__ . '/metaboxes/hero-slides.php';
 
           break;
     }

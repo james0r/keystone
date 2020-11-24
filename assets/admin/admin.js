@@ -1,73 +1,69 @@
-jQuery(document).ready(function($){
+jQuery(document).ready(function ($) {
+  $("#sortable").sortable({
+    update: function (event, ui) {
+      //console.log(event);
+      //console.log(ui);
 
-	$( "#sortable" ).sortable({
-		update: function( event, ui ) {
-			//console.log(event);
-			//console.log(ui);
-			
-			
-			
-			//loop through and put number on each
-			$('.hp-module-block').each( function( index, element ){
+      //loop through and put number on each
+      $(".hp-module-block").each(function (index, element) {
+        var instance = $(this).attr("data-instance");
+        var order = index;
 
-				var instance = $(this).attr('data-instance');
-				var order = index;
-				
-				$.ajax({
-					type: 'post',
-					dataType: 'json',
-					url: '/wp-admin/admin-ajax.php',
-					data: {action:"update_module_order",instance:instance , order:order},
-					success: function(response){
-						console.log(response);
-					},
-					error: function(xhr, ajaxOptions, thrownError){
-						console.log(xhr.status);
-						console.log(thrownError);
-					}
-				});
-				
-			});
-			
-		}
-	});
-  $( "#sortable" ).disableSelection();
-  
-  $( ".meta-box-sortables" ).sortable({
-	  update: function( event, ui ) {
-			//console.log(event);
-			//console.log(ui);
-			
-			
+        $.ajax({
+          type: "post",
+          dataType: "json",
+          url: "/wp-admin/admin-ajax.php",
+          data: {
+            action: "update_module_order",
+            instance: instance,
+            order: order,
+          },
+          success: function (response) {
+            console.log(response);
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+          },
+        });
+      });
+    },
+  });
+  $("#sortable").disableSelection();
 
-			//loop through and put number on each
-			$('.cmb2-postbox').each( function( index, element ){
+  $(".meta-box-sortables").sortable({
+    update: function (event, ui) {
+      //console.log(event);
+      //console.log(ui);
 
-				var instance = $(this).attr('id');
-				var order = index;
-				
-				$.ajax({
-					type: 'post',
-					dataType: 'json',
-					url: '/wp-admin/admin-ajax.php',
-					data: {action:"update_module_order",instance:instance , order:order},
-					success: function(response){
-						console.log(response);
-					},
-					error: function(xhr, ajaxOptions, thrownError){
-						console.log(xhr.status);
-						console.log(thrownError);
-					}
-				});
-				
-			});
+      //loop through and put number on each
+      $(".cmb2-postbox").each(function (index, element) {
+        var instance = $(this).attr("id");
+        var order = index;
 
-			
-		}
-	 });
-  
+        $.ajax({
+          type: "post",
+          dataType: "json",
+          url: "/wp-admin/admin-ajax.php",
+          data: {
+            action: "update_module_order",
+            instance: instance,
+            order: order,
+          },
+          success: function (response) {
+            console.log(response);
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+          },
+        });
+      });
+    },
+  });
+
   //When a "background type" gets changed for a module, show specific fields
-/*
+  /*
   var setBackground = function(trigger){
 	  
 	  $this_module = trigger.closest('.postbox');
@@ -93,83 +89,98 @@ jQuery(document).ready(function($){
 	});
 */
 
+  //Smile Gallery 1 - Conditional Display of Fields
+  if ($("#g1_info").length > 0) {
+    var gallery1Fields = function ($trigger) {
+      //get important objects
+      var $trigger = $trigger;
+      var $fieldRow = $trigger.parent().parent();
+      var $groupRow = $fieldRow.parent().parent();
 
-	//Smile Gallery 1 - Conditional Display of Fields
-	if($('#g1_info').length>0){
-		var gallery1Fields = function($trigger){
-			
-			//get important objects
-			var $trigger = $trigger;
-			var $fieldRow = $trigger.parent().parent();
-			var $groupRow = $fieldRow.parent().parent();
-			
-			//is this for the primary image or secondary image?
-			var triggerType = ($fieldRow.hasClass('primary-trigger')) ? 'primary-image-' : 'lightbox-image-' ;
-			
-			//get the value of the select field
-			var fieldVal = $trigger.val();
-			
-			//hide all fields	  
-			$groupRow.find('div[class*="'+triggerType+'"],div[class^="'+triggerType+'"]').addClass('dr-hidden');
-			    
-  	  if(fieldVal=='' || fieldVal=='default'){
-		  	//hide all options
-  	  }else if(fieldVal=='hero'){
-		  	$groupRow.find('.'+triggerType+'hero').removeClass('dr-hidden');
-  	  }else if(fieldVal=='ba'){
-		  	$groupRow.find('.'+triggerType+'before').removeClass('dr-hidden');
-		  	$groupRow.find('.'+triggerType+'after').removeClass('dr-hidden');
-  	  }	
-		  
-  	};
-  	$('body').on('change','.g1-trigger select',function(){
-		  gallery1Fields($(this));
-  	});
-  	$('.g1-trigger select').each(function(i,e){
-  	  gallery1Fields($(this));
-		});
-		
-		//hide fields on new row
-		jQuery(document).on('cmb2_add_row',function(e,f){
-			f.find('div[class*="primary-image-"],div[class*="lightbox-image-"]').addClass('dr-hidden');
-		});
-	}
-	
-	
-	/// Add Module form processor
-	 $('.mm-form form').on('submit', function(e) {
-	      var $this = $(this);
-	      var err = 0;
-				$('input,textarea').removeClass('invalid');
-	      var name = $this.find('input[name="module_display_name"]');
-	      if (name.length && name.val() == '') {
-	        	e.preventDefault();
-	          name.addClass('invalid');
-	          $this.append('<p class="err">Please fill out all required form fields.</p>');
-	      } else {
-	      	$this.submit();  
-	      } 
-	 }); 
+      //is this for the primary image or secondary image?
+      var triggerType = $fieldRow.hasClass("primary-trigger")
+        ? "primary-image-"
+        : "lightbox-image-";
 
-   // Allow either under construction or coming soon page, not both.
+      //get the value of the select field
+      var fieldVal = $trigger.val();
 
-   $('.coming-soon-toggle input[type="checkbox"]').on("change", function(){
-     if (this.checked) {
-       $('.under-construction-toggle input[type="checkbox"]').removeAttr('checked');
-     }
-   })
+      //hide all fields
+      $groupRow
+        .find(
+          'div[class*="' + triggerType + '"],div[class^="' + triggerType + '"]'
+        )
+        .addClass("dr-hidden");
 
-   $('.under-construction-toggle input[type="checkbox"]').on("change", function(){
-    if (this.checked) {
-      $('.coming-soon-toggle input[type="checkbox"]').removeAttr('checked');
+      if (fieldVal == "" || fieldVal == "default") {
+        //hide all options
+      } else if (fieldVal == "hero") {
+        $groupRow.find("." + triggerType + "hero").removeClass("dr-hidden");
+      } else if (fieldVal == "ba") {
+        $groupRow.find("." + triggerType + "before").removeClass("dr-hidden");
+        $groupRow.find("." + triggerType + "after").removeClass("dr-hidden");
+      }
+    };
+    $("body").on("change", ".g1-trigger select", function () {
+      gallery1Fields($(this));
+    });
+    $(".g1-trigger select").each(function (i, e) {
+      gallery1Fields($(this));
+    });
+
+    //hide fields on new row
+    jQuery(document).on("cmb2_add_row", function (e, f) {
+      f.find(
+        'div[class*="primary-image-"],div[class*="lightbox-image-"]'
+      ).addClass("dr-hidden");
+    });
+  }
+
+  /// Add Module form processor
+  $(".mm-form form").on("submit", function (e) {
+    var $this = $(this);
+    var err = 0;
+    $("input,textarea").removeClass("invalid");
+    var name = $this.find('input[name="module_display_name"]');
+    if (name.length && name.val() == "") {
+      e.preventDefault();
+      name.addClass("invalid");
+      $this.append(
+        '<p class="err">Please fill out all required form fields.</p>'
+      );
+    } else {
+      $this.submit();
     }
-   });
-
-  });
-  
-  jQuery(document).ready(function($){
-    $('.select2-hidden-accessible').each(function(index) {
-      $(this).val($(this).attr('data-selected'));
-    })
   });
 
+  // Allow either under construction or coming soon page, not both.
+
+  $('.coming-soon-toggle input[type="checkbox"]').on("change", function () {
+    if (this.checked) {
+      $('.under-construction-toggle input[type="checkbox"]').removeAttr(
+        "checked"
+      );
+    }
+  });
+
+  $('.under-construction-toggle input[type="checkbox"]').on(
+    "change",
+    function () {
+      if (this.checked) {
+        $('.coming-soon-toggle input[type="checkbox"]').removeAttr("checked");
+      }
+    }
+  );
+});
+
+jQuery(document).ready(function ($) {
+  $(".select2-hidden-accessible").each(function (index) {
+    $(this).val($(this).attr("data-selected"));
+  });
+});
+
+jQuery(function ($) {
+  $("#cmb2_id_heading_font").on("change", function (event) {
+    $('#submit-cmb').trigger("click");
+  });
+});

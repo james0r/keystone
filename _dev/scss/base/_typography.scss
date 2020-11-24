@@ -7,3 +7,15 @@ body {
   line-height: 1.4;
   font-size: 16px;
 }
+
+.xdebug-error {
+  color: black;
+}
+
+.theme-color-primary {
+  color: var(--keystone-primary-color);
+}
+
+.theme-color-secondary {
+  color: var(--keystone-secondary-color);
+}

@@ -1,5 +1,5 @@
 /*----------------------------------------------------
-ABOUT MODULE
+ABOUT MODULE STYLES
 -----------------------------------------------------*/
 
 .module-about {
@@ -13,6 +13,7 @@ ABOUT MODULE
 
     @include md {
       flex-direction: column;
+      height: auto;
     }
 
     .start {
@@ -45,9 +46,14 @@ ABOUT MODULE
         }
 
         img {
+          @include xl {
+            max-height: 274px;
+          }
+
           @include md {
             width: 100%;
             height: calc((100vw - 30px) * .764);
+            max-height: unset;
           }
         }
       }
@@ -77,11 +83,8 @@ ABOUT MODULE
         }
 
         .about-thumbnail-list-item {
-          padding: 0px 5px;
-
-          &:first-child {
-            padding-left: 0px;
-          }
+          margin-right: 10px;
+          margin-top: 5px;
         }
 
         .btn {

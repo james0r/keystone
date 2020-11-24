@@ -13,10 +13,16 @@ class Keystone extends Wauble {
     private static $theme_prefix;
 
     private function __construct() {
-
         self::$theme_prefix = 'keystone';
 
         add_filter('use_block_editor_for_post', '__return_false', 10);
+
+        add_action('init', [$this, 'reset_editor']);
+
+        $this->addImageSize('reveal-image', 1100, 840);
+        $this->addImageSize('award-thumb', 160, 160);
+        $this->addImageSize('certificate', 400, 308);
+        $this->addImageSize('hero-background', 1920, 1200);
 
         parent::__construct();
     }
@@ -33,12 +39,24 @@ class Keystone extends Wauble {
             self::$instance->options = new Keystone_Options;
             self::$instance->body_classes = new Keystone_Body_Classes;
             self::$instance->dynamic_css = new Keystone_Dynamic_CSS;
+            self::$instance->dynamic_scripts = new Keystone_Dynamic_Scripts;
         }
 
         return self::$instance;
     }
 
     public function getPrefix() {
-      return self::$theme_prefix;
+        return self::$theme_prefix;
+    }
+
+    public function reset_editor() {
+        global $_wp_post_type_features;
+
+        $post_type = 'page';
+        $feature = 'editor';
+        if (!isset($_wp_post_type_features[$post_type])) {
+        } elseif (isset($_wp_post_type_features[$post_type][$feature])) {
+            unset($_wp_post_type_features[$post_type][$feature]);
+        }
     }
 }

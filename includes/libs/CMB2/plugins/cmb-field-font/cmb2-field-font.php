@@ -62,7 +62,7 @@ if( !class_exists( 'CMB2_Field_Font' ) ) {
          * Enqueue scripts and styles
          */
         public function setup_admin_scripts() {
-
+          
         }
 
     }

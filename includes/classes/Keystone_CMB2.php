@@ -54,13 +54,6 @@ class Keystone_CMB2 {
                 true,
             ],
             [
-                'cmb-field-font',
-                self::$template_dir_url . '/includes/libs/CMB2/plugins/cmb-field-font/js/font.js',
-                ['jquery'],
-                1,
-                true,
-            ],
-            [
                 'cmb2-conditional-logic',
                 self::$template_dir_url . '/includes/libs/CMB2/plugins/cmb2-conditional-logic.js',
                 ['jquery'],
@@ -83,13 +76,13 @@ class Keystone_CMB2 {
     protected function enqueue_styles() {
         $styles = [
             [
-                'cmb-font-select2',
+                'cmb-font-select2-styles',
                 self::$template_dir_url . '/includes/libs/CMB2/plugins/cmb-field-font/css/select2.min.css',
                 [],
                 1
             ],
             [
-                'cmb-field-font',
+                'cmb-field-font-styles',
                 self::$template_dir_url . '/includes/libs/CMB2/plugins/cmb-field-font/css/font.css',
                 [],
                 1
@@ -98,10 +91,10 @@ class Keystone_CMB2 {
 
         foreach ($styles as $style) {
             Keystone()->addAdminStyle(
-                $script[0],
-                $script[1],
-                $script[2],
-                $script[3]
+                $style[0],
+                $style[1],
+                $style[2],
+                $style[3]
             );
         }
     }

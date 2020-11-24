@@ -9,13 +9,13 @@ function generate_block_cta( $post ) {
 ?>
   <?php if (get_post_type() == 'page'): ?>
   <div class="block-cta postbox">
-	  <h2>Keystone Dynamic Sections</h2>
+	  <h2><?php _e('Keystone Dynamic Sections', 'keystone') ?></h2>
 	  <div class="inside clearfix">
 		  <?php if(!empty($_GET['post'])){ ?>
-	  		<p>Add and order sections from the Keystone Dynamic Sections library.</p>
+	  		<p><?php _e('Add and order sections from the Keystone Dynamic Sections Library.', 'keystone') ?></p>
 				<a href="/wp-admin/admin.php?page=manage-modules&editing=<?php echo $_GET['post']; ?>" class="button button-primary button-large">Manage Dynamic Sections</a>
 			<?php } else { ?>
-				<p>Please publish this post or save to a draft before adding sections.</p>
+				<p><?php _e('Please publish this post or save to a draft before adding sections.', 'keystone') ?></p>
 			<?php } ?>
 	  </div>
   </div>
@@ -45,8 +45,8 @@ function render_modules(){ ?>
 	<div class="wrap module-manager">
 		
 		<div class="mm-header clearfix">
-    	<h1>Manage Dynamic Sections: <span><?php echo get_the_title($editing); ?></span></h1>
-    	<a href="/wp-admin/post.php?post=<?php echo $editing; ?>&action=edit" class="page-title-action">Page Editor</a>
+    	<h1><?php _e('Manage Dynamic Sections', 'keystone') ?>: <span><?php echo get_the_title($editing); ?></span></h1>
+    	<a href="/wp-admin/post.php?post=<?php echo $editing; ?>&action=edit" class="page-title-action"><?php _e('Page Editor', 'keystone') ?></a>
 		</div>
 		
 		<div class="row">
@@ -54,19 +54,24 @@ function render_modules(){ ?>
 			<div class="columns four">
 				<div class="mm-form">
 					<form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
-						<h2>Add Dynamic Section</h2>
-						<label>Section Template</label>
+						<h2><?php _e('Keystone Dynamic Sections Library', 'keystone') ?></h2>
+						<label><?php _e('Section Template', 'keystone') ?></label>
 						<select name="module_name">
-							<option value="" disabled selected>-- Choose a Template --</option>
-							<option value="name">Name</option>
-							<option value="date">Date</option>
+							<option value="" disabled selected>-- <?php _e('Choose a Template', 'keystone')?> --</option>
+							<option value="name"><?php _e('Name', 'keystone') ?></option>
+							<option value="date"><?php _e('Date', 'keystone') ?></option>
+              <option value="about"><?php _e('About', 'keystone') ?></option>
+              <option value="" disabled>-- <?php _e('Divider Sections', 'keystone') ?> --</option>
+							<option value="certs"><?php _e('Certificates', 'keystone') ?></option>
+              <option value="" disabled>-- <?php _e('Hero Sections', 'keystone') ?> --</option>
+              <option value="hero-slider-swiper"><?php _e('Hero Slider Swiper Style', 'keystone') ?></option>
 						</select>
-						<label>Section Name</label>
+						<label><?php _e('Section Name', 'keystone') ?></label>
 						<input type="text" name="module_display_name" />
-						<p>Both Fields are required. The section name is for your own reference.</p>
+						<p><?php _e('Both Fields are required. The section name is for your own reference.', 'keystone') ?></p>
 						<input type="hidden" name="editing" value="<?php echo $editing; ?>" />
 						<input type="hidden" name="action" value="add_module">
-						<button type="submit" class="button button-primary button-large">Add Section</button>
+						<button type="submit" class="button button-primary button-large"><?php _e('Add Section', 'keystone') ?> </button>
     			</form>
 				</div>
 			</div>

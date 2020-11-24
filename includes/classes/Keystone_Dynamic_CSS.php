@@ -12,14 +12,23 @@ class Keystone_Dynamic_CSS {
 
       foreach($style_deps as $dep) {
         switch ($dep) {
-          case '1':
-              return $this->add_inline_stylesheet('first-stylesheet', get_stylesheet_directory_uri() . '/assets/css/1.css');
+          case 'twenty-twenty':
+              echo $this->add_inline_stylesheet('twenty-twenty-css', get_stylesheet_directory_uri() . '/assets/css/twenty-twenty.css');
+              break;
+          case 'slick':
+            echo $this->add_inline_stylesheet('slick-css', get_stylesheet_directory_uri() . '/assets/css/slick.css');
             break;
-          case '2':
-            return $this->add_inline_stylesheet('second-stylesheet', get_stylesheet_directory_uri() . '/assets/css/2.css');
-          break;
+          case 'slick-theme':
+            echo $this->add_inline_stylesheet('slick-theme-css', get_stylesheet_directory_uri() . '/assets/css/slick-theme.css');
+            break;
+          case 'swiper-bundle':
+            echo $this->add_inline_stylesheet('swiper-bundle-css', get_stylesheet_directory_uri() . '/assets/css/swiper-bundle.css');
+            break;
+          case 'slick-lightbox':
+            echo $this->add_inline_stylesheet('slick-lightbox-css', get_stylesheet_directory_uri() . '/assets/css/slick-lightbox.css');
+            break;
           default:
-          return false;
+          echo '<!-- A style dependency failed to load -->';
         }
       }
     }
@@ -27,8 +36,8 @@ class Keystone_Dynamic_CSS {
     private function add_inline_stylesheet($handle, $href) {
   
       $html = <<<EOT
-        <link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='all' />
-      EOT;
+<link rel='preload' as='style' onload="this.onload=null;this.rel='stylesheet'" id='$handle' href='$href' type='text/css' media='all' />
+EOT;
       return $html;
     }
     
