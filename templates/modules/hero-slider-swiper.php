@@ -53,6 +53,43 @@ $cert_array = keystone_gtmwi('cmb2_id_field_certificate_file_list', $instance);
   </div>
 </div>
 
-<script>
+<?php
+  $slider_options = [
+      'autoplay'   => keystone_gtmwi('cmb2_id_field_swiper_autoplay', $instance),
+      'loop'       => keystone_gtmwi('cmb2_id_field_swiper_loop_mode', $instance)
+  ];
 
+  if (keystone_gtmwi('cmb2_id_field_swiper_show_pagination', $instance)) {
+      array_merge($slider_options, [
+          'pagination'   => [
+              'el'  => '.swiper-pagination'
+          ]
+      ]);
+  }
+
+  var_dump($slider_options);
+?>
+
+<script>
+  var mySwiper = new Swiper('.swiper-container', {
+    // Optional parameters
+    direction: 'vertical',
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })
 </script>

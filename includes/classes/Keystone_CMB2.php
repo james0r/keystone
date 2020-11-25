@@ -23,6 +23,12 @@ class Keystone_CMB2 {
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
     }
 
+    public function sanitize_checkbox($value, $field_args, $field) {
+        // Return 0 instead of false if null value given. This hack for
+        // checkbox or checkbox-like can be setting true as default value.
+        return is_null($value) ? 0 : $value;
+    }
+
     protected static function enqueue_scripts() {
         $scripts = [
             [
