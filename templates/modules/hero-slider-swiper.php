@@ -56,13 +56,65 @@ $cert_array = keystone_gtmwi('cmb2_id_field_certificate_file_list', $instance);
 <?php
   $slider_options = [
       'autoplay'   => keystone_gtmwi('cmb2_id_field_swiper_autoplay', $instance),
-      'loop'       => keystone_gtmwi('cmb2_id_field_swiper_loop_mode', $instance)
+      'loop'       => keystone_gtmwi('cmb2_id_field_swiper_loop_mode', $instance),
+      'speed'      => keystone_gtmwi('cmb2_id_field_swiper_speed', $instance)
   ];
 
   if (keystone_gtmwi('cmb2_id_field_swiper_show_pagination', $instance)) {
-      array_merge($slider_options, [
-          'pagination'   => [
-              'el'  => '.swiper-pagination'
+      $pagination_style = keystone_gtmwi('cmb2_id_field_swiper_pagination_style', $instance);
+
+      $pagination_options = [
+          'el'  => '.swiper-pagination'
+      ];
+
+      echo $pagination_style;
+
+      switch ($pagination_style) {
+        case 'bullets':
+          // This is the default style. Do nothing here.
+          break;
+        case 'numbered_bullets':
+          $pagination_options['clickable'] = 'true';
+          $pagination_options['renderBullet'] = 'function (index, className) {return \'<span class="\' + className + \'">\' + (index + 1) + \'</span>\';}';    
+          break;
+        case 'dynamic_bullets':
+          $pagination_options['dynamicBullets'] = 'true';
+          break;
+        case 'scrollbar':
+          $slider_options = array_merge($slider_options, [
+            'scrollbar' => [
+                'el'   => '.swiper-scrollbar',
+                'hide' => 'true'
+            ]
+          ]);
+          break;
+        case 'fraction':
+          $pagination_options['type'] = 'fraction';
+          break;
+        case 'progresbar':
+          $pagination_options['type'] = 'progressbar';
+          break;
+        default:
+          # code...
+          break;
+      } 
+
+      if ($pagination_style != 'scrollbar') {
+          $slider_options = array_merge($slider_options, [
+              'pagination' => $pagination_options
+          ]);
+      }
+  }
+
+  if (keystone_gtmwi('cmb2_id_field_swiper_fade_effect', $instance)) {
+    $slider_options['effect'] = 'fade';
+  }
+
+  if (keystone_gtmwi('cmb2_id_field_swiper_show_arrows', $instance)) {
+      $slider_options = array_merge($slider_options, [
+          'navigation' => [
+              'nextEl' => '.swiper-button-next',
+              'prevEl' => '.swiper-button-prev'
           ]
       ]);
   }

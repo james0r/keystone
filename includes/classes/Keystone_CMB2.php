@@ -21,12 +21,21 @@ class Keystone_CMB2 {
         ->requireOnce('/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
-    }
 
-    public function sanitize_checkbox($value, $field_args, $field) {
-        // Return 0 instead of false if null value given. This hack for
-        // checkbox or checkbox-like can be setting true as default value.
-        return is_null($value) ? 0 : $value;
+        // Callback function to be used with Checkbox and Switch fields.
+        function sanitize_checkbox($value, $field_args, $field) {
+            // Return 0 instead of false if null value given. This hack for
+            // checkbox or checkbox-like can be setting true as default value.
+            return is_null($value) ? 0 : $value;
+        }
+
+        function absint_with_default_fallback($value, $field_args, $field) {
+          if ($value == false) {
+            $value = $field_args['default'];
+            error_log($value);
+          }
+          return abs( intval( $value ) );
+        }
     }
 
     protected static function enqueue_scripts() {
