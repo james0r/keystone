@@ -28,7 +28,7 @@ $cmb2_id_group_slides = $box->add_field([
 $box->add_group_field($cmb2_id_group_slides, [
     'name'    => __('Slide Background Image'),
     'desc'    => __('Recommended Size: 1920px x 1200px. Upload an image or enter an URL.', 'keystone'),
-    'id'      => 'cmb2_id_field_slide_background_image'.$suffix,
+    'id'      => 'cmb2_id_field_slide_background_image',
     'type'    => 'file',
     // Optional:
     'options' => [
@@ -50,7 +50,7 @@ $box->add_group_field($cmb2_id_group_slides, [
 
 $box->add_group_field($cmb2_id_group_slides, array(
 	'name'    => __('Align Content:', 'keystone'),
-	'id'      => 'cmb2_id_field_slide_align_content'.$suffix,
+	'id'      => 'cmb2_id_field_slide_align_content',
 	'type'    => 'radio_inline',
 	'options' => array(
 		'left' => __( 'Left Aligned', 'keystone' ),
@@ -64,7 +64,7 @@ $box->add_group_field($cmb2_id_group_slides, array(
 $box->add_group_field($cmb2_id_group_slides, [
     'name'        => __('Slide Tagline', 'keystone'),
     'description' => __('This text is smaller and appears above the slide title.', 'keystone'),
-    'id'          => 'cmb2_id_field_slide_tagline' . $suffix,
+    'id'          => 'cmb2_id_field_slide_tagline',
     'type'        => 'text',
     // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 ]);
@@ -72,25 +72,25 @@ $box->add_group_field($cmb2_id_group_slides, [
 $box->add_group_field($cmb2_id_group_slides, [
     'name'        => __('Slide Title'),
     'description' => __('This is the H1 of your page and should encapsulate the purpose or meaning of the page or section.', 'keystone'),
-    'id'          => 'cmb2_id_field_slide_title' . $suffix,
+    'id'          => 'cmb2_id_field_slide_title',
     'type'        => 'text',
 ]);
 
 $box->add_group_field($cmb2_id_group_slides, [
     'name' => __('Slide Paragraph Text', 'keystone'),
-    'id'   => 'cmb2_id_field_slide_paragraph_text' . $suffix,
+    'id'   => 'cmb2_id_field_slide_paragraph_text',
     'type' => 'textarea_small',
 ]);
 
 $box->add_group_field($cmb2_id_group_slides, [
     'name' => __('Button Text', 'keystone'),
-    'id'   => 'cmb2_id_field_slide_button_text' . $suffix,
+    'id'   => 'cmb2_id_field_slide_button_text',
     'type' => 'text',
 ]);
 
 $box->add_group_field($cmb2_id_group_slides, [
     'name'        => __('Button Link URL', 'keystone'),
     'description' => __('Ex. https:://www.example.com/page or /page', 'keystone'),
-    'id'          => 'cmb2_id_field_slide_button_link_url' . $suffix,
+    'id'          => 'cmb2_id_field_slide_button_link_url',
     'type'        => 'text',
 ]);

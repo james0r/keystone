@@ -11,10 +11,10 @@ $box->add_field([
 ]);
 
 $box->add_field([
-    'name'            => __('Show Slider Options', 'keystone'),
-    'type'            => 'switch',
-    'id'              => 'cmb2_id_field_show_swiper_options' . $suffix,
-    'sanitization_cb' => 'sanitize_checkbox',
+    'name'             => __('Show Slider Options', 'keystone'),
+    'type'             => 'switch',
+    'id'               => 'cmb2_id_field_show_swiper_options' . $suffix,
+    'sanitization_cb'  => 'sanitize_checkbox',
     'default'          => false, //If it's checked by default
     'active_value'     => true,
     'inactive_value'   => false,
@@ -42,8 +42,8 @@ $box->add_field([
     'type'       => 'text_small',
     'default'    => 400,
     'attributes' => [
-        'type'    => 'number',
-        'pattern' => '\d*',
+        'type'                    => 'number',
+        'pattern'                 => '\d*',
         'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
@@ -60,10 +60,10 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -75,10 +75,10 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -89,10 +89,10 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -104,10 +104,10 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -119,10 +119,10 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -135,14 +135,14 @@ $box->add_field([
         'bullets'          => __('Bullets', 'keystone'),
         'numbered_bullets' => __('Numbered Bullets', 'keystone'),
         'dynamic_bullets'  => __('Dynamic Bullets', 'keystone'),
-        'progressbar'     => __('Progress Bar', 'keystone'),
-        'fraction'        => __('Fractions', 'keystone'),
+        'progressbar'      => __('Progress Bar', 'keystone'),
+        'fraction'         => __('Fractions', 'keystone'),
         'scrollbar'        => __('Scrollbar', 'keystone'),
     ],
     'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -155,33 +155,41 @@ $box->add_field([
         'vertical'   => __('Vertical', 'keystone'),
     ],
     'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
     'name'          => __('Space Between Slides', 'keystone'),
     'desc'          => __('In Pixels. Adds a separator between slides.', 'keystone'),
-    'default'       => '0',
+    'default'       => 0,
     'id'            => 'cmb2_id_field_swiper_space_between_slides' . $suffix,
     'type'          => 'text_small',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'    => [
+        'type'                    => 'number',
+        'pattern'                 => '\d*',
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
+    'sanitization_cb' => 'absint',
+    'escape_cb'       => 'absint_with_default_fallback'
 ]);
 
 $box->add_field([
-    'name'          => __('# of Slides Per View', 'keystone'),
-    'desc'          => __('The number of slides visible at a time. (Use "Auto" fits as many slides in as possible based on their width. This setting is usually not recommended.', 'keystone'),
-    'default'       => '1',
-    'id'            => 'cmb2_id_field_swiper_slides_per_view' . $suffix,
-    'type'          => 'text_small',
+    'name'            => __('# of Slides Per View', 'keystone'),
+    'desc'            => __('The number of slides visible at a time. (Use "Auto" fits as many slides in as possible based on their width. This setting is usually not recommended.', 'keystone'),
+    'default'         => 1,
+    'id'              => 'cmb2_id_field_swiper_slides_per_view' . $suffix,
+    'type'            => 'text_small',
     'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+        'type'                    => 'number',
+        'pattern'                 => '\d*',
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
+    'sanitization_cb' => 'absint',
+    'escape_cb'       => 'absint_with_default_fallback'
 ]);
 
 $box->add_field([
@@ -193,25 +201,25 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
     'name'             => __('Disable Keyboard Navigation', 'keystone'),
-    'desc'             => __('This is not recommended as it makes the slider inoperable for users with disabilities.', 'keystone'),
+    'desc'             => __('Disabling keyboard navigation is not recommended as it makes the slider inoperable for users with disabilities.', 'keystone'),
     'id'               => 'cmb2_id_field_swiper_disable_keyboard' . $suffix,
     'type'	            => 'switch',
     'default'          => false, //If it's checked by default
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -223,10 +231,10 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);
 
 $box->add_field([
@@ -238,8 +246,8 @@ $box->add_field([
     'active_value'     => true,
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
-    'attributes'      => [
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
+    'attributes'       => [
+        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
 ]);

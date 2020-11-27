@@ -6,6 +6,10 @@ function console_log($data) {
     echo '</script>';
 }
 
+function bool2str($val) {
+  return $val ? 'true':'false';
+}
+
 function keystone_get_option($key = '', $default = false) {
     if (function_exists('cmb2_get_option')) {
         // Use cmb2_get_option as it passes through some key filters.
