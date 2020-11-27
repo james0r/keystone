@@ -18,12 +18,10 @@
   'base/helpers',
   'base/layout';
 
-// 4. Sections
+// 4. Layout
 @import
-  'sections/about',
-  'sections/header',
-  'sections/footer',
-  'sections/certs';
+'layout/header',
+'layout/footer';
 
 // 5. Components
 @import
