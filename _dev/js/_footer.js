@@ -1,5 +1,5 @@
 (function($) {
   $(window).ready(function() {
-    console.log('Keystone Theme ©️ https://www.jamesauble.com');
+    console.log('Keystone 8 ©️ https://www.jamesauble.com');
   })
 })(jQuery);
