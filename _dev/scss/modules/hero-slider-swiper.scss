@@ -3,22 +3,43 @@
 // -----------------------------------------------------------------------------
 
 .module-hero-slider-swiper {
+  .module-inner {
+    max-width: 100%;
+  }
+
   .slider {
 
     &-inner {
 
-
-      img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
+      .swiper-button-prev {
+        left: 25px;
       }
+
+      .swiper-button-next {
+        right: 25px;
+      }
+
+      .swiper-button-next:before,
+      .swiper-button-prev:before {
+        font-size: 50px;
+      }
+
+      .swiper-container {
+        height: calc(100vw * .5625);
+        max-height: 600px;
+
+        .swiper-wrapper {
+
+          .swiper-slide {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+          }
+        }
+
+      }
+
     }
   }
 }
+
