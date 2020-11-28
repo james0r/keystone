@@ -7,7 +7,7 @@
     max-width: 100%;
   }
 
-  .slider {
+  .hero-swiper-module-container {
     &-inner {
       .swiper-button-next,
       .swiper-button-prev {
@@ -50,6 +50,11 @@
       .swiper-container {
         height: calc(100vw * 0.5625);
         max-height: 600px;
+        width: 100%;
+
+        @include sm {
+          min-height: 360px;
+        }
 
         .swiper-wrapper {
           .swiper-slide {
@@ -57,9 +62,18 @@
             background-position: center;
             background-size: cover;
 
-            .content {
-              max-width: 700px;
+            .container {
+              max-width: var(--keystone-module-inner-max-width);
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              margin: auto;
+              padding-left: 30px;
+              padding-right: 30px;
+            }
 
+            .content {
               h1,
               h2,
               h3,
@@ -72,7 +86,89 @@
               h1 {
                 font-size: 56px;
                 font-weight: 800;
+                max-width: 700px;
+                line-height: 70px;
+                margin-bottom: 20px;
+
+                @include lg {
+                  font-size: calc(100vw * 0.043);
+                  line-height: 1.2;
+                  max-width: calc(100vw * 0.5);
+                }
+
+                @include md {
+                  font-size: 32px;
+                  max-width: 70%;
+                }
+
+                @include sm {
+                  font-size: 27px;
+                  max-width: 80%;
+                }
               }
+
+              h2 {
+                font-size: 18px;
+                line-height: 30px;
+                max-width: 700px;
+                margin-bottom: 20px;
+
+                @include lg {
+                  font-size: calc(100vw * 0.014);
+                  line-height: 1.8;
+                  max-width: calc(100vw * 0.4);
+                }
+
+                @include md {
+                  font-size: 14px;
+                  max-width: 70%;
+                }
+
+                @include sm {
+                  font-size: 12px;
+                  max-width: 80%;
+                }
+              }
+
+              h4 {
+                font-size: 28px;
+                line-height: 33px;
+                font-weight: 600;
+
+                @include lg {
+                  font-size: calc(100vw * 0.022);
+                }
+
+                @include md {
+                  font-size: 16px;
+                  max-width: 70%;
+                }
+
+                @include sm {
+                  font-size: 14px;
+                }
+              }
+
+              .btn {
+                @include md {
+                  font-size: 12px !important;
+                  padding: 5px 17px !important;
+                }
+              }
+            }
+
+            &.keystone-slide-content-left .container {
+              align-items: flex-start;
+            }
+
+            &.keystone-slide-content-center .container {
+              align-items: center;
+              text-align: center;
+            }
+
+            &.keystone-slide-content-right .container {
+              align-items: flex-end;
+              text-align: left;
             }
           }
         }
