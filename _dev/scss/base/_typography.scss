@@ -2,17 +2,7 @@
  * Basic typography style for copy text
  */
 
- @font-face {
-  font-family: 'fontello';
-  src: url('../webfonts/fontello.eot?96731368');
-  src: url('../webfonts/fontello.eot?96731368#iefix') format('embedded-opentype'),
-       url('../webfonts/fontello.woff2?96731368') format('woff2'),
-       url('../webfonts/fontello.woff?96731368') format('woff'),
-       url('../webfonts/fontello.ttf?96731368') format('truetype'),
-       url('../webfonts/fontello.svg?96731368#fontello') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*

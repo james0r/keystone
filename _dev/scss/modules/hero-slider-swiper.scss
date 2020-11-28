@@ -8,38 +8,83 @@
   }
 
   .slider {
-
     &-inner {
+      .swiper-button-next,
+      .swiper-button-prev {
+        width: 70px;
+        height: 70px;
+        color: #fff;
+        border-radius: 50%;
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.1)
+        );
+        opacity: 0;
+
+        @include md {
+          display: none !important;
+        }
+      }
 
       .swiper-button-prev {
-        left: 25px;
+        left: 50px;
       }
 
       .swiper-button-next {
-        right: 25px;
+        right: 50px;
+      }
+
+      .swiper-pagination-fraction {
+        color: var(--keystone-primary-color);
       }
 
       .swiper-button-next:before,
       .swiper-button-prev:before {
-        font-size: 50px;
+        font-size: 22px;
+      }
+
+      .swiper-button-disabled {
+        visibility: hidden;
       }
 
       .swiper-container {
-        height: calc(100vw * .5625);
+        height: calc(100vw * 0.5625);
         max-height: 600px;
 
         .swiper-wrapper {
-
           .swiper-slide {
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+
+            .content {
+              max-width: 700px;
+
+              h1,
+              h2,
+              h3,
+              h4,
+              h5,
+              h6 {
+                color: white;
+              }
+
+              h1 {
+                font-size: 56px;
+                font-weight: 800;
+              }
+            }
           }
         }
-
       }
+    }
 
+    &:hover {
+      .swiper-button-next,
+      .swiper-button-prev {
+        transition: opacity 300ms;
+        opacity: 1;
+      }
     }
   }
 }
-
