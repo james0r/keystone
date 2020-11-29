@@ -6,8 +6,8 @@ function console_log($data) {
     echo '</script>';
 }
 
-function bool2str($val) {
-  return $val ? 'true':'false';
+function bool2truthy($val) {
+  return $val === "0" || $val == null || !isset($val) || $val === 0 ? false:true;
 }
 
 function keystone_get_option($key = '', $default = false) {

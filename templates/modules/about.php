@@ -5,15 +5,14 @@
 
 $instance = $template_args['instance'];
 
-// Array of arrays containing stylesheet slug and boolean for if it
-// should be considered critical CSS and included in the <head>
 $script_dependencies = [
     'twenty-twenty',
     'event-move'
 ];
 
 $style_dependencies = [
-    'twenty-twenty'
+    'twenty-twenty',
+    'module-about'
 ];
 
 $twentytwenty_enabled = keystone_gtmwi('cmb2_id_field_toggle_reveal_slider', $instance);

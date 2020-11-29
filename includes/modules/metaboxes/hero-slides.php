@@ -62,11 +62,11 @@ $box->add_group_field($cmb2_id_group_slides, array(
 
 // Id's for group's fields only need to be unique for the group. Prefix is not needed.
 $box->add_group_field($cmb2_id_group_slides, [
-    'name'        => __('Slide Tagline', 'keystone'),
+    'name'        => __('Slide Tagline (Optional)', 'keystone'),
     'description' => __('This text is smaller and appears above the slide title.', 'keystone'),
     'id'          => 'cmb2_id_field_slide_tagline',
     'type'        => 'text',
-    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+    'sanitization_cb' => 'keystone_sanitize_text_callback',
 ]);
 
 $box->add_group_field($cmb2_id_group_slides, [
@@ -74,12 +74,14 @@ $box->add_group_field($cmb2_id_group_slides, [
     'description' => __('This is the H1 of your page and should encapsulate the purpose or meaning of the page or section.', 'keystone'),
     'id'          => 'cmb2_id_field_slide_title',
     'type'        => 'text',
+    'sanitization_cb' => 'keystone_sanitize_text_callback', 
 ]);
 
 $box->add_group_field($cmb2_id_group_slides, [
     'name' => __('Slide Paragraph Text', 'keystone'),
     'id'   => 'cmb2_id_field_slide_paragraph_text',
     'type' => 'textarea_small',
+    'sanitization_cb' => 'keystone_sanitize_text_callback', 
 ]);
 
 $box->add_group_field($cmb2_id_group_slides, [
@@ -92,5 +94,18 @@ $box->add_group_field($cmb2_id_group_slides, [
     'name'        => __('Button Link URL', 'keystone'),
     'description' => __('Ex. https:://www.example.com/page or /page', 'keystone'),
     'id'          => 'cmb2_id_field_slide_button_link_url',
+    'type'        => 'text',
+]);
+
+$box->add_group_field($cmb2_id_group_slides, [
+    'name' => __('Button 2 Text (Optional)', 'keystone'),
+    'id'   => 'cmb2_id_field_slide_button_2_text',
+    'type' => 'text',
+]);
+
+$box->add_group_field($cmb2_id_group_slides, [
+    'name'        => __('Button 2 Link URL', 'keystone'),
+    'description' => __('Ex. https:://www.example.com/page or /page', 'keystone'),
+    'id'          => 'cmb2_id_field_slide_button_2_link_url',
     'type'        => 'text',
 ]);

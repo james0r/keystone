@@ -5,8 +5,6 @@
 
 $instance = $template_args['instance'];
 
-// Array of arrays containing stylesheet slug and boolean for if it
-// should be considered critical CSS and included in the <head>
 $script_dependencies = [
     'slick',
     'slick-lightbox'
@@ -15,7 +13,8 @@ $script_dependencies = [
 $style_dependencies = [
     'slick',
     'slick-theme',
-    'slick-lightbox'
+    'slick-lightbox',
+    'module-certs'
 ];
 
 apply_filters('render_dynamic_scripts', $script_dependencies);

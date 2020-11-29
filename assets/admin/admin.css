@@ -256,12 +256,33 @@
   display: block !important;
 }
 
-.cmb-type-title {
-  border-bottom: none !important;
-  padding-bottom: 0px !important;
-}
-
 .cmb-type-title .cmb2-metabox-title {
   font-size: 20px !important;
   font-weight: 700;
+}
+
+.keystone-cmb-grid-2-cols .cmb2-metabox {
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+  width: 100%;
+}
+
+.keystone-cmb-2-cols-full-width {
+  grid-column: 1 / 3;
+}
+
+.keystone-cmb-cols-2-half-width {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.keystone-cmb-cols-2-half-width > * {
+  flex: 1;
+  margin-left: 0px !important;
+  max-width: unset !important;
+}
+
+.cmb-remove-row-button {
+  min-height: unset !important;
 }

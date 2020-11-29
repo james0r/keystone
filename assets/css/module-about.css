@@ -1,0 +1,116 @@
+.module-about {
+  width: 100%;
+  padding: 60px 15px;
+}
+
+.module-about .flex {
+  display: flex;
+  flex-direction: row;
+  height: 434px;
+}
+
+@media (max-width: 768px) {
+  .module-about .flex {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+.module-about .flex .start {
+  max-height: 350px;
+}
+
+@media (max-width: 1200px) {
+  .module-about .flex .start {
+    max-height: 274px;
+  }
+}
+
+@media (max-width: 768px) {
+  .module-about .flex .start {
+    min-height: unset;
+    max-height: unset;
+    width: 100%;
+    height: calc((100vw - 30px) * .764);
+  }
+}
+
+.module-about .flex .start .image-wrapper {
+  height: 350px;
+  width: 458px;
+}
+
+@media (max-width: 1200px) {
+  .module-about .flex .start .image-wrapper {
+    width: 374px;
+    max-height: 274px;
+  }
+}
+
+@media (max-width: 768px) {
+  .module-about .flex .start .image-wrapper {
+    width: 100%;
+    max-height: unset;
+    height: calc((100vw - 30px) * .764);
+  }
+}
+
+@media (max-width: 1200px) {
+  .module-about .flex .start .image-wrapper img {
+    max-height: 274px;
+  }
+}
+
+@media (max-width: 768px) {
+  .module-about .flex .start .image-wrapper img {
+    width: 100%;
+    height: calc((100vw - 30px) * .764);
+    max-height: unset;
+  }
+}
+
+.module-about .flex .end {
+  padding-left: 30px;
+}
+
+@media (max-width: 768px) {
+  .module-about .flex .end {
+    padding-left: 0px;
+    padding-top: 30px;
+  }
+}
+
+.module-about .flex .end .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.module-about .flex .end .content .about-header {
+  margin-bottom: 10px;
+}
+
+.module-about .flex .end .content .about-body {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.module-about .flex .end .content .about-thumbnail-list-item {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.module-about .flex .end .content .btn {
+  margin-top: 30px;
+}
+
+.module-about .flex .end ul {
+  list-style: none;
+}
+
+.module-about .flex .end ul li {
+  display: inline-block;
+}
+
+/*# sourceMappingURL=about.css.map */

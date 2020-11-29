@@ -19,6 +19,8 @@ class Keystone_CMB2 {
 
         Keystone()->requireOnce('/includes/libs/CMB2/init.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php')
+        ->requireOnce('/includes/libs/CMB2/plugins/cmb2-field-order/cmb2-field-order.php')
+        ->requireOnce('/includes/libs/CMB2/plugins/CMB2-grid/Cmb2GridPlugin.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
 
@@ -30,12 +32,18 @@ class Keystone_CMB2 {
         }
 
         function absint_with_default_fallback($value, $field_args, $field) {
-          if ($value == false) {
-            $value = $field_args['default'];
-            error_log($value);
-          }
-          return abs( intval( $value ) );
+            if ($value == false) {
+                $value = $field_args['default'];
+                error_log($value);
+            }
+            return abs(intval($value));
         }
+
+        function keystone_sanitize_text_callback( $value, $field_args, $field ) {
+          $value = strip_tags( $value, '<p><a><br><br/>' );
+      
+          return $value;
+      }
     }
 
     protected static function enqueue_scripts() {

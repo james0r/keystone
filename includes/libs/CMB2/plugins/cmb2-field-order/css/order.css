@@ -1,0 +1,59 @@
+.cmb-order-items {
+  width: 30em;
+  padding: 0 1px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+.cmb-order-items li {
+  margin: 0;
+  border-bottom: 1px solid #f4f4f4;
+  background: #fff;
+}
+.cmb-order-items:not(.cmb-order-inline) li:last-child {
+  border-bottom: none;
+}
+.cmb-order-items li span {
+  display: block;
+  padding: 7px 5px;
+  cursor: grab;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cmb-order-items .ui-state-highlight {
+  background: #f4f4f4;
+}
+
+.columns-2 #postbox-container-1 .cmb-order-items:not(.cmb-order-inline) {
+  width: 100%;
+}
+
+.cmb-order-items.cmb-order-inline {
+  padding: 0;
+}
+.cmb-order-items.cmb-order-inline li {
+  display: inline-block;
+  border: 1px solid #f4f4f4;
+  padding: 0;
+}
+.cmb-order-items.cmb-order-inline li:not(:last-child) {
+  border-right: 0;
+}
+.cmb-order-items.cmb-order-inline li span {
+  cursor: grab;
+  padding: 7px 10px;
+  white-space: nowrap;
+}
+.cmb-order-items.cmb-order-inline .ui-state-highlight {
+  display: inline-block;
+  margin: 0;
+  vertical-align: bottom;
+}
+
+.clinic-information_page_cmb2_key_box_widget_bar .cmb-type-order li:nth-child(0) .ui-sortable-handle,
+.clinic-information_page_cmb2_key_box_widget_bar .cmb-type-order li:nth-child(1) .ui-sortable-handle,
+.clinic-information_page_cmb2_key_box_widget_bar .cmb-type-order li:nth-child(2) .ui-sortable-handle {
+  background: #007cba;
+  color: white;
+}

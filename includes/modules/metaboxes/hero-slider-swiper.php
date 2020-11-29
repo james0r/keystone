@@ -21,6 +21,22 @@ $box->add_field([
 ]);
 
 $box->add_field([
+  'name'       => __('Tint Background Image', 'keystone'),
+  'desc'       => __('0 is no tint and 100 will make the image black. Default is 35.', 'keystone'),
+  'id'         => 'cmb2_id_field_swiper_image_tint' . $suffix,
+  'type'       => 'text_small',
+  'default'    => 35,
+  'attributes' => [
+      'type'                    => 'number',
+      'pattern'                 => '\d*',
+      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+      'data-conditional-value'  => 'true',
+  ],
+  'sanitization_cb' => 'absint',
+  'escape_cb'       => 'absint_with_default_fallback'
+]);
+
+$box->add_field([
     'name'             => __('Autoplay', 'keystone'),
     'desc'             => __('The slides start changing on their own.', 'keystone'),
     'id'               => 'cmb2_id_field_swiper_autoplay' . $suffix,
