@@ -12,7 +12,6 @@
 
   function CMB2Conditional() {
       $('[data-conditional-id]').each( (i, el) => { 
-        console.log( el );
           let condName    = el.dataset.conditionalId,
               condValue   = el.dataset.conditionalValue,
               condParent  = el.closest('.cmb-row'),

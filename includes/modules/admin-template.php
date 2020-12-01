@@ -63,7 +63,11 @@ function render_modules(){ ?>
               <option value="about"><?php _e('About', 'keystone') ?></option>
               <option value="" disabled>-- <?php _e('Divider Sections', 'keystone') ?> --</option>
 							<option value="certs"><?php _e('Certificates', 'keystone') ?></option>
+							<option value="cta-divider-3-column"><?php _e('CTA Divider 3 Column', 'keystone') ?></option>
+							<option value="cta-divider-appointment"><?php _e('CTA Divider Appointment', 'keystone') ?></option>
 							<option value="home-boxes-style-1"><?php _e('Home Boxes Style 1', 'keystone') ?></option>
+							<option value="home-boxes-style-2"><?php _e('Home Boxes Style 2', 'keystone') ?></option>
+							<option value="home-boxes-style-3"><?php _e('Home Boxes Style 3', 'keystone') ?></option>
               <option value="" disabled>-- <?php _e('Hero Sections', 'keystone') ?> --</option>
               <option value="hero-slider-swiper"><?php _e('Hero Slider Swiper Style', 'keystone') ?></option>
 						</select>

@@ -41,6 +41,7 @@ class Keystone extends Wauble {
             self::$instance->dynamic_css = new Keystone_Dynamic_CSS;
             self::$instance->dynamic_scripts = new Keystone_Dynamic_Scripts;
             self::$instance->sidebars = new Keystone_Sidebars;
+            self::$instance->icons = new Keystone_Icons;
         }
 
         return self::$instance;

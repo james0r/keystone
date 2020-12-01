@@ -267,22 +267,21 @@
   width: 100%;
 }
 
-.keystone-cmb-2-cols-full-width {
-  grid-column: 1 / 3;
+.two-column-row-container .postbox.cmb-row.cmb-repeatable-grouping
+{
+    width: 48%;
+    float: left;
+    margin: 10px 10px 10px 0px;
 }
 
-.keystone-cmb-cols-2-half-width {
-  width: auto;
-  display: flex;
-  flex-direction: row;
+.margin-reset .cmb2-text-small.cmb2-datepicker.hasDatepicker,
+.margin-reset .cmb2-timepicker.text-time.hasDatepicker
+{
+    margin-left: 0px;
 }
 
-.keystone-cmb-cols-2-half-width > * {
-  flex: 1;
-  margin-left: 0px !important;
-  max-width: unset !important;
+.cmb-add-group-row.button-secondary
+{
+    margin-right: 80%;
 }
 
-.cmb-remove-row-button {
-  min-height: unset !important;
-}

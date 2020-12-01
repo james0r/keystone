@@ -1,5 +1,7 @@
 <?php
-// =============================================================== SERVICE TEMPLATE META
+/**
+* MODULE META FIELD GENERATOR
+*/
 
 global $wpdb;
 
@@ -52,6 +54,31 @@ foreach ($modules as $m) {
 
           require __DIR__ . '/metaboxes/hero-slider-swiper.php';
           require __DIR__ . '/metaboxes/hero-slides.php';
+
+          break;
+      case 'home-boxes-style-1':
+
+          require __DIR__ . '/metaboxes/home-boxes-style-1.php';
+
+          break;
+      case 'home-boxes-style-2':
+
+          require __DIR__ . '/metaboxes/home-boxes-style-2.php';
+
+          break;
+      case 'home-boxes-style-3':
+
+          require __DIR__ . '/metaboxes/home-boxes-style-3.php';
+
+          break;
+      case 'cta-divider-3-column':
+
+          require __DIR__ . '/metaboxes/cta-divider-3-column.php';
+
+          break;
+      case 'cta-divider-appointment':
+
+          require __DIR__ . '/metaboxes/cta-divider-appointment.php';
 
           break;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
-* Clinic Information Theme Options
+* CLINIC GENERAL INFORMATION AND BUSINESS HOURS.
 */
 
 $args = [
@@ -81,7 +81,7 @@ $cmb2_options_clinic_info->add_field([
 
 $cmb2_options_clinic_info->add_field( array(
   'name'       => __( 'Business Hours', 'keystone' ),
-  'desc'       => __( 'Time ranges that your clinic is open throughout the day.', 'keystone' ),
+  'desc'       => __( 'Each line contains a label and a time range. Example: Sunday 8am - 4pm, Mon-Fri 8am - 7pm. You may create a line for each day of the week if you prefer.', 'keystone' ),
   'id'         => 'cmb2_id_field',
   'type'       => 'title',
 ) );
@@ -89,31 +89,49 @@ $cmb2_options_clinic_info->add_field( array(
 $cmb2_options_clinic_hours = $cmb2_options_clinic_info->add_field( array(
   'id'          => 'cmb2_id_group_field_hours_entry',
   'type'        => 'group',
-  // 'description' => __( 'Generates reusable form entries', 'cmb2' ),
   'options'     => array(
-    'group_title'       => __( 'Line {#}', 'keystone' ), // since version 1.1.4, {#} gets replaced by row number
+    'group_title'       => __( 'Line {#}', 'keystone' ),
     'add_button'        => __( 'Add Another Line', 'keystone' ),
     'remove_button'     => __( 'Remove Line', 'keystone' ),
     'sortable'          => true,
   ),
 ) );
 
-$cmb2_options_clinic_info->add_group_field( $cmb_options_clinic_hours, array(
+$label = $cmb2_options_clinic_info->add_group_field( $cmb2_options_clinic_hours, array(
   'name' => __('Label', 'keystone'),
   'id'   => 'label',
   'type' => 'text_small',
 ) );
 
-$cmb2_options_clinic_info->add_group_field( $cmb_options_clinic_hours, array(
-  'name' => 'Test Time Picker',
-  'id' => 'wiki_test_texttime',
+$start_time = $cmb2_options_clinic_info->add_group_field( $cmb2_options_clinic_hours, array(
+  'name' => __('Start Time', 'keystone'),
+  'id' => 'start_time',
   'type' => 'text_time',
   'attributes' => array(
       'data-timepicker' => json_encode( array(
-          'timeOnlyTitle' => __( 'Choose your Time', 'cmb2' ),
-          'timeFormat' => 'HH:mm',
-          'stepMinute' => 1, // 1 minute increments instead of the default 5
+          'timeOnlyTitle' => __( 'Start Time', 'keystone' ),
+          'stepMinute' => 15 // 1 minute increments instead of the default 5
       ) ),
   ),
   'time_format' => 'h:i:s A',
 ) );
+
+$end_time = $cmb2_options_clinic_info->add_group_field( $cmb2_options_clinic_hours, array(
+  'name' => __('End Time', 'keystone'),
+  'id' => 'end_time',
+  'type' => 'text_time',
+  'attributes' => array(
+      'data-timepicker' => json_encode( array(
+          'timeOnlyTitle' => __( 'End Time', 'keystone' ),
+          'stepMinute' => 15 // 1 minute increments instead of the default 5
+      ) ),
+  ),
+  'time_format' => 'h:i:s A',
+) );
+
+$cmb2Grid      = new \Cmb2Grid\Grid\Cmb2Grid($cmb2_options_clinic_info);
+$cmb2GroupGrid = $cmb2Grid->addCmb2GroupGrid($cmb2_options_clinic_hours);
+$row           = $cmb2GroupGrid->addRow();
+$row->addColumns(array($label, $start_time, $end_time));
+$row = $cmb2Grid->addRow();
+$row->addColumns(array($cmb2GroupGrid));

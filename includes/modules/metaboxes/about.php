@@ -7,7 +7,8 @@ $box->add_field([
   'type'	           => 'switch',
   'default'          => true, //If it's checked by default 
   'active_value'     => true,
-  'inactive_value'   => false
+  'inactive_value'   => false,
+  'sanitization_cb'  => 'sanitize_checkbox' //This is required to fix issue with default value loop cased by missing value in db. 
 ]);
 
 $box->add_field( array(

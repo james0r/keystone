@@ -21,6 +21,8 @@ class Keystone_CMB2 {
         ->requireOnce('/includes/libs/CMB2/plugins/cmb-field-font/cmb2-field-font.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-field-order/cmb2-field-order.php')
         ->requireOnce('/includes/libs/CMB2/plugins/CMB2-grid/Cmb2GridPlugin.php')
+        ->requireOnce('/includes/libs/CMB2/plugins/cmb2-field-faiconselect/iconselect.php')
+        ->requireOnce('/includes/libs/CMB2/plugins/cmb2-field-faiconselect/predefined-array-fontawesome.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
 
