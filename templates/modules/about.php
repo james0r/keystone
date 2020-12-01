@@ -18,8 +18,8 @@ $style_dependencies = [
 $twentytwenty_enabled = keystone_gtmwi('cmb2_id_field_toggle_reveal_slider', $instance);
 
 if ($twentytwenty_enabled) {
-  echo apply_filters('render_dynamic_scripts', $script_dependencies);
-  echo apply_filters('render_dynamic_css', $style_dependencies);
+  apply_filters('render_dynamic_scripts', $script_dependencies);
+  apply_filters('render_dynamic_css', $style_dependencies);
 }
 ?>
 <div class="about-module-container">

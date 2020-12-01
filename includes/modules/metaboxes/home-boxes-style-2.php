@@ -11,114 +11,113 @@ $prefix = 'cmb2_id_field_hbs2_';
 $box->add_field([
     'name' => __('Box 1', 'keystone'),
     'type' => 'title',
-    'id'   => $prefix.'title_1'.$suffix,
+    'id'   => $prefix . 'title_1' . $suffix,
 ]);
 
-$box->add_field( array(
-  'name' => __( 'Icon Classes', 'keystone' ),
-  'id'   => $prefix . 'box_1_icon'.$suffix,
-  'desc' => __('For example:', 'keystone').' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
-  'type' => 'text_medium',
-  'after_field' => Keystone()->icons->getIconReferenceTable(),
-  'classes' => 'icon-field-table'
-) );
-
+$box->add_field([
+    'name'        => __('Icon Classes', 'keystone'),
+    'id'          => $prefix . 'box_1_icon' . $suffix,
+    'desc'        => __('For example:', 'keystone') . ' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
+    'type'        => 'text',
+    'after_field' => Keystone()->icons->getIconReferenceTable(),
+    'classes'     => 'icon-field-table'
+]);
 
 $box->add_field([
     'name'       => __('Box Title', 'keystone'),
-    'id'         => $prefix.'box_1_title'.$suffix,
+    'id'         => $prefix . 'box_1_title' . $suffix,
     'type'       => 'text_medium'
 ]);
 
 $box->add_field([
     'name'       => __('Box Description', 'keystone'),
-    'id'         => $prefix.'box_1_description'.$suffix,
+    'id'         => $prefix . 'box_1_description' . $suffix,
     'type'       => 'text_medium',
 ]);
 
 $box->add_field([
-  'name' => __('Box 2', 'keystone'),
-  'type' => 'title',
-  'id'   => $prefix.'title_2'.$suffix,
+    'name' => __('Box 2', 'keystone'),
+    'type' => 'title',
+    'id'   => $prefix . 'title_2' . $suffix,
 ]);
 
-$box->add_field( array(
-  'name' => __( 'Select Icon', 'keystone' ),
-  'id'   => $prefix . 'box_2_icon',
-  'desc' => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
-  'type' => 'faiconselect',
-  'options_cb' => 'returnRayFapsa',
-  'attributes' => array(
-    'faver' => 5
-  )
-) );
+$box->add_field([
+    'name'       => __('Select Icon', 'keystone'),
+    'id'         => $prefix . 'box_2_icon',
+    'desc'       => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
+    'type'       => 'faiconselect',
+    'options_cb' => 'returnRayFapsa',
+    'attributes' => [
+        'faver' => 5
+    ]
+]);
 
 $box->add_field([
     'name'       => __('Box Title', 'keystone'),
-    'id'         => $prefix.'box_2_title'.$suffix,
+    'id'         => $prefix . 'box_2_title' . $suffix,
     'type'       => 'text_medium'
 ]);
 
 $box->add_field([
     'name'       => __('Box Description', 'keystone'),
-    'id'         => $prefix.'box_2_description'.$suffix,
+    'id'         => $prefix . 'box_2_description' . $suffix,
     'type'       => 'text_medium',
 ]);
 
 $box->add_field([
-  'name' => __('Box 3', 'keystone'),
-  'type' => 'title',
-  'id'   => $prefix.'title_3'.$suffix,
+    'name' => __('Box 3', 'keystone'),
+    'type' => 'title',
+    'id'   => $prefix . 'title_3' . $suffix,
 ]);
 
-$box->add_field( array(
-  'name' => __( 'Select Icon', 'keystone' ),
-  'id'   => $prefix . 'box_3_icon',
-  'desc' => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
-  'type' => 'faiconselect',
-  'options_cb' => 'returnRayFapsa',
-  'attributes' => array(
-    'faver' => 5
-  )
-) );
+$box->add_field([
+    'name'       => __('Select Icon', 'keystone'),
+    'id'         => $prefix . 'box_3_icon',
+    'desc'       => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
+    'type'       => 'faiconselect',
+    'options_cb' => 'returnRayFapsa',
+    'attributes' => [
+        'faver' => 5
+    ]
+]);
 
 $box->add_field([
     'name'       => __('Box Title', 'keystone'),
-    'id'         => $prefix.'box_3_title'.$suffix,
+    'id'         => $prefix . 'box_3_title' . $suffix,
     'type'       => 'text_medium'
 ]);
 
 $box->add_field([
     'name'       => __('Box Description', 'keystone'),
-    'id'         => $prefix.'box_3_description'.$suffix,
+    'id'         => $prefix . 'box_3_description' . $suffix,
     'type'       => 'text_medium',
 ]);
 
 $box->add_field([
-  'name' => __('Box 4', 'keystone'),
-  'type' => 'title',
-  'id'   => $prefix.'title_4'.$suffix,
+    'name' => __('Box 4', 'keystone'),
+    'type' => 'title',
+    'id'   => $prefix . 'title_4' . $suffix,
 ]);
 
-$box->add_field( array(
-  'name' => __( 'Select Icon', 'keystone' ),
-  'id'   => $prefix . 'box_4_icon',
-  'desc' => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
-  'type' => 'faiconselect',
-  'options_cb' => 'returnRayFapsa',
-  'attributes' => array(
-    'faver' => 5
-  )) );
+$box->add_field([
+    'name'       => __('Select Icon', 'keystone'),
+    'id'         => $prefix . 'box_4_icon',
+    'desc'       => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
+    'type'       => 'faiconselect',
+    'options_cb' => 'returnRayFapsa',
+    'attributes' => [
+        'faver' => 5
+    ]]);
 
 $box->add_field([
     'name'       => __('Box Title', 'keystone'),
-    'id'         => $prefix.'box_4_title'.$suffix,
+    'id'         => $prefix . 'box_4_title' . $suffix,
     'type'       => 'text_medium'
 ]);
 
 $box->add_field([
     'name'       => __('Box Description', 'keystone'),
-    'id'         => $prefix.'box_4_description'.$suffix,
+    'id'         => $prefix . 'box_4_description' . $suffix,
     'type'       => 'text_medium',
 ]);
 

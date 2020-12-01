@@ -4,14 +4,16 @@
 */
 
 class Keystone_Dynamic_Scripts {
+    private static $scriptsLoaded;
+
     public function __construct() {
-      add_filter('render_dynamic_scripts', [$this, 'filter_render_dynamic_scripts']);
+      self::$scriptsLoaded = array();
+        add_filter('render_dynamic_scripts', [$this, 'filterRenderDynamicScripts']);
     }
 
-    public function filter_render_dynamic_scripts($script_deps = []) {
-
-      foreach($script_deps as $dep) {
-        switch ($dep) {
+    public function filterRenderDynamicScripts($script_deps = []) {
+        foreach ($script_deps as $dep) {
+            switch ($dep) {
           case 'twenty-twenty':
               echo $this->add_script('twenty-twenty', get_template_directory_uri() . '/assets/js/jquery.twentytwenty.js');
             break;
@@ -30,16 +32,21 @@ class Keystone_Dynamic_Scripts {
           default:
           return false;
         }
-      }
-
+        }
     }
 
-    private function add_script($handle, $href) {
-  
-      $html = <<<EOT
-      <script src="$href" id="dynamic-script-$handle"></script>
+    public function add_script($handle, $href) {
+        if (!in_array($handle, self::$scriptsLoaded)) {
+            array_push(self::$scriptsLoaded, $handle);
+            $html = <<<EOT
+<script src="$href" id="dynamic-script-$handle"></script>
 EOT;
-      return $html;
+            return $html;
+        } else {
+            $html = <<<EOT
+<!-- A script has been requested but is already loaded in the document. -->
+EOT;
+            return $html;
+        }
     }
-    
 }

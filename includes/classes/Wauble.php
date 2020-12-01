@@ -85,7 +85,6 @@ class Wauble {
             ->addImageSize('square-thumbnail', 80, 80, true)
             ->addImageSize('banner-image', 1024, 1024, true);
 
-
         // Enqueue critical stylesheets
         $this->addStyle('style', get_template_directory_uri() . '/assets/css/main.css')
               ->addStyle('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css')
@@ -94,7 +93,6 @@ class Wauble {
               ->addScript('header_js', get_template_directory_uri() . '/assets/js/header-bundle.js', null, 1.0, false)
               ->addScript('knockout', get_template_directory_uri() . '/assets/js/knockout-3.5.1.js', ['jquery-3.5.1'], 1.0, true)
               ->addScript('footer_js', get_template_directory_uri() . '/assets/js/footer-bundle.js', ['jquery-3.5.1'], 1.0, true);
-
 
         $this->addAdminStyle('admin-styles', get_template_directory_uri() . '/assets/admin/admin.css')
               ->addAdminScript('jquery-ui', get_template_directory_uri() . '/assets/admin/jquery-ui.min.js')
@@ -106,7 +104,7 @@ class Wauble {
 
         $this->requireOnce('/includes/helper-functions.php');
 
-        add_action( 'wp_footer', [$this, 'display_template_toast'] );
+        add_action('wp_footer', [$this, 'display_template_toast']);
     }
 
     // Adds a toast in the bottom right corner displaying current template while logged into admin
@@ -204,7 +202,11 @@ class Wauble {
 
     public function addStyle($handle, $src = '', $deps = [], $ver = false, $media = 'all') {
         $this->actionEnqueueScripts(function () use ($handle, $src, $deps, $ver, $media) {
-            wp_enqueue_style($handle, $src, $deps, $ver, $media);
+            if (wp_script_is($handle)) {
+                return $this;
+            } else {
+                wp_enqueue_style($handle, $src, $deps, $ver, $media);
+            }
         });
         return $this;
     }
@@ -218,7 +220,11 @@ class Wauble {
 
     public function addScript($handle, $src = '', $deps = [], $ver = false, $in_footer = false) {
         $this->actionEnqueueScripts(function () use ($handle, $src, $deps, $ver, $in_footer) {
-            wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
+            if (wp_script_is($handle)) {
+                return $this;
+            } else {
+                wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
+            }
         });
         return $this;
     }

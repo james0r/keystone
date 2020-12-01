@@ -89,53 +89,6 @@ jQuery(document).ready(function ($) {
 	});
 */
 
-  //Smile Gallery 1 - Conditional Display of Fields
-  if ($("#g1_info").length > 0) {
-    var gallery1Fields = function ($trigger) {
-      //get important objects
-      var $trigger = $trigger;
-      var $fieldRow = $trigger.parent().parent();
-      var $groupRow = $fieldRow.parent().parent();
-
-      //is this for the primary image or secondary image?
-      var triggerType = $fieldRow.hasClass("primary-trigger")
-        ? "primary-image-"
-        : "lightbox-image-";
-
-      //get the value of the select field
-      var fieldVal = $trigger.val();
-
-      //hide all fields
-      $groupRow
-        .find(
-          'div[class*="' + triggerType + '"],div[class^="' + triggerType + '"]'
-        )
-        .addClass("dr-hidden");
-
-      if (fieldVal == "" || fieldVal == "default") {
-        //hide all options
-      } else if (fieldVal == "hero") {
-        $groupRow.find("." + triggerType + "hero").removeClass("dr-hidden");
-      } else if (fieldVal == "ba") {
-        $groupRow.find("." + triggerType + "before").removeClass("dr-hidden");
-        $groupRow.find("." + triggerType + "after").removeClass("dr-hidden");
-      }
-    };
-    $("body").on("change", ".g1-trigger select", function () {
-      gallery1Fields($(this));
-    });
-    $(".g1-trigger select").each(function (i, e) {
-      gallery1Fields($(this));
-    });
-
-    //hide fields on new row
-    jQuery(document).on("cmb2_add_row", function (e, f) {
-      f.find(
-        'div[class*="primary-image-"],div[class*="lightbox-image-"]'
-      ).addClass("dr-hidden");
-    });
-  }
-
   /// Add Module form processor
   $(".mm-form form").on("submit", function (e) {
     var $this = $(this);
@@ -154,7 +107,6 @@ jQuery(document).ready(function ($) {
   });
 
   // Allow either under construction or coming soon page, not both.
-
   $('.coming-soon-toggle input[type="checkbox"]').on("change", function () {
     if (this.checked) {
       $('.under-construction-toggle input[type="checkbox"]').removeAttr(
@@ -179,8 +131,19 @@ jQuery(document).ready(function ($) {
   });
 });
 
+// Save the page for the user when they change a font. This way
+// the user sees the correct font-weights for the chosen font.
 jQuery(function ($) {
   $("#cmb2_id_heading_font").on("change", function (event) {
     $('#submit-cmb').trigger("click");
   });
 });
+
+
+jQuery(function() {
+  $('.class-reference-show-more').on('click', function(event) {
+    $(event.currentTarget).closest('table').find('.hidden-row-by-default').show();
+    $(event.currentTarget).hide().parent().hide();
+  })
+})
+

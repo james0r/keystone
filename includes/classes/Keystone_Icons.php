@@ -14,44 +14,47 @@ class Keystone_Icons {
     private static $elegant_icons_path;
 
     public function __construct() {
+        self::$fonticon_dental_path = get_template_directory_uri() . '/assets/static/flaticon-set-dental.html';
+        self::$fonticon_medical_path = get_template_directory_uri() . '/assets/static/flaticon-set-medical.html';
+        self::$elegant_icons_path = get_template_directory_uri() . '/assets/static/elegant-icon-set.html';
 
-      self::$fonticon_dental_path = get_template_directory_uri() . '/assets/static/flaticon-set-dental.html';
-      self::$fonticon_medical_path = get_template_directory_uri() . '/assets/static/flaticon-set-medical.html';
-      self::$elegant_icons_path = get_template_directory_uri() . '/assets/static/elegant-icon-set.html';
-
-      add_filter('keystone_render_icon', [$this, 'filterRenderIcon']);
+        add_filter('keystone_render_icon', [$this, 'filterRenderIcon']);
     }
 
     public function filterRenderIcon($classes) {
-      $first_three = substr($classes, 0, 3);
-      $formatted_classes = '';
+        $first_three = substr($classes, 0, 3);
+        $formatted_classes = '';
 
-      if ($first_three == 'fa-') {
-        // Font Awesome 4.7 Icon
-        $formatted_classes = 'fa ' . $classes;
-
-      } else if ($first_three == 'fas' || $first_three == 'fab') {
-        // Font Awesome 5 Free Icon
-
-      } else if ($first_three == 'pe-') {
-        //PE Icon 7 Stroke Icon
-
-      } else if (strpos($classes, 'flaticon-medical')) {
-        //Flaticon Medical Icon
-
-      } else if (strpos($classes, 'flaticon-dental')) {
-        //Flaticon Dental Icon
-      }
-
-      echo sprintf('<i class="%s"></i>', $formatted_classes);
+        if ($first_three == 'fa-') {
+            // Font Awesome 4.7 Icon
+            $formatted_classes = 'fa ' . $classes;
+        } elseif ($first_three == 'fas' || $first_three == 'fab') {
+            // Font Awesome 5 Free Icon
+            $formatted_classes = $classes;
+        } elseif ($first_three == 'pe-') {
+            //PE Icon 7 Stroke Icon
+            $formatted_classes = $classes;
+        } elseif (strpos($classes, 'flaticon-dental')) {
+            //Flaticon Medical Icon
+            if (substr($classes, 0, 1) == '.') {
+                $formatted_classes = 'glyph-icon ' . ltrim($classes, '.');
+            } else {
+                $formatted_classes = 'glyph-icon ' . $classes;
+            }
+        } elseif (strpos($classes, 'flaticon-medical')) {
+            //Flaticon Dental Icon
+            $formatted_classes = 'glyph-icon ' . $classes;
+        }
+        echo sprintf('<i class="%s %s"></i>', $formatted_classes, 'keystone-icon');
     }
 
     public function getIconReferenceTable() {
-      $fonticon_dental_path = self::$fonticon_dental_path;
-      $fonticon_medical_path = self::$fonticon_medical_path;
-      $elegant_icons_path = self::$elegant_icons_path;
+        $fonticon_dental_path = self::$fonticon_dental_path;
+        $fonticon_medical_path = self::$fonticon_medical_path;
+        $elegant_icons_path = self::$elegant_icons_path;
+        $show_more = __('Show More', 'kestone');
 
-      return <<<EOT
+        return <<<EOT
       <br>
       <table>
       <thead>
@@ -69,7 +72,7 @@ class Keystone_Icons {
             </a>
           </td>
         </tr>
-        <tr>
+        <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Font Awesome 5 Free">Font Awesome 5 Free</td>
           <td data-label="Font Awesome 5 Free Reference Doc">
             <a target="_blank" href="https://fontawesome.com/cheatsheet/free/">
@@ -77,7 +80,7 @@ class Keystone_Icons {
             </a>
           </td>
         </tr>
-        <tr>
+        <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Fonticon Dental Icons">Fonticon Dental Icons</td>
           <td data-label="Fonticon Dental Icons Reference Doc">
             <a target="_blank" href="$fonticon_dental_path">
@@ -85,7 +88,7 @@ class Keystone_Icons {
             </a>
           </td>
         </tr>
-        <tr>
+        <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Fonticon Medical Icons">Fonticon Medical Icons</td>
           <td data-label="Fonticon Medical Icons Reference Doc">
             <a target="_blank" href="$fonticon_medical_path">
@@ -93,7 +96,7 @@ class Keystone_Icons {
             </a>
           </td>
         </tr>
-        <tr>
+        <tr class="hidden-row-by-default" style="display: none;"> 
           <td data-label="PE Icon 7 Stroke">PE Icon 7 Stroke Icons</td>
           <td data-label="PE Icon 7 Stroke Icons Reference Doc">
             <a target="_blank" href="https://themes-pixeden.com/font-demos/7-stroke/">
@@ -101,12 +104,17 @@ class Keystone_Icons {
             </a>
           </td>
         </tr>
-        <tr>
+        <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Elegant Icon Set">Elegant Icon Set</td>
           <td data-label="Elegant Icons Reference Doc">
             <a target="_blank" href="$elegant_icons_path">
               Open
             </a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <a href="javascript: void(0);" class="class-reference-show-more"> $show_more </a>
           </td>
         </tr>
       </tbody>

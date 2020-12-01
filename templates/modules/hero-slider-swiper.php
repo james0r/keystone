@@ -14,8 +14,8 @@ $style_dependencies = [
     'swiper-bundle'
 ];
 
-echo apply_filters('render_dynamic_scripts', $script_dependencies);
-echo apply_filters('render_dynamic_css', $style_dependencies);
+apply_filters('render_dynamic_scripts', $script_dependencies);
+apply_filters('render_dynamic_css', $style_dependencies);
 
 $slide_entries = keystone_gtmwi('cmb2_id_group_slides', $instance);
 $prefix = 'cmb2_id_field_slide_';
