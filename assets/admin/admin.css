@@ -251,10 +251,14 @@
   font-size: 11px !important;
 }
 
-.cmb2-metabox-description {
+/* .cmb2-metabox-description {
   margin-top: 4px !important;
   display: block !important;
 }
+
+.col-md-6 .cmb2-metabox-description {
+  display: unset !important;
+} */
 
 .cmb-type-title .cmb2-metabox-title {
   font-size: 20px !important;

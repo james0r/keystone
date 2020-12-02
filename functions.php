@@ -20,3 +20,6 @@ function Keystone() {
 }
 
 Keystone();
+
+// Fire the hook to load helper function from OOP classes
+do_action('keystone_load_helper_functions');

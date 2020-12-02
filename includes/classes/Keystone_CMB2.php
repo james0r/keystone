@@ -26,26 +26,7 @@ class Keystone_CMB2 {
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
 
-        // Callback function to be used with Checkbox and Switch fields.
-        function sanitize_checkbox($value, $field_args, $field) {
-            // Return 0 instead of false if null value given. This hack for
-            // checkbox or checkbox-like can be setting true as default value.
-            return is_null($value) ? 0 : $value;
-        }
-
-        function absint_with_default_fallback($value, $field_args, $field) {
-            if ($value == false) {
-                $value = $field_args['default'];
-                error_log($value);
-            }
-            return abs(intval($value));
-        }
-
-        function keystone_sanitize_text_callback( $value, $field_args, $field ) {
-          $value = strip_tags( $value, '<p><a><br><br/>' );
-      
-          return $value;
-      }
+        add_action('keystone_load_helper_functions', [$this, 'loadHelperFunctions']);
     }
 
     protected static function enqueue_scripts() {
@@ -121,6 +102,29 @@ class Keystone_CMB2 {
                 $style[2],
                 $style[3]
             );
+        }
+    }
+
+    public function loadHelperFunctions() {
+        // Callback function to be used with Checkbox and Switch fields.
+        function sanitize_checkbox($value, $field_args, $field) {
+            // Return 0 instead of false if null value given. This hack for
+            // checkbox or checkbox-like can be setting true as default value.
+            return is_null($value) ? 0 : $value;
+        }
+
+        function absint_with_default_fallback($value, $field_args, $field) {
+            if ($value == false) {
+                $value = $field_args['default'];
+                error_log($value);
+            }
+            return abs(intval($value));
+        }
+
+        function keystone_sanitize_text_callback($value, $field_args, $field) {
+            $value = strip_tags($value, '<p><a><br><br/>');
+
+            return $value;
         }
     }
 }

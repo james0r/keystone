@@ -42,14 +42,12 @@ $box->add_field([
 ]);
 
 $box->add_field([
-    'name'       => __('Select Icon', 'keystone'),
-    'id'         => $prefix . 'box_2_icon',
-    'desc'       => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
-    'type'       => 'faiconselect',
-    'options_cb' => 'returnRayFapsa',
-    'attributes' => [
-        'faver' => 5
-    ]
+  'name'        => __('Icon Classes', 'keystone'),
+  'id'          => $prefix . 'box_2_icon' . $suffix,
+  'desc'        => __('For example:', 'keystone') . ' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
+  'type'        => 'text',
+  'after_field' => Keystone()->icons->getIconReferenceTable(),
+  'classes'     => 'icon-field-table'
 ]);
 
 $box->add_field([
@@ -71,14 +69,12 @@ $box->add_field([
 ]);
 
 $box->add_field([
-    'name'       => __('Select Icon', 'keystone'),
-    'id'         => $prefix . 'box_3_icon',
-    'desc'       => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
-    'type'       => 'faiconselect',
-    'options_cb' => 'returnRayFapsa',
-    'attributes' => [
-        'faver' => 5
-    ]
+  'name'        => __('Icon Classes', 'keystone'),
+  'id'          => $prefix . 'box_3_icon' . $suffix,
+  'desc'        => __('For example:', 'keystone') . ' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
+  'type'        => 'text',
+  'after_field' => Keystone()->icons->getIconReferenceTable(),
+  'classes'     => 'icon-field-table'
 ]);
 
 $box->add_field([
@@ -100,14 +96,13 @@ $box->add_field([
 ]);
 
 $box->add_field([
-    'name'       => __('Select Icon', 'keystone'),
-    'id'         => $prefix . 'box_4_icon',
-    'desc'       => __('Select icon (these are from the Font Awesome icon set version 5 Brands and Solids.', 'keystone'),
-    'type'       => 'faiconselect',
-    'options_cb' => 'returnRayFapsa',
-    'attributes' => [
-        'faver' => 5
-    ]]);
+  'name'        => __('Icon Classes', 'keystone'),
+  'id'          => $prefix . 'box_4_icon' . $suffix,
+  'desc'        => __('For example:', 'keystone') . ' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
+  'type'        => 'text',
+  'after_field' => Keystone()->icons->getIconReferenceTable(),
+  'classes'     => 'icon-field-table'
+]);
 
 $box->add_field([
     'name'       => __('Box Title', 'keystone'),

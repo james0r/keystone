@@ -140,7 +140,7 @@ jQuery(function ($) {
 });
 
 
-jQuery(function() {
+jQuery(function($) {
   $('.class-reference-show-more').on('click', function(event) {
     $(event.currentTarget).closest('table').find('.hidden-row-by-default').show();
     $(event.currentTarget).hide().parent().hide();
