@@ -122,9 +122,20 @@ class Keystone_CMB2 {
         }
 
         function keystone_sanitize_text_callback($value, $field_args, $field) {
-            $value = strip_tags($value, '<p><a><br><br/>');
+            $value = strip_tags($value, '<span><p><a><br><br/><b><strong>');
 
             return $value;
+        }
+
+        function get_entered_social_links_array () {
+          $social_links = cmb2_get_option('cmb_social_links', 'all');
+          $capitalized_values_array = array();
+          
+          foreach($social_links as $key => $value) {
+            $capitalized_values_array[$key] = ucfirst($key);
+          }
+
+          return $capitalized_values_array;
         }
     }
 }

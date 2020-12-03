@@ -4,28 +4,16 @@
 */
 
 $args = [
-    'id'           => 'cmb2_id_box_theme_options',
-    'object_types' => ['options-page'],
-    'option_key'   => 'cmb_main_options',
-    'menu_title'   => __('Keystone', 'keystone'),
-    'context' => 'normal',
-    'priority' => 'high',
-    'show_names' => true,
-    'attributes' => array( 'classes' => 'cmb2-hidden-box' ),
+    'id'              => 'cmb2_id_box_theme_options',
+    'object_types'    => ['options-page'],
+    'title'           => __('Clinic Information', 'keystone'),
+    'option_key'      => 'cmb_main_options',
+    'menu_title'      => __('Keystone', 'keystone'),
+    'position'        => 2,
+    'capability'      => 'manage_options', // Cap required to view options-page.
 ];
 
-$cmb2_theme_options = new_cmb2_box($args);
-
-$args2 = [
-    'id'           => 'cmb_company_info_page',
-    'title'        => __('Clinic Settings', 'keystone'),
-    'object_types' => ['options-page'],
-    'option_key'   => 'cmb_main_options',
-    'parent_slug'  => 'cmb_main_options',
-    'menu_title'   => __('Clinic Settings', 'keystone'),
-];
-
-$cmb2_options_clinic_info = new_cmb2_box($args2);
+$cmb2_options_clinic_info = new_cmb2_box($args);
 
 $cmb2_options_clinic_info->add_field([
     'name'       => __('Clinic Information', 'keystone'),

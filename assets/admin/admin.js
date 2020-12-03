@@ -139,11 +139,27 @@ jQuery(function ($) {
   });
 });
 
-
+// Hide all but one of the icon refernces to conserve screen real estate.
 jQuery(function($) {
   $('.class-reference-show-more').on('click', function(event) {
     $(event.currentTarget).closest('table').find('.hidden-row-by-default').show();
     $(event.currentTarget).hide().parent().hide();
   })
 })
+
+//Reveal advanced settings if version is clicked on 3 times
+jQuery(function($) {
+  var advanced_counter = 0;
+  $('#footer-upgrade').on('click', function() {
+    advanced_counter++;
+    if (advanced_counter >= 3) {
+      window.location.href = 'admin.php?page=cmb2_key_box_advanced_settings';
+    }
+  })
+})
+
+//Fix text for first submenu item in theme options on the admin
+// jQuery(function($) {
+//   $('#toplevel_page_cmb_main_options > ul > li.wp-first-item a').html('Clinic Information');
+// })
 

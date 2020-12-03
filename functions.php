@@ -23,3 +23,10 @@ Keystone();
 
 // Fire the hook to load helper function from OOP classes
 do_action('keystone_load_helper_functions');
+
+add_action('admin_menu', 'my_menu_pages');
+function my_menu_pages(){
+    add_menu_page('My Page Title', 'My Menu Title', 'manage_options', 'my-menu', 'my_menu_output' );
+    add_submenu_page('my-menu', 'Submenu Page Title', 'Whatever You Want', 'manage_options', 'my-menu' );
+    add_submenu_page('my-menu', 'Submenu Page Title2', 'Whatever You Want2', 'manage_options', 'my-menu2' );
+}
