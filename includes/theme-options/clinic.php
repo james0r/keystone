@@ -3,8 +3,6 @@
 * CLINIC GENERAL INFORMATION AND BUSINESS HOURS.
 */
 
-
-
 $args = [
     'id'              => 'cmb2_id_box_theme_options',
     'object_types'    => ['options-page'],
@@ -29,12 +27,6 @@ $args = [
 ];
 
 $cmb2_options_clinic_info = new_cmb2_box($args);
-
-$cmb2_options_clinic_info->add_field([
-    'name'       => __('Clinic Information', 'keystone'),
-    'id'         => 'cmb2_id_field_clinic_information_title_1',
-    'type'       => 'title',
-]);
 
 $cmb2_options_clinic_info->add_field([
     'name' => __('Company Name', 'keystone'),

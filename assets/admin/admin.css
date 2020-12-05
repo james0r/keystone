@@ -293,3 +293,20 @@
 #toplevel_page_cmb_main_options > ul > li:last-child {
   display: none;
 }
+
+/* Allow text_url field to grow larger than it's default */
+.cmb2-text-url {
+  min-width: 200px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .cmb2-text-url {
+    width: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .cmb2-text-url {
+    width: 100% !important;
+  }
+}
