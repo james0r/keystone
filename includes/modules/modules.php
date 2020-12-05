@@ -81,5 +81,10 @@ foreach ($modules as $m) {
           require __DIR__ . '/metaboxes/cta-divider-appointment.php';
 
           break;
+      case 'services-style-1':
+
+          require __DIR__ . '/metaboxes/services-style-1.php';
+
+          break;
     }
 }

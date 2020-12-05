@@ -23,6 +23,7 @@ class Keystone extends Wauble {
         $this->addImageSize('award-thumb', 160, 160);
         $this->addImageSize('certificate', 400, 308);
         $this->addImageSize('hero-background', 1920, 1200);
+        $this->addImageSize('title-image', 132, 40);
 
         parent::__construct();
     }

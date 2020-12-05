@@ -153,20 +153,87 @@ $cmb2_box_footer_style->add_group_field($footer_blog_area, [
     'type'    => 'text_medium'
 ]);
 
+$cmb2_box_footer_style->add_group_field($footer_blog_area, [
+    'name'        => __('Manually Select Posts', 'keystone'),
+    'desc'        => __('Drag posts from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'keystone'),
+    'id'          => $prefix . 'manual_posts',
+    'before_row'  => '<span style="color: red; font-weight: bold;">' . __('Important! If you have any posts attached here, the footer will not show new posts and will continue to only show posts attached here.', 'keystone') . '</span>',
+    'type'        => 'custom_attached_posts',
+    'column'      => true, // Output in the admin post-listing as a custom column. https://github.com/CMB2/CMB2/wiki/Field-Parameters#column
+    'options'     => [
+        'show_thumbnails' => true, // Show thumbnails on the left
+        'filter_boxes'    => true, // Show a text box for filtering the results
+        'query_args'      => [
+            'posts_per_page' => 10,
+            'post_type'      => 'post',
+        ], // override the get_posts args
+    ],
+]);
 
-$cmb2_box_footer_style->add_group_field($footer_blog_area, array(
-  'name'    => __( 'Manually Select Posts', 'keystone' ),
-  'desc'    => __( 'Drag posts from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'keystone' ),
-  'id'      => $prefix.'manual_posts',
-  'before_row'  => '<span style="color: red; font-weight: bold;">' . __('Important! If you have any posts attached here, the footer will not show new posts and will continue to only show posts attached here.', 'keystone') . '</span>',
-  'type'    => 'custom_attached_posts',
-  'column'  => true, // Output in the admin post-listing as a custom column. https://github.com/CMB2/CMB2/wiki/Field-Parameters#column
-  'options' => array(
-    'show_thumbnails' => true, // Show thumbnails on the left
-    'filter_boxes'    => true, // Show a text box for filtering the results
-    'query_args'      => array(
-      'posts_per_page' => 10,
-      'post_type'      => 'post',
-    ), // override the get_posts args
-  ),
-) );
+$footer_call_us = $cmb2_box_footer_style->add_field([
+    'id'          => $prefix . 'group_call_us',
+    'type'        => 'group',
+    'repeatable'  => false, // use false if you want non-repeatable group
+    'options'     => [
+        'group_title'       => __('Footer "Call Us" Area', 'keystone'), // since version 1.1.4, {#} gets replaced by row number
+    ],
+]);
+
+$cmb2_box_footer_style->add_group_field($footer_call_us, [
+    'name'    => __('Area Title', 'keystone'),
+    'default' => __('Call Us Now', 'keystone'),
+    'desc'    => __('This title will show up above the phone numbers you provide.', 'keystone'),
+    'type'    => 'text_medium',
+    'id'      => 'title'
+]);
+
+$cmb2_box_footer_style->add_group_field($footer_call_us, [
+    'name'    => __('Phone Number Entries', 'keystone'),
+    'desc'    => __('Enter phone numbers and/or labels before the phone numbers. Note: If no phone numbers are provided here, your phone numbers from the Clinic Information page will be used.', 'keystone'),
+    'id'      => 'phone',
+    'type'    => 'text_medium',
+    'repeatable'  => true
+]);
+
+$footer_hours = $cmb2_box_footer_style->add_field([
+    'id'          => $prefix . 'group_hours',
+    'type'        => 'group',
+    'repeatable'  => false, // use false if you want non-repeatable group
+    'options'     => [
+        'group_title'       => __('Footer Business Hours', 'keystone'), // since version 1.1.4, {#} gets replaced by row number
+    ],
+]);
+
+$cmb2_box_footer_style->add_group_field($footer_hours, [
+    'desc' => __('This area uses the business hours entered on the <a href="/wp-admin/admin.php?page=cmb_main_clinic_information">Keystone Options > Clinic Information</a> page.', 'keystone'),
+    'type' => 'title',
+    'id'   => 'cmb2_id_field_title_footer_hours'
+]);
+
+$footer_hours = $cmb2_box_footer_style->add_field([
+    'id'          => $prefix . 'group_newsletter',
+    'type'        => 'group',
+    'repeatable'  => false, // use false if you want non-repeatable group
+    'options'     => [
+        'group_title'       => __('Footer Newsletter Signup', 'keystone'), // since version 1.1.4, {#} gets replaced by row number
+    ],
+]);
+
+$cmb2_box_footer_style->add_group_field($footer_hours, [
+    'name'    => __('Footer Newsletter Title', 'keystone'),
+    'desc'    => __('This title will be displayed above the newsletter email signup.', 'keystone'),
+    'default' => __('Subscribe With Us', 'keystone'),
+    'id'      => 'title',
+    'type'    => 'text_medium'
+]);
+
+$cmb2_box_footer_style->add_group_field($footer_hours, [
+    'name'             => __('Disable Newsletter Signup in Footer', 'keystone'),
+    'id'               => 'disable_signup',
+    'desc'             => __('This will not disable any other newsletter functionality, it will merely hide the newsletter section in the footer.', 'keystone'),
+    'type'	            => 'switch',
+    'sanitization_cb'  => 'sanitize_checkbox',
+    'default'          => false, //If it's checked by default
+    'active_value'     => true,
+    'inactive_value'   => false
+]);

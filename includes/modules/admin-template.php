@@ -58,9 +58,8 @@ function render_modules(){ ?>
 						<label><?php _e('Section Template', 'keystone') ?></label>
 						<select name="module_name">
 							<option value="" disabled selected>-- <?php _e('Choose a Template', 'keystone')?> --</option>
-							<option value="name"><?php _e('Name', 'keystone') ?></option>
-							<option value="date"><?php _e('Date', 'keystone') ?></option>
               <option value="about"><?php _e('About', 'keystone') ?></option>
+              <option value="services-style-1"><?php _e('Services Style 1', 'keystone') ?></option>
               <option value="" disabled>-- <?php _e('Divider Sections', 'keystone') ?> --</option>
 							<option value="certs"><?php _e('Certificates', 'keystone') ?></option>
 							<option value="cta-divider-3-column"><?php _e('CTA Divider 3 Column', 'keystone') ?></option>

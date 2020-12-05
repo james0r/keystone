@@ -9,7 +9,6 @@ $args = [
     'title'           => __('Clinic Information', 'keystone'),
     'option_key'      => 'cmb_main_options',
     'menu_title'      => __('Keystone Options', 'keystone'),
-    'position'        => 2,
     'capability'      => 'unknown', // Cap required to view options-page.
 ];
 
@@ -18,7 +17,7 @@ $cmb2_options_clinic_info = new_cmb2_box($args);
 $args = [
   'id'              => 'cmb2_id_box_theme_options_1',
   'object_types'    => ['options-page'],
-  'option_key'      => 'cmb_main_options1',
+  'option_key'      => 'cmb_main_clinic_information',
   'menu_title'      => __('Clinic Information', 'keystone'),
   'title'						=> __('Clinic Information', 'keystone'),
   'parent_slug'     => 'cmb_main_options',
