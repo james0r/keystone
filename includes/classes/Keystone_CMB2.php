@@ -24,7 +24,8 @@ class Keystone_CMB2 {
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-field-faiconselect/iconselect.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-field-faiconselect/predefined-array-fontawesome.php')
         ->requireOnce('/includes/libs/CMB2/plugins/cmb2-radio-image.php')
-        ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php');
+        ->requireOnce('/includes/libs/CMB2/plugins/cmb2-switch-button.php')
+        ->requireOnce('/includes/libs/CMB2/plugins/cmb2-attached-posts/cmb2-attached-posts-field.php');
 
         add_action('keystone_load_helper_functions', [$this, 'loadHelperFunctions']);
     }

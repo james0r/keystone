@@ -45,9 +45,19 @@ $cmb2_box_blog->add_field([
 ]);
 
 $cmb2_box_blog->add_field([
-  'name'             => esc_html__( 'Disable Blog', 'keystone' ),
+  'name'             => __( 'Disable Blog', 'keystone' ),
   'id'               => 'cmb2_id_field_disable_blog',
   'desc'             => '<span style="color: red;">' . __('<span style="color: red;">This will completely disable all blog functionality on your website.', 'keystone') . '</span>',
+  'type'	           => 'switch',
+  'default'          => false, //If it's checked by default 
+  'active_value'     => true,
+  'inactive_value'   => false
+]);
+
+$cmb2_box_blog->add_field([
+  'name'             => __( 'Rename the Blog as "News"', 'keystone' ),
+  'id'               => 'cmb2_id_field_rename_as_news',
+  'desc'             => __('All mentions of the blog will be renamed "news". This includes all mentions of the blog in the administrator dashboard. Take note of this as the menu link in the dashboard will change to "news" as well. Individual "posts" will now be renamed "articles".', 'keystone'),
   'type'	           => 'switch',
   'default'          => false, //If it's checked by default 
   'active_value'     => true,

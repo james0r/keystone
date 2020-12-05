@@ -3,14 +3,29 @@
 * CLINIC GENERAL INFORMATION AND BUSINESS HOURS.
 */
 
+
+
 $args = [
     'id'              => 'cmb2_id_box_theme_options',
     'object_types'    => ['options-page'],
     'title'           => __('Clinic Information', 'keystone'),
     'option_key'      => 'cmb_main_options',
-    'menu_title'      => __('Keystone', 'keystone'),
+    'menu_title'      => __('Keystone Options', 'keystone'),
     'position'        => 2,
-    'capability'      => 'manage_options', // Cap required to view options-page.
+    'capability'      => 'unknown', // Cap required to view options-page.
+];
+
+$cmb2_options_clinic_info = new_cmb2_box($args);
+
+$args = [
+  'id'              => 'cmb2_id_box_theme_options_1',
+  'object_types'    => ['options-page'],
+  'option_key'      => 'cmb_main_options1',
+  'menu_title'      => __('Clinic Information', 'keystone'),
+  'title'						=> __('Clinic Information', 'keystone'),
+  'parent_slug'     => 'cmb_main_options',
+  'position'        => 2,
+  'capability'      => 'manage_options', // Cap required to view options-page.
 ];
 
 $cmb2_options_clinic_info = new_cmb2_box($args);
@@ -22,61 +37,61 @@ $cmb2_options_clinic_info->add_field([
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Name',
+    'name' => __('Company Name', 'keystone'),
     'id'   => 'cmb_company_name',
     'type' => 'text_medium',
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name'    => 'Desktop Logo',
+    'name'    => __('Desktop Logo', 'keystone'),
     'id'      => 'cmb_desktop_logo',
     'type'    => 'file'
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name'    => 'Mobile Logo',
+    'name'    => __('Mobile Logo', 'keystone'),
     'id'      => 'cmb_mobile_logo',
     'type'    => 'file'
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Tagline or Description',
+    'name' => __('Company Tagline or Description', 'keystone'),
     'id'   => 'cmb_company_tagline',
     'type' => 'text_medium',
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Phone #',
+    'name' => __('Company Phone #', 'keystone'),
     'id'   => 'cmb_company_phone',
     'type' => 'text_medium',
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Fax #',
+    'name' => __('Company Fax #', 'keystone'),
     'id'   => 'cmb_company_fax',
     'type' => 'text_medium',
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Email',
+    'name' => __('Company Email Address', 'keystone'),
     'id'   => 'cmb_company_email',
     'type' => 'text_email',
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Address Line 1',
+    'name' => __('Company Address Line 1', 'keystone'),
     'id'   => 'cmb_company_address_1',
     'type' => 'text_medium',
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Address Line 2',
+    'name' => __('Company Address Line 2', 'keystone'),
     'id'   => 'cmb_company_address_2',
     'type' => 'text_medium',
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => 'Company Address Line 2',
+    'name' => __('Company Address Line 2', 'keystone'),
     'id'   => 'cmb_company_address_2',
     'type' => 'text_medium',
 ]);

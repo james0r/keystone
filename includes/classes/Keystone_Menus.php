@@ -7,8 +7,14 @@
 
 class Keystone_Menus {
     public function __construct() {
-        add_action('after_setup_theme', [$this, 'my_after_setup_theme']);
         add_action('after_switch_theme', [$this, 'my_after_switch_theme']);
+
+        Keystone()->addNavMenus([
+            'header-primary'   => __('Header Primary Menu', 'keystone'),
+            'header-secondary' => __('Header Secondary Menu', 'keystone'),
+            'footer-primary'   => __('Footer Primary Menu', 'keystone'),
+            'footer-secondary'   => __('Footer Secondary Menu', 'keystone')
+        ]);
 
         add_action('keystone_load_helper_functions', [$this, 'loadHelperFunctions']);
     }
@@ -35,17 +41,6 @@ class Keystone_Menus {
         set_theme_mod('nav_menu_locations', $locations_primary_arr);
 
         update_option('menu_check', true);
-    }
-
-    public function my_after_setup_theme() {
-        /**
-         * Register Navigations
-         */
-        register_nav_menus([
-            'header-primary'   => __('Header Primary Menu', 'keystone'),
-            'header-secondary' => __('Header Secondary Menu', 'keystone'),
-            'footer-primary'   => __('Footer Primary Menu', 'keystone')
-        ]);
     }
 
     /**
@@ -85,7 +80,6 @@ class Keystone_Menus {
     }
 
     public function loadHelperFunctions() {
-
         function fallback_menu_pages() {
             $list_pages = '';
             $args = [

@@ -162,8 +162,8 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
 
 $cmb2_box_header_options->add_group_field($cmb2_group_header_style, array(
 	'name'    => __('Social Links To Display In Header', 'keystone'),
-	'desc'    => __('Links must be provided in on the Social Links settings page under Keystone Options. If no link is provided, any social links checked here will not appear in the header.', 'keystone'),
-	'id'      => 'wiki_test_multicheckbox',
+	'desc'    => __('Links must be provided in on the Social Links settings page under Keystone Options. If no link is provided, If no links are provided in Keystone Options > Social Links, no options will be available here.', 'keystone'),
+	'id'      => 'social_links_to_display',
   'type'    => 'multicheck',
   'select_all_button' => false,
   'options_cb' => 'get_entered_social_links_array',
@@ -315,8 +315,6 @@ $cmb2_header_advanced= $cmb2_box_header_options->add_field([
       // 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
   ],
 ]);
-
-
 
 $cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
   'name'    => __('Disable Mega Menu', 'keystone'),

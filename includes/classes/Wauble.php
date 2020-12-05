@@ -98,10 +98,6 @@ class Wauble {
               ->addAdminScript('jquery-ui', get_template_directory_uri() . '/assets/admin/jquery-ui.min.js')
               ->addAdminScript('admin-scripts', get_template_directory_uri() . '/assets/admin/admin.js', null, 1.0, true);
 
-        $this->addNavMenus([
-            'primary-navigation' => 'Primary Navigation',
-        ]);
-
         $this->requireOnce('/includes/helper-functions.php');
 
         add_action('wp_footer', [$this, 'display_template_toast']);
