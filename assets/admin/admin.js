@@ -33,8 +33,6 @@ jQuery(document).ready(function ($) {
 
   $(".meta-box-sortables").sortable({
     update: function (event, ui) {
-      //console.log(event);
-      //console.log(ui);
 
       //loop through and put number on each
       $(".cmb2-postbox").each(function (index, element) {
@@ -61,33 +59,6 @@ jQuery(document).ready(function ($) {
       });
     },
   });
-
-  //When a "background type" gets changed for a module, show specific fields
-  /*
-  var setBackground = function(trigger){
-	  
-	  $this_module = trigger.closest('.postbox');
-	  $this_module.find('.hide').hide().removeClass('double-rule');
-	  
-	  var module_id = $this_module.attr('id');
-	  
-	  if(trigger.val()=='image'){
-		  $this_module.find('.cmb2-id-'+module_id+'-bg-image').show().addClass('double-rule');
-	  }else if(trigger.val()=='custom'){
-		  $this_module.find('.cmb2-id-'+module_id+'-bg-hex').show().addClass('double-rule');
-	  }else if(trigger.val()=='white'){
-	  	//nothing, keep all hidden
-	  }else{
-		  $this_module.find('.cmb2-id-'+module_id+'-bg-percentage').show().addClass('double-rule');
-	  }
-  };
-  $('.bg-trigger select').on('change',function(){
-	  setBackground($(this));
-  });
-  $('.bg-trigger select').each( function( index, element ){
-    setBackground($(this));
-	});
-*/
 
   /// Add Module form processor
   $(".mm-form form").on("submit", function (e) {
@@ -141,13 +112,34 @@ jQuery(function ($) {
 
 // Hide all but one of the icon refernces to conserve screen real estate.
 jQuery(function($) {
-  $('.class-reference-show-more').on('click', function(event) {
-    $(event.currentTarget).closest('table').find('.hidden-row-by-default').show();
-    $(event.currentTarget).hide().parent().hide();
-  })
+  // Select the node that will be observed for mutations
+const targetNode = document.querySelector('.cmb2-postbox');
+
+// Options for the observer (which mutations to observe)
+const config = { attributes: true, childList: true, subtree: true };
+
+// Callback function to execute when mutations are observed
+const callback = function(mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for(const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          $('.class-reference-show-more').on('click', function(event) {
+            $(event.currentTarget).closest('table').find('.hidden-row-by-default').show();
+            $(event.currentTarget).hide().parent().hide();
+          })
+        }
+    }
+};
+
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
 })
 
-//Reveal advanced settings if version is clicked on 3 times
+// Reveal advanced settings if version is clicked on 3 times
 jQuery(function($) {
   var advanced_counter = 0;
   $('#footer-upgrade').on('click', function() {
@@ -157,9 +149,4 @@ jQuery(function($) {
     }
   })
 })
-
-//Fix text for first submenu item in theme options on the admin
-// jQuery(function($) {
-//   $('#toplevel_page_cmb_main_options > ul > li.wp-first-item a').html('Clinic Information');
-// })
 

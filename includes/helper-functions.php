@@ -41,11 +41,6 @@ function keystone_get_the_meta($key, $single = true) {
     return $value;
 }
 
-function keystone_gtmwi($key, $instance, $single = true) {
-    $value = get_post_meta(get_the_ID(), $key . '_' . $instance, $single);
-    return $value;
-}
-
 // Modified get_template_part to accept arguments. Base directory is /templates/
 function keystone_get_template($file, $template_args = [], $cache_args = []) {
     $template_args = wp_parse_args($template_args);

@@ -138,5 +138,10 @@ class Keystone_CMB2 {
 
           return $capitalized_values_array;
         }
+
+        function keystone_meta_with_module_id($key, $instance, $single = true) {
+          $value = get_post_meta(get_the_ID(), $key . '_' . $instance, $single);
+          return $value;
+        }
     }
 }

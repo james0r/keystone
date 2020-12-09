@@ -15,7 +15,7 @@ $style_dependencies = [
     'module-about'
 ];
 
-$twentytwenty_enabled = keystone_gtmwi('cmb2_id_field_toggle_reveal_slider', $instance);
+$twentytwenty_enabled = keystone_meta_with_module_id('cmb2_id_field_toggle_reveal_slider', $instance);
 
 if ($twentytwenty_enabled) {
   apply_filters('render_dynamic_scripts', $script_dependencies);
@@ -39,20 +39,20 @@ if ($twentytwenty_enabled) {
         <div class="content">
           <h2 class="about-header">
             <?php 
-             $header_text = keystone_gtmwi('cmb2_id_field_about_header_text', $instance); 
-             $highlighted_text = keystone_gtmwi('cmb2_id_field_about_highlighted_header_text', $instance);
+             $header_text = keystone_meta_with_module_id('cmb2_id_field_about_header_text', $instance); 
+             $highlighted_text = keystone_meta_with_module_id('cmb2_id_field_about_highlighted_header_text', $instance);
              $replacement = '<span class="theme-color-primary">' . $highlighted_text . '</span>';
              $header_with_highlighted = str_replace($highlighted_text, $replacement, $header_text );
              echo $header_with_highlighted;
              ?>
           </h2>
           <div class="about-body">
-            <?php echo keystone_gtmwi('cmb2_id_field_about_body_text', $instance); ?>
+            <?php echo keystone_meta_with_module_id('cmb2_id_field_about_body_text', $instance); ?>
           </div>
           <div class="about-thumbnail-group">
             <ul class="about-thumbnail-list">
               <?php
-            $entries = keystone_gtmwi('cmb2_id_field_award_images', $instance);
+            $entries = keystone_meta_with_module_id('cmb2_id_field_award_images', $instance);
 
             foreach ((array) $entries as $key => $entry) {
                 echo '<li class="about-thumbnail-list-item">';
@@ -63,9 +63,9 @@ if ($twentytwenty_enabled) {
             </ul>
           </div>
           <div class="button-row">
-            <a href="<?php echo keystone_gtmwi('cmb2_id_field_about_button_link_url', $instance); ?>"
+            <a href="<?php echo keystone_meta_with_module_id('cmb2_id_field_about_button_link_url', $instance); ?>"
               class="btn btn-primary btn-circled btn-lg">
-              <?php echo keystone_gtmwi('cmb2_id_field_about_button_text', $instance); ?>
+              <?php echo keystone_meta_with_module_id('cmb2_id_field_about_button_text', $instance); ?>
             </a>
           </div>
         </div>

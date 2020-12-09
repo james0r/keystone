@@ -19,6 +19,8 @@ class Wauble {
 
     public static $scripts_dir_url = '';
 
+    public static $version = KEYSTONE_VERSION;
+
     private function actionAfterSetup($function) {
         add_action('after_setup_theme', function () use ($function) {
             $function();
@@ -276,5 +278,16 @@ class Wauble {
             unregister_nav_menu($location);
         });
         return $this;
+    }
+
+    public static function get_normalized_theme_version() {
+      $theme_version       = self::$version;
+      $theme_version_array = explode( '.', $theme_version );
+  
+      if ( isset( $theme_version_array[2] ) && '0' === $theme_version_array[2] ) {
+        $theme_version = $theme_version_array[0] . '.' . $theme_version_array[1];
+      }
+  
+      return $theme_version;
     }
 }

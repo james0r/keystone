@@ -5,19 +5,19 @@
 */
 
 class Keystone_Body_Classes {
-    private static $prefix;
+    private $prefix;
 
     public function __construct() {
-      self::$prefix = Keystone()->getPrefix();
+      $this->$prefix = Keystone()->getPrefix();
 
       add_filter( 'body_class', [$this, 'add_custom_body_classes'] );
     }
 
-    public static function add_custom_body_classes($classes) {
-      $custom_classes = self::get_options_map();
+    public function add_custom_body_classes($classes) {
+      $custom_classes = $this->get_options_map();
       foreach($custom_classes as $custom_class) {
         if (!empty(cmb2_get_option($custom_class[0], $custom_class[1]))) {
-          array_push($classes, self::$prefix . '-' . cmb2_get_option($custom_class[0], $custom_class[1]));
+          array_push($classes, $this->$prefix . '-' . cmb2_get_option($custom_class[0], $custom_class[1]));
         }
       }
 

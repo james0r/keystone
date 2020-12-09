@@ -35,6 +35,7 @@ class Keystone extends Wauble {
         if (self::$instance == null) {
             self::$instance = new Keystone();
 
+            self::$instance->helpers = new Keystone_Helpers;
             self::$instance->cmb2 = new Keystone_CMB2;
             self::$instance->modules = new Keystone_Modules;
             self::$instance->options = new Keystone_Options;
@@ -45,7 +46,8 @@ class Keystone extends Wauble {
             self::$instance->icons = new Keystone_Icons;
             self::$instance->menus = new Keystone_Menus;
             self::$instance->demos = new Keystone_Demos;
-            self::$instance->branding = new Keystone_Branding;
+            self::$instance->admin = new Keystone_Admin;
+            self::$instance->images = new Keystone_Images;
         }
 
         return self::$instance;

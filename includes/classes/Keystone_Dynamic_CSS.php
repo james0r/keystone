@@ -35,7 +35,10 @@ class Keystone_Dynamic_CSS {
               echo $this->addInlineStylesheet('slick-lightbox-css', get_stylesheet_directory_uri() . '/assets/css/slick-lightbox.css');
               break;
             case 'flaticon-dental-css':
-              echo $this->addInlineStylesheet('flaticon-dental-css', get_template_directory_uri() . '/assets/css/flaticon-set-dental.css');
+              echo $this->addInlineStylesheet('flaticon-dental-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-dental.css');
+              break;
+            case 'flaticon-medical-css':
+              echo $this->addInlineStylesheet('flaticon-medical-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-medical.css');
               break;
             default:
             echo '<!-- A style dependency failed to load -->';

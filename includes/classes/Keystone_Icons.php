@@ -5,18 +5,16 @@
 */
 
 class Keystone_Icons {
-    private static $icon_reference_table;
+    private static $flaticon_dental_reference_path;
 
-    private static $fonticon_dental_path;
+    private static $flaticon_medical_reference_path;
 
-    private static $fonticon_medical_path;
-
-    private static $elegant_icons_path;
+    private static $elegant_icons_reference_path;
 
     public function __construct() {
-        self::$fonticon_dental_path = get_template_directory_uri() . '/assets/static/flaticon-set-dental.html';
-        self::$fonticon_medical_path = get_template_directory_uri() . '/assets/static/flaticon-set-medical.html';
-        self::$elegant_icons_path = get_template_directory_uri() . '/assets/static/elegant-icon-set.html';
+        self::$flaticon_dental_reference_path = get_template_directory_uri() . '/assets/static/flaticon-set-dental.html';
+        self::$flaticon_medical_reference_path = get_template_directory_uri() . '/assets/static/flaticon-set-medical.html';
+        self::$elegant_icons_reference_path = get_template_directory_uri() . '/assets/static/elegant-icon-set.html';
 
         add_filter('keystone_render_icon', [$this, 'filterRenderIcon']);
     }
@@ -32,27 +30,27 @@ class Keystone_Icons {
             // Font Awesome 5 Free Icon
             $formatted_classes = $classes;
         } elseif ($first_three == 'pe-') {
-            //PE Icon 7 Stroke Icon
+            // PE Icon 7 Stroke Icon
             $formatted_classes = $classes;
-        } elseif (strpos($classes, 'flaticon-dental')) {
-            //Flaticon Medical Icon
+        } elseif (strpos($classes, 'flaticon-dental') !== false) {
+            // Flaticon Medical Icon
             if (substr($classes, 0, 1) == '.') {
                 $formatted_classes = 'glyph-icon ' . ltrim($classes, '.');
             } else {
                 $formatted_classes = 'glyph-icon ' . $classes;
             }
-        } elseif (strpos($classes, 'flaticon-medical')) {
-            //Flaticon Dental Icon
+        } elseif (strpos($classes, 'flaticon-medical') !== false) {
+            // Flaticon Dental Icon
             $formatted_classes = 'glyph-icon ' . $classes;
         }
         echo sprintf('<i class="%s %s"></i>', $formatted_classes, 'keystone-icon');
     }
 
     public function getIconReferenceTable() {
-        $fonticon_dental_path = self::$fonticon_dental_path;
-        $fonticon_medical_path = self::$fonticon_medical_path;
-        $elegant_icons_path = self::$elegant_icons_path;
-        $show_more = __('Show More', 'kestone');
+        $flaticon_dental_reference_path = self::$flaticon_dental_reference_path;
+        $flaticon_medical_reference_path = self::$flaticon_medical_reference_path;
+        $elegant_icons_reference_path = self::$elegant_icons_reference_path;
+        $show_more = __('Show More', 'keystone');
 
         return <<<EOT
       <br>
@@ -83,7 +81,7 @@ class Keystone_Icons {
         <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Fonticon Dental Icons">Fonticon Dental Icons</td>
           <td data-label="Fonticon Dental Icons Reference Doc">
-            <a target="_blank" href="$fonticon_dental_path">
+            <a target="_blank" href="$flaticon_dental_reference_path">
               Open
             </a>
           </td>
@@ -91,7 +89,7 @@ class Keystone_Icons {
         <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Fonticon Medical Icons">Fonticon Medical Icons</td>
           <td data-label="Fonticon Medical Icons Reference Doc">
-            <a target="_blank" href="$fonticon_medical_path">
+            <a target="_blank" href="$flaticon_medical_reference_path">
               Open
             </a>
           </td>
@@ -107,7 +105,7 @@ class Keystone_Icons {
         <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Elegant Icon Set">Elegant Icon Set</td>
           <td data-label="Elegant Icons Reference Doc">
-            <a target="_blank" href="$elegant_icons_path">
+            <a target="_blank" href="$elegant_icons_reference_path">
               Open
             </a>
           </td>

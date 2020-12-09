@@ -20,7 +20,7 @@ $style_dependencies = [
 apply_filters('render_dynamic_scripts', $script_dependencies);
 apply_filters('render_dynamic_css', $style_dependencies);
 
-$cert_array = keystone_gtmwi('cmb2_id_field_certificate_file_list', $instance);
+$cert_array = keystone_meta_with_module_id('cmb2_id_field_certificate_file_list', $instance);
 
 ?>
 <div class="certs-module-container">

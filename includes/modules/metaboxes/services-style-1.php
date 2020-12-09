@@ -27,7 +27,7 @@ $box->add_field([
             'image/png',
         ],
     ],
-    'preview_size' => 'small', // Image size to use when previewing in the admin.
+    'preview_size' => 'title-image', // Image size to use when previewing in the admin.
 ]);
 
 $box->add_field( array(
