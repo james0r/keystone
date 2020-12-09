@@ -13,7 +13,8 @@ $script_dependencies = [
 
 $style_dependencies = [
   'flaticon-medical-css',
-  'flaticon-dental-css'
+  'flaticon-dental-css',
+  'module-services-style-1'
 ];
 
 apply_filters('render_dynamic_scripts', $script_dependencies);
@@ -41,14 +42,21 @@ apply_filters('render_dynamic_css', $style_dependencies);
       <div class="grid">
       <?php $services_items = keystone_meta_with_module_id($meta_prefix.'services_group', $instance); ?>
       <?php foreach($services_items as $item) : ?>
-        <div class="services-item flex">
+        <a href="<?php echo $item['link']; ?>" class="services-item flex">
           <div class="start">
-            <?php apply_filters('keystone_render_icon', $item['icon']); ?>
+            <div class="icon-wrapper">
+              <?php apply_filters('keystone_render_icon', $item['icon']); ?>
+            </div>
           </div>
           <div class="end">
-
+            <h3>
+              <?php echo $item['title']; ?>
+            </h3>
+            <p>
+              <?php echo $item['description']; ?>
+            </p>
           </div>
-        </div>
+        </a>
       <?php endforeach; ?>
       </div>
     </div>

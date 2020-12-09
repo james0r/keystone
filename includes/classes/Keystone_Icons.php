@@ -43,7 +43,13 @@ class Keystone_Icons {
             // Flaticon Dental Icon
             $formatted_classes = 'glyph-icon ' . $classes;
         }
-        echo sprintf('<i class="%s %s"></i>', $formatted_classes, 'keystone-icon');
+
+        if (Keystone_Colors::primary_is_dark()) {
+          echo sprintf('<i class="%s %s"></i>', $formatted_classes, 'keystone-icon');
+        } else {
+          echo sprintf('<i class="%s %s" style="color: #222222;"></i>', $formatted_classes, 'keystone-icon');
+        }
+
     }
 
     public function getIconReferenceTable() {

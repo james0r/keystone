@@ -78,3 +78,9 @@ body {
 .theme-color-secondary {
   color: var(--keystone-secondary-color);
 }
+
+h2, .h2 {
+  margin-bottom: 10px;
+  font-size: 26px;
+  line-height: 1;
+}

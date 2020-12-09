@@ -7,7 +7,7 @@ function console_log($data) {
 }
 
 function bool2truthy($val) {
-  return $val === "0" || $val == null || !isset($val) || $val === 0 ? false:true;
+    return $val === '0' || $val == null || !isset($val) || $val === 0 ? false : true;
 }
 
 // Function removed in favor of cmb2_get_option
@@ -116,45 +116,34 @@ function get_nav($menu_name, $args = []) {
 
 // COLOR HELPER FUNCTIONS
 
-function keystone_hex2hsl($hex) {
-    $red = hexdec(substr($hex, 0, 2)) / 255;
-    $green = hexdec(substr($hex, 2, 2)) / 255;
-    $blue = hexdec(substr($hex, 4, 2)) / 255;
-
-    $cmin = min($red, $green, $blue);
-    $cmax = max($red, $green, $blue);
-    $delta = $cmax - $cmin;
-
-    if ($delta === 0) {
-        $hue = 0;
-    } elseif ($cmax === $red && $delta > 0) {
-        $hue = (($green - $blue) / $delta) % 6;
-    } elseif ($cmax === $green && $delta > 0) {
-        $hue = ($blue - $red) / $delta + 2;
-    } elseif ($delta > 0) {
-        $hue = ($red - $green) / $delta + 4;
-    }
-
-    $hue = round($hue * 60);
-    if ($hue < 0) {
-        $hue += 360;
-    }
-
-    $lightness = (($cmax + $cmin) / 2) * 100;
-    $saturation = $delta === 0 ? 0 : ($delta / (1 - abs(2 * $lightness - 1))) * 100;
-    if ($saturation < 0) {
-        $saturation += 100;
-    }
-
-    $lightness = round($lightness);
-    $saturation = round($saturation);
-
-    return [
-        0 => $hue,
-        1 => $saturation,
-        2 => $lightness
-    ];
-}
+// function hexToHsl($hex) {
+//     $hex_val = [$hex_val[0] . $hex_val[1], $hex_val[2] . $hex_val[3], $hex_val[4] . $hex_val[5]];
+//     $rgb_val = array_map(function ($part) {
+//         return hexdec($part) / 255;
+//     }, $hex_val);
+//     $max_val = max($rgb_val);
+//     $min_val = min($rgb_val);
+//     $l = ($max_val + $min_val) / 2;
+//     if ($max_val == $min_val) {
+//         $h = $s = 0;
+//     } else {
+//         $diff = $max_val - $min_val;
+//         $s = $l > 0.5 ? $diff / (2 - $max_val - $min_val) : $diff / ($max_val + $min_val);
+//         switch ($max_val) {
+//          case $rgb_val[0]:
+//          $h = ($rgb_val[1] - $rgb_val[2]) / $diff + ($rgb_val[1] < $rgb_val[2] ? 6 : 0);
+//          break;
+//          case $rgb_val[1]:
+//          $h = ($rgb_val[2] - $rgb_val[0]) / $diff + 2;
+//          break;
+//          case $rgb_val[2]:
+//          $h = ($rgb_val[0] - $rgb_val[1]) / $diff + 4;
+//          break;
+//       }
+//         $h /= 6;
+//     }
+//     return [$h, $s, $l];
+// }
 
 function keystone_hex2rgb($colour) {
     if ($colour[0] == '#') {
@@ -189,7 +178,7 @@ function keystone_getColorLightness($hex = 'No Color Provided') {
     $color_nohash = str_replace('#', '', $color);
 
     //get background lightness
-    $hsl = keystone_hex2hsl($color_nohash);
+    $hsl = Keystone_Colors::hexToHsl($color_nohash);
     $lightness = $hsl[2] * 1000;
     return $lightness;
 }

@@ -1,0 +1,75 @@
+// -----------------------------------------------------------------------------
+// Services Style 1 Module Styles
+// -----------------------------------------------------------------------------
+
+.services-style-1-module-container {
+  padding: 60px 15px;
+
+  &-inner {
+
+    .section-head-row {
+      text-align: center;
+      margin: auto;
+      margin-bottom: 40px;
+      max-width: 600px;
+
+      .title-row {
+        margin-bottom: 10px;
+      }
+
+      .title-image-row {
+        margin-bottom: 10px;
+        
+        img {
+          margin: auto;
+        }
+      }
+
+    }
+
+    .section-body-row {
+
+      .grid {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+        row-gap: 30px;
+        column-gap: 20px;
+
+        .services-item.flex {
+          display: flex;
+          flex-direction: row;
+          color: var(--keystone-body-text-color);
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          .start {
+            margin-right: 30px;
+
+            .icon-wrapper {
+              height: 70px;
+              width: 70px;
+              background-color: var(--keystone-primary-color);
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            i {
+              color: white;
+              font-size: 40px;
+            }
+          }
+
+          .end {
+
+          }
+        }
+      }
+    }
+
+  }
+}
