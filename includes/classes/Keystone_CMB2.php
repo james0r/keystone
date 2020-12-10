@@ -117,7 +117,6 @@ class Keystone_CMB2 {
         function absint_with_default_fallback($value, $field_args, $field) {
             if ($value == false) {
                 $value = $field_args['default'];
-                error_log($value);
             }
             return abs(intval($value));
         }

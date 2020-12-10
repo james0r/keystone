@@ -1,8 +1,6 @@
-jQuery(document).ready(function ($) {
+jQuery(function ($) {
   $("#sortable").sortable({
     update: function (event, ui) {
-      //console.log(event);
-      //console.log(ui);
 
       //loop through and put number on each
       $(".hp-module-block").each(function (index, element) {
@@ -93,26 +91,20 @@ jQuery(document).ready(function ($) {
       }
     }
   );
-});
 
-jQuery(document).ready(function ($) {
   $(".select2-hidden-accessible").each(function (index) {
     $(this).val($(this).attr("data-selected"));
   });
-});
 
-// Save the page for the user when they change a font. This way
-// the user sees the correct font-weights for the chosen font.
-jQuery(function ($) {
+  // Save the page for the user when they change a font. This way
+  // the user sees the correct font-weights for the chosen font.
   $("#cmb2_id_heading_font").on("change", function (event) {
     $("#submit-cmb").trigger("click");
   });
-});
 
-// Hide all but one of the icon refernces to conserve screen real estate.
-jQuery(function ($) {
+  // Hide all but one of the icon refernces to conserve screen real estate.
   // Select the node that will be observed for mutations
-  const targetNode = document.querySelector('.cmb-form');
+  const targetNode = document.body;
 
   // Options for the observer (which mutations to observe)
   const config = { attributes: true, childList: true, subtree: true };
@@ -121,7 +113,6 @@ jQuery(function ($) {
   const callback = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
     for (const mutation of mutationsList) {
-      console.log( mutation );
       if (mutation.type === "childList") {
         $(".class-reference-show-more").on("click", function (event) {
           $(event.currentTarget)
@@ -135,18 +126,14 @@ jQuery(function ($) {
   };
 
   if (targetNode) {
-    console.log( 'evaled' );
     // Create an observer instance linked to the callback function
     const observer = new MutationObserver(callback);
-  
+
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
-
   }
-});
 
-// Reveal advanced settings if version is clicked on 3 times
-jQuery(function ($) {
+  // Reveal advanced settings if version is clicked on 3 times
   var advanced_counter = 0;
   $("#footer-upgrade").on("click", function () {
     advanced_counter++;
@@ -154,4 +141,5 @@ jQuery(function ($) {
       window.location.href = "admin.php?page=cmb2_key_box_advanced_settings";
     }
   });
+
 });
