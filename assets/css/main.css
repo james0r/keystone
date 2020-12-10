@@ -443,6 +443,11 @@ select {
   width: 100%;
 }
 
+.no-focus-outline a:focus,
+.no-focus-outline button:focus {
+  outline: none;
+}
+
 @font-face {
   font-family: 'Open Sans';
   src: url("../webfonts/OpenSans-BoldItalic.woff2") format("woff2"), url("../webfonts/OpenSans-BoldItalic.woff") format("woff");

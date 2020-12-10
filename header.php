@@ -9,6 +9,7 @@
     <?php echo keystone_get_template('theme-css-vars') ?>
   </style>
   <?php echo keystone_get_template('theme-fonts'); ?>
+  <?php echo '<script>console.log("Keystone Theme '.KEYSTONE_VERSION.' https://www.clinicrevenue.com")</script>'; ?>
   <?php wp_head(); ?>
 </head>
 
