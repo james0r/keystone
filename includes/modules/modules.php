@@ -86,5 +86,10 @@ foreach ($modules as $m) {
           require __DIR__ . '/metaboxes/services-style-1.php';
 
           break;
+      case 'countup':
+
+          require __DIR__ . '/metaboxes/countup.php';
+
+          break;
     }
 }

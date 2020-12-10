@@ -29,6 +29,9 @@ class Keystone_Dynamic_Scripts {
           case 'slick-lightbox':
             echo  $this->add_script('slick-js', get_template_directory_uri() . '/assets/js/slick-lightbox.min.js');
             break;
+          case 'countup':
+            echo  $this->add_script('slick-js', get_template_directory_uri() . '/assets/js/countUp.min.js');
+            break;
           default:
           return false;
         }

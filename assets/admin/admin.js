@@ -33,7 +33,6 @@ jQuery(document).ready(function ($) {
 
   $(".meta-box-sortables").sortable({
     update: function (event, ui) {
-
       //loop through and put number on each
       $(".cmb2-postbox").each(function (index, element) {
         var instance = $(this).attr("id");
@@ -106,47 +105,53 @@ jQuery(document).ready(function ($) {
 // the user sees the correct font-weights for the chosen font.
 jQuery(function ($) {
   $("#cmb2_id_heading_font").on("change", function (event) {
-    $('#submit-cmb').trigger("click");
+    $("#submit-cmb").trigger("click");
   });
 });
 
 // Hide all but one of the icon refernces to conserve screen real estate.
-jQuery(function($) {
+jQuery(function ($) {
   // Select the node that will be observed for mutations
-const targetNode = document.querySelector('.cmb2-postbox');
+  const targetNode = document.querySelector('.cmb-form');
 
-// Options for the observer (which mutations to observe)
-const config = { attributes: true, childList: true, subtree: true };
+  // Options for the observer (which mutations to observe)
+  const config = { attributes: true, childList: true, subtree: true };
 
-// Callback function to execute when mutations are observed
-const callback = function(mutationsList, observer) {
+  // Callback function to execute when mutations are observed
+  const callback = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
-    for(const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-          $('.class-reference-show-more').on('click', function(event) {
-            $(event.currentTarget).closest('table').find('.hidden-row-by-default').show();
-            $(event.currentTarget).hide().parent().hide();
-          })
-        }
+    for (const mutation of mutationsList) {
+      console.log( mutation );
+      if (mutation.type === "childList") {
+        $(".class-reference-show-more").on("click", function (event) {
+          $(event.currentTarget)
+            .closest("table")
+            .find(".hidden-row-by-default")
+            .show();
+          $(event.currentTarget).hide().parent().hide();
+        });
+      }
     }
-};
+  };
 
-// Create an observer instance linked to the callback function
-const observer = new MutationObserver(callback);
+  if (targetNode) {
+    console.log( 'evaled' );
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+  
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
 
-// Start observing the target node for configured mutations
-observer.observe(targetNode, config);
-
-})
+  }
+});
 
 // Reveal advanced settings if version is clicked on 3 times
-jQuery(function($) {
+jQuery(function ($) {
   var advanced_counter = 0;
-  $('#footer-upgrade').on('click', function() {
+  $("#footer-upgrade").on("click", function () {
     advanced_counter++;
     if (advanced_counter >= 3) {
-      window.location.href = 'admin.php?page=cmb2_key_box_advanced_settings';
+      window.location.href = "admin.php?page=cmb2_key_box_advanced_settings";
     }
-  })
-})
-
+  });
+});

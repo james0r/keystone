@@ -62,6 +62,7 @@ function render_modules(){ ?>
               <option value="services-style-1"><?php _e('Services Style 1', 'keystone') ?></option>
               <option value="" disabled>-- <?php _e('Divider Sections', 'keystone') ?> --</option>
 							<option value="certs"><?php _e('Certificates', 'keystone') ?></option>
+							<option value="countup"><?php _e('Countup', 'keystone') ?></option>
 							<option value="cta-divider-3-column"><?php _e('CTA Divider 3 Column', 'keystone') ?></option>
 							<option value="cta-divider-appointment"><?php _e('CTA Divider Appointment', 'keystone') ?></option>
 							<option value="home-boxes-style-1"><?php _e('Home Boxes Style 1', 'keystone') ?></option>
