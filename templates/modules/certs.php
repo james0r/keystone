@@ -7,13 +7,13 @@ $instance = $template_args['instance'];
 
 $script_dependencies = [
     'slick',
-    'slick-lightbox'
+    'lightbox2'
 ];
 
 $style_dependencies = [
     'slick',
     'slick-theme',
-    'slick-lightbox',
+    'lightbox2',
     'module-certs'
 ];
 
@@ -29,8 +29,12 @@ $cert_array = keystone_meta_with_module_id('cmb2_id_field_certificate_file_list'
       <ul class="certs-slider-inner">
         <?php
           foreach ((array) $cert_array as $key => $cert) {
+              $title = get_the_title($key);
+              $url = wp_get_attachment_image_url($key, 'certificate');
               echo '<li class="cert-list-item">';
-              echo wp_get_attachment_image($key, [400, 308]);
+              echo '<a href="'.$url.'" data-lightbox="'.$key.'" data-title="'.$title.'">';
+              echo '<img src="'.$url.'" alt="'.$title.'" title="'.$title.'">';
+              echo '</a>';
               echo '</li>';
           }
         ?>
@@ -61,13 +65,9 @@ $cert_array = keystone_meta_with_module_id('cmb2_id_field_certificate_file_list'
                 infinite: true
               }
             }, {
-              breakpoint: 600,
+              breakpoint: 680,
               settings: "unslick"
             }]
-          })
-          .slickLightbox({
-            src: 'src',
-            itemSelector: '.cert-list-item img'
           });
       }
     });

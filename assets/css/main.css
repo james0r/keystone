@@ -706,12 +706,6 @@ h2, .h2 {
   width: 1px;
 }
 
-@media only screen and (min-height: 600px) {
-  .certs-slider-inner {
-    visibility: hidden;
-  }
-}
-
 /*----------------------------------------------------
 Layout Related Styles
 Ex. .container, .grid, .col

@@ -24,13 +24,16 @@ class Keystone_Dynamic_Scripts {
             echo  $this->add_script('slick-js', get_template_directory_uri() . '/assets/js/slick.js');
             break;
           case 'swiper-bundle':
-            echo  $this->add_script('slick-js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js');
+            echo  $this->add_script('swiper-bundle-js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js');
             break;
           case 'slick-lightbox':
-            echo  $this->add_script('slick-js', get_template_directory_uri() . '/assets/js/slick-lightbox.min.js');
+            echo  $this->add_script('slick-lightbox-js', get_template_directory_uri() . '/assets/js/slick-lightbox.min.js');
             break;
           case 'countup':
-            echo  $this->add_script('slick-js', get_template_directory_uri() . '/assets/js/countUp.min.js');
+            echo  $this->add_script('countup-js', get_template_directory_uri() . '/assets/js/countUp.min.js');
+            break;
+          case 'lightbox2':
+            echo  $this->add_script('lightbox2-js', get_template_directory_uri() . '/assets/js/lightbox.min.js');
             break;
           default:
           return false;

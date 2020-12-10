@@ -16,7 +16,7 @@ $box->add_field([
     'id'               => 'disable-easing',
     'desc'             => __('This causes the number to consistently increase until its reached its final state. By default, the number will gradually slow down or "ease" to its final state.', 'keystone'),
     'type'	            => 'checkbox',
-    'sanitization_cb'  => function ($value, $field_args, $field) {return is_null(value) ? 0 : value;},
+    'sanitization_cb'  => function ($value, $field_args, $field) {return is_null($value) ? 0 : $value;},
     'default'          => false, //If it's checked by default
     'active_value'     => true,
     'inactive_value'   => false
@@ -27,7 +27,7 @@ $box->add_field([
     'id'               => 'disable-grouping',
     'desc'             => __('With grouping disabled, a number will will look like 1234 instead of 1,234.', 'keystone'),
     'type'	            => 'checkbox',
-    'sanitization_cb'  => function ($value, $field_args, $field) {return is_null(value) ? 0 : value;},
+    'sanitization_cb'  => function ($value, $field_args, $field) {return is_null($value) ? 0 : $value;},
     'default'          => false, //If it's checked by default
     'active_value'     => true,
     'inactive_value'   => false

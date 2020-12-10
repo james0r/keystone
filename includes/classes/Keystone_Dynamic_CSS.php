@@ -34,6 +34,9 @@ class Keystone_Dynamic_CSS {
             case 'slick-lightbox':
               echo $this->addInlineStylesheet('slick-lightbox-css', get_stylesheet_directory_uri() . '/assets/css/slick-lightbox.css');
               break;
+            case 'lightbox2':
+              echo $this->addInlineStylesheet('lightbox2-css', get_stylesheet_directory_uri() . '/assets/css/lightbox.min.css');
+              break;
             case 'flaticon-dental-css':
               echo $this->addInlineStylesheet('flaticon-dental-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-dental.css');
               break;

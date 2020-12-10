@@ -35,7 +35,7 @@
   color: var(--keystone-body-text-color);
 }
 
-.services-style-1-module-container-inner .section-body-row .grid .services-item.flex:hover {
+.services-style-1-module-container-inner .section-body-row .grid .services-item.flex:hover, .services-style-1-module-container-inner .section-body-row .grid .services-item.flex:active, .services-style-1-module-container-inner .section-body-row .grid .services-item.flex:focus {
   text-decoration: none;
 }
 

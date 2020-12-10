@@ -41,7 +41,7 @@
           flex-direction: row;
           color: var(--keystone-body-text-color);
 
-          &:hover {
+          @include on-event {
             text-decoration: none;
           }
 

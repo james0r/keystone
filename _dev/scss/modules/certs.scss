@@ -13,18 +13,42 @@
       li {
         display: inline-block;
         margin: auto;
+        text-align: center;
 
         img {
+          display: block;
           margin: auto;
+          height: 154px;
+          width: auto;
+        }
+
+        a {
+
+          @include on-event {
+            position: relative;
+
+            &:after {
+              content: "\f002";
+              background: rgba(0,0,0, .7);
+              position: absolute;
+              font-family: "Font Awesome 5 Free";
+              top: 0;
+              left: 0;
+              bottom: 0;
+              right: 0;
+              z-index: 5;
+            }
+          }
         }
       }
 
-      @media only screen and (max-width: 600px) {
+      @media only screen and (max-width: 680px) {
         display: flex;
         flex-wrap: wrap;
+        column-gap: 15px;
 
         li {
-          margin-top: 30px;
+          margin: 15px auto;
         }
       }
     }
