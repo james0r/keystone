@@ -26,7 +26,7 @@ class Keystone_Body_Classes {
 
     private function get_options_map() {
       return [
-          ['cmb2_key_header_styles_box', 'cmb2_id_header_layout_style'],
+          ['cmb2_key_header_styles_box', 'cmb2_id_header_group_header_style'],
           ['cmb2_key_blog_box', 'cmb2_id_blog_layout_style'],
           ['cmb2_key_footer_styles_box', 'cmb2_id_footer_style'],
           ['cmb2_key_box_advanced_settings', 'cmb2_id_page_title_style'],

@@ -18,14 +18,5 @@
   <!-- Begin wrapper for use with boxed layouts -->
   <div id="wrapper">
     <?php keystone_get_template('preloader') ?>
-    <header id="header" class="header">
-      <div class="header-top">
-
-      </div>
-      <div class="header-middle">
-
-      </div>
-      <div class="header-nav">
-
-      </div>
-    </header>
+    <?php Keystone()->header->render_header(); ?>
+    <?php Keystone()->cmb2->fetch_cmb2_box_from_db('cmb2_key_header_styles_box'); ?>

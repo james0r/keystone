@@ -49,6 +49,7 @@ class Keystone extends Wauble {
             self::$instance->admin = new Keystone_Admin;
             self::$instance->images = new Keystone_Images;
             self::$instance->a11y = new Keystone_A11y;
+            self::$instance->header = new Keystone_Header;
         }
 
         return self::$instance;

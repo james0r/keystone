@@ -32,8 +32,9 @@ $cert_array = keystone_meta_with_module_id('cmb2_id_field_certificate_file_list'
               $title = get_the_title($key);
               $url = wp_get_attachment_image_url($key, 'certificate');
               echo '<li class="cert-list-item">';
-              echo '<a href="'.$url.'" data-lightbox="'.$key.'" data-title="'.$title.'">';
+              echo '<a href="'.$url.'" data-lightbox="certificate-lightbox-group" data-title="'.$title.'">';
               echo '<img src="'.$url.'" alt="'.$title.'" title="'.$title.'">';
+              echo '<i class="fas fa-search"></i>';
               echo '</a>';
               echo '</li>';
           }
@@ -71,5 +72,11 @@ $cert_array = keystone_meta_with_module_id('cmb2_id_field_certificate_file_list'
           });
       }
     });
+
+    lightbox.option({
+      'resizeDuration': 500,
+      'wrapAround': true,
+      'showImageNumberLabel': false
+    })
   })
 </script>

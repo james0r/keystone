@@ -6,7 +6,7 @@
 $prefix = 'cmb2_id_header_';
 
 $cmb2_box_header_options = new_cmb2_box([
-    'id'           => 'cmb2_id_header_styles_box',
+    'id'           => $prefix.'styles_box',
     'option_key'   => 'cmb2_key_header_styles_box',
     'title'        => __('Header', 'keystone'),
     'object_types' => ['options-page'],
@@ -14,7 +14,7 @@ $cmb2_box_header_options = new_cmb2_box([
 ]);
 
 $cmb2_group_header_style = $cmb2_box_header_options->add_field([
-    'id'          => $prefix . 'group_header_style',
+    'id'          => $prefix . 'group_style',
     'type'        => 'group',
     // 'description' => __( 'Generates reusable form entries', 'cmb2' ),
     'repeatable'  => false, // use false if you want non-repeatable group
@@ -143,34 +143,34 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
 ]);
 
 $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
-  'name'        => __('Top Bar Message Icon Classes', 'keystone'),
-  'id'          => 'top-bar-message-icon',
-  'desc'        => __('For example:', 'keystone') . ' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
-  'type'        => 'text',
-  'after_field' => Keystone()->icons->getIconReferenceTable(),
-  'classes'     => 'icon-field-table',
-  'before'  => '<img src="' . get_template_directory_uri() . '/assets/images/meta/top-bar-message-icon-screenshot.jpg' . '" height="100" width="auto"><br><br>'
+    'name'        => __('Top Bar Message Icon Classes', 'keystone'),
+    'id'          => 'top-bar-message-icon',
+    'desc'        => __('For example:', 'keystone') . ' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
+    'type'        => 'text',
+    'after_field' => Keystone()->icons->getIconReferenceTable(),
+    'classes'     => 'icon-field-table',
+    'before'      => '<img src="' . get_template_directory_uri() . '/assets/images/meta/top-bar-message-icon-screenshot.jpg' . '" height="100" width="auto"><br><br>'
 ]);
 
 $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
-	'name'    => __('Top Bar Message Text', 'keystone'),
-	'desc'    => __('This field may contain any of the following HTML tags ' . esc_html('<span><p><a><br><br/><b><strong>') . '.', 'keystone'),
-	'id'      => 'top-bar-message-text',
-  'type'    => 'text',
-  'sanitization_cb' => 'keystone_sanitize_text_callback'
+    'name'            => __('Top Bar Message Text', 'keystone'),
+    'desc'            => __('This field may contain any of the following HTML tags ' . esc_html('<span><p><a><br><br/><b><strong>') . '.', 'keystone'),
+    'id'              => 'top-bar-message-text',
+    'type'            => 'text',
+    'sanitization_cb' => 'keystone_sanitize_text_callback'
 ]);
 
-$cmb2_box_header_options->add_group_field($cmb2_group_header_style, array(
-	'name'    => __('Social Links To Display In Header', 'keystone'),
-	'desc'    => __('Links must be provided in on the Social Links settings page under Keystone Options. If no link is provided, If no links are provided in Keystone Options > Social Links, no options will be available here.', 'keystone'),
-	'id'      => 'social_links_to_display',
-  'type'    => 'multicheck',
-  'select_all_button' => false,
-  'options_cb' => 'get_entered_social_links_array',
-) );
+$cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
+    'name'              => __('Social Links To Display In Header', 'keystone'),
+    'desc'              => __('Links must be provided in on the Social Links settings page under Keystone Options. If no link is provided, If no links are provided in Keystone Options > Social Links, no options will be available here.', 'keystone'),
+    'id'                => 'social_links_to_display',
+    'type'              => 'multicheck',
+    'select_all_button' => false,
+    'options_cb'        => 'get_entered_social_links_array',
+]);
 
 $cmb2_header_widget_1 = $cmb2_box_header_options->add_field([
-    'id'          => 'cmb2_id_group_header_widget_1',
+    'id'          => $prefix . 'group_widget_1',
     'type'        => 'group',
     // 'description' => __( 'Generates reusable form entries', 'cmb2' ),
     'repeatable'  => false, // use false if you want non-repeatable group
@@ -206,7 +206,7 @@ $cmb2_box_header_options->add_group_field($cmb2_header_widget_1, [
 ]);
 
 $cmb2_header_widget_2 = $cmb2_box_header_options->add_field([
-    'id'          => 'cmb2_id_group_header_widget_2',
+    'id'          => $prefix . 'group_widget_2',
     'type'        => 'group',
     // 'description' => __( 'Generates reusable form entries', 'cmb2' ),
     'repeatable'  => false, // use false if you want non-repeatable group
@@ -242,7 +242,7 @@ $cmb2_box_header_options->add_group_field($cmb2_header_widget_2, [
 ]);
 
 $cmb2_header_widget_3 = $cmb2_box_header_options->add_field([
-    'id'          => 'cmb2_id_group_header_widget_3',
+    'id'          => $prefix . 'group_widget_3',
     'type'        => 'group',
     // 'description' => __( 'Generates reusable form entries', 'cmb2' ),
     'repeatable'  => false, // use false if you want non-repeatable group
@@ -278,7 +278,7 @@ $cmb2_box_header_options->add_group_field($cmb2_header_widget_3, [
 ]);
 
 $cmb2_header_cta = $cmb2_box_header_options->add_field([
-    'id'          => $prefix . 'header-cta',
+    'id'          => $prefix . 'group_cta',
     'type'        => 'group',
     // 'description' => __( 'Generates reusable form entries', 'cmb2' ),
     'repeatable'  => false, // use false if you want non-repeatable group
@@ -304,69 +304,69 @@ $cmb2_box_header_options->add_group_field($cmb2_header_cta, [
     'protocols' => ['http', 'https', 'ftp', 'ftps', 'mailto', 'news', 'irc', 'gopher', 'nntp', 'feed', 'telnet'], // Array of allowed protocols
 ]);
 
-$cmb2_header_advanced= $cmb2_box_header_options->add_field([
-  'id'          => $prefix.'group_advanced',
-  'type'        => 'group',
-  'repeatable'  => false, // use false if you want non-repeatable group
-  'options'     => [
-      'group_title'       => __('Header Advanced Settings', 'keystone'), // since version 1.1.4, {#} gets replaced by row number
-      'sortable'          => false,
-      'closed'         => true, // true to have the groups closed by default
-      // 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
-  ],
+$cmb2_header_advanced = $cmb2_box_header_options->add_field([
+    'id'          => $prefix . 'group_advanced',
+    'type'        => 'group',
+    'repeatable'  => false, // use false if you want non-repeatable group
+    'options'     => [
+        'group_title'       => __('Header Advanced Settings', 'keystone'), // since version 1.1.4, {#} gets replaced by row number
+        'sortable'          => false,
+        'closed'            => true, // true to have the groups closed by default
+        // 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
+    ],
 ]);
 
-$cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
-  'name'    => __('Disable Mega Menu', 'keystone'),
-  'desc'    => __('The Mega Menu is a large drop-down menu that appears when you hover over its button in the primary header menu of your site.', 'keystone'),
-  'type'    => 'checkbox',
-  'default' => false,
-  'id'      => $prefix . 'disable_mega_menu'
+$cmb2_box_header_options->add_group_field($cmb2_header_advanced, [
+    'name'    => __('Disable Mega Menu', 'keystone'),
+    'desc'    => __('The Mega Menu is a large drop-down menu that appears when you hover over its button in the primary header menu of your site.', 'keystone'),
+    'type'    => 'checkbox',
+    'default' => false,
+    'id'      => $prefix . 'disable_mega_menu'
 ]);
 
-$cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
-  'name'    => __('Hide Search Icon', 'keystone'),
-  'desc'    => __('Users will not have the ability to search your site from the header if you disable this.', 'keystone'),
-  'type'    => 'checkbox',
-  'default' => false,
-  'id'      => $prefix . 'disable_header_search'
+$cmb2_box_header_options->add_group_field($cmb2_header_advanced, [
+    'name'    => __('Hide Search Icon', 'keystone'),
+    'desc'    => __('Users will not have the ability to search your site from the header if you disable this.', 'keystone'),
+    'type'    => 'checkbox',
+    'default' => false,
+    'id'      => $prefix . 'disable_header_search'
 ]);
 
-$cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
-  'name'    => __('Hide Shopping Cart Icon', 'keystone'),
-  'desc'    => __('This only applies if you have enabled E-commerce functionality on your site.', 'keystone'),
-  'type'    => 'checkbox',
-  'default' => false,
-  'id'      => $prefix . 'disable_cart_icon'
+$cmb2_box_header_options->add_group_field($cmb2_header_advanced, [
+    'name'    => __('Hide Shopping Cart Icon', 'keystone'),
+    'desc'    => __('This only applies if you have enabled E-commerce functionality on your site.', 'keystone'),
+    'type'    => 'checkbox',
+    'default' => false,
+    'id'      => $prefix . 'disable_cart_icon'
 ]);
 
-$cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
-  'name'    => __('Disable Top Bar', 'keystone'),
-  'desc'    => __('This disables the thin bar at the very top of the page that sometimes contains business hours and/or a navigation menu. This setting only applies if the header style you have selected includes a top bar.', 'keystone'),
-  'type'    => 'checkbox',
-  'default' => false,
-  'id'      => $prefix . 'disable_top_bar'
+$cmb2_box_header_options->add_group_field($cmb2_header_advanced, [
+    'name'    => __('Disable Top Bar', 'keystone'),
+    'desc'    => __('This disables the thin bar at the very top of the page that sometimes contains business hours and/or a navigation menu. This setting only applies if the header style you have selected includes a top bar.', 'keystone'),
+    'type'    => 'checkbox',
+    'default' => false,
+    'id'      => $prefix . 'disable_top_bar'
 ]);
 
-$cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
-  'name'    => __('Override Top Bar Color', 'keystone'),
-  'desc'    => __('If this setting is checked, the color in the next input will be used for the top bar background.', 'keystone'),
-  'type'    => 'checkbox',
-  'default' => false,
-  'id'      => $prefix . 'disable_top_bar'
+$cmb2_box_header_options->add_group_field($cmb2_header_advanced, [
+    'name'    => __('Override Top Bar Color', 'keystone'),
+    'desc'    => __('If this setting is checked, the color in the next input will be used for the top bar background.', 'keystone'),
+    'type'    => 'checkbox',
+    'default' => false,
+    'id'      => $prefix . 'disable_top_bar'
 ]);
 
-$cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
-  'name'    => __('Disable Language Drop-Down Menu', 'keystone'),
-  'desc'    => __('If this setting is checked, the multilingual drop-down options will be hidden on header styles that include it.', 'keystone'),
-  'type'    => 'checkbox',
-  'default' => false,
-  'id'      => $prefix . 'disable_multilingual'
+$cmb2_box_header_options->add_group_field($cmb2_header_advanced, [
+    'name'    => __('Disable Language Drop-Down Menu', 'keystone'),
+    'desc'    => __('If this setting is checked, the multilingual drop-down options will be hidden on header styles that include it.', 'keystone'),
+    'type'    => 'checkbox',
+    'default' => false,
+    'id'      => $prefix . 'disable_multilingual'
 ]);
 
-$cmb2_box_header_options->add_group_field( $cmb2_header_advanced, [
-  'name'    => __('Top Bar Color Override', 'keystone'),
-  'default' => '#1196CC',
-  'id'      => $prefix . 'top_bar_color_override',
-  'type'    => 'colorpicker',
+$cmb2_box_header_options->add_group_field($cmb2_header_advanced, [
+    'name'    => __('Top Bar Color Override', 'keystone'),
+    'default' => '#1196CC',
+    'id'      => $prefix . 'top_bar_color_override',
+    'type'    => 'colorpicker',
 ]);

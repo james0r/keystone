@@ -10,6 +10,8 @@
 .certs-module-container {
   &-inner {
     .certs-slider-inner {
+      visibility: hidden;
+
       li {
         display: inline-block;
         margin: auto;
@@ -22,35 +24,50 @@
           width: auto;
         }
 
+        
         a {
-
+          i {
+            visibility: hidden;
+            position: absolute;
+            background: transparent;
+          }
           @include on-event {
             position: relative;
 
-            &:after {
-              content: "\f002";
-              background: rgba(0,0,0, .7);
-              position: absolute;
-              font-family: "Font Awesome 5 Free";
+            i {
+              visibility: visible;
               top: 0;
-              left: 0;
               bottom: 0;
+              left: 0;
               right: 0;
-              z-index: 5;
+              background: rgba(0,0,0,.5);
+              position: absolute;
+              color: white;
+              transition: background .5s;
+
+              &::before {
+                font-size: 28px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                opacity: .9;
+                transform: translate(-50%, -50%);
+              }
             }
           }
         }
       }
-
       @media only screen and (max-width: 680px) {
         display: flex;
         flex-wrap: wrap;
         column-gap: 15px;
-
+        visibility: visible;
+  
         li {
           margin: 15px auto;
         }
       }
     }
+
   }
 }

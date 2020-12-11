@@ -143,4 +143,9 @@ class Keystone_CMB2 {
           return $value;
         }
     }
+
+    public function fetch_cmb2_box_from_db($box_key) {
+      $box_values = get_option($box_key);
+      var_dump($box_values);
+    }
 }

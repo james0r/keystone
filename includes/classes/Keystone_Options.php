@@ -34,8 +34,8 @@ class Keystone_Options {
             'blog',
             'header',
             'footer',
-            'ecommerce',
-            'advanced',
+            'demos',
+            'advanced'
         ];
     }
 }

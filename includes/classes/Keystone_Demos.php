@@ -6,6 +6,5 @@
 
 class Keystone_Demos {
     public function __construct() {
-   
     }
 }
