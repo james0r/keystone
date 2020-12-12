@@ -19,4 +19,3 @@
   <div id="wrapper">
     <?php keystone_get_template('preloader') ?>
     <?php Keystone()->header->render_header(); ?>
-    <?php Keystone()->cmb2->fetch_cmb2_box_from_db('cmb2_key_header_styles_box'); ?>

@@ -177,7 +177,6 @@ function delete_module() {
     wp_redirect('/wp-admin/admin.php?page=manage-modules&editing=' . $editing);
     exit;
 }
-
 add_action('wp_ajax_update_module_order', 'update_module_order');
 function update_module_order() {
     global $wpdb;
