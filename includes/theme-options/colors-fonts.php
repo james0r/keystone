@@ -11,7 +11,7 @@ $args = [
     'object_types' => ['options-page'],
     'option_key'   => 'cmb_theme_colors',
     'parent_slug'  => 'cmb_main_options',
-    'title'        => 'Color & Typography'
+    'title'        => __('Color & Typography', 'keystone')
 ];
 
 $cmb_theme_colors = new_cmb2_box($args);

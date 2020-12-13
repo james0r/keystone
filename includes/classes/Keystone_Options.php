@@ -34,7 +34,6 @@ class Keystone_Options {
             'blog',
             'header',
             'footer',
-            'demos',
             'advanced'
         ];
     }
