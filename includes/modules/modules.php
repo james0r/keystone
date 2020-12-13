@@ -29,17 +29,6 @@ foreach ($modules as $m) {
     //for all blocks
 
     switch ($m->module) {
-      case 'name':
-
-          require __DIR__ . '/metaboxes/name.php';
-
-          break;
-
-      case 'date':
-
-          require __DIR__ . '/metaboxes/date.php';
-
-          break;
       case 'about':
 
           require __DIR__ . '/metaboxes/about.php';
