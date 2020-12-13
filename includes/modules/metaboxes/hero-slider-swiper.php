@@ -1,8 +1,9 @@
 <?php
-
 /**
 * Metabox fields specific to the swiper slider
 */
+
+$prefix = 'cmb2_id_field_swiper_';
 
 $box->add_field([
     'name' => __('Slider Options', 'keystone'),
@@ -13,7 +14,7 @@ $box->add_field([
 $box->add_field([
     'name'             => __('Show Slider Options', 'keystone'),
     'type'             => 'switch',
-    'id'               => 'cmb2_id_field_show_swiper_options' . $suffix,
+    'id'               => $prefix . 'show_swiper_options' . $suffix,
     'sanitization_cb'  => 'sanitize_checkbox',
     'default'          => false, //If it's checked by default
     'active_value'     => true,
@@ -21,19 +22,19 @@ $box->add_field([
 ]);
 
 $box->add_field([
-  'name'       => __('Tint Background Image', 'keystone'),
-  'desc'       => __('0 is no tint and 100 will make the image black. Default is 35.', 'keystone'),
-  'id'         => 'cmb2_id_field_swiper_image_tint' . $suffix,
-  'type'       => 'text_small',
-  'default'    => 35,
-  'attributes' => [
-      'type'                    => 'number',
-      'pattern'                 => '\d*',
-      'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
-      'data-conditional-value'  => 'true',
-  ],
-  'sanitization_cb' => 'absint',
-  'escape_cb'       => 'absint_with_default_fallback'
+    'name'       => __('Tint Background Image', 'keystone'),
+    'desc'       => __('0 is no tint and 100 will make the image black. Default is 35.', 'keystone'),
+    'id'         => $prefix . 'image_tint' . $suffix,
+    'type'       => 'text_small',
+    'default'    => 35,
+    'attributes' => [
+        'type'                    => 'number',
+        'pattern'                 => '\d*',
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
+        'data-conditional-value'  => 'true',
+    ],
+    'sanitization_cb' => 'absint',
+    'escape_cb'       => 'absint_with_default_fallback'
 ]);
 
 $box->add_field([
@@ -46,7 +47,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -60,7 +61,7 @@ $box->add_field([
     'attributes' => [
         'type'                    => 'number',
         'pattern'                 => '\d*',
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
     'sanitization_cb' => 'absint',
@@ -77,7 +78,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -92,7 +93,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -106,7 +107,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -121,7 +122,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -136,7 +137,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -156,7 +157,7 @@ $box->add_field([
         'scrollbar'        => __('Scrollbar', 'keystone'),
     ],
     'attributes'      => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -171,7 +172,7 @@ $box->add_field([
         'vertical'   => __('Vertical', 'keystone'),
     ],
     'attributes'      => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -185,7 +186,7 @@ $box->add_field([
     'attributes'    => [
         'type'                    => 'number',
         'pattern'                 => '\d*',
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
     'sanitization_cb' => 'absint',
@@ -201,7 +202,7 @@ $box->add_field([
     'attributes'      => [
         'type'                    => 'number',
         'pattern'                 => '\d*',
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
     'sanitization_cb' => 'absint',
@@ -218,7 +219,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -233,7 +234,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -248,7 +249,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);
@@ -263,7 +264,7 @@ $box->add_field([
     'inactive_value'   => false,
     'sanitization_cb'  => 'sanitize_checkbox',
     'attributes'       => [
-        'data-conditional-id'     => 'cmb2_id_field_show_swiper_options' . $suffix,
+        'data-conditional-id'     => $prefix . 'show_swiper_options' . $suffix,
         'data-conditional-value'  => 'true',
     ],
 ]);

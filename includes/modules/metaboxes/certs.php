@@ -1,9 +1,11 @@
 <?php
 
+$prefix = 'cmb2_id_field_certificates_';
+
 $box->add_field( array(
 	'name' => __('Certificate Images', 'keystone'),
 	'desc' => __('Add as many images as you would like. Recommended image width is between 600px and 1000px. 4 images will be shown on the screen at a time for visitors on desktop computers, 1 for mobile phones.', 'keystone'),
-	'id'   => 'cmb2_id_field_certificate_file_list'.$suffix,
+	'id'   => $prefix.'file_list'.$suffix,
 	'type' => 'file_list',
 	'preview_size' => array( 200, 154 ), // Default: array( 50, 50 )
 	'query_args' => array( 'type' => 'image' ), // Only images attachment

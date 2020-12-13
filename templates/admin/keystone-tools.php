@@ -119,8 +119,8 @@
     </div>
   </section>
   <hr>
-  <section id="module-meta-importer">
-    <h2><?php _e('Import Module Data', 'keystone'); ?>
+  <section id="module-meta-exporter">
+    <h2><?php _e('Export Dynamic Module Data', 'keystone'); ?>
     </h2>
     <div class="module-page-select">
       <label for="posts"><?php _e('Select a post: ', 'keystone')?></label>

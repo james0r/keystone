@@ -13,7 +13,7 @@ $box->add_field([
 
 $box->add_field([
     'name'             => __('Disable Easing', 'keystone'),
-    'id'               => 'disable-easing',
+    'id'               => $prefix.'disable-easing'.$suffix,
     'desc'             => __('This causes the number to consistently increase until its reached its final state. By default, the number will gradually slow down or "ease" to its final state.', 'keystone'),
     'type'	            => 'checkbox',
     'sanitization_cb'  => function ($value, $field_args, $field) {return is_null($value) ? 0 : $value;},
@@ -24,7 +24,7 @@ $box->add_field([
 
 $box->add_field([
     'name'             => __('Disable Grouping', 'keystone'),
-    'id'               => 'disable-grouping',
+    'id'               => $prefix.'disable-grouping'.$suffix,
     'desc'             => __('With grouping disabled, a number will will look like 1234 instead of 1,234.', 'keystone'),
     'type'	            => 'checkbox',
     'sanitization_cb'  => function ($value, $field_args, $field) {return is_null($value) ? 0 : $value;},
@@ -48,7 +48,7 @@ $box->add_field([
 ]);
 
 $countup_group = $box->add_field([
-    'id'          => $prefix . 'group',
+    'id'          => $prefix . 'group'.$suffix,
     'type'        => 'group',
     'description' => __('Create either 3 or 4 count-up items.', 'keystone'),
     // 'repeatable'  => false, // use false if you want non-repeatable group
