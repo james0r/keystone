@@ -5,7 +5,7 @@
 
 $instance = $template_args['instance'];
 
-$meta_prefix = 'cmb2_id_field_services_style_1_';
+$meta_prefix = 'cmb2_id_field_services_1_';
 
 $script_dependencies = [
 
@@ -41,7 +41,7 @@ apply_filters('render_dynamic_css', $style_dependencies);
     <div class="section-body-row">
       <div class="grid">
       <?php $services_items = keystone_meta_with_module_id($meta_prefix.'services_group', $instance); ?>
-      <?php foreach($services_items as $item) : ?>
+      <?php if ($services_items) : foreach($services_items as $item) : ?>
         <a href="<?php echo $item['link']; ?>" class="services-item flex">
           <div class="start">
             <div class="icon-wrapper">
@@ -57,7 +57,7 @@ apply_filters('render_dynamic_css', $style_dependencies);
             </p>
           </div>
         </a>
-      <?php endforeach; ?>
+      <?php endforeach; endif; ?>
       </div>
     </div>
   </div>
