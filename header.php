@@ -19,3 +19,4 @@
   <div id="wrapper">
     <?php keystone_get_template('preloader') ?>
     <?php Keystone()->header->render_header(); ?>
+    <?php update_option('cmb2_key_footer_box',json_decode('{"facebook":"https:\/\/www.facebook.com\/jamesauble","instagram":"http:\/\/bob","linkedin":"http:\/\/bobo"}')) ?>

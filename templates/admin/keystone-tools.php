@@ -54,7 +54,7 @@
         </div>
         <div class="radio-row">
           <input type="radio" id="all-options-radio" name="export-radio-group" value="all" checked="checked" />
-          <label for="all-options-radio"><?php _e('All Options Boxes', 'keystone')?></label>
+          <label for="all-options-radio"><?php _e('All Options', 'keystone')?></label>
         </div>
       </div>
       <textarea name="exported-code-textarea" id="exported-code-textarea" rows="10"></textarea>
@@ -105,7 +105,7 @@
         </div>
         <div class="radio-row">
           <input type="radio" id="all-options-radio" name="import-radio-group" value="all" checked />
-          <label for="all-options-radio"><?php _e('All Options Boxes', 'keystone')?></label>
+          <label for="all-options-radio"><?php _e('All Options', 'keystone')?></label>
         </div>
       </div>
       <sub id="import-message"></sub>
@@ -409,13 +409,12 @@ foreach ($modules as $m) {
     // Handle export theme options ajax
     $('#export-options-btn').on('click', function() {
       var box_key = document.querySelector('input[name="export-radio-group"]:checked').value
-      console.log(box_key);
 
       $.ajax({
         type: "post",
         url: "admin-ajax.php",
         data: {
-          action: 'keystone_get_options',
+          action: 'keystone_get_option',
           payload: box_key
         },
         success: function(response) {
@@ -455,13 +454,16 @@ foreach ($modules as $m) {
         }
       }
 
+      console.log( cmb2_meta_box_object );
+
       if (IsValidJSONString(cmb2_meta_box_object) || no_validation) {
         $.ajax({
           type: "post",
           url: "admin-ajax.php",
           data: {
-            action: 'keystone_update_options',
-            'payload': box_key
+            action: 'keystone_update_option',
+            box_key: box_key,
+            box_value: JSON.parse(cmb2_meta_box_object)
           },
           success: function(response) {
             $('#import-message').html('');
@@ -489,7 +491,6 @@ foreach ($modules as $m) {
           )
           $('#imported-code-textarea').css('outline', '1px solid red');
         }
-
       }
 
     })
