@@ -3,7 +3,7 @@
 * Home Boxes Style 1 Module Meta Fields
 */
 
-$prefix = 'cmb2_id_field_home_boxes_1_';
+$prefix = 'cmb2_id_field_hbs1_';
 
 $box->add_field([
     'name' => __('Blurb Box', 'keystone'),

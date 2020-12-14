@@ -14,7 +14,15 @@ class Keystone_Helpers {
     }
 
     public static function is_url($value) {
-      return parse_url($value, PHP_URL_SCHEME) && parse_url($value, PHP_URL_HOST);
+        return parse_url($value, PHP_URL_SCHEME) && parse_url($value, PHP_URL_HOST);
+    }
+
+    public static function endsWith($haystack, $needle) {
+        $length = strlen($needle);
+        if (!$length) {
+            return true;
+        }
+        return substr($haystack, -$length) === $needle;
     }
 }
 

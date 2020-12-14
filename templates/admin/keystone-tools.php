@@ -59,7 +59,7 @@
       </div>
       <textarea name="exported-code-textarea" id="exported-code-textarea" rows="10"></textarea>
       <sub><?php _e('This data can be later imported to restore settings.', 'keystone') ?></sub>
-      <button tabindex="0" type="submit" class="button button-primary button-large export-btn"><?php _e('Export', 'keystone') ?></button>
+      <button tabindex="0" type="submit" class="button button-primary button-large export-btn" id="export-options-btn"><?php _e('Export', 'keystone') ?></button>
     </div>
   </section>
   <hr>
@@ -109,7 +109,7 @@
       </div>
       <sub id="import-message"></sub>
       <textarea name="imported-code-textarea" id="imported-code-textarea" rows="10"></textarea>
-      <button tabindex="0" type="submit" class="button button-primary button-large import-btn"><?php _e('Import', 'keystone') ?></button>
+      <button tabindex="0" type="submit" class="button button-primary button-large import-btn" id="import-options-btn"><?php _e('Import', 'keystone') ?></button>
       <sub><?php _e('Paste in JSON CMB2 option data.', 'keystone') ?>
         <span style="color: red; font-weight: bold;"><?php _e('WARNING: YOU WILL LOSE PREVIOUSLY ENTERED CONTENT.', 'keystone') ?></span></sub>
       <div class="checkbox-row">
@@ -123,46 +123,44 @@
     <h2><?php _e('Export Dynamic Module Data', 'keystone'); ?>
     </h2>
     <div class="module-page-select">
-      <label for="posts"><?php _e('Select a post: ', 'keystone')?></label>
-      <select name="posts" id="posts">
+      <label for="exporter-posts"><?php _e('Select a post: ', 'keystone')?></label>
+      <select name="exporter-posts" id="exporter-posts">
         <?php
           global $wpdb;
         $modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
-        $posts_array = array();
+        $posts_array = [];
         foreach ($modules as $m) {
-          if (!$posts_array[$m->page] == true) {
-            echo '<option value="' . $m->page . '">POST ID: ' . $m->page . '</option>';
-            $posts_array[$m->page] = true;
-          } else {
-          }
+            if (!$posts_array[$m->page] == true) {
+                echo '<option value="' . $m->page . '">POST ID: ' . $m->page . '</option>';
+                $posts_array[$m->page] = true;
+            } else {
+            }
         }
         ?>
       </select>
     </div>
     <div class="module-module-select">
       <label for="modules"><?php _e('Select a module: ', 'keystone')?></label>
-      <select name="modules" id="modules">
+      <select name="exporter-modules" id="exporter-modules">
         <?php
           global $wpdb;
         $modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
         foreach ($modules as $m) {
-            echo '<option data-page="' . $m->page . '" value="jquery">' . __('Module: ', 'keystone') . $m->module . __(' / Module ID: ', 'keystone') . $m->id . '</option>';
+            echo '<option data-page="' . $m->page . '" data-module-id="'.$m->id.'" value="jquery">' . __('Module: ', 'keystone') . $m->module . __(' / Module ID: ', 'keystone') . $m->id . '</option>';
         }
         ?>
       </select>
     </div>
-    <textarea name="module-import-textarea" id="module-import-textarea" rows="10"></textarea>
-    <button tabindex="0" type="submit" class="button button-primary button-large import-btn"><?php _e('Import', 'keystone') ?></button>
-    <sub><?php _e('Paste in JSON CMB2 module data.', 'keystone') ?>
-      <span style="color: red; font-weight: bold;"><?php _e('WARNING: YOU WILL LOSE PREVIOUSLY ENTERED CONTENT.', 'keystone') ?></span>
-    </sub>
+    <textarea name="module-export-textarea" id="module-export-textarea" rows="10"></textarea>
+    <button tabindex="0" type="submit" id="export-module-btn"
+      class="button button-primary button-large export-btn"><?php _e('Export', 'keystone') ?></button>
+    <sub><?php _e('This data can be later imported to restore settings.', 'keystone') ?></sub>
   </section>
 </div>
 
 <style>
-
-  select#posts,
-  label[for="posts"] {
+  select#exporter-posts,
+  label[for="exporter-posts"] {
     margin-bottom: 8px;
     display: inline-block;
   }
@@ -269,11 +267,12 @@
 <script>
   (function($) {
 
-    $('select#posts').on('load change', function (event){
+    // Handle dynamic select elements for Export Dynamic Module Data section 
+    $('#module-meta-exporter select#exporter-posts').on('change', function(event) {
       var page_id = $(event.currentTarget).val();
       var first = true;
 
-      $('select#modules option').each(function(index) {
+      $('select#exporter-modules option').each(function(index) {
         var active_module = $(this).data('page') == page_id;
 
         if (active_module) {
@@ -286,9 +285,27 @@
           $(this).hide();
         }
       })
+    }).trigger('change');
+
+    // Handle module meta export request
+    $('#export-module-btn').on('click', function() {
+      var module_id = $('#exporter-modules option:selected').data('module-id');
+
+      $.ajax({
+        type: "post",
+        url: "admin-ajax.php",
+        data: {
+          action: 'keystone_get_module_meta',
+          payload: module_id
+        },
+        success: function(response) {
+          $('#module-export-textarea').val(response);
+        }
+      });
     })
 
-    $('.export-btn').on('click', function() {
+    // Handle export theme options ajax
+    $('#export-options-btn').on('click', function() {
       var box_key = document.querySelector('input[name="export-radio-group"]:checked').value
       console.log(box_key);
 
@@ -305,6 +322,7 @@
       });
     })
 
+    // Helper method to client-side validate JSON string
     function IsValidJSONString(str) {
       try {
         JSON.parse(str);
@@ -314,11 +332,13 @@
       return true;
     }
 
+    // Clear error alerts when user re-enters data in theme options input field
     $('#imported-code-textarea').on('keyup', function() {
       $('#import-message').html('');
       $('#imported-code-textarea').css('outline', 'none');
     })
 
+    // Handle importing of theme option data
     $('.import-btn').on('click', function() {
       var cmb2_meta_box_object = $('#imported-code-textarea').val();
       var no_validation = document.querySelector('#disable-json-validation-checkbox').checked;

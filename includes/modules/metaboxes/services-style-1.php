@@ -1,6 +1,6 @@
 <?php
 
-$prefix = 'cmb2_id_field_services_style_1_';
+$prefix = 'cmb2_id_field_services_1_';
 
 $box->add_field([
     'name'    => __('Section Title', 'keystone'),
@@ -51,8 +51,8 @@ $services_group = $box->add_field( array(
 
 $box->add_group_field($services_group, [
   'name'        => __('Icon Classes', 'keystone'),
-  'id'          => 'icon',
   'desc'        => __('For example:', 'keystone') . ' <b>fas fa-camera</b>' . '<br><br>' . __('To reference an icon, you need to know two bits of information. 1) its name, prefixed with fa- (if you choose a Font Awesome Icon) and 2) the style you want to use’s corresponding prefix**. For icons from the Flaticon set you only need to enter a single class. Example: .flaticon-dental-amalgam-capsule', 'keystone'),
+  'id'          => 'icon',
   'type'        => 'text',
   'after_field' => Keystone()->icons->getIconReferenceTable(),
   'classes'     => 'icon-field-table'
