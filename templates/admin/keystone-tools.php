@@ -409,13 +409,15 @@
     // Handle module meta export request
     $('#export-module-btn').on('click', function() {
       var module_id = $('#exporter-modules option:selected').data('module-id');
+      var page_selection = $('#exporter-posts option:selected').val();
 
       $.ajax({
         type: "post",
         url: "admin-ajax.php",
         data: {
           action: 'keystone_get_module_meta',
-          payload: module_id
+          payload: module_id,
+          page_selection: page_selection
         },
         success: function(response) {
           $('#module-export-textarea').val(response);
