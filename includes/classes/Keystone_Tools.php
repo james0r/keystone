@@ -94,7 +94,11 @@ class Keystone_Tools {
         // Rest hook takes module id as single argument
         if (isset($_POST)) {
             $module_id = $_POST['payload'];
-            echo $this->keystone_module_meta_from_instance_id($module_id);
+            if ($module_id == 'all') {
+              
+            } else {
+              echo $this->keystone_module_meta_from_instance_id($module_id);
+            }
         }
 
         // Don't forget to stop execution afterward.
@@ -106,8 +110,7 @@ class Keystone_Tools {
         $module = $wpdb->get_results('SELECT * FROM modules WHERE id = ' . (int)$module_id, 'ARRAY_A')[0];
         $post_meta = get_post_meta($module['page']);
 
-        error_log(print_r($post_meta, true));
-
+        // Filter out module values from page meta
         $post_meta_filtered = array_filter($post_meta, function ($k) use ($module_id) {
             $ending = '_' . (string)$module_id;
             return Keystone_Helpers::endsWith($k, $ending);

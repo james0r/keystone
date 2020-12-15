@@ -128,29 +128,30 @@
       <label for="exporter-posts"><?php _e('Select a post: ', 'keystone')?></label>
       <select name="exporter-posts" id="exporter-posts">
         <?php
-global $wpdb;
-$modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
-$posts_array = [];
-foreach ($modules as $m) {
-	if (!$posts_array[$m->page] == true) {
-		echo '<option value="' . $m->page . '">POST ID: ' . $m->page . '</option>';
-		$posts_array[$m->page] = true;
-	} else {
-	}
-}
-?>
+        global $wpdb;
+        $modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
+        $posts_array = [];
+        foreach ($modules as $m) {
+            if (!$posts_array[$m->page] == true) {
+                echo '<option value="' . $m->page . '">POST ID: ' . $m->page . '</option>';
+                $posts_array[$m->page] = true;
+            } 
+        }
+        echo '<option value="all">' . __('All Posts', 'keystone') . '</option>';
+        ?>
       </select>
     </div>
     <div class="module-module-select">
       <label for="exporter-modules"><?php _e('Select a module: ', 'keystone')?></label>
       <select name="exporter-modules" id="exporter-modules">
         <?php
-global $wpdb;
-$modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
-foreach ($modules as $m) {
-	echo '<option data-page="' . $m->page . '" data-module-id="' . $m->id . '" value="jquery">' . __('Module: ', 'keystone') . $m->module . __(' / Module ID: ', 'keystone') . $m->id . '</option>';
-}
-?>
+        global $wpdb;
+        $modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
+        foreach ($modules as $m) {
+            echo '<option data-page="' . $m->page . '" data-module-id="' . $m->id . '" value="jquery">' . __('Module: ', 'keystone') . $m->module . __(' / Module ID: ', 'keystone') . $m->id . '</option>';
+        }
+        echo '<option value="all" data-module-id="all">' . __('All Modules', 'keystone') . '</option>';
+        ?>
       </select>
     </div>
     <textarea name="module-export-textarea" id="module-export-textarea" rows="10"></textarea>
@@ -171,12 +172,12 @@ foreach ($modules as $m) {
         $posts_array = [];
 
         foreach ($modules as $m) {
-          if (!$posts_array[$m->page] == true) {
-            echo '<option value="' . $m->page . '">POST ID: ' . $m->page . '</option>';
-            $posts_array[$m->page] = true;
-          } else {
-          }
+            if (!$posts_array[$m->page] == true) {
+                echo '<option value="' . $m->page . '">POST ID: ' . $m->page . '</option>';
+                $posts_array[$m->page] = true;
+            }
         }
+        echo '<option value="all">' . __('All Posts', 'keystone') . '</option>';
         ?>
       </select>
     </div>
@@ -184,12 +185,13 @@ foreach ($modules as $m) {
       <label for="importer-modules"><?php _e('Select a module: ', 'keystone')?></label>
       <select name="importer-modules" id="importer-modules">
         <?php
-global $wpdb;
-$modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
-foreach ($modules as $m) {
-	echo '<option data-page="' . $m->page . '" data-module-id="' . $m->id . '" value="jquery">' . __('Module: ', 'keystone') . $m->module . __(' / Module ID: ', 'keystone') . $m->id . '</option>';
-}
-?>
+        global $wpdb;
+        $modules = $wpdb->get_results('SELECT * FROM modules ORDER BY page ASC');
+        foreach ($modules as $m) {
+            echo '<option data-page="' . $m->page . '" data-module-id="' . $m->id . '" value="jquery">' . __('Module: ', 'keystone') . $m->module . __(' / Module ID: ', 'keystone') . $m->id . '</option>';
+        }
+        echo '<option value="all" data-module-id="all">' . __('All Modules', 'keystone') . '</option>';
+        ?>
       </select>
     </div>
     <sub id="modules-import-message"></sub>
@@ -212,6 +214,14 @@ foreach ($modules as $m) {
   label[for="exporter-posts"],
   select#exporter-modules,
   label[for="exporter-modules"] {
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  select#importer-posts,
+  label[for="importer-posts"],
+  select#importer-modules,
+  label[for="importer-modules"] {
     margin-bottom: 10px;
     display: inline-block;
   }
@@ -245,10 +255,6 @@ foreach ($modules as $m) {
 
   .keystone-tools-h1 {
     line-height: 1;
-  }
-
-  #module-import-textarea {
-    margin-top: 20px;
   }
 
   .radio-container {
@@ -328,14 +334,20 @@ foreach ($modules as $m) {
       var page_id = $(event.currentTarget).val();
       var first = true;
 
+      if (page_id == 'all') {
+        $('select#exporter-modules option').show();
+        return;
+      }
+
       $('select#exporter-modules option').each(function(index) {
-        var active_module = $(this).data('page') == page_id;
+        var active_module = $(this).data('page') == page_id || $(this).val() == 'all';
 
         if (active_module) {
           if (first) {
             $(this).prop('selected', true);
           }
           $(this).show();
+          // Only select the first option in select
           first = false;
         } else {
           $(this).hide();
@@ -348,8 +360,13 @@ foreach ($modules as $m) {
       var page_id = $(event.currentTarget).val();
       var first = true;
 
+      if (page_id == 'all') {
+        $('select#importer-modules option').show();
+        return;
+      }
+
       $('select#importer-modules option').each(function(index) {
-        var active_module = $(this).data('page') == page_id;
+        var active_module = $(this).data('page') == page_id || $(this).val() == 'all';
 
         if (active_module) {
           if (first) {
@@ -454,7 +471,7 @@ foreach ($modules as $m) {
         }
       }
 
-      console.log( cmb2_meta_box_object );
+      console.log(cmb2_meta_box_object);
 
       if (IsValidJSONString(cmb2_meta_box_object) || no_validation) {
         $.ajax({
