@@ -9,7 +9,7 @@
     <?php echo keystone_get_template('theme-css-vars') ?>
   </style>
   <?php echo keystone_get_template('theme-fonts'); ?>
-  <?php echo '<script>console.log("Keystone Theme '.KEYSTONE_VERSION.' https://www.clinicrevenue.com")</script>'; ?>
+  <?php echo '<script>console.log("Keystone Theme ' . KEYSTONE_VERSION . ' https://www.clinicrevenue.com")</script>'; ?>
   <?php wp_head(); ?>
 </head>
 
@@ -19,4 +19,3 @@
   <div id="wrapper">
     <?php keystone_get_template('preloader') ?>
     <?php Keystone()->header->render_header(); ?>
-    <?php update_option('cmb2_key_footer_box',json_decode('{"facebook":"https:\/\/www.facebook.com\/jamesauble","instagram":"http:\/\/bob","linkedin":"http:\/\/bobo"}')) ?>

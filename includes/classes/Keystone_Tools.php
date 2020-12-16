@@ -9,6 +9,8 @@ class Keystone_Tools {
         add_action('wp_ajax_keystone_update_option', [$this, 'keystone_update_option']);
         add_action('wp_ajax_keystone_get_module_meta', [$this, 'keystone_get_module_meta']);
         add_action('wp_ajax_nopriv_keystone_get_module_meta', [$this, 'keystone_get_module_meta']);
+        add_action('wp_ajax_keystone_update_module_meta', [$this, 'keystone_update_module_meta']);
+        add_action('wp_ajax_nopriv_keystone_update_module_meta', [$this, 'keystone_update_module_meta']);
         add_action('admin_menu', [$this, 'register_tools_page']);
     }
 
@@ -83,9 +85,29 @@ class Keystone_Tools {
     }
 
     public function keystone_update_module_meta() {
-        $options_array = json_decode($options_json);
+        if (isset($_POST)) {
+            $module_data_obj = $_POST['json'];
+            $post_id = $_POST['post_id'];
+            $module_id = $_POST['module_id'];
 
-        update_option($option_key, $options_json);
+            error_log( print_r($module_data_obj, TRUE) );
+
+            if ($post_id != 'all' && $module_id != 'all') {
+                // if a post and module are selected iterate through array of key-value pairs and update post meta
+                foreach($module_data_obj as $key => $value) {
+                       $value = strval($value[0]);
+
+                update_post_meta($post_id, $key, $value);
+                }
+            } else if ($post_id == 'all' && $module_id == 'all') {
+    
+            } else {
+              
+            }
+            // update_post_meta( $post_id, string $meta_key, mixed $meta_value );
+            $options_array = json_decode($options_json);
+        }
+
         // Don't forget to stop execution afterward.
         wp_die();
     }
@@ -147,7 +169,6 @@ class Keystone_Tools {
         global $wpdb;
 
         $modules = $wpdb->get_results('SELECT * FROM modules WHERE page = ' . $post_id, 'ARRAY_A');
-        error_log(print_r($modules, true));
         $post_meta = get_post_meta($post_id);
         $all_modules_meta = [];
 

@@ -1,3 +1,45 @@
+<?php add_thickbox(); ?>
+
+<div id="dashboard-widgets" class="metabox-holder" style="display: none;">
+	<div id="postbox-container-1" class="postbox-container">
+		<div id="normal-sortables" class="meta-box-sortables ui-sortable">
+			<div id="metabox" class="postbox">
+				<div class="inside" style="padding-bottom: 0 !important;">
+					<div class="main">
+						<p><strong><?php _e('Disclaimer:', 'keystone') ?></strong></p>
+						<p>
+							<?php _e('The settings found on this page can irreversibly destroy data that you have worked hard at entering. Any unauthorized access of this page by a client of Clinic Revenue may void your warranty. In other words, this page is for <b>ADMINISTRATORS ONLY</b>.', 'keystone') ?>
+						</p>
+						<p style="display: inline-block;"><a onclick="tb_remove()" class="button button-primary"><?php _e('I understand.', 'keystone') ?></a></p>
+						<p style="display: inline-block;"><a onclick="history.back();" class="button button-primary"><?php _e('I\'m lost. Take me back.', 'keystone') ?></a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+#TB_ajaxContent.TB_modal {
+  padding: 0 !important;
+}
+
+#TB_ajaxContent {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.postbox, .stuffbox {
+  margin-bottom: 0 !important;
+}
+</style>
+
+<script>
+// jQuery(window).on('load', function() {
+//   tb_show(null, '#TB_inline?&width=300&height=300&inlineId=dashboard-widgets&modal=true', null);
+// })
+</script>
+
 <h1 class="keystone-tools-h1"><?php _e('Keystone Tools (Administrators Only)', 'keystone')?>
 </h1>
 
@@ -315,7 +357,11 @@
   }
 
   #modules-import-message {
-    transform: translateY(0);
+    transform: translateY(-10px);
+  }
+
+  #module-import-textarea {
+    margin-top: 8px;
   }
 
   textarea {
@@ -522,16 +568,20 @@
 
     // Handle importing of module data
     $('#import-module-btn').on('click', function() {
-      var post_meta_pairs_obj = $('#module-import-textarea').val();
+      var module_data_obj = $('#module-import-textarea').val();
       var no_validation = document.querySelector('#disable-validation-modules').checked;
+      var page_selection = $('#importer-posts option:selected').val();
+      var module_selection = $('#importer-modules option:selected').data('module-id');
 
-      if (IsValidJSONString(post_meta_pairs_obj) || no_validation) {
+      if (IsValidJSONString(module_data_obj) || no_validation) {
         $.ajax({
           type: "post",
           url: "admin-ajax.php",
           data: {
-            action: 'keystone_update_options',
-            'payload': box_key
+            action: 'keystone_update_module_meta',
+            json: JSON.parse(module_data_obj),
+            post_id: page_selection,
+            module_id: module_selection
           },
           success: function(response) {
             $('#modules-import-message').html('');
@@ -540,13 +590,13 @@
           },
           error: function(response) {
             console.log(response);
-            $('.keystone-tools-h1').after(
+            $('#importer-modules').after(
               '<div class="notice notice-error is-dismissible" style="margin-left: 0;"><p>' + response
               .statusText + '</p></div>');
           }
         });
       } else {
-        if (post_meta_pairs_obj.trim() == '') {
+        if (module_data_obj.trim() == '') {
           $('.notice-error').remove();
           $('#modules-import-message').html(
             "<?php _e('The field below is required.', 'keystone')?>"
