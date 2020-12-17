@@ -39,9 +39,9 @@
 </style>
 
 <script>
-  // jQuery(window).on('load', function() {
-  //   tb_show(null, '#TB_inline?&width=300&height=300&inlineId=dashboard-widgets&modal=true', null);
-  // })
+  jQuery(window).on('load', function() {
+    tb_show(null, '#TB_inline?&width=300&height=300&inlineId=dashboard-widgets&modal=true', null);
+  })
 </script>
 
 <h1 class="keystone-tools-h1"><?php _e('Keystone Tools (Administrators Only)', 'keystone')?>
@@ -159,11 +159,8 @@
       <button tabindex="0" type="submit" class="button button-primary button-large import-btn"
         id="import-options-btn"><?php _e('Import', 'keystone')?></button>
       <sub><?php _e('Paste in JSON CMB2 option data.', 'keystone')?>
-        <span style="color: red; font-weight: bold;"><?php _e('WARNING: YOU WILL LOSE PREVIOUSLY ENTERED CONTENT.', 'keystone')?></span></sub>
-      <div class="checkbox-row">
-        <input type="checkbox" id="disable-json-validation-checkbox" />
-        <label for="checkboxG4" class="css-label"><?php _e('Override JSON validation', 'keystone');?></label>
-      </div>
+      <br>
+      <span style="color: red; font-weight: bold;"><?php _e('Be mindful of where this data belongs. Section selection MUST MATCH exported data.', 'keystone')?></span></sub>
     </div>
   </section>
   <hr>
@@ -247,11 +244,8 @@
     <button tabindex="0" id="fix-id-mismatch" role="button"
       class="button button-primary button-large export-btn"><?php _e('Fix ID Mismatch', 'keystone')?></button>
     <sub><?php _e('Paste in JSON CMB2 module data.', 'keystone')?>
-      <span style="color: red; font-weight: bold;"><?php _e('WARNING: YOU WILL LOSE PREVIOUSLY ENTERED CONTENT.', 'keystone')?></span></sub>
-    <div class="checkbox-row">
-      <input type="checkbox" id="disable-validation-modules" />
-      <label for="checkboxG4" class="css-label"><?php _e('Override JSON validation', 'keystone');?></label>
-    </div>
+    <br>
+      <span style="color: red; font-weight: bold;"><?php _e('Be mindful of where this data belongs. Post and module selection MUST MATCH exported data.', 'keystone')?></span></sub>
   </section>
 </div>
 
@@ -511,7 +505,6 @@
     // Handle importing of theme option data
     $('.import-btn').on('click', function() {
       var cmb2_meta_box_object = $('#imported-code-textarea').val();
-      var no_validation = document.querySelector('#disable-json-validation-checkbox').checked;
       var options = document.getElementsByName("import-radio-group");
       var box_key;
 
@@ -525,7 +518,7 @@
 
       console.log(cmb2_meta_box_object);
 
-      if (IsValidJSONString(cmb2_meta_box_object) || no_validation) {
+      if (IsValidJSONString(cmb2_meta_box_object)) {
         $.ajax({
           type: "post",
           url: "admin-ajax.php",
@@ -575,11 +568,10 @@
     // Handle importing of module data
     $('#import-module-btn').on('click', function() {
       var module_data_obj = $('#module-import-textarea').val();
-      var no_validation_for_modules = document.querySelector('#disable-validation-modules').checked;
       var page_selection = $('#importer-posts option:selected').val();
       var module_selection = $('#importer-modules option:selected').data('module-id');
 
-      if (IsValidJSONString(module_data_obj) || no_validation_for_modules) {
+      if (IsValidJSONString(module_data_obj)) {
 
         try {
           $.ajax({
@@ -612,8 +604,6 @@
           $('#importer-modules').after(
             '<div class="notice notice-error is-dismissible" style="margin-left: 0; margin-right: 0px !important;"><p>' +
             error + '</p></div>');
-          // expected output: ReferenceError: nonExistentFunction is not defined
-          // Note - error messages will vary depending on browser
         }
       } else {
         if (module_data_obj.trim() == '') {

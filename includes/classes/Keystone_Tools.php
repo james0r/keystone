@@ -96,11 +96,23 @@ class Keystone_Tools {
                     update_post_meta($post_id, $key, $value);
                 }
             } elseif ($post_id == 'all' && $module_id == 'all') {
-            } else {
+                foreach ($module_data_obj as $page_and_module) {
+                    foreach ($page_and_module as $page => $key_value_pairs) {
+                        foreach ($key_value_pairs as $key => $value) {
+                            update_post_meta($page, $key, $value);
+                        }
+                    }
+                }
+            } elseif ($module_id == 'all' && $post_id != 'all') {
+                foreach ($module_data_obj as $module_data) {
+                    foreach ($module_data as $key => $value) {
+                        update_post_meta($post_id, $key, $value);
+                    }
+                }
             }
             // update_post_meta( $post_id, string $meta_key, mixed $meta_value );
         } else {
-          echo 'An error occured. No _POST data was found in the request.';
+            echo 'An error occured. No $_POST data was found in the request.';
         }
 
         echo 'Your request was successful.';
@@ -136,7 +148,6 @@ class Keystone_Tools {
     }
 
     private function keystone_get_all_module_meta() {
-      error_log('get_all_module_meta fired');
         global $wpdb;
         $modules = $wpdb->get_results('SELECT * FROM modules', 'ARRAY_A');
         $all_post_meta = [];
@@ -145,14 +156,13 @@ class Keystone_Tools {
 
             $post_meta_filtered = $this->module_meta_from_post_meta($post_meta, $module);
 
-            
             foreach ($post_meta_filtered as $key => $value) {
-              $post_meta_filtered[$key] = maybe_unserialize($value[0]);
+                $post_meta_filtered[$key] = maybe_unserialize($value[0]);
             }
-            
-            error_log( print_r($post_meta_filtered, TRUE) );
 
-            array_push($all_post_meta, $post_meta_filtered);
+            $module_array = [$module['page'] => $post_meta_filtered];
+
+            array_push($all_post_meta, $module_array);
         }
         $post_meta_json = json_encode($all_post_meta, JSON_UNESCAPED_SLASHES);
         return $post_meta_json;
