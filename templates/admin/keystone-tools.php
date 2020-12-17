@@ -573,10 +573,13 @@
       var page_selection = $('#importer-posts option:selected').val();
       var module_selection = $('#importer-modules option:selected').data('module-id');
 
+      console.log( module_data_obj );
+
       if (IsValidJSONString(module_data_obj) || no_validation) {
         $.ajax({
           type: "post",
           url: "admin-ajax.php",
+          dataType: 'json',
           data: {
             action: 'keystone_update_module_meta',
             json: JSON.parse(module_data_obj),

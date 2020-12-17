@@ -90,19 +90,13 @@ class Keystone_Tools {
             $post_id = $_POST['post_id'];
             $module_id = $_POST['module_id'];
 
-            error_log( print_r($module_data_obj, TRUE) );
-
             if ($post_id != 'all' && $module_id != 'all') {
                 // if a post and module are selected iterate through array of key-value pairs and update post meta
-                foreach($module_data_obj as $key => $value) {
-                       $value = strval($value[0]);
-
-                update_post_meta($post_id, $key, $value);
+                foreach ($module_data_obj as $key => $value) {
+                    update_post_meta($post_id, $key, $value);
                 }
-            } else if ($post_id == 'all' && $module_id == 'all') {
-    
+            } elseif ($post_id == 'all' && $module_id == 'all') {
             } else {
-              
             }
             // update_post_meta( $post_id, string $meta_key, mixed $meta_value );
             $options_array = json_decode($options_json);
@@ -130,6 +124,14 @@ class Keystone_Tools {
         wp_die();
     }
 
+    // Filter out module values from page meta
+    private function module_meta_from_post_meta($post_meta, $module) {
+        return array_filter($post_meta, function ($k) use ($module) {
+            $ending = '_' . (string)$module['id'];
+            return Keystone_Helpers::endsWith($k, $ending);
+        }, ARRAY_FILTER_USE_KEY);
+    }
+
     private function keystone_get_all_module_meta() {
         global $wpdb;
         $modules = $wpdb->get_results('SELECT * FROM modules', 'ARRAY_A');
@@ -137,11 +139,7 @@ class Keystone_Tools {
         foreach ($modules as $module) {
             $post_meta = get_post_meta($module['page']);
 
-            // Filter out module values from page meta
-            $post_meta_filtered = array_filter($post_meta, function ($k) use ($module) {
-                $ending = '_' . (string)$module['id'];
-                return Keystone_Helpers::endsWith($k, $ending);
-            }, ARRAY_FILTER_USE_KEY);
+            $post_meta_filtered = $this->module_meta_from_post_meta($post_meta, $module);
 
             array_push($all_post_meta, $post_meta_filtered);
         }
@@ -155,13 +153,13 @@ class Keystone_Tools {
         $module = $wpdb->get_results('SELECT * FROM modules WHERE id = ' . (int)$module_id, 'ARRAY_A')[0];
         $post_meta = get_post_meta($module['page']);
 
-        // Filter out module values from page meta
-        $post_meta_filtered = array_filter($post_meta, function ($k) use ($module_id) {
-            $ending = '_' . (string)$module_id;
-            return Keystone_Helpers::endsWith($k, $ending);
-        }, ARRAY_FILTER_USE_KEY);
+        $post_meta_filtered = $this->module_meta_from_post_meta($post_meta, $module);
 
-        $post_meta_json = json_encode($post_meta_filtered);
+        foreach ($post_meta_filtered as $key => $value) {
+            $post_meta_filtered[$key] = maybe_unserialize($value[0]);
+        }
+
+        $post_meta_json = json_encode($post_meta_filtered, JSON_UNESCAPED_SLASHES);
         return $post_meta_json;
     }
 
@@ -173,17 +171,16 @@ class Keystone_Tools {
         $all_modules_meta = [];
 
         foreach ($modules as $module) {
-            // Filter out module values from page meta
+            $module_meta_filtered = $this->module_meta_from_post_meta($post_meta, $module);
 
-            $post_meta_filtered = array_filter($post_meta, function ($k) use ($module) {
-                $ending = '_' . (string)$module['id'];
-                return Keystone_Helpers::endsWith($k, $ending);
-            }, ARRAY_FILTER_USE_KEY);
+            foreach ($module_meta_filtered as $key => $value) {
+              $module_meta_filtered[$key] = maybe_unserialize($value[0]);
+            }
 
-            array_push($all_modules_meta, $post_meta_filtered);
+            array_push($all_modules_meta, $module_meta_filtered);
         }
 
-        $post_meta_json = json_encode($all_modules_meta);
+        $post_meta_json = json_encode($all_modules_meta, JSON_UNESCAPED_SLASHES);
         return $post_meta_json;
     }
 
