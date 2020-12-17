@@ -1,43 +1,47 @@
 <?php add_thickbox(); ?>
 
 <div id="dashboard-widgets" class="metabox-holder" style="display: none;">
-	<div id="postbox-container-1" class="postbox-container">
-		<div id="normal-sortables" class="meta-box-sortables ui-sortable">
-			<div id="metabox" class="postbox">
-				<div class="inside" style="padding-bottom: 0 !important;">
-					<div class="main">
-						<p><strong><?php _e('Disclaimer:', 'keystone') ?></strong></p>
-						<p>
-							<?php _e('The settings found on this page can irreversibly destroy data that you have worked hard at entering. Any unauthorized access of this page by a client of Clinic Revenue may void your warranty. In other words, this page is for <b>ADMINISTRATORS ONLY</b>.', 'keystone') ?>
-						</p>
-						<p style="display: inline-block;"><a onclick="tb_remove()" class="button button-primary"><?php _e('I understand.', 'keystone') ?></a></p>
-						<p style="display: inline-block;"><a onclick="history.back();" class="button button-primary"><?php _e('I\'m lost. Take me back.', 'keystone') ?></a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div id="postbox-container-1" class="postbox-container">
+    <div id="normal-sortables" class="meta-box-sortables ui-sortable">
+      <div id="metabox" class="postbox">
+        <div class="inside" style="padding-bottom: 0 !important;">
+          <div class="main">
+            <p><strong><?php _e('Disclaimer:', 'keystone') ?></strong>
+            </p>
+            <p>
+              <?php _e('The settings found on this page can irreversibly destroy data that you have worked hard at entering. Any unauthorized access of this page by a client of Clinic Revenue may void your warranty. In other words, this page is for <b>ADMINISTRATORS ONLY</b>.', 'keystone') ?>
+            </p>
+            <p style="display: inline-block;"><a onclick="tb_remove()" class="button button-primary"><?php _e('I understand.', 'keystone') ?></a>
+            </p>
+            <p style="display: inline-block;"><a onclick="history.back();" class="button button-primary"><?php _e('I\'m lost. Take me back.', 'keystone') ?></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
-#TB_ajaxContent.TB_modal {
-  padding: 0 !important;
-}
+  #TB_ajaxContent.TB_modal {
+    padding: 0 !important;
+  }
 
-#TB_ajaxContent {
-  width: 100% !important;
-  height: auto !important;
-}
+  #TB_ajaxContent {
+    width: 100% !important;
+    height: auto !important;
+  }
 
-.postbox, .stuffbox {
-  margin-bottom: 0 !important;
-}
+  .postbox,
+  .stuffbox {
+    margin-bottom: 0 !important;
+  }
 </style>
 
 <script>
-// jQuery(window).on('load', function() {
-//   tb_show(null, '#TB_inline?&width=300&height=300&inlineId=dashboard-widgets&modal=true', null);
-// })
+  // jQuery(window).on('load', function() {
+  //   tb_show(null, '#TB_inline?&width=300&height=300&inlineId=dashboard-widgets&modal=true', null);
+  // })
 </script>
 
 <h1 class="keystone-tools-h1"><?php _e('Keystone Tools (Administrators Only)', 'keystone')?>
@@ -177,7 +181,7 @@
             if (!$posts_array[$m->page] == true) {
                 echo '<option value="' . $m->page . '">POST ID: ' . $m->page . '</option>';
                 $posts_array[$m->page] = true;
-            } 
+            }
         }
         echo '<option value="all">' . __('All Posts', 'keystone') . '</option>';
         ?>
@@ -564,52 +568,65 @@
     $('#module-import-textarea').on('keyup', function() {
       $('#modules-import-message').html('');
       $('#module-import-textarea').css('outline', 'none');
+      $('.notice-success').remove();
+      $('.notice-error').remove();
     })
 
     // Handle importing of module data
     $('#import-module-btn').on('click', function() {
       var module_data_obj = $('#module-import-textarea').val();
-      var no_validation = document.querySelector('#disable-validation-modules').checked;
+      var no_validation_for_modules = document.querySelector('#disable-validation-modules').checked;
       var page_selection = $('#importer-posts option:selected').val();
       var module_selection = $('#importer-modules option:selected').data('module-id');
 
-      console.log( module_data_obj );
+      if (IsValidJSONString(module_data_obj) || no_validation_for_modules) {
 
-      if (IsValidJSONString(module_data_obj) || no_validation) {
-        $.ajax({
-          type: "post",
-          url: "admin-ajax.php",
-          dataType: 'json',
-          data: {
-            action: 'keystone_update_module_meta',
-            json: JSON.parse(module_data_obj),
-            post_id: page_selection,
-            module_id: module_selection
-          },
-          success: function(response) {
-            $('#modules-import-message').html('');
-            $('#module-import-textarea').css('outline', 'none');
-            $('.notice-error').remove();
-          },
-          error: function(response) {
-            console.log(response);
-            $('#importer-modules').after(
-              '<div class="notice notice-error is-dismissible" style="margin-left: 0;"><p>' + response
-              .statusText + '</p></div>');
-          }
-        });
+        try {
+          $.ajax({
+            type: "post",
+            url: "admin-ajax.php",
+            data: {
+              action: 'keystone_update_module_meta',
+              json: JSON.parse(module_data_obj),
+              post_id: page_selection,
+              module_id: module_selection
+            },
+            success: function(response) {
+              $('#modules-import-message').html('');
+              $('#module-import-textarea').css('outline', 'none');
+              $('.notice-success').remove();
+              $('.notice-error').remove();
+              $('#importer-modules').after(
+                '<div class="notice notice-success is-dismissible" style="margin-left: 0; margin-right: 0px !important;"><p>' +
+                response + '</p></div>');
+            },
+            error: function(response) {
+              $('.notice-error .notice-success').remove();
+              $('#importer-modules').after(
+                '<div class="notice notice-error is-dismissible" style="margin-left: 0; margin-right: 0px !important;"><p>' +
+                response + '</p></div>');
+            }
+          });
+        } catch (error) {
+          $('.notice-error .notice-success').remove();
+          $('#importer-modules').after(
+            '<div class="notice notice-error is-dismissible" style="margin-left: 0; margin-right: 0px !important;"><p>' +
+            error + '</p></div>');
+          // expected output: ReferenceError: nonExistentFunction is not defined
+          // Note - error messages will vary depending on browser
+        }
       } else {
         if (module_data_obj.trim() == '') {
           $('.notice-error').remove();
-          $('#modules-import-message').html(
-            "<?php _e('The field below is required.', 'keystone')?>"
-          )
+          $('#importer-modules').after(
+            '<div class="notice notice-error is-dismissible" style="margin-left: 0; margin-right: 0px !important;"><p>' +
+            '<?php _e('The field below is required.', 'keystone') ?>' + '</p></div>');
           $('#module-import-textarea').css('outline', '1px solid red');
         } else {
           $('.notice-error').remove();
-          $('#modules-import-message').html(
-            "<?php _e('The content you are trying to import is not valid JSON. To override JSON validation check the checkbox below the data field.', 'keystone')?>"
-          )
+          $('#importer-modules').after(
+            '<div class="notice notice-error is-dismissible" style="margin-left: 0; margin-right: 0px !important;"><p>' +
+            '<?php _e('The content you are trying to import is not valid JSON. To override JSON validation check the checkbox below the data field.', 'keystone'); ?>' + '</p></div>');
           $('#module-import-textarea').css('outline', '1px solid red');
         }
 

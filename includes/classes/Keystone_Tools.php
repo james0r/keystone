@@ -99,8 +99,11 @@ class Keystone_Tools {
             } else {
             }
             // update_post_meta( $post_id, string $meta_key, mixed $meta_value );
-            $options_array = json_decode($options_json);
+        } else {
+          echo 'An error occured. No _POST data was found in the request.';
         }
+
+        echo 'Your request was successful.';
 
         // Don't forget to stop execution afterward.
         wp_die();
@@ -133,6 +136,7 @@ class Keystone_Tools {
     }
 
     private function keystone_get_all_module_meta() {
+      error_log('get_all_module_meta fired');
         global $wpdb;
         $modules = $wpdb->get_results('SELECT * FROM modules', 'ARRAY_A');
         $all_post_meta = [];
@@ -141,9 +145,16 @@ class Keystone_Tools {
 
             $post_meta_filtered = $this->module_meta_from_post_meta($post_meta, $module);
 
+            
+            foreach ($post_meta_filtered as $key => $value) {
+              $post_meta_filtered[$key] = maybe_unserialize($value[0]);
+            }
+            
+            error_log( print_r($post_meta_filtered, TRUE) );
+
             array_push($all_post_meta, $post_meta_filtered);
         }
-        $post_meta_json = json_encode($all_post_meta);
+        $post_meta_json = json_encode($all_post_meta, JSON_UNESCAPED_SLASHES);
         return $post_meta_json;
     }
 
@@ -174,7 +185,7 @@ class Keystone_Tools {
             $module_meta_filtered = $this->module_meta_from_post_meta($post_meta, $module);
 
             foreach ($module_meta_filtered as $key => $value) {
-              $module_meta_filtered[$key] = maybe_unserialize($value[0]);
+                $module_meta_filtered[$key] = maybe_unserialize($value[0]);
             }
 
             array_push($all_modules_meta, $module_meta_filtered);
