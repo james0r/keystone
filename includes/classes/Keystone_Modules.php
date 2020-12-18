@@ -19,6 +19,7 @@ class Keystone_Modules {
            name varchar(255) NOT NULL,
            page int(32) NOT NULL,
            display_order int(32) NOT NULL,
+           demo_assets_loaded boolean not null default 0
            PRIMARY KEY  (id)
          )';
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';

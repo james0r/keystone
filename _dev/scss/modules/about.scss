@@ -19,12 +19,11 @@
     .start {
       max-height: 350px;
 
-      @include xl {
-        max-height: 274px;
-      }
+      // @include xl {
+      //   max-height: 274px;
+      // }
 
       @include md {
-        min-height: unset;
         max-height: unset;
         width: 100%;
         height: calc((100vw - 30px) * .764);
@@ -34,10 +33,10 @@
         height: 350px;
         width: 458px;
 
-        @include xl {
-          width: 374px;
-          max-height: 274px;
-        }
+        // @include xl {
+        //   width: 374px;
+        //   max-height: 274px;
+        // }
 
         @include md {
           width: 100%;
@@ -46,9 +45,6 @@
         }
 
         img {
-          @include xl {
-            max-height: 274px;
-          }
 
           @include md {
             width: 100%;
@@ -82,13 +78,17 @@
           margin-bottom: 20px;
         }
 
+        .about-thumbnail-group {
+          margin-bottom: 30px;
+        }
+
         .about-thumbnail-list-item {
           margin-right: 10px;
           margin-top: 5px;
         }
 
         .btn {
-          margin-top: 30px;
+          // margin-top: 30px;
         }
       }
 

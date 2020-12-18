@@ -15,7 +15,9 @@ $style_dependencies = [
     'module-about'
 ];
 
-$twentytwenty_enabled = keystone_meta_with_module_id('cmb2_id_field_toggle_reveal_slider', $instance);
+Keystone()->demos->maybe_load_demo_content($instance);
+
+$twentytwenty_enabled = keystone_meta_with_module_id('cmb2_id_field_about_enable_reveal', $instance);
 
 if ($twentytwenty_enabled) {
   apply_filters('render_dynamic_scripts', $script_dependencies);
@@ -27,10 +29,10 @@ if ($twentytwenty_enabled) {
     <div class="flex">
       <div class="start">
         <div class="image-wrapper reveal-image-container">
-          <?php echo wp_get_attachment_image(keystone_get_the_meta('cmb2_id_field_before_image_' . $instance . '_id'), ['458', '350']) ?>
+          <?php echo Keystone()->images->keystone_get_attachment_image(keystone_meta_with_module_id('cmb2_id_field_about_before_image', $instance . '_id'), ['458', '350']) ?>
           <?php 
           if ($twentytwenty_enabled) {
-            echo wp_get_attachment_image(keystone_get_the_meta('cmb2_id_field_after_image_' . $instance . '_id'), ['458', '350']);
+            echo Keystone()->images->keystone_get_attachment_image(keystone_meta_with_module_id('cmb2_id_field_about_after_image', $instance . '_id'), ['458', '350']);
           }
           ?>
         </div>
@@ -49,19 +51,20 @@ if ($twentytwenty_enabled) {
           <div class="about-body">
             <?php echo keystone_meta_with_module_id('cmb2_id_field_about_body_text', $instance); ?>
           </div>
+          <?php $thumbs = keystone_meta_with_module_id('cmb2_id_field_about_award_images', $instance); ?>
+          <?php if (!empty($thumbs)) : ?>
           <div class="about-thumbnail-group">
             <ul class="about-thumbnail-list">
               <?php
-            $entries = keystone_meta_with_module_id('cmb2_id_field_award_images', $instance);
-
-            foreach ((array) $entries as $key => $entry) {
-                echo '<li class="about-thumbnail-list-item">';
-                echo wp_get_attachment_image($key, [80, 80]);
-                echo '</li>';
-            }
-          ?>
+                foreach ((array) $thumbs as $id => $url) {
+                    echo '<li class="about-thumbnail-list-item">';
+                    echo Keystone()->images->keystone_get_attachment_image($id, [80, 80]);
+                    echo '</li>';
+                }
+              ?>
             </ul>
           </div>
+            <?php endif; ?>
           <div class="button-row">
             <a href="<?php echo keystone_meta_with_module_id('cmb2_id_field_about_button_link_url', $instance); ?>"
               class="btn btn-primary btn-circled btn-lg">
@@ -72,7 +75,6 @@ if ($twentytwenty_enabled) {
       </div>
     </div>
   </div>
-
 </div>
 
 <script>
