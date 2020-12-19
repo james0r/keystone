@@ -1,31 +1,31 @@
 [
   {
-    "meta_id": "cmb2_id_field_about_before_image",
+    "meta_id": "cmb2_id_field_about_before_image_",
     "meta_field_type": "file",
     "description": "Before image",
     "type": "image",
-    "saved": false,
+    "saved": true,
     "url": "before-after/1.jpg"
   },
   {
-    "meta_id": "cmb2_id_field_about_before_image",
+    "meta_id": "cmb2_id_field_about_after_image_",
     "meta_field_type": "file",
     "description": "After image",
     "type": "image",
-    "saved": false,
+    "saved": true,
     "url": "before-after/2.jpg"
   },
   {
-    "meta_id": "cmb2_id_field_about_before_image",
+    "meta_id": "cmb2_id_field_about_award_images_",
     "meta_field_type": "file_list",
     "description": "After image",
     "type": "image",
-    "saved": false,
+    "saved": true,
     "url": "before-after/2.jpg",
     "files": [
-      "images/awards/1.png",
-      "images/awards/2.png",
-      "images/awards/3.png"
+      "awards/1.png",
+      "awards/2.png",
+      "awards/3.png"
     ]
   }
 ]
