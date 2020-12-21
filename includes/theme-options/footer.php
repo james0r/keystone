@@ -24,7 +24,7 @@ $footer_style_layout = $cmb2_box_footer_style->add_field([
 
 $cmb2_box_footer_style->add_group_field($footer_style_layout, [
     'name'          => __('Footer Layout Style', 'keystone'),
-    'id'            => 'cmb2_id_footer_style',
+    'id'            => 'footer_style',
     'type'          => 'select',
     'default'       => 'footer-style-5',
     'options'       => [

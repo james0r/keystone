@@ -9,7 +9,11 @@ class Keystone_Header {
     }
 
     public function render_header() {
-        // var_dump($this->get_options_array());
+        echo '<header class="header" id="header">';
+        keystone_echo_template('header-top-bar');
+        keystone_echo_template('header-middle-bar');
+        keystone_echo_template('header-bottom-bar');
+        echo '</header>';
     }
 
     private function get_options_array() {

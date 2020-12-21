@@ -42,7 +42,7 @@ function keystone_get_the_meta($key, $single = true) {
 }
 
 // Modified get_template_part to accept arguments. Base directory is /templates/
-function keystone_get_template($file, $template_args = [], $cache_args = []) {
+function keystone_echo_template($file, $template_args = [], $cache_args = []) {
     $template_args = wp_parse_args($template_args);
     $cache_args = wp_parse_args($cache_args);
     if ($cache_args) {

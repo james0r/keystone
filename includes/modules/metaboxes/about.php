@@ -89,7 +89,7 @@ $box->add_field( array(
 
 $box->add_field( array(
 	'name' => __('Award Images'),
-	'desc' => __('Recommended Size: 80px by 80px. Select between 4 and 6 images.', 'keystone'),
+	'desc' => __('Recommended Size: 160px by 160px. Select between 4 and 6 images.', 'keystone'),
 	'id'   => $prefix.'award_images'.$suffix,
 	'type' => 'file_list',
 	'preview_size' => array( 80, 80 ), // Default: array( 50, 50 )

@@ -12,7 +12,7 @@
 				
 			//get the guts of the module and pass the instance id
 			echo "<div class='module-inner'>";
-        keystone_get_template('modules/'.$m->module, array('instance' => $m->id));
+        keystone_echo_template('modules/'.$m->module, array('instance' => $m->id));
 			echo "</div>";
 			
 		//close the module container
