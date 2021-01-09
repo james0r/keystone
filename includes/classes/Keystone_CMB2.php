@@ -109,8 +109,8 @@ class Keystone_CMB2 {
     public function loadHelperFunctions() {
         // Callback function to be used with Checkbox and Switch fields.
         function sanitize_checkbox($value, $field_args, $field) {
-            // Return 0 instead of false if null value given. This hack for
-            // checkbox or checkbox-like can be setting true as default value.
+            // Return 0 instead of false if null value given.
+            error_log($value);
             return is_null($value) ? 0 : $value;
         }
 

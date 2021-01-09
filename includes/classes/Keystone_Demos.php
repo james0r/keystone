@@ -12,8 +12,6 @@ class Keystone_Demos {
     public function __construct() {
       self::$demo_images_base_url = 'https://clinicrevenue.com/keystone/demos/images/';
       self::$demo_module_schemas_base_path = Keystone::$template_dir_path . '/assets/demos/';
-
-      error_log( print_r(self::$demo_images_base_url, TRUE) );
     }
 
     private function get_module_schema_from_slug($slug) {
@@ -22,8 +20,6 @@ class Keystone_Demos {
 
     private function import_content_from_schema($json, $post_id, $module_id) {
       $content_for_inputs = json_decode($json, 'Array_A');
-
-      error_log( print_r($content_for_inputs, TRUE) );
 
       foreach($content_for_inputs as $i) {
         switch ($i['meta_field_type']) {
