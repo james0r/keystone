@@ -23,6 +23,8 @@ class Keystone_Body_Classes {
         'keystone-' . cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_appointment_form_style'),
         'keystone-' . cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_coming_soon_style'),
         'keystone-' . cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_under_construction_style'),
+        'keystone-' . cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_stylesheet_load_method'),
+        'keystone-' . cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_script_load_method'),
         'keystone-' . cmb2_get_option('cmb_homepage_layout', 'cmb2_id_homepage_style'),
         'keystone-' . cmb2_get_option('cmb2_key_box_general_settings', 'cmb2_id_side_push_panel_style'),
       );

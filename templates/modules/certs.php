@@ -17,8 +17,7 @@ $style_dependencies = [
     'module-certs'
 ];
 
-apply_filters('render_dynamic_scripts', $script_dependencies);
-apply_filters('render_dynamic_css', $style_dependencies);
+keystone_echo_template('progressive-filters', array($script_dependencies, $style_dependencies));
 
 Keystone()->demos->maybe_load_demo_content($instance);
 

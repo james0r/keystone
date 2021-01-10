@@ -13,7 +13,7 @@ $cmb2_box_advanced_settings = new_cmb2_box([
 ]);
 
 $cmb2_box_advanced_settings->add_field([
-  'name'             => esc_html__( 'Show Popup Promo Box', 'keystone' ),
+  'name'             => __( 'Show Popup Promo Box', 'keystone' ),
   'id'               => 'cmb2_id_field_popup_promo_box',
   'desc'             => esc_html__('Visitors to your site will see a popup window with everything else grayed out. This kind of window is typically used for a newsletter signup or perhaps an important notice. A cookie is stored in the user\'s browser so that the promo wont be shown twice.', 'keystone'),
   'type'	           => 'switch',
@@ -23,7 +23,7 @@ $cmb2_box_advanced_settings->add_field([
 ]);
 
 $cmb2_box_advanced_settings->add_field([
-  'name'             => esc_html__( 'Show Preloader Animation', 'keystone' ),
+  'name'             => __( 'Show Preloader Animation', 'keystone' ),
   'id'               => 'cmb2_id_field_preloader_toggle',
   'desc'             => esc_html__('Visitors to your site will see the animation you choose while the page downloads from the internet.', 'keystone'),
   'type'	           => 'switch',
@@ -33,7 +33,7 @@ $cmb2_box_advanced_settings->add_field([
 ]);
 
 $cmb2_box_advanced_settings->add_field([
-  'name'             => esc_html__( 'Enable Mega Menu', 'keystone' ),
+  'name'             => __( 'Enable Mega Menu', 'keystone' ),
   'id'               => 'cmb2_id_field_enable_mega_menu',
   'desc'             => __('Adds a large flydown menu to your site\'s main menu.') . '<br><span style="color: red;">You must add the <b>mega-menu</b> class to the corresponding menu item.</span>',
   'type'	           => 'switch',
@@ -55,7 +55,7 @@ $cmb2_box_advanced_settings->add_field([
 ]);
 
 $cmb2_box_advanced_settings->add_field([
-  'name'             => esc_html__( 'Show Coming Soon', 'keystone' ),
+  'name'             => __( 'Show Coming Soon', 'keystone' ),
   'id'               => 'cmb2_id_field_show_coming_soon',
   'desc'             => '<span style="color: red;">' . esc_html__('Users will not be able to view your website if this is ON.', 'keystone') . '</span> A countdown timer will be shown instead.',
   'type'	           => 'switch',
@@ -82,7 +82,7 @@ $cmb2_box_advanced_settings->add_field([
 ]);
 
 $cmb2_box_advanced_settings->add_field([
-  'name'             => esc_html__( 'Show Under Construction', 'keystone' ),
+  'name'             => __( 'Show Under Construction', 'keystone' ),
   'id'               => 'cmb2_id_field_show_under_construction',
   'desc'             => '<span style="color: red;">' . esc_html__('Users will not be able to view your website if this is ON.', 'keystone') . '</span> An "Under Construction" page will be shown instead.',
   'type'	           => 'switch',
@@ -153,3 +153,27 @@ $cmb2_box_advanced_settings->add_field( array(
 	'sanitization_cb' => 'absint',
         'escape_cb'       => 'absint',
 ) );
+
+$cmb2_box_advanced_settings->add_field([
+  'name'             => __( 'CSS Stylesheet Load Method', 'keystone' ),
+  'id'               => 'cmb2_id_field_stylesheet_load_method',
+  'desc'             => __('This setting changes the way that stylesheet files are loaded upon page load.', 'keystone') . '<br><span style="color: red;">'. __('Changing this setting may hurt or improve page load performance. Use with caution.', 'keystone') . '</span>',
+  'type'    => 'radio_inline',
+  'options' => array(
+      'standard-css-loading' => __( 'Standard Loading (Inside '.esc_html('<head> tag', 'keystone').')', 'keystone' ),
+      'progressive-css-loading'   => __( 'Progressive Loading (Inside '.esc_html('<body> tag', 'keystone').')', 'keystone' ),
+  ),
+  'default' => 'progressive-css-loading'
+]);
+
+$cmb2_box_advanced_settings->add_field([
+  'name'             => __( 'Javascript Script Load Method', 'keystone' ),
+  'id'               => 'cmb2_id_field_script_load_method',
+  'desc'             => __('This setting changes the way that javascript scripts files are loaded upon page load.', 'keystone') . '<br><span style="color: red;">'. __('Changing this setting may hurt or improve page load performance. Use with caution.', 'keystone') . '</span>',
+  'type'    => 'radio_inline',
+  'options' => array(
+      'standard-script-loading' => __( 'Standard Loading (Inside '.esc_html('<head> and <footer> tags', 'keystone').')', 'keystone' ),
+      'progressive-script-loading'   => __( 'Progressive Loading (Inside '.esc_html('<body> tag', 'keystone').')', 'keystone' ),
+  ),
+  'default' => 'progressive-script-loading'
+]);
