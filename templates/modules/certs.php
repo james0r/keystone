@@ -5,19 +5,10 @@
 
 $instance = $template_args['instance'];
 
-$script_dependencies = [
-    'slick-js',
-    'lightbox2-js'
-];
+$script_dependencies = Keystone()->modules->get_module_script_deps('certs');
+$style_dependencies = Keystone()->modules->get_module_style_deps('certs');
 
-$style_dependencies = [
-    'slick-css',
-    'slick-theme-css',
-    'lightbox2-css',
-    'module-certs-css'
-];
-
-Keystone()->renderModuleAssets($script_dependencies, $style_dependencies);
+Keystone()->render_progressive_assets($script_dependencies, $style_dependencies);
 Keystone()->demos->maybe_load_demo_content($instance);
 $cert_array = keystone_meta_with_module_id('cmb2_id_field_certificates_file_list', $instance);
 

@@ -1,15 +1,8 @@
-
 <?php
-
 /**
- * Author: Arlo Carreon <http://arlocarreon.com>
- * Info: http://mexitek.github.io/phpColors/
- * License: http://arlo.mit-license.org/
- */
+* This class contains color utility functions
+*/
 
-/**
- * A color utility that helps manipulate HEX colors
- */
 class Keystone_Colors
 {
     /**

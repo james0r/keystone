@@ -1,6 +1,6 @@
 <?php
 /**
-* THIS CLASS HANDLES DYNAMIC CSS PRIMARILY FOR MODULES
+* This class handles progressive stylesheet importing
 */
 
 class Keystone_Dynamic_CSS {

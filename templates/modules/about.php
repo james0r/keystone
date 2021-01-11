@@ -15,7 +15,7 @@ $style_dependencies = [
     'module-about-css'
 ];
 
-Keystone()->renderModuleAssets($script_dependencies, $style_dependencies);
+Keystone()->render_progressive_assets($script_dependencies, $style_dependencies);
 Keystone()->demos->maybe_load_demo_content($instance);
 
 $twentytwenty_enabled = keystone_meta_with_module_id('cmb2_id_field_about_enable_reveal', $instance);

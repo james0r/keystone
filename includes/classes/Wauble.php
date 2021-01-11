@@ -282,31 +282,23 @@ class Wauble {
     }
 
     public static function get_normalized_theme_version() {
-      $theme_version       = self::$version;
-      $theme_version_array = explode( '.', $theme_version );
-  
-      if ( isset( $theme_version_array[2] ) && '0' === $theme_version_array[2] ) {
-        $theme_version = $theme_version_array[0] . '.' . $theme_version_array[1];
-      }
-  
-      return $theme_version;
+        $theme_version = self::$version;
+        $theme_version_array = explode('.', $theme_version);
+
+        if (isset($theme_version_array[2]) && '0' === $theme_version_array[2]) {
+            $theme_version = $theme_version_array[0] . '.' . $theme_version_array[1];
+        }
+
+        return $theme_version;
     }
 
-    public function renderModuleAssets($script_handles, $style_handles) {
-      if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_script_load_method') == 'progressive-script-loading') {
-        apply_filters('render_dynamic_scripts', $script_handles);
-      } else {
-        foreach ($script_handles as $script_handle) {
-            wp_enqueue_script($script_handle);
+    public function render_progressive_assets($script_handles, $style_handles) {
+        if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_script_load_method') == 'progressive-script-loading') {
+            apply_filters('render_dynamic_scripts', $script_handles);
         }
-      }
-      
-      if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_stylesheet_load_method') == 'progressive-css-loading') {
-          apply_filters('render_dynamic_css', $style_handles);
-      } else {
-        foreach ($style_handles as $style_handle) {
-            wp_enqueue_style($style_handle);
+
+        if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_stylesheet_load_method') == 'progressive-css-loading') {
+            apply_filters('render_dynamic_css', $style_handles);
         }
-      }
     }
 }

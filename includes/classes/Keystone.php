@@ -83,7 +83,7 @@ class Keystone extends Wauble {
         // Register scripts for standard javascript loading
         //==========================================
 
-        wp_register_script('twenty-twenty-js', get_template_directory_uri() . '/assets/js/jquery.twentytwenty.js', ['jquery-3.5.1'], 1.0, false);
+        wp_register_script('twenty-twenty-js', get_template_directory_uri() . '/assets/js/jquery.twentytwenty.js', ['jquery-3.5.1'], 1.0, true);
         wp_register_script('event-move-js', get_template_directory_uri() . '/assets/js/jquery.event.move.js', ['jquery-3.5.1'], 1.0, true);
         wp_register_script('slick-js', get_template_directory_uri() . '/assets/js/slick.js', ['jquery-3.5.1'], 1.0, true);
         wp_register_script('swiper-bundle-js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', [''], 1.0, true);
