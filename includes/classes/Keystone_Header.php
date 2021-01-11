@@ -10,9 +10,9 @@ class Keystone_Header {
 
     public function render_header() {
         echo '<header class="header" id="header">';
-        keystone_echo_template('header-top-bar');
-        keystone_echo_template('header-middle-bar');
-        keystone_echo_template('header-bottom-bar');
+        keystone_render_template('header-top-bar');
+        keystone_render_template('header-middle-bar');
+        keystone_render_template('header-bottom-bar');
         echo '</header>';
     }
 

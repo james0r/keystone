@@ -13,27 +13,27 @@ class Keystone_Dynamic_Scripts {
 
     public function filterRenderDynamicScripts($script_deps = []) {
         foreach ($script_deps as $dep) {
-            switch ($dep) {
-          case 'twenty-twenty':
-              echo $this->add_script('twenty-twenty', get_template_directory_uri() . '/assets/js/jquery.twentytwenty.js');
+          switch ($dep) {
+          case 'twenty-twenty-js':
+              echo $this->add_script($dep, get_template_directory_uri() . '/assets/js/jquery.twentytwenty.js');
             break;
-          case 'event-move':
-            echo  $this->add_script('event-move', get_template_directory_uri() . '/assets/js/jquery.event.move.js');
+          case 'event-move-js':
+            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/jquery.event.move.js');
             break;
-          case 'slick':
-            echo  $this->add_script('slick-js', get_template_directory_uri() . '/assets/js/slick.js');
+          case 'slick-js':
+            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/slick.js');
             break;
-          case 'swiper-bundle':
-            echo  $this->add_script('swiper-bundle-js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js');
+          case 'swiper-bundle-js':
+            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/swiper-bundle.min.js');
             break;
-          case 'slick-lightbox':
-            echo  $this->add_script('slick-lightbox-js', get_template_directory_uri() . '/assets/js/slick-lightbox.min.js');
+          case 'slick-lightbox-js':
+            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/slick-lightbox.min.js');
             break;
-          case 'countup':
-            echo  $this->add_script('countup-js', get_template_directory_uri() . '/assets/js/countUp.min.js');
+          case 'countup-js':
+            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/countUp.min.js');
             break;
-          case 'lightbox2':
-            echo  $this->add_script('lightbox2-js', get_template_directory_uri() . '/assets/js/lightbox.min.js');
+          case 'lightbox2-js':
+            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/lightbox.min.js');
             break;
           default:
           return false;

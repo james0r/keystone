@@ -16,32 +16,32 @@ class Keystone_Dynamic_CSS {
         foreach ($style_deps as $dep) {
             switch ($dep) {
             // If dependency handle is prefixed with module- then import the corresponding css file
-            case (preg_match('/module-*/', $dep) ? true : false):
-              echo $this->addInlineStylesheet($dep . '-css', get_stylesheet_directory_uri() . '/assets/css/' . $dep . '.css');
+            case (preg_match('/module-*/', substr($dep, 0, -4)) ? true : false):
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/' . substr($dep, 0, -4) . '.css');
               break;
-            case 'twenty-twenty':
-                echo $this->addInlineStylesheet('twenty-twenty-css', get_stylesheet_directory_uri() . '/assets/css/twenty-twenty.css');
+            case 'twenty-twenty-css':
+                echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/twenty-twenty.css');
               break;
-            case 'slick':
-              echo $this->addInlineStylesheet('slick-css', get_stylesheet_directory_uri() . '/assets/css/slick.css');
+            case 'slick-css':
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/slick.css');
               break;
-            case 'slick-theme':
-              echo $this->addInlineStylesheet('slick-theme-css', get_stylesheet_directory_uri() . '/assets/css/slick-theme.css');
+            case 'slick-theme-css':
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/slick-theme.css');
               break;
-            case 'swiper-bundle':
-              echo $this->addInlineStylesheet('swiper-bundle-css', get_stylesheet_directory_uri() . '/assets/css/swiper-bundle.css');
+            case 'swiper-bundle-css':
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/swiper-bundle.css');
               break;
-            case 'slick-lightbox':
-              echo $this->addInlineStylesheet('slick-lightbox-css', get_stylesheet_directory_uri() . '/assets/css/slick-lightbox.css');
+            case 'slick-lightbox-css':
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/slick-lightbox.css');
               break;
-            case 'lightbox2':
-              echo $this->addInlineStylesheet('lightbox2-css', get_stylesheet_directory_uri() . '/assets/css/lightbox.min.css');
+            case 'lightbox2-css':
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/lightbox.min.css');
               break;
             case 'flaticon-dental-css':
-              echo $this->addInlineStylesheet('flaticon-dental-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-dental.css');
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/flaticon-set-dental.css');
               break;
             case 'flaticon-medical-css':
-              echo $this->addInlineStylesheet('flaticon-medical-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-medical.css');
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/flaticon-set-medical.css');
               break;
             default:
             echo '<!-- A style dependency failed to load -->';

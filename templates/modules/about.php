@@ -6,23 +6,24 @@
 $instance = $template_args['instance'];
 
 $script_dependencies = [
-    'twenty-twenty',
-    'event-move'
+    'twenty-twenty-js',
+    'event-move-js'
 ];
 
 $style_dependencies = [
-    'twenty-twenty',
-    'module-about'
+    'twenty-twenty-css',
+    'module-about-css'
 ];
 
+Keystone()->renderModuleAssets($script_dependencies, $style_dependencies);
 Keystone()->demos->maybe_load_demo_content($instance);
 
 $twentytwenty_enabled = keystone_meta_with_module_id('cmb2_id_field_about_enable_reveal', $instance);
 
 if ($twentytwenty_enabled) {
-  apply_filters('render_dynamic_scripts', $script_dependencies);
-  apply_filters('render_dynamic_css', $style_dependencies);
+
 }
+
 ?>
 <div class="about-module-container">
   <div class="about-module-container-inner">
@@ -78,5 +79,7 @@ if ($twentytwenty_enabled) {
 </div>
 
 <script>
-  $(".reveal-image-container").twentytwenty();
+  $(function() {
+    $(".reveal-image-container").twentytwenty();
+  })
 </script>
