@@ -58,4 +58,13 @@
   font-size: 40px;
 }
 
+.services-style-1-module-container-inner .section-body-row .grid .services-item.flex .end h3 {
+  margin-bottom: 5px;
+}
+
+.services-style-1-module-container-inner .section-body-row .grid .services-item.flex .end p {
+  font-weight: 14px;
+  line-height: 1.8;
+}
+
 /*# sourceMappingURL=services-style-1.css.map */

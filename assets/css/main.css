@@ -721,6 +721,14 @@ Ex. .container, .grid, .col
   margin: auto;
 }
 
+.header-top-bar {
+  background-color: var(--keystone-primary-color);
+}
+
+.header-top-bar-inner {
+  color: white;
+}
+
 .btn {
   padding: 8px 22px;
   -webkit-appearance: none;

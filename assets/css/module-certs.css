@@ -3,8 +3,22 @@
   padding: 60px 15px;
 }
 
+@media (max-width: 768px) {
+  .module-certs {
+    padding: 40px 15px;
+  }
+}
+
 .certs-module-container-inner .certs-slider-inner {
   visibility: hidden;
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .certs-module-container-inner .certs-slider-inner {
+    width: calc(100% + 128px);
+    margin-left: -64px;
+  }
 }
 
 .certs-module-container-inner .certs-slider-inner li {

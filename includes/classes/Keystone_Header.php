@@ -9,10 +9,12 @@ class Keystone_Header {
     }
 
     public function render_header() {
+        $header_options = $this->get_options_array();
+
         echo '<header class="header" id="header">';
-        keystone_render_template('header-top-bar');
-        keystone_render_template('header-middle-bar');
-        keystone_render_template('header-bottom-bar');
+        keystone_render_template('header-top-bar', $header_options);
+        keystone_render_template('header-middle-bar', $header_options);
+        keystone_render_template('header-bottom-bar', $header_options);
         echo '</header>';
     }
 
@@ -23,7 +25,7 @@ class Keystone_Header {
             $box_key = $value[0];
             $field_id = $value[1];
             if (!empty(cmb2_get_option($box_key, $field_id))) {
-                $header_options[$slug] = cmb2_get_option($box_key, $field_id);
+                $header_options[$slug] = cmb2_get_option($box_key, $field_id)[0];
             }
         }
 

@@ -6,7 +6,7 @@
 .module-about .flex {
   display: flex;
   flex-direction: row;
-  height: 434px;
+  min-height: auto;
 }
 
 @media (max-width: 768px) {

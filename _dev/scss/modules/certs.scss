@@ -5,12 +5,22 @@
 .module-certs {
   background-color: var(--keystone-background-color-d1);
   padding: 60px 15px;
+
+  @include md {
+    padding: 40px 15px;
+  }
 }
 
 .certs-module-container {
   &-inner {
     .certs-slider-inner {
       visibility: hidden;
+      width: 100%;
+
+      @media (min-width: 1200px) {
+        width: calc(100% + 128px);
+        margin-left: -64px;
+      }
 
       li {
         display: inline-block;

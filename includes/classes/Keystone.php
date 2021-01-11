@@ -17,8 +17,6 @@ class Keystone extends Wauble {
 
         add_filter('use_block_editor_for_post', '__return_false', 10);
 
-        add_action('init', [$this, 'reset_editor']);
-
         add_action('wp_enqueue_scripts', [$this,'keystone_register_scripts']);
 
         $this->addImageSize('reveal-image', 1100, 840);
@@ -78,6 +76,7 @@ class Keystone extends Wauble {
         wp_register_style('flaticon-medical-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-medical.css');
         wp_register_style('module-about-css', get_stylesheet_directory_uri() . '/assets/css/module-about.css');
         wp_register_style('module-certs-css', get_stylesheet_directory_uri() . '/assets/css/module-certs.css');
+        wp_register_style('module-services-style-1-css', get_stylesheet_directory_uri() . '/assets/css/module-services-style-1.css');
 
         //==========================================
         // Register scripts for standard javascript loading
@@ -90,16 +89,5 @@ class Keystone extends Wauble {
         wp_register_script('slick-lightbox-js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', ['jquery-3.5.1','slick-js'], 1.0, true);
         wp_register_script('countup-js', get_template_directory_uri() . '/assets/js/countUp.min.js', [''], 1.0, true);
         wp_register_script('lightbox2-js', get_template_directory_uri() . '/assets/js/lightbox.min.js', ['jquery-3.5.1'], 1.0, true);
-    }
-
-    public function reset_editor() {
-        global $_wp_post_type_features;
-
-        $post_type = 'page';
-        $feature = 'editor';
-        if (!isset($_wp_post_type_features[$post_type])) {
-        } elseif (isset($_wp_post_type_features[$post_type][$feature])) {
-            unset($_wp_post_type_features[$post_type][$feature]);
-        }
     }
 }

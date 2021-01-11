@@ -23,10 +23,7 @@ class Keystone_Icons {
         $first_three = substr($classes, 0, 3);
         $formatted_classes = '';
 
-        if ($first_three == 'fa-') {
-            // Font Awesome 4.7 Icon
-            $formatted_classes = 'fa ' . $classes;
-        } elseif ($first_three == 'fas' || $first_three == 'fab') {
+        if ($first_three == 'fas' || $first_three == 'fab' || $first_three == 'fa ' || $first_three == 'far') {
             // Font Awesome 5 Free Icon
             $formatted_classes = $classes;
         } elseif ($first_three == 'pe-') {
@@ -69,14 +66,6 @@ class Keystone_Icons {
       </thead>
       <tbody>
         <tr>
-          <td data-label="Font Awesome 4.7">Font Awesome 4.7</td>
-          <td data-label="Font Awesome 4.7 Reference Doc">
-            <a target="_blank" href="https://fontawesome.com/v4.7.0/cheatsheet/">
-              Open
-            </a>
-          </td>
-        </tr>
-        <tr class="hidden-row-by-default" style="display: none;">
           <td data-label="Font Awesome 5 Free">Font Awesome 5 Free</td>
           <td data-label="Font Awesome 5 Free Reference Doc">
             <a target="_blank" href="https://fontawesome.com/cheatsheet/free/">

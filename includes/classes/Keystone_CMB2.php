@@ -110,7 +110,6 @@ class Keystone_CMB2 {
         // Callback function to be used with Checkbox and Switch fields.
         function sanitize_checkbox($value, $field_args, $field) {
             // Return 0 instead of false if null value given.
-            error_log($value);
             return is_null($value) ? 0 : $value;
         }
 

@@ -1,0 +1,36 @@
+{
+  "cmb2_id_field_services_1_section_title_25": "SERVICES",
+  "cmb2_id_field_services_1_section_desc_25": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem\r\nvoluptatem obcaecati!",
+  "cmb2_id_field_services_1_services_group_25": [
+    {
+      "icon": "flaticon-medical-teeth2",
+      "title": "Dental Implants",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt."
+    },
+    {
+      "icon": "fa fa-medkit",
+      "title": "Root Canal",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt."
+    },
+    {
+      "icon": "flaticon-medical-brush18",
+      "title": "Teeth Whitening",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt."
+    },
+    {
+      "icon": "flaticon-medical-medical51",
+      "title": "Wisdom Teeth",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt."
+    },
+    {
+      "icon": "flaticon-medical-dentist",
+      "title": "Crowns Bridges",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt."
+    },
+    {
+      "icon": "flaticon-medical-hospital35",
+      "title": "Cosmetic Dentistry",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum consectetur sit ullam perspiciatis, deserunt."
+    }
+  ]
+}

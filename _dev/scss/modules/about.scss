@@ -9,7 +9,7 @@
   .flex {
     display: flex;
     flex-direction: row;
-    height: 434px;
+    min-height: auto;
 
     @include md {
       flex-direction: column;

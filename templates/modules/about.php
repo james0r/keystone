@@ -5,18 +5,10 @@
 
 $instance = $template_args['instance'];
 
-$script_dependencies = [
-    'twenty-twenty-js',
-    'event-move-js'
-];
-
-$style_dependencies = [
-    'twenty-twenty-css',
-    'module-about-css'
-];
+$script_dependencies = Keystone()->modules->get_module_script_deps('about');
+$style_dependencies = Keystone()->modules->get_module_style_deps('about');
 
 Keystone()->render_progressive_assets($script_dependencies, $style_dependencies);
-Keystone()->demos->maybe_load_demo_content($instance);
 
 $twentytwenty_enabled = keystone_meta_with_module_id('cmb2_id_field_about_enable_reveal', $instance);
 

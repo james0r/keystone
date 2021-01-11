@@ -11,8 +11,16 @@
     echo '</style>';
     keystone_render_template('theme-fonts');
     echo '<script>console.log("Keystone Theme ' . KEYSTONE_VERSION . ' https://www.clinicrevenue.com")</script>';
-    Keystone()->modules->enqueue_module_deps(get_the_ID());
-    wp_head(); 
+
+    if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_script_load_method') == 'standard-script-loading') {
+        Keystone()->modules->enqueue_module_script_deps(get_the_ID());
+    }
+
+    if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_stylesheet_load_method') == 'standard-css-loading') {
+        Keystone()->modules->enqueue_module_style_deps(get_the_ID());
+    }
+
+    wp_head();
   ?>
 </head>
 
@@ -21,5 +29,4 @@
   <!-- Begin wrapper for use with boxed layouts -->
   <div id="wrapper">
     <?php keystone_render_template('preloader') ?>
-    <?php Keystone()->header->render_header(); ?>
-
+    <?php Keystone()->header->render_header();

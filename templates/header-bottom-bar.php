@@ -1,3 +1,3 @@
-<div id="header-bottom-bar">
+<div id="header-bottom-bar" class="header-bottom-bar">
 
 </div>

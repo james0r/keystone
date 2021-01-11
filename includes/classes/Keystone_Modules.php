@@ -30,29 +30,41 @@ class Keystone_Modules {
         Keystone()->requireOnce('/includes/modules/modules.php');
     }
 
-    public function enqueue_module_deps($post_id) {
-      $post_modules = $this->get_post_modules($post_id);
+    public function enqueue_module_script_deps($post_id) {
+        $post_modules = $this->get_post_modules($post_id);
 
-      foreach($post_modules as $module_name) {
-        $script_deps = $this->get_module_script_deps($module_name);
-        $style_deps = $this->get_module_style_deps($module_name);
-        $deps = array_merge($script_deps, $style_deps);
+        foreach ($post_modules as $module_name) {
+            $script_deps = $this->get_module_script_deps($module_name);
 
-        foreach ($deps as $dep_handle) {
-          add_action('wp_enqueue_scripts', function() use ($dep_handle) {
-            wp_enqueue_script($dep_handle);
-          });
+            foreach ($script_deps as $dep_handle) {
+                add_action('wp_enqueue_scripts', function () use ($dep_handle) {
+                    wp_enqueue_script($dep_handle);
+                });
+            }
         }
-      }
+    }
+
+    public function enqueue_module_style_deps($post_id) {
+        $post_modules = $this->get_post_modules($post_id);
+
+        foreach ($post_modules as $module_name) {
+            $style_deps = $this->get_module_style_deps($module_name);
+
+            foreach ($style_deps as $dep_handle) {
+                add_action('wp_enqueue_scripts', function () use ($dep_handle) {
+                    wp_enqueue_style($dep_handle);
+                });
+            }
+        }
     }
 
     public function get_post_modules($post_id) {
         global $wpdb;
-        $modules_in_post = array();
+        $modules_in_post = [];
         $modules = $wpdb->get_results('SELECT * FROM modules ORDER BY display_order ASC');
         foreach ($modules as $m) {
             if ($post_id == $m->page) {
-              array_push($modules_in_post, $m->module);
+                array_push($modules_in_post, $m->module);
             }
         }
 
@@ -60,22 +72,26 @@ class Keystone_Modules {
     }
 
     public function get_module_script_deps($module_name) {
-      return $this->get_modules_scripts_map()[$module_name];
+        return $this->get_modules_scripts_map()[$module_name];
     }
 
     public function get_module_style_deps($module_name) {
-      return $this->get_modules_styles_map()[$module_name];
+        return $this->get_modules_styles_map()[$module_name];
     }
 
     private function get_modules_scripts_map() {
-      return array(
-        'certs' => array('slick-js', 'lightbox2-js')
-      );
+        return [
+            'certs' => ['slick-js', 'lightbox2-js'],
+            'about' => ['twenty-twenty-js', 'event-move-js'],
+            'services-style-1' => []
+        ];
     }
+
     private function get_modules_styles_map() {
-      return array(
-        'certs' => array('slick-css','slick-theme-css','lightbox2-css','module-certs-css'),
-        'about' => array()
-      );
+        return [
+            'certs' => ['slick-css', 'slick-theme-css', 'lightbox2-css', 'module-certs-css'],
+            'about' => ['twenty-twenty-css','module-about-css'],
+            'services-style-1' => ['flaticon-medical-css','flaticon-dental-css','module-services-style-1-css']
+        ];
     }
 }

@@ -7,18 +7,10 @@ $instance = $template_args['instance'];
 
 $meta_prefix = 'cmb2_id_field_services_1_';
 
-$script_dependencies = [
+$script_dependencies = Keystone()->modules->get_module_script_deps('about');
+$style_dependencies = Keystone()->modules->get_module_style_deps('about');
 
-];
-
-$style_dependencies = [
-  'flaticon-medical-css',
-  'flaticon-dental-css',
-  'module-services-style-1'
-];
-
-apply_filters('render_dynamic_scripts', $script_dependencies);
-apply_filters('render_dynamic_css', $style_dependencies);
+Keystone()->render_progressive_assets($script_dependencies, $style_dependencies);
 
 ?>
 <div class="services-style-1-module-container">
