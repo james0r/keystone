@@ -1,6 +1,3 @@
-
-
-
 <div id="header-top-bar" class="header-top-bar">
   <div class="header-top-bar-inner">
     <div class="flex">
@@ -10,6 +7,12 @@
           <?php echo $template_args['header-style-group']['top-bar-message-text'] ?>
         </span>
       </div>
+      <address class="contact">
+        <a href="tel:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>">
+          <?php apply_filters('keystone_render_icon', 'fas fa-phone-alt'); ?>
+          <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>
+        </a>
+      </address>
       <div class="nav-area">
         <nav>
           <?php 

@@ -6,6 +6,10 @@
   background-color: var(--keystone-primary-color);
   padding: 0 15px;
 
+  .keystone-header-style-1 & {
+    background-color: var(--keystone-dark-background-color);
+  }
+
   @include lg {
     padding: 10px 15px;
   }
@@ -52,10 +56,15 @@
           ul {
             list-style-type: none;
 
+            .keystone-header-style-1 & {
+              @include lg {
+                margin-top: 10px;
+              }
+            }
 
             li {
               display: inline-block;
-              padding: 0 10px;   
+              padding: 0 15px;   
               position: relative;
               line-height: 13px;
               
@@ -66,7 +75,7 @@
                 width: 1px;
                 height: 100%;
                 background: white;
-                transform: translateX(100%);
+                transform: translateX(200%);
               }
               
               a {
@@ -91,6 +100,10 @@
           border: none;
           color: white;
           cursor: pointer;
+
+          .keystone-header-style-1 & {
+            display: none;
+          }
 
           @include lg {
             padding: 14px 0px;

@@ -52,8 +52,14 @@ $cmb2_options_clinic_info->add_field([
 ]);
 
 $cmb2_options_clinic_info->add_field([
-    'name' => __('Company Phone #', 'keystone'),
-    'id'   => 'cmb_company_phone',
+    'name' => __('New Patients Phone #', 'keystone'),
+    'id'   => 'cmb_company_new_patients_phone',
+    'type' => 'text_medium',
+]);
+
+$cmb2_options_clinic_info->add_field([
+    'name' => __('Current Patients Phone #', 'keystone'),
+    'id'   => 'cmb_company_current_patients_phone',
     'type' => 'text_medium',
 ]);
 

@@ -37,6 +37,30 @@ $cmb_theme_colors->add_field([
 ]);
 
 $cmb_theme_colors->add_field([
+    'name'    => __('Background "light" Gray', 'keystone'),
+    'id'      => 'cmb_background_light_gray',
+    'type'    => 'colorpicker',
+    'default' => '#F5F5F5',
+    'desc'    => __('It is recommended to leave this color as-is.', 'keystone')
+]);
+
+$cmb_theme_colors->add_field([
+    'name'    => __('Background "lighter" Gray', 'keystone'),
+    'id'      => 'cmb_background_lighter_gray',
+    'type'    => 'colorpicker',
+    'default' => '#F7F7F7',
+    'desc'    => __('It is recommended to leave this color as-is.', 'keystone')
+]);
+
+$cmb_theme_colors->add_field([
+    'name'    => __('Background "lightest" Gray', 'keystone'),
+    'id'      => 'cmb_background_lightest_gray',
+    'type'    => 'colorpicker',
+    'default' => '#FCFCFC',
+    'desc'    => __('It is recommended to leave this color as-is.', 'keystone')
+]);
+
+$cmb_theme_colors->add_field([
     'name'    => __('Dark Theme Background Color', 'keystone'),
     'default' => '#ffffff',
     'id'      => 'cmb_dark_background_color',
