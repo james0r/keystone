@@ -4,13 +4,29 @@
 <div id="header-top-bar" class="header-top-bar">
   <div class="header-top-bar-inner">
     <div class="flex">
-      <div class="top-bar-message">
+      <div class="message">
         <?php apply_filters('keystone_render_icon', $template_args['header-style-group']['top-bar-message-icon']) ?>
         <span>
           <?php echo $template_args['header-style-group']['top-bar-message-text'] ?>
         </span>
       </div>
-      <?php var_dump($template_args) ?>
+      <div class="nav-area">
+        <nav>
+          <?php 
+            wp_nav_menu( array(
+              'menu'              => "Top Bar Menu", // (int|string|WP_Term) Desired menu. Accepts a menu ID, slug, name, or object.
+              'menu_class'        => "header-secondary-menu", // (string) CSS class to use for the ul element which forms the menu. Default 'menu'.
+              'menu_id'           => "header-secondary-menu", // (string) The ID that is applied to the ul element which forms the menu. Default is the menu slug, incremented.
+              'container'         => false, // (string) Whether to wrap the ul, and what to wrap it with. Default 'div'.
+              'theme_location'    => "header-secondary", // (string) Theme location to be used. Must be registered with register_nav_menu() in order to be selectable by the user.
+            ) );
+          ?>
+        </nav>
+        <button class="side-panel-toggler">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+      <?php error_log( print_r($template_args, TRUE) ); ?>
     </div>
   </div>
 </div>

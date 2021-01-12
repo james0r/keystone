@@ -4,9 +4,103 @@
 
 .header-top-bar {
   background-color: var(--keystone-primary-color);
+  padding: 0 15px;
+
+  @include lg {
+    padding: 10px 15px;
+  }
 
   &-inner {
     color: white;
+    max-width: var(--keystone-module-inner-max-width);
+    margin: auto;
 
+    .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 45px;
+
+      @include lg {
+        flex-direction: column;
+      }
+
+      .message {
+        font-size: 13px;
+        font-weight: 400;
+        justify-self: flex-start;
+
+        i {
+          margin-right: 5px;
+        }
+
+        @include lg {
+          text-align: center;
+        }
+      }
+
+      .nav-area {
+        display: flex;
+
+        @include lg {
+          flex-direction: column-reverse;
+          align-items: center;
+        }
+
+        nav {
+          ul {
+            list-style-type: none;
+
+
+            li {
+              display: inline-block;
+              padding: 0 10px;   
+              position: relative;
+              line-height: 13px;
+              
+              &:not(:last-child):after {
+                content: '';
+                position: absolute;
+                right: 0;
+                width: 1px;
+                height: 100%;
+                background: white;
+                transform: translateX(100%);
+              }
+              
+              a {
+                color: white;
+                font-size: 13px;
+                line-height: 13px;
+                font-weight: 400;
+
+                &:hover {
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+
+        button {
+          -webkit-appearance: none;
+          appearance: none;
+          -moz-appearance: none;
+          background: transparent;
+          border: none;
+          color: white;
+          cursor: pointer;
+
+          @include lg {
+            padding: 14px 0px;
+          }
+
+          i {
+            font-size: 22px;
+          }
+        }
+      }
+    }
   }
 }

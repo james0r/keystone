@@ -25,6 +25,13 @@
         }
       }
 
+      .section-desc-row {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: var(--keystone-body-text-color-l1);
+        line-height: 26px;
+      }
+
     }
 
     .section-body-row {
@@ -48,6 +55,10 @@
           .start {
             margin-right: 30px;
 
+            @include xs {
+              margin-right: 10px;
+            }
+
             .icon-wrapper {
               height: 70px;
               width: 70px;
@@ -70,8 +81,13 @@
             }
 
             p {
-              font-weight: 14px;
+              font-size: 14px;
               line-height: 1.8;
+              max-width: 260px;
+
+              @include md {
+                max-width: unset;
+              }
             }
           }
         }

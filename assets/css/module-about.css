@@ -74,6 +74,9 @@
 .module-about .flex .end .content .about-body {
   font-size: 18px;
   margin-bottom: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--keystone-body-text-color-l1);
 }
 
 .module-about .flex .end .content .about-thumbnail-group {

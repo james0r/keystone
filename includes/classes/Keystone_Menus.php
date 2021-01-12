@@ -10,9 +10,9 @@ class Keystone_Menus {
         add_action('after_switch_theme', [$this, 'my_after_switch_theme']);
 
         Keystone()->addNavMenus([
-            'header-primary'   => __('Header Primary Menu', 'keystone'),
-            'header-secondary' => __('Header Secondary Menu', 'keystone'),
-            'footer-primary'   => __('Footer Primary Menu', 'keystone'),
+            'header-primary'     => __('Header Primary Menu', 'keystone'),
+            'header-secondary'   => __('Header Secondary Menu', 'keystone'),
+            'footer-primary'     => __('Footer Primary Menu', 'keystone'),
             'footer-secondary'   => __('Footer Secondary Menu', 'keystone')
         ]);
 
@@ -43,10 +43,10 @@ class Keystone_Menus {
         update_option('menu_check', true);
     }
 
-    /**
- * Runs when user switches to your custom theme
- *
- */
+      /**
+     * Runs when user switches to your custom theme
+     *
+     */
     public function my_after_switch_theme() {
         /**
          * Setup the site navigation

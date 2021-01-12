@@ -6,6 +6,11 @@
  * Set up a decent box model on the root element
  */
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -14,8 +19,18 @@ body {
   background-color: var(--keystone-background-color);
 }
 
-h1,h2,h3,h4,h5,h6,
-.h1,.h2,.h3,.h4,.h5,.h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   color: var(--keystone-heading-text-color);
   font-weight: var(--keystone-heading-font-weight);
 }
@@ -61,7 +76,6 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -113,5 +127,3 @@ select {
 .no-focus-outline div:focus {
   outline: none;
 }
-
-

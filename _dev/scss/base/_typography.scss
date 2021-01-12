@@ -61,9 +61,8 @@
 .icon-user:before { content: '\f061'; } /* '' */
  
 body {
-  color: $text-color;
+  color: var(--keystone-heading-text-color);
   font-weight: 400;
-  line-height: 1.4;
   font-size: 16px;
 }
 
