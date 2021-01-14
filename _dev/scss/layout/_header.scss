@@ -10,6 +10,15 @@
     background-color: var(--keystone-dark-background-color);
   }
 
+  .keystone-header-style-3 & {
+    background-color: var(--keystone-background-color-gray-light);
+  }
+
+  .keystone-header-style-5 & {
+    display: none;
+  }
+
+
   @include lg {
     padding: 10px 15px;
   }
@@ -30,13 +39,21 @@
         flex-direction: column;
       }
 
-      .message {
+      .message, .contact {
         font-size: 13px;
         font-weight: 400;
         justify-self: flex-start;
 
+        .keystone-header-style-3 & {
+          color: var(--keystone-body-text-color);
+        }
+
         i {
           margin-right: 5px;
+
+          .keystone-header-style-3 & {
+            color: var(--keystone-primary-color);
+          }
         }
 
         @include lg {
@@ -44,8 +61,123 @@
         }
       }
 
+      .contact {
+        font-style: normal;
+        color: var(--keystone-body-text-color);
+        position: relative;
+
+        .lg-and-smaller {
+          display: none;
+          @include lg {
+            display: block;
+          }
+        }
+
+        @include lg {
+          margin-top: 10px;
+        }
+        
+        a {
+          color: var(--keystone-body-text-color);
+
+          &:hover {
+            text-decoration: none;
+            color: var(--keystone-body-text-color-d2);
+          }
+        }
+
+        .fa-caret-down {
+          padding: 5px 5px 5px 5px;
+          cursor: pointer;
+          transform: scale(1.4);
+        }
+
+        button {
+          -webkit-appearance: none;
+          appearance: none;
+          -moz-appearance: none;
+          background: transparent;
+          border: none;
+          position: relative;
+
+          i {
+            margin-right: 0px; 
+          }
+          .contact-list {
+            background-color: var(--keystone-primary-color);
+            position: absolute;
+            min-width: 260px;
+            top: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0px 15px;
+
+            @include lg {
+              position: fixed;
+              left: 50%;
+              right: unset;
+              top: 40px;
+              transform: translateX(-50%);
+            }
+  
+            li {
+              
+              .no-focus-outline &[aria-label="close"] {
+                display: none;
+              }
+              
+              &[aria-label="close"] {
+                color: white;
+              }
+              
+              i {
+                color: white;
+              }
+              
+              a {
+                padding: 15px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                color: white;
+              }
+  
+              &:last-child {
+                border-top: 1px solid var(--keystone-background-color-gray-light);
+                
+                a {
+                  padding-top: 15px;
+                  padding-bottom: 15px;
+                  justify-content: center;
+                }
+              }
+  
+              &:hover {
+                background: var(--keystone-primary-color-l1);
+              }
+            }
+          }
+        }
+
+        .far.fa-envelope {
+          @include lg {
+            display: none;
+          }
+        }
+
+        .email {
+          @include lg {
+            display: none;
+          }
+        }
+      }
+
       .nav-area {
         display: flex;
+
+        .keystone-header-style-3 & {
+          display: none;
+        }
 
         @include lg {
           flex-direction: column-reverse;

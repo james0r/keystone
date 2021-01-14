@@ -1,93 +1,160 @@
 <?php
 /**
-* THIS CLASS EXTENDS WAUBLE AND IS MEANT FOR CORE
-* FUNCTIONALITY THAT IS NOT ALREADY AVAILABLE IN
-* THE WAUBLE PARENT CLASS
+* Core class for the Keystone Theme.
 */
 
-require_once wp_normalize_path(get_template_directory() . '/includes/classes/Wauble.php');
+class Keystone {
+  public static $instance = null;
 
-class Keystone extends Wauble {
-    public static $instance = null;
+  private static $theme_prefix;
 
-    private static $theme_prefix;
+  public static $template_dir_path = '';
 
-    private function __construct() {
-        self::$theme_prefix = 'keystone';
+  public static $template_dir_url = '';
 
-        add_filter('use_block_editor_for_post', '__return_false', 10);
+  public static $stylesheet_dir_path = '';
 
-        add_action('wp_enqueue_scripts', [$this,'keystone_register_scripts']);
+  public static $stylesheet_dir_url = '';
 
-        $this->addImageSize('reveal-image', 1100, 840);
-        $this->addImageSize('award-thumb', 160, 160);
-        $this->addImageSize('certificate', 1000);
-        $this->addImageSize('hero-background', 1920, 1200);
-        $this->addImageSize('title-image', 132, 40);
+  public static $scripts_dir_path = '';
 
-        parent::__construct();
+  public static $scripts_dir_url = '';
+
+  public static $version = KEYSTONE_VERSION;
+
+  private function __construct() {
+    self::$theme_prefix = 'keystone';
+
+    if ('' === self::$template_dir_path) {
+      self::$template_dir_path = wp_normalize_path(get_template_directory());
+    }
+    if ('' === self::$template_dir_url) {
+      self::$template_dir_url = get_template_directory_uri();
+    }
+    if ('' === self::$stylesheet_dir_path) {
+      self::$stylesheet_dir_path = wp_normalize_path(get_stylesheet_directory());
+    }
+    if ('' === self::$stylesheet_dir_url) {
+      self::$stylesheet_dir_url = get_stylesheet_directory_uri();
     }
 
-    // The object is created from within the class itself
-    // only if the class has no instance.
+    add_filter('use_block_editor_for_post', '__return_false', 10);
+    add_action('wp_footer', array($this, 'display_template_toast'));
+  }
 
-    public static function getInstance() {
-        if (self::$instance == null) {
-            self::$instance = new Keystone();
+  // The Keystone Monolith is the Keystone instance that contains static member variables for all other class instances.
+  // Here, Keystone object is instantiated from within the class itself
+  // and stored as a static variable..
 
-            self::$instance->helpers = new Keystone_Helpers;
-            self::$instance->cmb2 = new Keystone_CMB2;
-            self::$instance->modules = new Keystone_Modules;
-            self::$instance->options = new Keystone_Options;
-            self::$instance->body_classes = new Keystone_Body_Classes;
-            self::$instance->dynamic_css = new Keystone_Dynamic_CSS;
-            self::$instance->dynamic_scripts = new Keystone_Dynamic_Scripts;
-            self::$instance->sidebars = new Keystone_Sidebars;
-            self::$instance->icons = new Keystone_Icons;
-            self::$instance->menus = new Keystone_Menus;
-            self::$instance->demos = new Keystone_Demos;
-            self::$instance->admin = new Keystone_Admin;
-            self::$instance->images = new Keystone_Images;
-            self::$instance->a11y = new Keystone_A11y;
-            self::$instance->header = new Keystone_Header;
-            self::$instance->tools  = new Keystone_Tools;
-        }
+  public static function getInstance() {
+    if (self::$instance == null) {
+      self::$instance = new Keystone();
 
-        return self::$instance;
+      self::$instance->init = new Keystone_Init;
+      self::$instance->scripts = new Keystone_Scripts;
+      self::$instance->helpers = new Keystone_Helpers;
+      self::$instance->cmb2 = new Keystone_CMB2;
+      self::$instance->modules = new Keystone_Modules;
+      self::$instance->options = new Keystone_Options;
+      self::$instance->body_classes = new Keystone_Body_Classes;
+      self::$instance->dynamic_css = new Keystone_Dynamic_CSS;
+      self::$instance->dynamic_scripts = new Keystone_Dynamic_Scripts;
+      self::$instance->sidebars = new Keystone_Sidebars;
+      self::$instance->icons = new Keystone_Icons;
+      self::$instance->menus = new Keystone_Menus;
+      self::$instance->demos = new Keystone_Demos;
+      self::$instance->admin = new Keystone_Admin;
+      self::$instance->images = new Keystone_Images;
+      self::$instance->a11y = new Keystone_A11y;
+      self::$instance->header = new Keystone_Header;
+      self::$instance->tools = new Keystone_Tools;
     }
 
-    public function getPrefix() {
-        return self::$theme_prefix;
+    return self::$instance;
+  }
+
+  public function getPrefix() {
+    return self::$theme_prefix;
+  }
+
+  public function requireOnce($path = '', $base = '') {
+    if ($base === '') {
+      $base = self::$template_dir_path;
     }
 
-    public function keystone_register_scripts() {
-
-       //==========================================
-        // Regsiter stylesheets for standard css loading
-        //==========================================
-
-        wp_register_style('slick-css', get_stylesheet_directory_uri() . '/assets/css/slick.css');
-        wp_register_style('slick-theme-css', get_stylesheet_directory_uri() . '/assets/css/slick-theme.css');
-        wp_register_style('twenty-twenty-css', get_stylesheet_directory_uri() . '/assets/css/twenty-twenty.css');
-        wp_register_style('swiper-bundle-css', get_stylesheet_directory_uri() . '/assets/css/swiper-bundle.css');
-        wp_register_style('slick-lightbox-css', get_stylesheet_directory_uri() . '/assets/css/slick-lightbox.css');
-        wp_register_style('lightbox2-css', get_stylesheet_directory_uri() . '/assets/css/lightbox.min.css');
-        wp_register_style('flaticon-dental-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-dental.css');
-        wp_register_style('flaticon-medical-css', get_stylesheet_directory_uri() . '/assets/css/flaticon-set-medical.css');
-        wp_register_style('module-about-css', get_stylesheet_directory_uri() . '/assets/css/module-about.css');
-        wp_register_style('module-certs-css', get_stylesheet_directory_uri() . '/assets/css/module-certs.css');
-        wp_register_style('module-services-style-1-css', get_stylesheet_directory_uri() . '/assets/css/module-services-style-1.css');
-
-        //==========================================
-        // Register scripts for standard javascript loading
-        //==========================================
-
-        wp_register_script('twenty-twenty-js', get_template_directory_uri() . '/assets/js/jquery.twentytwenty.js', ['jquery-3.5.1'], 1.0, true);
-        wp_register_script('event-move-js', get_template_directory_uri() . '/assets/js/jquery.event.move.js', ['jquery-3.5.1'], 1.0, true);
-        wp_register_script('slick-js', get_template_directory_uri() . '/assets/js/slick.js', ['jquery-3.5.1'], 1.0, true);
-        wp_register_script('swiper-bundle-js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', [''], 1.0, true);
-        wp_register_script('slick-lightbox-js', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', ['jquery-3.5.1','slick-js'], 1.0, true);
-        wp_register_script('countup-js', get_template_directory_uri() . '/assets/js/countUp.min.js', [''], 1.0, true);
-        wp_register_script('lightbox2-js', get_template_directory_uri() . '/assets/js/lightbox.min.js', ['jquery-3.5.1'], 1.0, true);
+    if (strpos($path, '/') != 0) {
+      $path = '/' . $path;
     }
+
+    if ($this->ifFileExists($base . $path)) {
+      require_once $base . $path;
+    } else {
+      throw new Exception($path . 'File Not Found');
+    }
+    return $this; // Return class instance for method chaining
+  }
+
+  private function ifFileExists($full_path) {
+    if (file_exists($full_path)) {
+      return true;
+    }
+  }
+
+  public function render_progressive_assets($script_handles, $style_handles) {
+    if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_script_load_method') == 'progressive-script-loading') {
+      apply_filters('render_dynamic_scripts', $script_handles);
+    }
+
+    if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_stylesheet_load_method') == 'progressive-css-loading') {
+      apply_filters('render_dynamic_css', $style_handles);
+    }
+  }
+
+  public static function get_normalized_theme_version() {
+    $theme_version = self::$version;
+    $theme_version_array = explode('.', $theme_version);
+
+    if (isset($theme_version_array[2]) && '0' === $theme_version_array[2]) {
+      $theme_version = $theme_version_array[0] . '.' . $theme_version_array[1];
+    }
+
+    return $theme_version;
+  }
+
+  // Adds a toast in the bottom right corner displaying current template while logged into admin
+  public static function display_template_toast() {
+    if (is_super_admin()) {
+      global $template;
+
+      $markup = '<div class="wp-template-toast">
+						%s
+						</div>
+						<style>
+							.wp-template-toast {
+								position: fixed;
+								height: 20px;
+								width: 150px;
+								background: rgba(255,0,0,.5);
+								color: white;
+								bottom: 0px;
+								display: flex;
+								justify-content: center;
+								font-size: 12px;
+								right: 0px;
+								border-radius: 5px;
+								animation: fadeout 1s 2s forwards;
+							}
+							@keyframes fadeout {
+								from {
+									opacity: 1;
+								}
+								to {
+									opacity: 0;
+								}
+							}
+						</style>';
+
+      echo sprintf($markup, basename($template));
+    }
+  }
 }

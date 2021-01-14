@@ -6,7 +6,7 @@
 		//get the module instance id
     $instance = $m->id;
       
-    echo sprintf('<!-- Section: %s -->', ucfirst($m->module));
+    echo sprintf('<!-- Start Module: %s -->', $m->module);
 		//open the module container
 		echo '<section id="i'.$instance.'" class="module module-'.$m->module.' module-instance-'.$m->id.'">';
 				
@@ -16,7 +16,9 @@
 			echo "</div>";
 			
 		//close the module container
-		echo '</section>';
+    echo '</section>';
+    
+    echo sprintf('<!-- End Module: %s -->', $m->module);
 		}
   } 
 ?>

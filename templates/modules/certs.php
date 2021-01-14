@@ -7,6 +7,7 @@ $instance = $template_args['instance'];
 
 $script_dependencies = Keystone()->modules->get_module_script_deps('certs');
 $style_dependencies = Keystone()->modules->get_module_style_deps('certs');
+
 Keystone()->render_progressive_assets($script_dependencies, $style_dependencies);
 
 Keystone()->demos->maybe_load_demo_content($instance);
