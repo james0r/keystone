@@ -1109,6 +1109,39 @@ Ex. .container, .grid, .col
   border-color: #eeeeee;
 }
 
+.social-circles-list {
+  list-style-type: none;
+}
+
+.social-circles-list .social-circles-list-item {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.social-circles-list .social-circles-list-item a {
+  background-color: var(--keystone-primary-color);
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  line-height: 30px;
+}
+
+.social-circles-list .social-circles-list-item a i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+}
+
+.social-circles-list .social-circles-list-item a:hover {
+  background-color: var(--keystone-primary-color-d2);
+  text-decoration: none;
+}
+
 /*----------------------------------------------------
 Basic Link Styles
 -----------------------------------------------------*/

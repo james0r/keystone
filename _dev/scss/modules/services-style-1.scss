@@ -48,10 +48,6 @@
           flex-direction: row;
           color: var(--keystone-body-text-color);
 
-          @include on-event {
-            text-decoration: none;
-          }
-
           .start {
             margin-right: 30px;
 
@@ -88,6 +84,14 @@
               @include md {
                 max-width: unset;
               }
+            }
+          }
+
+          @include on-event {
+            text-decoration: none;
+
+            .icon-wrapper {
+              background-color: var(--keystone-primary-color-d2);
             }
           }
         }
