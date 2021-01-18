@@ -453,12 +453,6 @@ select {
   width: 100%;
 }
 
-.no-focus-outline a:focus,
-.no-focus-outline button:focus,
-.no-focus-outline div:focus {
-  outline: none;
-}
-
 @font-face {
   font-family: 'Open Sans';
   src: url("../webfonts/OpenSans-BoldItalic.woff2") format("woff2"), url("../webfonts/OpenSans-BoldItalic.woff") format("woff");
@@ -721,6 +715,19 @@ h2, .h2 {
   width: 1px;
 }
 
+.no-focus-outline a:focus,
+.no-focus-outline button:focus,
+.no-focus-outline div:focus {
+  outline: none;
+}
+
+.sr-only {
+  font-size: 0;
+  height: 1px;
+  overflow: hidden;
+  display: block;
+}
+
 /*----------------------------------------------------
 Layout Related Styles
 Ex. .container, .grid, .col
@@ -739,7 +746,10 @@ Ex. .container, .grid, .col
   background-color: var(--keystone-dark-background-color);
 }
 
-.keystone-header-style-3 .header-top-bar {
+.keystone-header-style-3 .header-top-bar,
+.keystone-header-style-6 .header-top-bar,
+.keystone-header-style-8 .header-top-bar,
+.keystone-header-style-9 .header-top-bar {
   background-color: var(--keystone-background-color-gray-light);
 }
 
@@ -757,6 +767,13 @@ Ex. .container, .grid, .col
   color: white;
   max-width: var(--keystone-module-inner-max-width);
   margin: auto;
+}
+
+.keystone-header-style-3 .header-top-bar-inner,
+.keystone-header-style-6 .header-top-bar-inner,
+.keystone-header-style-8 .header-top-bar-inner,
+.keystone-header-style-9 .header-top-bar-inner {
+  color: var(--keystone-body-text-color);
 }
 
 .header-top-bar-inner .flex {
@@ -779,12 +796,19 @@ Ex. .container, .grid, .col
   justify-self: flex-start;
 }
 
-.keystone-header-style-3 .header-top-bar-inner .flex .message, .keystone-header-style-3 .header-top-bar-inner .flex .contact {
+.header-top-bar-inner .flex .message .keystone-icon, .header-top-bar-inner .flex .contact .keystone-icon {
+  color: var(--keystone-primary-color);
+}
+
+.keystone-header-style-3 .header-top-bar-inner .flex .message,
+.keystone-header-style-6 .header-top-bar-inner .flex .message, .keystone-header-style-3 .header-top-bar-inner .flex .contact,
+.keystone-header-style-6 .header-top-bar-inner .flex .contact {
   color: var(--keystone-body-text-color);
 }
 
 .header-top-bar-inner .flex .message i, .header-top-bar-inner .flex .contact i {
   margin-right: 5px;
+  vertical-align: middle;
 }
 
 .keystone-header-style-3 .header-top-bar-inner .flex .message i, .keystone-header-style-3 .header-top-bar-inner .flex .contact i {
@@ -801,6 +825,16 @@ Ex. .container, .grid, .col
   font-style: normal;
   color: var(--keystone-body-text-color);
   position: relative;
+}
+
+.keystone-header-style-6 .header-top-bar-inner .flex .contact,
+.keystone-header-style-9 .header-top-bar-inner .flex .contact {
+  display: none;
+}
+
+.header-top-bar-inner .flex .contact .keystone-icon {
+  color: var(--keystone-primary-color);
+  vertical-align: middle;
 }
 
 .header-top-bar-inner .flex .contact .lg-and-smaller {
@@ -831,7 +865,7 @@ Ex. .container, .grid, .col
 .header-top-bar-inner .flex .contact .fa-caret-down {
   padding: 5px 5px 5px 5px;
   cursor: pointer;
-  transform: scale(1.4);
+  transform: scale(1.4) translateY(-1px);
 }
 
 .header-top-bar-inner .flex .contact button {
@@ -913,39 +947,42 @@ Ex. .container, .grid, .col
   }
 }
 
-.header-top-bar-inner .flex .nav-area {
+.header-top-bar-inner .flex .nav-wrapper {
   display: flex;
 }
 
-.keystone-header-style-3 .header-top-bar-inner .flex .nav-area {
+.keystone-header-style-3 .header-top-bar-inner .flex .nav-wrapper,
+.keystone-header-style-6 .header-top-bar-inner .flex .nav-wrapper,
+.keystone-header-style-8 .header-top-bar-inner .flex .nav-wrapper,
+.keystone-header-style-9 .header-top-bar-inner .flex .nav-wrapper {
   display: none;
 }
 
 @media (max-width: 980px) {
-  .header-top-bar-inner .flex .nav-area {
+  .header-top-bar-inner .flex .nav-wrapper {
     flex-direction: column-reverse;
     align-items: center;
   }
 }
 
-.header-top-bar-inner .flex .nav-area nav ul {
+.header-top-bar-inner .flex .nav-wrapper nav ul {
   list-style-type: none;
 }
 
 @media (max-width: 980px) {
-  .keystone-header-style-1 .header-top-bar-inner .flex .nav-area nav ul {
+  .keystone-header-style-1 .header-top-bar-inner .flex .nav-wrapper nav ul {
     margin-top: 10px;
   }
 }
 
-.header-top-bar-inner .flex .nav-area nav ul li {
+.header-top-bar-inner .flex .nav-wrapper nav ul li {
   display: inline-block;
   padding: 0 15px;
   position: relative;
   line-height: 13px;
 }
 
-.header-top-bar-inner .flex .nav-area nav ul li:not(:last-child):after {
+.header-top-bar-inner .flex .nav-wrapper nav ul li:not(:last-child):after {
   content: '';
   position: absolute;
   right: 0;
@@ -955,18 +992,18 @@ Ex. .container, .grid, .col
   transform: translateX(200%);
 }
 
-.header-top-bar-inner .flex .nav-area nav ul li a {
+.header-top-bar-inner .flex .nav-wrapper nav ul li a {
   color: white;
   font-size: 13px;
   line-height: 13px;
   font-weight: 400;
 }
 
-.header-top-bar-inner .flex .nav-area nav ul li a:hover {
+.header-top-bar-inner .flex .nav-wrapper nav ul li a:hover {
   text-decoration: none;
 }
 
-.header-top-bar-inner .flex .nav-area button {
+.header-top-bar-inner .flex .nav-wrapper button {
   -webkit-appearance: none;
   appearance: none;
   -moz-appearance: none;
@@ -976,18 +1013,48 @@ Ex. .container, .grid, .col
   cursor: pointer;
 }
 
-.keystone-header-style-1 .header-top-bar-inner .flex .nav-area button {
+.keystone-header-style-1 .header-top-bar-inner .flex .nav-wrapper button {
   display: none;
 }
 
 @media (max-width: 980px) {
-  .header-top-bar-inner .flex .nav-area button {
+  .header-top-bar-inner .flex .nav-wrapper button {
     padding: 14px 0px;
   }
 }
 
-.header-top-bar-inner .flex .nav-area button i {
+.header-top-bar-inner .flex .nav-wrapper button i {
   font-size: 22px;
+}
+
+.header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  background-color: var(--keystone-primary-color);
+  color: #fff;
+  border: none;
+  align-self: normal;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.keystone-header-style-1 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-2 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-3 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-4 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-5 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-8 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-9 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
+    align-self: unset;
+    padding: 8px 16px;
+    margin-top: 15px;
+  }
 }
 
 .btn {

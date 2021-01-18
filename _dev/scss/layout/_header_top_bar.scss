@@ -10,7 +10,10 @@
     background-color: var(--keystone-dark-background-color);
   }
 
-  .keystone-header-style-3 & {
+  .keystone-header-style-3 &,
+  .keystone-header-style-6 &,
+  .keystone-header-style-8 &,
+  .keystone-header-style-9 & {
     background-color: var(--keystone-background-color-gray-light);
   }
 
@@ -28,6 +31,13 @@
     max-width: var(--keystone-module-inner-max-width);
     margin: auto;
 
+    .keystone-header-style-3 &,
+    .keystone-header-style-6 &,
+    .keystone-header-style-8 &,
+    .keystone-header-style-9 & {
+      color: var(--keystone-body-text-color);
+    }
+
     .flex {
       display: flex;
       flex-direction: row;
@@ -44,12 +54,18 @@
         font-weight: 400;
         justify-self: flex-start;
 
-        .keystone-header-style-3 & {
+        .keystone-icon {
+          color: var(--keystone-primary-color);
+        }
+
+        .keystone-header-style-3 &,
+        .keystone-header-style-6 & {
           color: var(--keystone-body-text-color);
         }
 
         i {
           margin-right: 5px;
+          vertical-align: middle;
 
           .keystone-header-style-3 & {
             color: var(--keystone-primary-color);
@@ -65,6 +81,16 @@
         font-style: normal;
         color: var(--keystone-body-text-color);
         position: relative;
+
+        .keystone-header-style-6 &,
+        .keystone-header-style-9 & {
+          display: none;
+        }
+
+        .keystone-icon {
+          color: var(--keystone-primary-color);
+          vertical-align: middle;
+        }
 
         .lg-and-smaller {
           display: none;
@@ -89,7 +115,7 @@
         .fa-caret-down {
           padding: 5px 5px 5px 5px;
           cursor: pointer;
-          transform: scale(1.4);
+          transform: scale(1.4) translateY(-1px);
         }
 
         button {
@@ -172,10 +198,13 @@
         }
       }
 
-      .nav-area {
+      .nav-wrapper {
         display: flex;
 
-        .keystone-header-style-3 & {
+        .keystone-header-style-3 &,
+        .keystone-header-style-6 &,
+        .keystone-header-style-8 &,
+        .keystone-header-style-9 & {
           display: none;
         }
 
@@ -244,6 +273,35 @@
           i {
             font-size: 22px;
           }
+        }
+      }
+
+      #top-bar-schedule-appointment-trigger {
+        .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
+        .keystone-header-style-5 &,
+        .keystone-header-style-8 &,
+        .keystone-header-style-9 & {
+          display: none;
+        }
+
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none;
+
+        background-color: var(--keystone-primary-color);
+        color: #fff;
+        border: none;
+        align-self: normal;
+        padding: 0 15px;
+        cursor: pointer;
+
+        @include lg {
+          align-self: unset;
+          padding: 8px 16px;
+          margin-top: 15px;
         }
       }
     }

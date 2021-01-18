@@ -13,7 +13,7 @@ class Keystone_CMB2 {
   public function __construct() {
     self::$template_dir_url = Keystone::$template_dir_url;
     self::$template_dir_path = Keystone::$template_dir_path;
-    
+
     add_action('admin_enqueue_scripts', array($this, 'enqueue_cmb2_scripts'));
     add_action('admin_enqueue_scripts', array($this, 'enqueue_cmb2_style'));
 
@@ -30,7 +30,7 @@ class Keystone_CMB2 {
     add_action('keystone_load_helper_functions', array($this, 'loadHelperFunctions'));
   }
 
-  protected static function enqueue_cmb2_scripts() {
+  public static function enqueue_cmb2_scripts() {
     $scripts = array(
       array(
         'cmb-font-webfont',
@@ -80,7 +80,7 @@ class Keystone_CMB2 {
     }
   }
 
-  protected function enqueue_cmb2_style() {
+  public function enqueue_cmb2_style() {
     $styles = array(
       array(
         'cmb-font-select2-styles',

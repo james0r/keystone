@@ -73,7 +73,7 @@
 
       <!-- Top Bar Navigation Start -->
 
-      <div class="nav-area">
+      <div class="nav-wrapper">
         <nav>
           <?php
             wp_nav_menu([
@@ -99,6 +99,12 @@
       </button>
 
       <!-- Request An Appointment Button End -->
+
+      <!-- Top Bar Social Links Start -->
+
+      <?php keystone_render_template('social-circles'); ?>
+
+      <!-- Top Bar Social Links End -->
 
     </div>
   </div>

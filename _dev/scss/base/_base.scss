@@ -121,9 +121,3 @@ select {
 .module {
   width: 100%;
 }
-
-.no-focus-outline a:focus,
-.no-focus-outline button:focus,
-.no-focus-outline div:focus {
-  outline: none;
-}

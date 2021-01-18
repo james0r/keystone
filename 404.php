@@ -1,3 +1,3 @@
-<section class="error-404">
+<section id="four-oh-four" class="four-oh-four">
   404
 </section>
