@@ -4,6 +4,11 @@
 
 .social-circles-list {
     list-style-type: none;
+    height: 30px;
+        
+    @include lg {
+      margin-top: 15px;
+    }
 
   .social-circles-list-item {
     display: inline-block;

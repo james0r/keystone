@@ -40,7 +40,6 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
         'header-style-4'           => __('Header Style 4', 'keystone'),
         'header-style-5'           => __('Header Style 5', 'keystone'),
         'header-style-6'           => __('Header Style 6', 'keystone'),
-        'header-style-7'           => __('Header Style 7', 'keystone'),
         'header-style-8'           => __('Header Style 8', 'keystone'),
         'header-style-9'           => __('Header Style 9', 'keystone'),
         'header-style-10'          => __('Header Style 10 Logo Middle', 'keystone'),

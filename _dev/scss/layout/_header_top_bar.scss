@@ -6,21 +6,23 @@
   background-color: var(--keystone-primary-color);
   padding: 0 15px;
 
-  .keystone-header-style-1 & {
+  .keystone-header-style-1 &,
+  .keystone-header-modern-style-1 & {
     background-color: var(--keystone-dark-background-color);
   }
 
+  .keystone-header-style-2 &,
   .keystone-header-style-3 &,
   .keystone-header-style-6 &,
   .keystone-header-style-8 &,
-  .keystone-header-style-9 & {
+  .keystone-header-style-9 &,
+  .keystone-header-style-10 & {
     background-color: var(--keystone-background-color-gray-light);
   }
 
   .keystone-header-style-5 & {
     display: none;
   }
-
 
   @include lg {
     padding: 10px 15px;
@@ -31,10 +33,12 @@
     max-width: var(--keystone-module-inner-max-width);
     margin: auto;
 
+    .keystone-header-style-2 &,
     .keystone-header-style-3 &,
     .keystone-header-style-6 &,
     .keystone-header-style-8 &,
-    .keystone-header-style-9 & {
+    .keystone-header-style-9 &,
+    .keystone-header-style-10 & {
       color: var(--keystone-body-text-color);
     }
 
@@ -49,13 +53,19 @@
         flex-direction: column;
       }
 
-      .message, .contact {
+      .message,
+      .contact {
         font-size: 13px;
         font-weight: 400;
         justify-self: flex-start;
+        font-size: 14px;
 
         .keystone-icon {
           color: var(--keystone-primary-color);
+
+          .keystone-header-style-1 & {
+            color: #fff;
+          }
         }
 
         .keystone-header-style-3 &,
@@ -81,15 +91,26 @@
         font-style: normal;
         color: var(--keystone-body-text-color);
         position: relative;
+        height: 24px;
 
+        .fa-envelope,
+        .fa-caret-down {
+          top: 1px;
+          position: relative;
+        }
+
+        .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
         .keystone-header-style-6 &,
-        .keystone-header-style-9 & {
+        .keystone-header-style-9 &,
+        .keystone-header-modern-style-1 & {
           display: none;
         }
 
         .keystone-icon {
           color: var(--keystone-primary-color);
           vertical-align: middle;
+          font-size: 14px;
         }
 
         .lg-and-smaller {
@@ -102,9 +123,11 @@
         @include lg {
           margin-top: 10px;
         }
-        
+
         a {
           color: var(--keystone-body-text-color);
+          vertical-align: middle;
+          font-size: 14px;
 
           &:hover {
             text-decoration: none;
@@ -127,7 +150,7 @@
           position: relative;
 
           i {
-            margin-right: 0px; 
+            margin-right: 0px;
           }
           .contact-list {
             background-color: var(--keystone-primary-color);
@@ -145,39 +168,49 @@
               top: 40px;
               transform: translateX(-50%);
             }
-  
+
             li {
-              
               .no-focus-outline &[aria-label="close"] {
                 display: none;
               }
-              
+              font-size: 12px;
+
               &[aria-label="close"] {
                 color: white;
               }
-              
+
               i {
                 color: white;
               }
-              
+
               a {
                 padding: 15px;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 color: white;
+                font-size: 12px;
               }
-  
+
               &:last-child {
-                border-top: 1px solid var(--keystone-background-color-gray-light);
-                
+                border-top: 1px solid
+                  var(--keystone-background-color-gray-light);
+                line-height: 14px;
+
+                .keystone-icon {
+                  margin-right: 5px;
+                  margin-top: -1px;
+                }
+
                 a {
+                  line-height: 14px;
+                  font-size: 14px;
                   padding-top: 15px;
                   padding-bottom: 15px;
                   justify-content: center;
                 }
               }
-  
+
               &:hover {
                 background: var(--keystone-primary-color-l1);
               }
@@ -204,7 +237,8 @@
         .keystone-header-style-3 &,
         .keystone-header-style-6 &,
         .keystone-header-style-8 &,
-        .keystone-header-style-9 & {
+        .keystone-header-style-9 &,
+        .keystone-header-style-10 & {
           display: none;
         }
 
@@ -225,25 +259,37 @@
 
             li {
               display: inline-block;
-              padding: 0 15px;   
+              padding: 0 15px;
               position: relative;
               line-height: 13px;
-              
+
               &:not(:last-child):after {
-                content: '';
+                content: "";
                 position: absolute;
                 right: 0;
                 width: 1px;
                 height: 100%;
                 background: white;
                 transform: translateX(200%);
+
+                .keystone-header-style-2 & {
+                  background: var(--keystone-body-text-color);
+                }
               }
-              
+
               a {
                 color: white;
                 font-size: 13px;
                 line-height: 13px;
                 font-weight: 400;
+
+                .keystone-header-style-2 & {
+                  color: var(--keystone-body-text-color);
+
+                  @include on-event {
+                    color: var(--keystone-body-text-color-d2);
+                  }
+                }
 
                 &:hover {
                   text-decoration: none;
@@ -262,7 +308,8 @@
           color: white;
           cursor: pointer;
 
-          .keystone-header-style-1 & {
+          .keystone-header-style-1 &,
+          .keystone-header-style-2 & {
             display: none;
           }
 
@@ -283,7 +330,9 @@
         .keystone-header-style-4 &,
         .keystone-header-style-5 &,
         .keystone-header-style-8 &,
-        .keystone-header-style-9 & {
+        .keystone-header-style-9 &,
+        .keystone-header-style-10 &,
+        .keystone-header-modern-style-1 & {
           display: none;
         }
 
@@ -302,6 +351,20 @@
           align-self: unset;
           padding: 8px 16px;
           margin-top: 15px;
+        }
+      }
+
+      .social-circles {
+        .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
+        .keystone-header-style-5 &,
+        .keystone-header-style-6 &,
+        .keystone-header-style-8 &,
+        .keystone-header-style-10 &,
+        .keystone-header-modern-style-1 & {
+          display: none;
         }
       }
     }

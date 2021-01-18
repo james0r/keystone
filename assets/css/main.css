@@ -379,8 +379,8 @@ h6,
 }
 
 /* Remove default padding */
-ul[class],
-ol[class] {
+ul,
+ol {
   padding: 0;
 }
 
@@ -391,8 +391,8 @@ h2,
 h3,
 h4,
 p,
-ul[class],
-ol[class],
+ul,
+ol,
 li,
 figure,
 figcaption,
@@ -742,14 +742,17 @@ Ex. .container, .grid, .col
   padding: 0 15px;
 }
 
-.keystone-header-style-1 .header-top-bar {
+.keystone-header-style-1 .header-top-bar,
+.keystone-header-modern-style-1 .header-top-bar {
   background-color: var(--keystone-dark-background-color);
 }
 
+.keystone-header-style-2 .header-top-bar,
 .keystone-header-style-3 .header-top-bar,
 .keystone-header-style-6 .header-top-bar,
 .keystone-header-style-8 .header-top-bar,
-.keystone-header-style-9 .header-top-bar {
+.keystone-header-style-9 .header-top-bar,
+.keystone-header-style-10 .header-top-bar {
   background-color: var(--keystone-background-color-gray-light);
 }
 
@@ -769,10 +772,12 @@ Ex. .container, .grid, .col
   margin: auto;
 }
 
+.keystone-header-style-2 .header-top-bar-inner,
 .keystone-header-style-3 .header-top-bar-inner,
 .keystone-header-style-6 .header-top-bar-inner,
 .keystone-header-style-8 .header-top-bar-inner,
-.keystone-header-style-9 .header-top-bar-inner {
+.keystone-header-style-9 .header-top-bar-inner,
+.keystone-header-style-10 .header-top-bar-inner {
   color: var(--keystone-body-text-color);
 }
 
@@ -790,33 +795,46 @@ Ex. .container, .grid, .col
   }
 }
 
-.header-top-bar-inner .flex .message, .header-top-bar-inner .flex .contact {
+.header-top-bar-inner .flex .message,
+.header-top-bar-inner .flex .contact {
   font-size: 13px;
   font-weight: 400;
   justify-self: flex-start;
+  font-size: 14px;
 }
 
-.header-top-bar-inner .flex .message .keystone-icon, .header-top-bar-inner .flex .contact .keystone-icon {
+.header-top-bar-inner .flex .message .keystone-icon,
+.header-top-bar-inner .flex .contact .keystone-icon {
   color: var(--keystone-primary-color);
 }
 
+.keystone-header-style-1 .header-top-bar-inner .flex .message .keystone-icon, .keystone-header-style-1
+.header-top-bar-inner .flex .contact .keystone-icon {
+  color: #fff;
+}
+
 .keystone-header-style-3 .header-top-bar-inner .flex .message,
-.keystone-header-style-6 .header-top-bar-inner .flex .message, .keystone-header-style-3 .header-top-bar-inner .flex .contact,
-.keystone-header-style-6 .header-top-bar-inner .flex .contact {
+.keystone-header-style-6 .header-top-bar-inner .flex .message, .keystone-header-style-3
+.header-top-bar-inner .flex .contact,
+.keystone-header-style-6
+.header-top-bar-inner .flex .contact {
   color: var(--keystone-body-text-color);
 }
 
-.header-top-bar-inner .flex .message i, .header-top-bar-inner .flex .contact i {
+.header-top-bar-inner .flex .message i,
+.header-top-bar-inner .flex .contact i {
   margin-right: 5px;
   vertical-align: middle;
 }
 
-.keystone-header-style-3 .header-top-bar-inner .flex .message i, .keystone-header-style-3 .header-top-bar-inner .flex .contact i {
+.keystone-header-style-3 .header-top-bar-inner .flex .message i, .keystone-header-style-3
+.header-top-bar-inner .flex .contact i {
   color: var(--keystone-primary-color);
 }
 
 @media (max-width: 980px) {
-  .header-top-bar-inner .flex .message, .header-top-bar-inner .flex .contact {
+  .header-top-bar-inner .flex .message,
+  .header-top-bar-inner .flex .contact {
     text-align: center;
   }
 }
@@ -825,16 +843,27 @@ Ex. .container, .grid, .col
   font-style: normal;
   color: var(--keystone-body-text-color);
   position: relative;
+  height: 24px;
 }
 
+.header-top-bar-inner .flex .contact .fa-envelope,
+.header-top-bar-inner .flex .contact .fa-caret-down {
+  top: 1px;
+  position: relative;
+}
+
+.keystone-header-style-1 .header-top-bar-inner .flex .contact,
+.keystone-header-style-2 .header-top-bar-inner .flex .contact,
 .keystone-header-style-6 .header-top-bar-inner .flex .contact,
-.keystone-header-style-9 .header-top-bar-inner .flex .contact {
+.keystone-header-style-9 .header-top-bar-inner .flex .contact,
+.keystone-header-modern-style-1 .header-top-bar-inner .flex .contact {
   display: none;
 }
 
 .header-top-bar-inner .flex .contact .keystone-icon {
   color: var(--keystone-primary-color);
   vertical-align: middle;
+  font-size: 14px;
 }
 
 .header-top-bar-inner .flex .contact .lg-and-smaller {
@@ -855,6 +884,8 @@ Ex. .container, .grid, .col
 
 .header-top-bar-inner .flex .contact a {
   color: var(--keystone-body-text-color);
+  vertical-align: middle;
+  font-size: 14px;
 }
 
 .header-top-bar-inner .flex .contact a:hover {
@@ -901,6 +932,10 @@ Ex. .container, .grid, .col
   }
 }
 
+.header-top-bar-inner .flex .contact button .contact-list li {
+  font-size: 12px;
+}
+
 .no-focus-outline .header-top-bar-inner .flex .contact button .contact-list li[aria-label="close"] {
   display: none;
 }
@@ -919,13 +954,22 @@ Ex. .container, .grid, .col
   flex-direction: row;
   justify-content: space-between;
   color: white;
+  font-size: 12px;
 }
 
 .header-top-bar-inner .flex .contact button .contact-list li:last-child {
   border-top: 1px solid var(--keystone-background-color-gray-light);
+  line-height: 14px;
+}
+
+.header-top-bar-inner .flex .contact button .contact-list li:last-child .keystone-icon {
+  margin-right: 5px;
+  margin-top: -1px;
 }
 
 .header-top-bar-inner .flex .contact button .contact-list li:last-child a {
+  line-height: 14px;
+  font-size: 14px;
   padding-top: 15px;
   padding-bottom: 15px;
   justify-content: center;
@@ -954,7 +998,8 @@ Ex. .container, .grid, .col
 .keystone-header-style-3 .header-top-bar-inner .flex .nav-wrapper,
 .keystone-header-style-6 .header-top-bar-inner .flex .nav-wrapper,
 .keystone-header-style-8 .header-top-bar-inner .flex .nav-wrapper,
-.keystone-header-style-9 .header-top-bar-inner .flex .nav-wrapper {
+.keystone-header-style-9 .header-top-bar-inner .flex .nav-wrapper,
+.keystone-header-style-10 .header-top-bar-inner .flex .nav-wrapper {
   display: none;
 }
 
@@ -983,7 +1028,7 @@ Ex. .container, .grid, .col
 }
 
 .header-top-bar-inner .flex .nav-wrapper nav ul li:not(:last-child):after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0;
   width: 1px;
@@ -992,11 +1037,23 @@ Ex. .container, .grid, .col
   transform: translateX(200%);
 }
 
+.keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper nav ul li:not(:last-child):after {
+  background: var(--keystone-body-text-color);
+}
+
 .header-top-bar-inner .flex .nav-wrapper nav ul li a {
   color: white;
   font-size: 13px;
   line-height: 13px;
   font-weight: 400;
+}
+
+.keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper nav ul li a {
+  color: var(--keystone-body-text-color);
+}
+
+.keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper nav ul li a:hover, .keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper nav ul li a:active, .keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper nav ul li a:focus {
+  color: var(--keystone-body-text-color-d2);
 }
 
 .header-top-bar-inner .flex .nav-wrapper nav ul li a:hover {
@@ -1013,7 +1070,8 @@ Ex. .container, .grid, .col
   cursor: pointer;
 }
 
-.keystone-header-style-1 .header-top-bar-inner .flex .nav-wrapper button {
+.keystone-header-style-1 .header-top-bar-inner .flex .nav-wrapper button,
+.keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper button {
   display: none;
 }
 
@@ -1045,7 +1103,9 @@ Ex. .container, .grid, .col
 .keystone-header-style-4 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
 .keystone-header-style-5 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
 .keystone-header-style-8 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
-.keystone-header-style-9 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
+.keystone-header-style-9 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-10 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-modern-style-1 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
   display: none;
 }
 
@@ -1055,6 +1115,18 @@ Ex. .container, .grid, .col
     padding: 8px 16px;
     margin-top: 15px;
   }
+}
+
+.keystone-header-style-1 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-2 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-3 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-4 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-5 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-6 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-8 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-10 .header-top-bar-inner .flex .social-circles,
+.keystone-header-modern-style-1 .header-top-bar-inner .flex .social-circles {
+  display: none;
 }
 
 .btn {
@@ -1111,6 +1183,13 @@ Ex. .container, .grid, .col
 
 .social-circles-list {
   list-style-type: none;
+  height: 30px;
+}
+
+@media (max-width: 980px) {
+  .social-circles-list {
+    margin-top: 15px;
+  }
 }
 
 .social-circles-list .social-circles-list-item {
