@@ -123,14 +123,14 @@
 <script>
   $(function() {
     $('html').click(function() {
-      $('#top-bar-contact-dropdown').slideUp();
+      $('#top-bar-contact-dropdown').fadeOut();
       var $topbarDropdown = $('#top-bar-contact-dropdown');
       $topbarDropdown.attr('aria-expanded', 'false');
     })
     $('#top-bar-contact-dropdown-toggle').on('click', function(e) {
       e.stopPropagation();
       var $topbarDropdown = $('#top-bar-contact-dropdown');
-      $topbarDropdown.slideToggle(300, function() {
+      $topbarDropdown.fadeToggle(300, function() {
         var isExpanded = ($topbarDropdown.attr('aria-expanded') == 'true');
         $topbarDropdown.attr('aria-expanded', !isExpanded);
       });
