@@ -13,10 +13,12 @@
 
   .keystone-header-style-2 &,
   .keystone-header-style-3 &,
+  .keystone-header-style-4 &,
   .keystone-header-style-6 &,
   .keystone-header-style-8 &,
   .keystone-header-style-9 &,
-  .keystone-header-style-10 & {
+  .keystone-header-style-10 &,
+  .keystone-header-style-11 & {
     background-color: var(--keystone-background-color-gray-light);
   }
 
@@ -35,10 +37,12 @@
 
     .keystone-header-style-2 &,
     .keystone-header-style-3 &,
+    .keystone-header-style-4 &,
     .keystone-header-style-6 &,
     .keystone-header-style-8 &,
     .keystone-header-style-9 &,
-    .keystone-header-style-10 & {
+    .keystone-header-style-10 &,
+    .keystone-header-style-11 & {
       color: var(--keystone-body-text-color);
     }
 
@@ -173,7 +177,7 @@
               .no-focus-outline &[aria-label="close"] {
                 display: none;
               }
-              font-size: 12px;
+              font-size: 13px;
 
               &[aria-label="close"] {
                 color: white;
@@ -189,7 +193,13 @@
                 flex-direction: row;
                 justify-content: space-between;
                 color: white;
-                font-size: 12px;
+                font-size: 13px;
+              }
+
+              .email {
+                display: inline-block;
+                padding-left: 5px;
+                text-decoration: none;
               }
 
               &:last-child {
@@ -218,7 +228,7 @@
           }
         }
 
-        .far.fa-envelope {
+        & > .far.fa-envelope {
           @include lg {
             display: none;
           }
@@ -235,10 +245,12 @@
         display: flex;
 
         .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
         .keystone-header-style-6 &,
         .keystone-header-style-8 &,
         .keystone-header-style-9 &,
-        .keystone-header-style-10 & {
+        .keystone-header-style-10 &,
+        .keystone-header-style-11 & {
           display: none;
         }
 
@@ -332,6 +344,7 @@
         .keystone-header-style-8 &,
         .keystone-header-style-9 &,
         .keystone-header-style-10 &,
+        .keystone-header-style-11 &,
         .keystone-header-modern-style-1 & {
           display: none;
         }
@@ -363,6 +376,7 @@
         .keystone-header-style-6 &,
         .keystone-header-style-8 &,
         .keystone-header-style-10 &,
+        .keystone-header-style-11 &,
         .keystone-header-modern-style-1 & {
           display: none;
         }

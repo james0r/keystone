@@ -38,6 +38,7 @@
 
 .services-style-1-module-container-inner .section-body-row .grid .services-item.flex {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   color: var(--keystone-body-text-color);
 }

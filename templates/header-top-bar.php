@@ -20,7 +20,7 @@
         <?php apply_filters('keystone_render_icon', 'fas fa-phone-alt'); ?>
         <a
           href="tel:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>">
-          New Patient: <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>
+          <?php _e('New Patients', 'keystone') ?>: <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>
         </a>
         <?php endif; ?>
         <button id="top-bar-contact-dropdown-toggle" aria-haspopup="listbox">
@@ -34,7 +34,7 @@
             <li class="contact-item" role="option">
               <a
                 href="tel:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>">
-                <span><?php _e('New Patient', 'keystone') ?>:</span>
+                <span><?php _e('New Patients', 'keystone') ?>:</span>
                 <span><?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?></span>
               </a>
             </li>
@@ -43,8 +43,18 @@
             <li class="contact-item" role="option">
               <a
                 href="tel:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>">
-                <span><?php _e('Current Patient', 'keystone') ?>:</span>
+                <span><?php _e('Current Patients', 'keystone') ?>:</span>
                 <span><?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_current_patients_phone') ?></span>
+              </a>
+            </li>
+            <?php endif; ?>
+            <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_company_email'))) : ?>
+            <li class="contact-item" role="option">
+              <?php apply_filters('keystone_render_icon', 'far fa-envelope'); ?>
+              <a
+               class="email"
+                href="mailto:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_email') ?>">
+                <?php _e('Send us an email', 'keystone') ?>
               </a>
             </li>
             <?php endif; ?>

@@ -749,10 +749,12 @@ Ex. .container, .grid, .col
 
 .keystone-header-style-2 .header-top-bar,
 .keystone-header-style-3 .header-top-bar,
+.keystone-header-style-4 .header-top-bar,
 .keystone-header-style-6 .header-top-bar,
 .keystone-header-style-8 .header-top-bar,
 .keystone-header-style-9 .header-top-bar,
-.keystone-header-style-10 .header-top-bar {
+.keystone-header-style-10 .header-top-bar,
+.keystone-header-style-11 .header-top-bar {
   background-color: var(--keystone-background-color-gray-light);
 }
 
@@ -774,10 +776,12 @@ Ex. .container, .grid, .col
 
 .keystone-header-style-2 .header-top-bar-inner,
 .keystone-header-style-3 .header-top-bar-inner,
+.keystone-header-style-4 .header-top-bar-inner,
 .keystone-header-style-6 .header-top-bar-inner,
 .keystone-header-style-8 .header-top-bar-inner,
 .keystone-header-style-9 .header-top-bar-inner,
-.keystone-header-style-10 .header-top-bar-inner {
+.keystone-header-style-10 .header-top-bar-inner,
+.keystone-header-style-11 .header-top-bar-inner {
   color: var(--keystone-body-text-color);
 }
 
@@ -933,7 +937,7 @@ Ex. .container, .grid, .col
 }
 
 .header-top-bar-inner .flex .contact button .contact-list li {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .no-focus-outline .header-top-bar-inner .flex .contact button .contact-list li[aria-label="close"] {
@@ -954,7 +958,13 @@ Ex. .container, .grid, .col
   flex-direction: row;
   justify-content: space-between;
   color: white;
-  font-size: 12px;
+  font-size: 13px;
+}
+
+.header-top-bar-inner .flex .contact button .contact-list li .email {
+  display: inline-block;
+  padding-left: 5px;
+  text-decoration: none;
 }
 
 .header-top-bar-inner .flex .contact button .contact-list li:last-child {
@@ -980,7 +990,7 @@ Ex. .container, .grid, .col
 }
 
 @media (max-width: 980px) {
-  .header-top-bar-inner .flex .contact .far.fa-envelope {
+  .header-top-bar-inner .flex .contact > .far.fa-envelope {
     display: none;
   }
 }
@@ -996,10 +1006,12 @@ Ex. .container, .grid, .col
 }
 
 .keystone-header-style-3 .header-top-bar-inner .flex .nav-wrapper,
+.keystone-header-style-4 .header-top-bar-inner .flex .nav-wrapper,
 .keystone-header-style-6 .header-top-bar-inner .flex .nav-wrapper,
 .keystone-header-style-8 .header-top-bar-inner .flex .nav-wrapper,
 .keystone-header-style-9 .header-top-bar-inner .flex .nav-wrapper,
-.keystone-header-style-10 .header-top-bar-inner .flex .nav-wrapper {
+.keystone-header-style-10 .header-top-bar-inner .flex .nav-wrapper,
+.keystone-header-style-11 .header-top-bar-inner .flex .nav-wrapper {
   display: none;
 }
 
@@ -1105,6 +1117,7 @@ Ex. .container, .grid, .col
 .keystone-header-style-8 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
 .keystone-header-style-9 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
 .keystone-header-style-10 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+.keystone-header-style-11 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
 .keystone-header-modern-style-1 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
   display: none;
 }
@@ -1125,6 +1138,7 @@ Ex. .container, .grid, .col
 .keystone-header-style-6 .header-top-bar-inner .flex .social-circles,
 .keystone-header-style-8 .header-top-bar-inner .flex .social-circles,
 .keystone-header-style-10 .header-top-bar-inner .flex .social-circles,
+.keystone-header-style-11 .header-top-bar-inner .flex .social-circles,
 .keystone-header-modern-style-1 .header-top-bar-inner .flex .social-circles {
   display: none;
 }
