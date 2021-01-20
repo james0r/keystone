@@ -62,7 +62,7 @@ $cmb_theme_colors->add_field([
 
 $cmb_theme_colors->add_field([
     'name'    => __('Dark Theme Background Color', 'keystone'),
-    'default' => '#ffffff',
+    'default' => '#222222',
     'id'      => 'cmb_dark_background_color',
     'type'    => 'colorpicker',
 ]);

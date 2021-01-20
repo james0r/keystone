@@ -123,7 +123,7 @@
 <script>
   $(function() {
     $('html').click(function() {
-      $('#top-bar-contact-dropdown').fadeOut();
+      $('#top-bar-contact-dropdown').fadeOut(300);
       var $topbarDropdown = $('#top-bar-contact-dropdown');
       $topbarDropdown.attr('aria-expanded', 'false');
     })

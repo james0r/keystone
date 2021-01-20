@@ -743,8 +743,9 @@ Ex. .container, .grid, .col
 }
 
 .keystone-header-style-1 .header-top-bar,
-.keystone-header-modern-style-1 .header-top-bar {
-  background-color: var(--keystone-dark-background-color);
+[class*="keystone-header-modern-style-1"] .header-top-bar,
+[class*="keystone-header-modern-style-2"] .header-top-bar {
+  background-color: var(--keystone-secondary-color);
 }
 
 .keystone-header-style-2 .header-top-bar,
@@ -758,7 +759,8 @@ Ex. .container, .grid, .col
   background-color: var(--keystone-background-color-gray-light);
 }
 
-.keystone-header-style-5 .header-top-bar {
+.keystone-header-style-5 .header-top-bar,
+[class*="keystone-header-modern-style-3"] .header-top-bar {
   display: none;
 }
 
@@ -860,7 +862,8 @@ Ex. .container, .grid, .col
 .keystone-header-style-2 .header-top-bar-inner .flex .contact,
 .keystone-header-style-6 .header-top-bar-inner .flex .contact,
 .keystone-header-style-9 .header-top-bar-inner .flex .contact,
-.keystone-header-modern-style-1 .header-top-bar-inner .flex .contact {
+[class*="keystone-header-modern-style-1"] .header-top-bar-inner .flex .contact,
+[class*="keystone-header-modern-style-2"] .header-top-bar-inner .flex .contact {
   display: none;
 }
 
@@ -924,6 +927,7 @@ Ex. .container, .grid, .col
   right: 0;
   z-index: 100;
   padding: 0px 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px 0px;
 }
 
 @media (max-width: 980px) {
@@ -1083,7 +1087,9 @@ Ex. .container, .grid, .col
 }
 
 .keystone-header-style-1 .header-top-bar-inner .flex .nav-wrapper button,
-.keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper button {
+.keystone-header-style-2 .header-top-bar-inner .flex .nav-wrapper button,
+[class*="keystone-header-modern-style-1"] .header-top-bar-inner .flex .nav-wrapper button,
+[class*="keystone-header-modern-style-2"] .header-top-bar-inner .flex .nav-wrapper button {
   display: none;
 }
 
@@ -1118,7 +1124,8 @@ Ex. .container, .grid, .col
 .keystone-header-style-9 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
 .keystone-header-style-10 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
 .keystone-header-style-11 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
-.keystone-header-modern-style-1 .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
+[class*="keystone-header-modern-style-1"] .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger,
+[class*="keystone-header-modern-style-2"] .header-top-bar-inner .flex #top-bar-schedule-appointment-trigger {
   display: none;
 }
 
@@ -1139,7 +1146,8 @@ Ex. .container, .grid, .col
 .keystone-header-style-8 .header-top-bar-inner .flex .social-circles,
 .keystone-header-style-10 .header-top-bar-inner .flex .social-circles,
 .keystone-header-style-11 .header-top-bar-inner .flex .social-circles,
-.keystone-header-modern-style-1 .header-top-bar-inner .flex .social-circles {
+[class*="keystone-header-modern-style-1"] .header-top-bar-inner .flex .social-circles,
+[class*="keystone-header-modern-style-2"] .header-top-bar-inner .flex .social-circles {
   display: none;
 }
 

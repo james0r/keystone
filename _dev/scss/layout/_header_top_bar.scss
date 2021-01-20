@@ -7,8 +7,9 @@
   padding: 0 15px;
 
   .keystone-header-style-1 &,
-  .keystone-header-modern-style-1 & {
-    background-color: var(--keystone-dark-background-color);
+  [class*="keystone-header-modern-style-1"] &,
+  [class*="keystone-header-modern-style-2"] & {
+    background-color: var(--keystone-secondary-color);
   }
 
   .keystone-header-style-2 &,
@@ -22,7 +23,8 @@
     background-color: var(--keystone-background-color-gray-light);
   }
 
-  .keystone-header-style-5 & {
+  .keystone-header-style-5 &,
+  [class*="keystone-header-modern-style-3"] & {
     display: none;
   }
 
@@ -107,7 +109,8 @@
         .keystone-header-style-2 &,
         .keystone-header-style-6 &,
         .keystone-header-style-9 &,
-        .keystone-header-modern-style-1 & {
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] & {
           display: none;
         }
 
@@ -164,6 +167,7 @@
             right: 0;
             z-index: 100;
             padding: 0px 15px;
+            box-shadow: rgba(0, 0, 0, .2) 0px 0px 10px 0px;
 
             @include lg {
               position: fixed;
@@ -321,7 +325,9 @@
           cursor: pointer;
 
           .keystone-header-style-1 &,
-          .keystone-header-style-2 & {
+          .keystone-header-style-2 &,
+          [class*="keystone-header-modern-style-1"] &,
+          [class*="keystone-header-modern-style-2"] & {
             display: none;
           }
 
@@ -345,7 +351,8 @@
         .keystone-header-style-9 &,
         .keystone-header-style-10 &,
         .keystone-header-style-11 &,
-        .keystone-header-modern-style-1 & {
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] & {
           display: none;
         }
 
@@ -377,7 +384,8 @@
         .keystone-header-style-8 &,
         .keystone-header-style-10 &,
         .keystone-header-style-11 &,
-        .keystone-header-modern-style-1 & {
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] & {
           display: none;
         }
       }
