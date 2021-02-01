@@ -1,0 +1,103 @@
+// -----------------------------------------------------------------------------
+// Services Style 1 Module Styles
+// -----------------------------------------------------------------------------
+
+.services-style-1-module-container {
+  padding: 60px 15px;
+
+  &-inner {
+
+    .section-head-row {
+      text-align: center;
+      margin: auto;
+      margin-bottom: 40px;
+      max-width: 600px;
+
+      .title-row {
+        margin-bottom: 10px;
+      }
+
+      .title-image-row {
+        margin-bottom: 10px;
+        
+        img {
+          margin: auto;
+        }
+      }
+
+      .section-desc-row {
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: var(--keystone-body-text-color-l1);
+        line-height: 26px;
+      }
+
+    }
+
+    .section-body-row {
+
+      .grid {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+        row-gap: 30px;
+        column-gap: 20px;
+
+        .services-item.flex {
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          color: var(--keystone-body-text-color);
+
+          .start {
+            margin-right: 30px;
+
+            @include xs {
+              margin-right: 10px;
+            }
+
+            .icon-wrapper {
+              height: 70px;
+              width: 70px;
+              background-color: var(--keystone-primary-color);
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            i {
+              color: white;
+              font-size: 40px;
+            }
+          }
+
+          .end {
+            h3 {
+              margin-bottom: 5px;
+            }
+
+            p {
+              font-size: 14px;
+              line-height: 1.8;
+              max-width: 260px;
+
+              @include md {
+                max-width: unset;
+              }
+            }
+          }
+
+          @include on-event {
+            text-decoration: none;
+
+            .icon-wrapper {
+              background-color: var(--keystone-primary-color-d2);
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

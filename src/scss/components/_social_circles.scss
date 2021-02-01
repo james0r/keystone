@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the social circles snippet / component.
+// -----------------------------------------------------------------------------
+
+.social-circles-list {
+    list-style-type: none;
+    height: 30px;
+        
+    @include lg {
+      margin-top: 15px;
+    }
+
+  .social-circles-list-item {
+    display: inline-block;
+    margin-right: 6px;
+    
+    a {
+      background-color: var(--keystone-primary-color);
+      color: #fff;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      display: block;
+      position: relative;
+      line-height: 30px;
+
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 13px;
+      }
+      
+      &:hover {
+        background-color: var(--keystone-primary-color-d2);
+        text-decoration: none;
+      }
+    }
+  }
+}

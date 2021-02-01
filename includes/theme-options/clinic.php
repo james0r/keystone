@@ -1,6 +1,6 @@
 <?php
 /**
-* CLINIC GENERAL INFORMATION AND BUSINESS HOURS.
+* Clinic general information and business hours.
 */
 
 $args = [
