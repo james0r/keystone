@@ -1,0 +1,54 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the social squares snippet / component.
+// -----------------------------------------------------------------------------
+
+.social-squares-list {
+  list-style-type: none;
+  height: 30px;
+
+  .social-squares-list-item {
+    display: inline-block;
+    margin-right: 6px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    a {
+      height: 30px;
+      width: 30px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include on-event {
+        text-decoration: none;
+      }
+    }
+
+    & .facebook-link {
+      background-color: rgb(59, 89, 152) !important;
+    }
+
+    & .twitter-link {
+      background-color: rgba(29,161,242, 1);
+    }
+
+    & .instagram-link {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    }
+
+    & .linkedin-link {
+      background: rgba(40,103,178, 1);
+    }
+
+    & .pinterest-link {
+      background: rgba(189,8,28,1);
+    }
+
+    & .youtube-link {
+      background: rgba(255,0,0,1);
+    }
+  }
+}

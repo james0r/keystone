@@ -13,20 +13,26 @@
 
       <!-- Top Bar Message Block End -->
 
+      <!-- Top Bar Social Links Start -->
+
+      <?php keystone_render_template('social-squares'); ?>
+
+      <!-- Top Bar Social Links End -->
+
       <!-- Top Bar Contact Block Start -->
 
       <address class="contact">
         <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone'))) : ?>
+        <div class="floating-divider"></div>
         <?php apply_filters('keystone_render_icon', 'fas fa-phone-alt'); ?>
-        <a
-          href="tel:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>">
-          <?php _e('New Patients', 'keystone') ?>: <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>
-        </a>
         <?php endif; ?>
         <button id="top-bar-contact-dropdown-toggle" aria-haspopup="listbox">
+      
+            <?php _e('Call Us', 'keystone') ?>:
+            <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>
           <?php apply_filters('keystone_render_icon', 'fas fa-caret-down'); ?>
-          <ul id="top-bar-contact-dropdown" class="contact-list" style="display: none;" tabindex="-1" aria-role="listbox"
-            aria-expanded="false">
+          <ul id="top-bar-contact-dropdown" class="contact-list" style="display: none;" tabindex="-1"
+            aria-role="listbox" aria-expanded="false">
             <li aria-label="close" aria-role="button" tabindex="0">
               Close Menu
             </li>
@@ -51,8 +57,7 @@
             <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_company_email'))) : ?>
             <li class="contact-item" role="option">
               <?php apply_filters('keystone_render_icon', 'far fa-envelope'); ?>
-              <a
-               class="email"
+              <a class="email"
                 href="mailto:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_email') ?>">
                 <?php _e('Send us an email', 'keystone') ?>
               </a>
@@ -69,6 +74,7 @@
             </li>
           </ul>
         </button>
+        <div class="floating-divider"></div>
         <br class="lg-and-smaller">
         <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_company_email'))) : ?>
         <?php apply_filters('keystone_render_icon', 'far fa-envelope'); ?>
@@ -76,6 +82,7 @@
           href="mailto:<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_email') ?>">
           <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_email') ?>
         </a>
+        <div class="floating-divider"></div>
         <?php endif; ?>
       </address>
 
@@ -86,13 +93,13 @@
       <div class="nav-wrapper">
         <nav>
           <?php
-            wp_nav_menu([
-                'menu'              => 'Top Bar Menu', // (int|string|WP_Term) Desired menu. Accepts a menu ID, slug, name, or object.
-                'menu_class'        => 'header-secondary-menu', // (string) CSS class to use for the ul element which forms the menu. Default 'menu'.
-                'menu_id'           => 'header-secondary-menu', // (string) The ID that is applied to the ul element which forms the menu. Default is the menu slug, incremented.
-                'container'         => false, // (string) Whether to wrap the ul, and what to wrap it with. Default 'div'.
-                'theme_location'    => 'header-secondary', // (string) Theme location to be used. Must be registered with register_nav_menu() in order to be selectable by the user.
-            ]);
+            wp_nav_menu(array(
+              'menu'              => 'Top Bar Menu', // (int|string|WP_Term) Desired menu. Accepts a menu ID, slug, name, or object.
+              'menu_class'        => 'header-secondary-menu', // (string) CSS class to use for the ul element which forms the menu. Default 'menu'.
+              'menu_id'           => 'header-secondary-menu', // (string) The ID that is applied to the ul element which forms the menu. Default is the menu slug, incremented.
+              'container'         => false, // (string) Whether to wrap the ul, and what to wrap it with. Default 'div'.
+              'theme_location'    => 'header-secondary', // (string) Theme location to be used. Must be registered with register_nav_menu() in order to be selectable by the user.
+            ));
           ?>
         </nav>
         <button class="side-panel-toggler">
@@ -109,6 +116,18 @@
       </button>
 
       <!-- Request An Appointment Button End -->
+
+      <!-- Language Toggler Dropdown Start -->
+
+      <div class="header-language-toggler-wrapper">
+        <select id="header-language-toggler" class="header-language-toggler">
+          <option value="es" alt="Spanish">Spanish</option>
+          <option value="en" alt="English">English</option>
+        </select>
+        <?php apply_filters('keystone_render_icon', 'fas fa-caret-down'); ?>
+      </div>
+
+      <!-- Language Toggler End -->
 
       <!-- Top Bar Social Links Start -->
 

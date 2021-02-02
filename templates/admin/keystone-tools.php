@@ -160,7 +160,7 @@
         id="import-options-btn"><?php _e('Import', 'keystone')?></button>
       <sub><?php _e('Paste in JSON CMB2 option data.', 'keystone')?>
       <br>
-      <span style="color: red; font-weight: bold;"><?php _e('Be mindful of where this data belongs. Section selection MUST MATCH exported data.', 'keystone')?></span></sub>
+      <span style="color: red; font-weight: bold;"><?php _e('Be mindful of where this data belongs.', 'keystone')?></span></sub>
     </div>
   </section>
   <hr>
@@ -245,7 +245,7 @@
       class="button button-primary button-large export-btn"><?php _e('Fix ID Mismatch', 'keystone')?></button>
     <sub><?php _e('Paste in JSON CMB2 module data.', 'keystone')?>
     <br>
-      <span style="color: red; font-weight: bold;"><?php _e('Be mindful of where this data belongs. Post and module selection MUST MATCH exported data.', 'keystone')?></span></sub>
+      <span style="color: red; font-weight: bold;"><?php _e('Be mindful of where this data belongs.', 'keystone')?></span></sub>
   </section>
 </div>
 

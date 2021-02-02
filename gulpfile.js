@@ -40,6 +40,7 @@ function devServer() {
     host: "127.0.0.1",
     port: "3010",
     open: "external",
+    notify: false
   });
 
   watch("**/**.php", Reload);

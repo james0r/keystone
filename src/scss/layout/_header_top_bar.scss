@@ -8,7 +8,12 @@
 
   .keystone-header-style-1 &,
   [class*="keystone-header-modern-style-1"] &,
-  [class*="keystone-header-modern-style-2"] & {
+  [class*="keystone-header-modern-style-2"] &,
+  [class*="keystone-header-modern-style-6"] &,
+  [class*="keystone-header-modern-style-7"] &,
+  [class*="keystone-header-modern-style-8"] &,
+  [class*="keystone-header-modern-style-4"] &,
+  [class*="keystone-header-modern-style-5"] & {
     background-color: var(--keystone-secondary-color);
   }
 
@@ -23,6 +28,16 @@
     background-color: var(--keystone-background-color-gray-light);
   }
 
+  .keystone-header-floating-style-1 & {
+    background-color: transparent;
+  }
+
+  .keystone-header-floating-style-2 &,
+  .keystone-header-floating-style-3 & {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid #ddd;
+  }
+ 
   .keystone-header-style-5 &,
   [class*="keystone-header-modern-style-3"] & {
     display: none;
@@ -75,13 +90,20 @@
         }
 
         .keystone-header-style-3 &,
-        .keystone-header-style-6 & {
+        .keystone-header-style-6 &,
+        .keystone-header-floating-style-1 &,
+        .keystone-header-floating-style-2 &,
+        .keystone-header-floating-style-3 & {
           color: var(--keystone-body-text-color);
         }
 
         i {
           margin-right: 5px;
           vertical-align: middle;
+
+          .keystone-header-modern-style-4-dark & {
+            margin-right: 10px;
+          }
 
           .keystone-header-style-3 & {
             color: var(--keystone-primary-color);
@@ -93,24 +115,71 @@
         }
       }
 
+      .message {
+        [class*="keystone-header-modern-style-4"] &,
+        [class*="keystone-header-modern-style-5"] & {
+          display: none;
+        }
+      }
+
+      .social-squares {
+        .keystone-header-style-1 &,
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-6"] &,
+        [class*="keystone-header-modern-style-7"] &,
+        [class*="keystone-header-modern-style-8"] &,
+        .keystone-header-floating-style-1 &,
+        .keystone-header-floating-style-2 &,
+        .keystone-header-floating-style-3 & {
+          display: none;
+        }
+      }
+
       .contact {
         font-style: normal;
         color: var(--keystone-body-text-color);
         position: relative;
-        height: 24px;
+        height: 45px;
+        display: flex;
+        align-items: center;
 
-        .fa-envelope,
-        .fa-caret-down {
+        .floating-divider {
+          display: none;
+          width: 1px;
+          height: 100%;
+          background-color: #ddd;
+          margin: 0 16px;
+
+          &:first-of-type {
+            margin-left: 0px;
+          }
+          .keystone-header-floating-style-2 &,
+          .keystone-header-floating-style-3 & {
+            display: inline-block;
+
+            @include lg {
+              display: none;
+            }
+          }
+        }
+
+
+        .fa-envelope {
           top: 1px;
           position: relative;
         }
+
 
         .keystone-header-style-1 &,
         .keystone-header-style-2 &,
         .keystone-header-style-6 &,
         .keystone-header-style-9 &,
         [class*="keystone-header-modern-style-1"] &,
-        [class*="keystone-header-modern-style-2"] & {
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-6"] &,
+        [class*="keystone-header-modern-style-7"] &,
+        [class*="keystone-header-modern-style-8"] & {
           display: none;
         }
 
@@ -118,7 +187,22 @@
           color: var(--keystone-primary-color);
           vertical-align: middle;
           font-size: 14px;
+
+          [class*="keystone-header-modern-style-4"] &,
+          [class*="keystone-header-modern-style-5"] & {
+            color: #fff;
+          }
         }
+
+        > .fa-envelope,
+        > .fa-phone-alt {
+          [class*="keystone-header-modern-style-4"] &,
+          [class*="keystone-header-modern-style-5"] & {
+            padding: 8px;
+            border: 1px solid rgba(255,255,255,.3);
+          }
+        }
+
 
         .lg-and-smaller {
           display: none;
@@ -136,16 +220,25 @@
           vertical-align: middle;
           font-size: 14px;
 
+          [class*="keystone-header-modern-style-4"] &,
+          [class*="keystone-header-modern-style-5"] & {
+            color: #fff;
+          }
+
           &:hover {
             text-decoration: none;
             color: var(--keystone-body-text-color-d2);
+
+
+            [class*="keystone-header-modern-style-4"] &,
+            [class*="keystone-header-modern-style-5"] & {
+              color: #fff;
+            }
           }
         }
 
         .fa-caret-down {
-          padding: 5px 5px 5px 5px;
           cursor: pointer;
-          transform: scale(1.4) translateY(-1px);
         }
 
         button {
@@ -155,6 +248,9 @@
           background: transparent;
           border: none;
           position: relative;
+          color: var(--keystone-body-text-color);
+          cursor: pointer;
+          padding: 0;
 
           i {
             margin-right: 0px;
@@ -213,7 +309,6 @@
 
                 .keystone-icon {
                   margin-right: 5px;
-                  margin-top: -1px;
                 }
 
                 a {
@@ -245,6 +340,53 @@
         }
       }
 
+      .header-language-toggler {
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        border: none;
+        color: var(--keystone-background-color-gray-light);
+        height: 100%;
+        font-size: 13px;
+        cursor: pointer;
+        padding-right: 40px;
+      }
+
+      .header-language-toggler-wrapper {
+        align-self: normal;
+        padding-left: 20px;
+        position: relative;
+
+        .fa-caret-down {
+          pointer-events: none;
+          vertical-align: middle;
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          .fa-caret-down {
+            color: var(--keystone-secondary-color);
+          }
+          
+          background: #fff;
+          .header-language-toggler {
+            color: var(--keystone-secondary-color);
+          }
+        }
+
+        .keystone-header-floating-style-1 &,
+        .keystone-header-floating-style-2 &,
+        .keystone-header-floating-style-3 & {
+          display: none;
+        }
+      }
+
       .nav-wrapper {
         display: flex;
 
@@ -254,8 +396,15 @@
         .keystone-header-style-8 &,
         .keystone-header-style-9 &,
         .keystone-header-style-10 &,
-        .keystone-header-style-11 & {
+        .keystone-header-style-11 &,
+        .keystone-header-floating-style-1 &,
+        .keystone-header-floating-style-2 &,
+        .keystone-header-floating-style-3 & {
           display: none;
+        }
+
+        [class*="keystone-header-modern-style-8"] & {
+          margin-left: auto;
         }
 
         @include lg {
@@ -267,7 +416,9 @@
           ul {
             list-style-type: none;
 
-            .keystone-header-style-1 & {
+            .keystone-header-style-1 &,
+            [class*="keystone-header-modern-style-4"] &,
+            [class*="keystone-header-modern-style-5"] & {
               @include lg {
                 margin-top: 10px;
               }
@@ -282,21 +433,22 @@
               &:not(:last-child):after {
                 content: "";
                 position: absolute;
+                top: 50%;
                 right: 0;
                 width: 1px;
-                height: 100%;
+                height: 15px;
                 background: white;
-                transform: translateX(200%);
+                transform: translate(200%, -50%);
 
                 .keystone-header-style-2 & {
                   background: var(--keystone-body-text-color);
                 }
-              }
+              } 
 
               a {
                 color: white;
                 font-size: 13px;
-                line-height: 13px;
+                line-height: 45px;
                 font-weight: 400;
 
                 .keystone-header-style-2 & {
@@ -327,7 +479,12 @@
           .keystone-header-style-1 &,
           .keystone-header-style-2 &,
           [class*="keystone-header-modern-style-1"] &,
-          [class*="keystone-header-modern-style-2"] & {
+          [class*="keystone-header-modern-style-2"] &,
+          [class*="keystone-header-modern-style-6"] &,
+          [class*="keystone-header-modern-style-7"] &,
+          [class*="keystone-header-modern-style-8"] &,
+          [class*="keystone-header-modern-style-4"] &,
+          [class*="keystone-header-modern-style-5"] & {
             display: none;
           }
 
@@ -352,7 +509,15 @@
         .keystone-header-style-10 &,
         .keystone-header-style-11 &,
         [class*="keystone-header-modern-style-1"] &,
-        [class*="keystone-header-modern-style-2"] & {
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-6"] &,
+        [class*="keystone-header-modern-style-7"] &,
+        [class*="keystone-header-modern-style-8"] &,
+        [class*="keystone-header-modern-style-4"] &,
+        [class*="keystone-header-modern-style-5"] &,
+        .keystone-header-floating-style-1 &,
+        .keystone-header-floating-style-2 &,
+        .keystone-header-floating-style-3 & {
           display: none;
         }
 
@@ -385,7 +550,15 @@
         .keystone-header-style-10 &,
         .keystone-header-style-11 &,
         [class*="keystone-header-modern-style-1"] &,
-        [class*="keystone-header-modern-style-2"] & {
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-6"] &,
+        [class*="keystone-header-modern-style-7"] &,
+        [class*="keystone-header-modern-style-8"] &,
+        [class*="keystone-header-modern-style-4"] &,
+        [class*="keystone-header-modern-style-5"] &,
+        .keystone-header-floating-style-1 &,
+        .keystone-header-floating-style-2 &,
+        .keystone-header-floating-style-3 & {
           display: none;
         }
       }

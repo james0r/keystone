@@ -4,7 +4,8 @@
 
 .no-focus-outline a:focus,
 .no-focus-outline button:focus,
-.no-focus-outline div:focus {
+.no-focus-outline div:focus,
+.no-focus-outline select:focus {
   outline: none;
 }
 
