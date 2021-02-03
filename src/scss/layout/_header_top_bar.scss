@@ -6,6 +6,10 @@
   background-color: var(--keystone-primary-color);
   padding: 0 15px;
 
+  [class*="keystone-header-modern-style-4"] & {
+    padding: 10px 15px 50px;
+  }
+
   .keystone-header-style-1 &,
   [class*="keystone-header-modern-style-1"] &,
   [class*="keystone-header-modern-style-2"] &,
@@ -28,18 +32,38 @@
     background-color: var(--keystone-background-color-gray-light);
   }
 
-  .keystone-header-floating-style-1 & {
+  .keystone-header-floating-style-1 &,
+  .keystone-header-floating-style-6 &,
+  .keystone-header-floating-style-7 & {
     background-color: transparent;
   }
 
   .keystone-header-floating-style-2 &,
-  .keystone-header-floating-style-3 & {
+  .keystone-header-floating-style-3 &,
+  .keystone-header-floating-style-4 & {
     background-color: rgba(255, 255, 255, 0.85);
     border-bottom: 1px solid #ddd;
   }
- 
+
+  .keystone-header-floating-style-4 & {
+    border-bottom: none;
+  }
+
+  .keystone-header-floating-style-5 & {
+    background-color: var(--keystone-dark-background-color);
+    border-bottom: 1px solid #333;
+  }
+
+  .keystone-header-floating-style-6 & {
+    border-bottom: 1px solid #ccc;
+  }
+
   .keystone-header-style-5 &,
-  [class*="keystone-header-modern-style-3"] & {
+  .keystone-header-style-12 &,
+  [class*="keystone-header-modern-style-3"] &,
+  .keystone-header-floating-style-8 &,
+  .keystone-header-floating-style-9 &,
+  .keystone-header-floating-style-10 & {
     display: none;
   }
 
@@ -68,7 +92,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      min-height: 45px;
+      min-height: 40px;
 
       @include lg {
         flex-direction: column;
@@ -93,7 +117,8 @@
         .keystone-header-style-6 &,
         .keystone-header-floating-style-1 &,
         .keystone-header-floating-style-2 &,
-        .keystone-header-floating-style-3 & {
+        .keystone-header-floating-style-3 &,
+        .keystone-header-floating-style-4 & {
           color: var(--keystone-body-text-color);
         }
 
@@ -122,30 +147,22 @@
         }
       }
 
-      .social-squares {
-        .keystone-header-style-1 &,
-        [class*="keystone-header-modern-style-1"] &,
-        [class*="keystone-header-modern-style-2"] &,
-        [class*="keystone-header-modern-style-6"] &,
-        [class*="keystone-header-modern-style-7"] &,
-        [class*="keystone-header-modern-style-8"] &,
-        .keystone-header-floating-style-1 &,
-        .keystone-header-floating-style-2 &,
-        .keystone-header-floating-style-3 & {
-          display: none;
-        }
-      }
-
       .contact {
         font-style: normal;
         color: var(--keystone-body-text-color);
         position: relative;
-        height: 45px;
+        height: 40px;
         display: flex;
         align-items: center;
 
+        .keystone-header-floating-style-5 &,
+        .keystone-header-floating-style-6 &,
+        .keystone-header-floating-style-7 & {
+          color: #fff;
+        }
+
         .floating-divider {
-          display: none;
+          display: inline-block;
           width: 1px;
           height: 100%;
           background-color: #ddd;
@@ -154,22 +171,30 @@
           &:first-of-type {
             margin-left: 0px;
           }
-          .keystone-header-floating-style-2 &,
-          .keystone-header-floating-style-3 & {
-            display: inline-block;
 
-            @include lg {
-              display: none;
-            }
+          @include lg {
+            display: none;
+          }
+
+          .keystone-header-floating-style-5 & {
+            background-color: #333;
+          }
+
+          .keystone-header-floating-style-6 & {
+            background-color: #ccc;
+          }
+
+          .keystone-header-style-3 &,
+          .keystone-header-style-4 &,
+          .keystone-header-style-8 &,
+          .keystone-header-style-10 &,
+          .keystone-header-style-11 &,
+          [class*="keystone-header-modern-style-4"] &,
+          .keystone-header-floating-style-7 & {
+            background-color: transparent;
+            margin: 0 8px;
           }
         }
-
-
-        .fa-envelope {
-          top: 1px;
-          position: relative;
-        }
-
 
         .keystone-header-style-1 &,
         .keystone-header-style-2 &,
@@ -199,10 +224,15 @@
           [class*="keystone-header-modern-style-4"] &,
           [class*="keystone-header-modern-style-5"] & {
             padding: 8px;
-            border: 1px solid rgba(255,255,255,.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
           }
         }
 
+        .fa-envelope,
+        .fa-phone-alt {
+          position: relative;
+          top: 1px;
+        }
 
         .lg-and-smaller {
           display: none;
@@ -221,7 +251,13 @@
           font-size: 14px;
 
           [class*="keystone-header-modern-style-4"] &,
-          [class*="keystone-header-modern-style-5"] & {
+          [class*="keystone-header-modern-style-5"] &,
+          .keystone-header-floating-style-6 &,
+          .keystone-header-floating-style-7 & {
+            color: #fff;
+          }
+
+          .keystone-header-floating-style-5 & {
             color: #fff;
           }
 
@@ -229,12 +265,20 @@
             text-decoration: none;
             color: var(--keystone-body-text-color-d2);
 
+            .keystone-header-floating-style-6 &,
+            .keystone-header-floating-style-7 & {
+              color: #fff;
+            }
 
             [class*="keystone-header-modern-style-4"] &,
             [class*="keystone-header-modern-style-5"] & {
               color: #fff;
             }
           }
+        }
+
+        > a {
+          line-height: 40px;
         }
 
         .fa-caret-down {
@@ -252,6 +296,13 @@
           cursor: pointer;
           padding: 0;
 
+          [class*="keystone-header-modern-style-4"] &,
+          .keystone-header-floating-style-5 &,
+          .keystone-header-floating-style-6 &,
+          .keystone-header-floating-style-7 & {
+            color: #fff;
+          }
+
           i {
             margin-right: 0px;
           }
@@ -263,7 +314,7 @@
             right: 0;
             z-index: 100;
             padding: 0px 15px;
-            box-shadow: rgba(0, 0, 0, .2) 0px 0px 10px 0px;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px 0px;
 
             @include lg {
               position: fixed;
@@ -340,23 +391,57 @@
         }
       }
 
-      .header-language-toggler {
-        -webkit-appearance: none;
-        appearance: none;
-        -moz-appearance: none;
-        background: transparent;
-        border: none;
-        color: var(--keystone-background-color-gray-light);
-        height: 100%;
-        font-size: 13px;
-        cursor: pointer;
-        padding-right: 40px;
+      .social-squares {
+        .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
+        .keystone-header-style-6 &,
+        .keystone-header-style-8 &,
+        .keystone-header-style-9 &,
+        .keystone-header-style-10 &,
+        .keystone-header-style-11 &,
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-6"] &,
+        [class*="keystone-header-modern-style-7"] &,
+        [class*="keystone-header-modern-style-8"] &,
+        .keystone-header-floating-style-1 &,
+        .keystone-header-floating-style-2 &,
+        .keystone-header-floating-style-3 &,
+        .keystone-header-floating-style-4 &,
+        .keystone-header-floating-style-5 &,
+        .keystone-header-floating-style-6 &,
+        .keystone-header-floating-style-7 & {
+          display: none;
+        }
+
+        [class*="keystone-header-modern-style-4"] & {
+          transform: translateY(10px);
+
+          @include lg {
+            transform: none;
+          }
+        }
       }
 
       .header-language-toggler-wrapper {
         align-self: normal;
         padding-left: 20px;
         position: relative;
+
+        .header-language-toggler {
+          -webkit-appearance: none;
+          appearance: none;
+          -moz-appearance: none;
+          background: transparent;
+          border: none;
+          color: var(--keystone-background-color-gray-light);
+          height: 100%;
+          font-size: 13px;
+          cursor: pointer;
+          padding-right: 40px;
+        }
 
         .fa-caret-down {
           pointer-events: none;
@@ -373,16 +458,32 @@
           .fa-caret-down {
             color: var(--keystone-secondary-color);
           }
-          
+
           background: #fff;
           .header-language-toggler {
             color: var(--keystone-secondary-color);
           }
         }
 
+        .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
+        .keystone-header-style-6 &,
+        .keystone-header-style-8 &,
+        .keystone-header-style-9 &,
+        .keystone-header-style-10 &,
+        .keystone-header-style-11 &,
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-4"] &,
         .keystone-header-floating-style-1 &,
         .keystone-header-floating-style-2 &,
-        .keystone-header-floating-style-3 & {
+        .keystone-header-floating-style-3 &,
+        .keystone-header-floating-style-4 &,
+        .keystone-header-floating-style-5 &,
+        .keystone-header-floating-style-6 &,
+        .keystone-header-floating-style-7 & {
           display: none;
         }
       }
@@ -399,7 +500,11 @@
         .keystone-header-style-11 &,
         .keystone-header-floating-style-1 &,
         .keystone-header-floating-style-2 &,
-        .keystone-header-floating-style-3 & {
+        .keystone-header-floating-style-3 &,
+        .keystone-header-floating-style-4 &,
+        .keystone-header-floating-style-5 &,
+        .keystone-header-floating-style-6 &,
+        .keystone-header-floating-style-7 & {
           display: none;
         }
 
@@ -416,9 +521,7 @@
           ul {
             list-style-type: none;
 
-            .keystone-header-style-1 &,
-            [class*="keystone-header-modern-style-4"] &,
-            [class*="keystone-header-modern-style-5"] & {
+            .keystone-header-style-1 & {
               @include lg {
                 margin-top: 10px;
               }
@@ -443,12 +546,12 @@
                 .keystone-header-style-2 & {
                   background: var(--keystone-body-text-color);
                 }
-              } 
+              }
 
               a {
                 color: white;
                 font-size: 13px;
-                line-height: 45px;
+                line-height: 40px;
                 font-weight: 400;
 
                 .keystone-header-style-2 & {
@@ -475,6 +578,7 @@
           border: none;
           color: white;
           cursor: pointer;
+          padding: 0px;
 
           .keystone-header-style-1 &,
           .keystone-header-style-2 &,
@@ -488,11 +592,16 @@
             display: none;
           }
 
+          .keystone-header-modern-style-1-side-push-panel-2 & {
+            display: initial;
+          }
+
           @include lg {
             padding: 14px 0px;
           }
 
           i {
+            line-height: 40px;
             font-size: 22px;
           }
         }
@@ -517,7 +626,11 @@
         [class*="keystone-header-modern-style-5"] &,
         .keystone-header-floating-style-1 &,
         .keystone-header-floating-style-2 &,
-        .keystone-header-floating-style-3 & {
+        .keystone-header-floating-style-3 &,
+        .keystone-header-floating-style-4 &,
+        .keystone-header-floating-style-5 &,
+        .keystone-header-floating-style-6 &,
+        .keystone-header-floating-style-7 & {
           display: none;
         }
 
@@ -558,7 +671,11 @@
         [class*="keystone-header-modern-style-5"] &,
         .keystone-header-floating-style-1 &,
         .keystone-header-floating-style-2 &,
-        .keystone-header-floating-style-3 & {
+        .keystone-header-floating-style-3 &,
+        .keystone-header-floating-style-4 &,
+        .keystone-header-floating-style-5 &,
+        .keystone-header-floating-style-6 &,
+        .keystone-header-floating-style-7 & {
           display: none;
         }
       }

@@ -49,6 +49,10 @@
 
     & .youtube-link {
       background: rgba(255,0,0,1);
+      
+      .fa-youtube {
+        margin-top: -1px;
+      }
     }
   }
 }

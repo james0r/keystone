@@ -23,6 +23,7 @@ class Keystone_Body_Classes {
       'header-modern-style-8'
     );
     $color_options_3 = array('header-modern-style-4');
+    $color_options_4 = array('header-modern-style-5');
 
     $header_style = cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_style')[0]['layout'];
 
@@ -36,6 +37,9 @@ class Keystone_Body_Classes {
 
     if (in_array($header_style, $color_options_3)) {
       $header_style = $header_style . '-' . cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_style')[0]['color3'];
+    }
+    if (in_array($header_style, $color_options_4)) {
+      $header_style = $header_style . '-' . cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_style')[0]['color4'];
     }
 
     $new_classes = array(

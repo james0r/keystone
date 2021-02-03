@@ -70,7 +70,7 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
 // conditional header color fields
 $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
     'name'          => __('Header Colors', 'keystone'),
-    'desc'          => __('These change based on which Header Layout Style is chosen.', 'keystone'),
+    'desc'          => __('These options change based on which Header Layout Style is chosen.', 'keystone'),
     'id'            => 'color1',
     'type'          => 'select',
     'options'       => [
@@ -90,7 +90,7 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
 
 $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
     'name'          => __('Header Colors', 'keystone'),
-    'desc'          => __('These change based on which Header Layout Style is chosen.', 'keystone'),
+    'desc'          => __('These options change based on which Header Layout Style is chosen.', 'keystone'),
     'id'            => 'color2',
     'type'          => 'select',
     'options'       => [
@@ -110,7 +110,7 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
 
 $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
     'name'          => __('Header Colors', 'keystone'),
-    'desc'          => __('These change based on which Header Layout Style is chosen.', 'keystone'),
+    'desc'          => __('These options change based on which Header Layout Style is chosen.', 'keystone'),
     'id'            => 'color3',
     'type'          => 'select',
     'options'       => [
@@ -123,6 +123,21 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
         'data-conditional-id'     => 'layout',
         'data-conditional-value'  => 'header-modern-style-4',
     ],
+]);
+
+$cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
+  'name'          => __('Header Colors', 'keystone'),
+  'desc'          => __('These options change based on which Header Layout Style is chosen.', 'keystone'),
+  'id'            => 'color4',
+  'type'          => 'select',
+  'options'       => [
+      'dark'              => __('Dark', 'keystone'),
+      'white'             => __('White', 'keystone'),
+  ],
+  'attributes'    => [
+      'data-conditional-id'     => 'layout',
+      'data-conditional-value'  => 'header-modern-style-5',
+  ],
 ]);
 
 $cmb2_box_header_options->add_group_field($cmb2_group_header_style, [
