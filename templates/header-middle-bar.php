@@ -23,7 +23,7 @@
             <?php error_log( print_r($widget_1_meta, TRUE) ); ?>
             <div class="flex">
               <div class="icon-wrapper flex-item">
-                <?php apply_filters('keystone_render_icon', $widget_1_meta['icon']) ?>
+                <?php apply_filters('keystone_render_icon', $widget_1_meta['icon'], 'aria-hidden="true"') ?>
               </div>
               <div class="widget-text-box">
                 <div class="widget-cta-text">
@@ -51,7 +51,7 @@
             <?php $widget_2_meta = cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_widget_2')[0] ?>
             <div class="flex">
               <div class="icon-wrapper flex-item">
-                <?php apply_filters('keystone_render_icon', $widget_2_meta['icon']) ?>
+                <?php apply_filters('keystone_render_icon', $widget_2_meta['icon'], 'aria-hidden="true"') ?>
               </div>
               <div class="widget-text-box">
                 <div class="widget-cta-text">
@@ -104,6 +104,11 @@
             </div>
           </li>
       </ul>
+      <div class="cta-button-wrapper">
+        <button class="btn btn-flat btn-primary">
+          <?php echo cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_cta')[0]['button-text'] ?>
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -97,6 +97,7 @@
 
       @include lg {
         flex-direction: column;
+        min-height: unset;
       }
 
       .message,
@@ -522,6 +523,7 @@
         @include lg {
           flex-direction: column-reverse;
           align-items: center;
+          margin-top: 4px;
         }
 
         nav {
@@ -560,6 +562,10 @@
                 font-size: 13px;
                 line-height: 40px;
                 font-weight: 400;
+
+                @include lg {
+                  line-height: 1;
+                }
 
                 .keystone-header-style-2 & {
                   color: var(--keystone-body-text-color);

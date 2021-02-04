@@ -8,6 +8,10 @@
     background-color: var(--keystone-background-color-gray-lighter);
   }
 
+  .keystone-header-style-2 & {
+    background-color: var(--keystone-background-color-gray-lightest);
+  }
+
   &-inner {
     padding: 30px 0;
     max-width: var(--keystone-module-inner-max-width);
@@ -19,8 +23,16 @@
       justify-content: space-between;
       align-items: center;
 
+      @include lg {
+        flex-direction: column;
+      }
+
       .logo-wrapper {
 
+        .keystone-header-style-3 & {
+          display: none;
+        }
+        
         img {
           height: 36px;
           width: 232px;
@@ -29,22 +41,57 @@
 
       .widgets {
         display: flex;
+        flex-wrap: wrap;
+
+        .keystone-header-style-3 & {
+          flex-grow: 2;
+          justify-content: space-between;
+          max-width: 780px;
+          margin-right: 60px;
+
+          @include lg {
+            margin-right: 0px;
+          }
+        }
 
         .widget {
           margin-left: 20px;
-
+          min-width: 180px;
+          
           &:first-child {
             margin-left: 0px;
+          }
+          
+          @include lg {
+            flex: 1;
+            margin-left: 0;
+            margin-top: 30px;
+            padding: 0 10px;
+
+            .keystone-header-style-3 & {
+              margin-top: 0px;
+              margin-bottom: 30px;
+            }
           }
 
           > .flex {
             display: flex;
             flex-direction: row;
             align-items: flex-start;
+
+            @include lg {
+              flex-direction: column;
+              align-items: center;
+            }
           }
 
           .icon-wrapper {
             padding-right: 10px;
+
+            @include lg {
+              padding-right: 0px;
+              margin-bottom: 6px;
+            }
 
             i {
               font-size: 30px;
@@ -53,6 +100,10 @@
           }
 
           .widget-text-box {
+
+            @include lg {
+              text-align: center;
+            }
           }
 
           .widget-cta-text {
@@ -79,6 +130,10 @@
             }
           }
         }
+      }
+
+      .cta-button-wrapper {
+        flex-shrink: 0;
       }
     }
   }
