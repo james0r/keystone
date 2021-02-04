@@ -1,3 +1,12 @@
+<?php 
+  $link_prefix_map = array(
+    'email' => 'mailto:',
+    'phone' => 'tel:',
+    'website' => '',
+    'physical-address' => 'http://maps.google.com/?q=' 
+  );
+?>
+
 <div id="header-middle-bar" class="header-middle-bar">
   <div class="header-middle-bar-inner">
     <div class="flex">
@@ -8,7 +17,7 @@
             <img src="<?php echo Keystone::$template_dir_url . '/assets/images/no-logo-found.png' ?>" alt="Company Logo Image Missing">
         <?php endif; ?>
       </div>
-      <ul class="widgets flex-item">
+      <ul class="widgets flex-item flex">
           <li class="widget widget-1">
             <?php $widget_1_meta = cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_widget_1')[0] ?>
             <?php error_log( print_r($widget_1_meta, TRUE) ); ?>
@@ -20,11 +29,21 @@
                 <div class="widget-cta-text">
                   <?php echo $widget_1_meta['cta-text'] ?>
                 </div>
-                <div class="widget-cta-bold-text">
-                  <strong>
-                    <?php echo $widget_1_meta['cta-bold-text'] ?>
-                  </strong>
-                </div>
+                <?php if ($widget_1_meta['make-link'] != 'plain-text') : ?>
+                  <div class="widget-cta-bold-text">
+                    <a href="<?php echo $link_prefix_map[$widget_1_meta['make-link']] . $widget_1_meta['cta-bold-text'] ?>" <?php if ($widget_3_meta['make-link'] == 'physical-address' || $widget_3_meta == 'website') : ?>target="_blank" rel="noopener"<?php endif; ?>>
+                      <strong>
+                        <?php echo $widget_1_meta['cta-bold-text'] ?>
+                      </strong>
+                    </a>
+                  </div>
+                <?php else : ?>
+                  <div class="widget-cta-bold-text">
+                    <strong>
+                      <?php echo $widget_1_meta['cta-bold-text'] ?>
+                    </strong>
+                  </div>
+                <?php endif; ?>
               </div>
             </div>
           </li>
@@ -38,11 +57,21 @@
                 <div class="widget-cta-text">
                   <?php echo $widget_2_meta['cta-text'] ?>
                 </div>
-                <div class="widget-cta-bold-text">
-                  <strong>
-                    <?php echo $widget_2_meta['cta-bold-text'] ?>
-                  </strong>
-                </div>
+                <?php if ($widget_2_meta['make-link'] != 'plain-text') : ?>
+                  <div class="widget-cta-bold-text">
+                    <a href="<?php echo $link_prefix_map[$widget_2_meta['make-link']] . $widget_2_meta['cta-bold-text'] ?>" <?php if ($widget_3_meta['make-link'] == 'physical-address' || $widget_3_meta == 'website') : ?>target="_blank" rel="noopener"<?php endif; ?>>
+                      <strong>
+                        <?php echo $widget_2_meta['cta-bold-text'] ?>
+                      </strong>
+                    </a>
+                  </div>
+                <?php else : ?>
+                  <div class="widget-cta-bold-text">
+                    <strong>
+                      <?php echo $widget_2_meta['cta-bold-text'] ?>
+                    </strong>
+                  </div>
+                <?php endif; ?>
               </div>
             </div>
           </li>
@@ -50,17 +79,27 @@
             <?php $widget_3_meta = cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_widget_3')[0] ?>
             <div class="flex">
               <div class="icon-wrapper flex-item">
-                <?php apply_filters('keystone_render_icon', $widget_3_meta['icon']) ?>
+                <?php apply_filters('keystone_render_icon', $widget_3_meta['icon'], 'aria-hidden="true"') ?>
               </div>
               <div class="widget-text-box">
                 <div class="widget-cta-text">
                   <?php echo $widget_3_meta['cta-text'] ?>
                 </div>
-                <div class="widget-cta-bold-text">
-                  <strong>
-                    <?php echo $widget_3_meta['cta-bold-text'] ?>
-                  </strong>
-                </div>
+                <?php if ($widget_3_meta['make-link'] != 'plain-text') : ?>
+                  <div class="widget-cta-bold-text">
+                    <a href="<?php echo $link_prefix_map[$widget_3_meta['make-link']] . $widget_3_meta['cta-bold-text'] ?>" <?php if ($widget_3_meta['make-link'] == 'physical-address' || $widget_3_meta == 'website') : ?>target="_blank" rel="noopener"<?php endif; ?>>
+                      <strong>
+                        <?php echo $widget_3_meta['cta-bold-text'] ?>
+                      </strong>
+                    </a>
+                  </div>
+                <?php else : ?>
+                  <div class="widget-cta-bold-text">
+                    <strong>
+                      <?php echo $widget_3_meta['cta-bold-text'] ?>
+                    </strong>
+                  </div>
+                <?php endif; ?>
               </div>
             </div>
           </li>

@@ -16,10 +16,10 @@ class Keystone_Icons {
         self::$flaticon_medical_reference_path = get_template_directory_uri() . '/assets/static/flaticon-set-medical.html';
         self::$elegant_icons_reference_path = get_template_directory_uri() . '/assets/static/elegant-icon-set.html';
 
-        add_filter('keystone_render_icon', [$this, 'filterRenderIcon']);
+        add_filter('keystone_render_icon', [$this, 'filterRenderIcon'], 10, 2);
     }
 
-    public function filterRenderIcon($classes) {
+    public function filterRenderIcon($classes, $attrs = '') {
         $first_three = substr($classes, 0, 3);
         $formatted_classes = '';
 
@@ -42,9 +42,9 @@ class Keystone_Icons {
         }
 
         if (Keystone_Colors::primary_is_dark()) {
-          echo sprintf('<i class="%s %s"></i>', $formatted_classes, 'keystone-icon');
+          echo sprintf('<i class="%s %s" %s></i>', $formatted_classes, 'keystone-icon', $attrs);
         } else {
-          echo sprintf('<i class="%s %s" style="color: #222222;"></i>', $formatted_classes, 'keystone-icon');
+          echo sprintf('<i class="%s %s" style="color: #222222;" %s></i>', $formatted_classes, 'keystone-icon', $attrs);
         }
 
     }
