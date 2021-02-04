@@ -743,7 +743,8 @@ Ex. .container, .grid, .col
   padding: 0 15px;
 }
 
-[class*="keystone-header-modern-style-4"] .header-top-bar {
+[class*="keystone-header-modern-style-4"] .header-top-bar,
+[class*="keystone-header-modern-style-5"] .header-top-bar {
   padding: 10px 15px 50px;
 }
 
@@ -954,6 +955,7 @@ Ex. .container, .grid, .col
 .keystone-header-style-10 .header-top-bar-inner .flex .contact .floating-divider,
 .keystone-header-style-11 .header-top-bar-inner .flex .contact .floating-divider,
 [class*="keystone-header-modern-style-4"] .header-top-bar-inner .flex .contact .floating-divider,
+[class*="keystone-header-modern-style-5"] .header-top-bar-inner .flex .contact .floating-divider,
 .keystone-header-floating-style-7 .header-top-bar-inner .flex .contact .floating-divider {
   background-color: transparent;
   margin: 0 8px;
@@ -1066,6 +1068,7 @@ Ex. .container, .grid, .col
 }
 
 [class*="keystone-header-modern-style-4"] .header-top-bar-inner .flex .contact button,
+[class*="keystone-header-modern-style-5"] .header-top-bar-inner .flex .contact button,
 .keystone-header-floating-style-5 .header-top-bar-inner .flex .contact button,
 .keystone-header-floating-style-6 .header-top-bar-inner .flex .contact button,
 .keystone-header-floating-style-7 .header-top-bar-inner .flex .contact button {
@@ -1185,12 +1188,14 @@ Ex. .container, .grid, .col
   display: none;
 }
 
-[class*="keystone-header-modern-style-4"] .header-top-bar-inner .flex .social-squares {
+[class*="keystone-header-modern-style-4"] .header-top-bar-inner .flex .social-squares,
+[class*="keystone-header-modern-style-5"] .header-top-bar-inner .flex .social-squares {
   transform: translateY(10px);
 }
 
 @media (max-width: 980px) {
-  [class*="keystone-header-modern-style-4"] .header-top-bar-inner .flex .social-squares {
+  [class*="keystone-header-modern-style-4"] .header-top-bar-inner .flex .social-squares,
+  [class*="keystone-header-modern-style-5"] .header-top-bar-inner .flex .social-squares {
     transform: none;
   }
 }
@@ -1247,6 +1252,9 @@ Ex. .container, .grid, .col
 [class*="keystone-header-modern-style-1"] .header-top-bar-inner .flex .header-language-toggler-wrapper,
 [class*="keystone-header-modern-style-2"] .header-top-bar-inner .flex .header-language-toggler-wrapper,
 [class*="keystone-header-modern-style-4"] .header-top-bar-inner .flex .header-language-toggler-wrapper,
+[class*="keystone-header-modern-style-5"] .header-top-bar-inner .flex .header-language-toggler-wrapper,
+[class*="keystone-header-modern-style-6"] .header-top-bar-inner .flex .header-language-toggler-wrapper,
+[class*="keystone-header-modern-style-7"] .header-top-bar-inner .flex .header-language-toggler-wrapper,
 .keystone-header-floating-style-1 .header-top-bar-inner .flex .header-language-toggler-wrapper,
 .keystone-header-floating-style-2 .header-top-bar-inner .flex .header-language-toggler-wrapper,
 .keystone-header-floating-style-3 .header-top-bar-inner .flex .header-language-toggler-wrapper,
