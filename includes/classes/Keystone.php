@@ -25,19 +25,6 @@ class Keystone {
   private function __construct() {
     self::$theme_prefix = 'keystone';
 
-    if ('' === self::$template_dir_path) {
-      self::$template_dir_path = wp_normalize_path(get_template_directory());
-    }
-    if ('' === self::$template_dir_url) {
-      self::$template_dir_url = get_template_directory_uri();
-    }
-    if ('' === self::$stylesheet_dir_path) {
-      self::$stylesheet_dir_path = wp_normalize_path(get_stylesheet_directory());
-    }
-    if ('' === self::$stylesheet_dir_url) {
-      self::$stylesheet_dir_url = get_stylesheet_directory_uri();
-    }
-
     add_filter('use_block_editor_for_post', '__return_false', 10);
     add_action('wp_footer', array($this, 'display_template_toast'));
   }

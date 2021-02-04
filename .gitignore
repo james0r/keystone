@@ -25,3 +25,11 @@ package-lock.json
 composer.lock
 
 .vscode/*
+
+# ignore source maps
+*.map
+
+# ignore bundled CSS and Javascript
+main.css
+footer-bundle.js
+header-bundle.js

@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.header-middle-bar {
+  padding: 0 15px;
+  .keystone-header-style-1 & {
+    background-color: var(--keystone-background-color-gray-lighter);
+  }
+
+  &-inner {
+    padding: 20px 0;
+    max-width: var(--keystone-module-inner-max-width);
+    margin: auto;
+
+    .flex {
+
+      .logo-wrapper {
+
+        img {
+          height: 36px;
+          width: 232px;
+        }
+      }
+    }
+  }
+}
