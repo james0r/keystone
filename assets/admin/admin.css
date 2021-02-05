@@ -294,7 +294,8 @@
   display: none;
 }
 
-/* Allow text_url field to grow larger than it's default */
+/* CMB2 field custom Keystone styles */
+
 .cmb2-text-url {
   min-width: 200px !important;
 }
@@ -309,4 +310,34 @@
   .cmb2-text-url {
     width: 100% !important;
   }
+}
+
+.cmb2GridRow {
+  padding-left: 0px !important;
+}
+
+.cmb2GridRow .cmb-th {
+  padding: 0 !important;
+}
+
+.cmb2GridRow .cmb-td {
+  padding-left: 0 !important;
+}
+
+.cmb2GridRow input.cmb2-text-medium {
+  width: 100% !important;
+}
+
+.cmb2GridRow select {
+  width: max-content !important;
+}
+
+.cmb2GridRow .cmb-th label {
+  font-weight: 400 !important;
+}
+
+#cmb_company_zip {
+  max-width: 200px;
+  display: block;
+  margin-bottom: 10px;
 }

@@ -51,7 +51,7 @@ $cmb2_box_header_options->add_group_field($cmb2_group_header_style, array(
     'header-style-9'           => __('Header Style 9', 'keystone'),
     'header-style-10'          => __('Header Style 10 Logo Middle', 'keystone'),
     'header-style-11'          => __('Header Style 11 Logo Centered', 'keystone'),
-    'header-style-12'          => __('Header Style 11 Logo Centered Transparent', 'keystone'),
+    'header-style-12'          => __('Header Style 12 Logo Centered Transparent', 'keystone'),
     'header-modern-style-1'    => __('Header Modern Style 1', 'keystone'),
     'header-modern-style-2'    => __('Header Modern Style 2', 'keystone'),
     'header-modern-style-3'    => __('Header Modern Style 3', 'keystone'),

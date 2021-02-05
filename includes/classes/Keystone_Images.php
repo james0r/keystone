@@ -1,11 +1,12 @@
 <?php
 /**
  * Handles image logic for the Keystone theme
- *
  */
 
 class Keystone_Images {
     public function __construct() {
+        // Image sizes are registered in the Keystone_Images class
+
         add_filter('render_image_template', [$this, 'filter_render_image_template']);
         add_filter('render_title_image', [$this, 'filter_render_title_image']);
     }

@@ -11,9 +11,9 @@
   <div class="header-middle-bar-inner">
     <div class="flex">
       <div class="logo-wrapper flex-item">
-        <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_desktop_logo'))) : ?>
+        <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_wide'))) : ?>
         <img
-          src="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_desktop_logo'); ?>"
+          src="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_wide'); ?>"
           alt="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_name'); ?> Logo">
         <?php else : ?>
         <img

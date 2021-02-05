@@ -16,9 +16,8 @@ class Keystone_Init {
   public function add_image_sizes() {
     // Register wordpress image sizes
     add_image_size('full-width', 1600);
-    add_image_size('small-thumbnail', 720, 720, true);
-    add_image_size('square-thumbnail', 80, 80, true);
-    add_image_size('banner-image', 1024, 1024, true);
+    add_image_size('logo-wide', 1340);
+    add_image_size('logo-square', 500, 500, true);
   }
 
   public function add_theme_supports() {

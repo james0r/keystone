@@ -47,11 +47,11 @@
         }
 
         img {
-          height: 36px;
+          height: auto;
           width: 232px;
 
           .keystone-header-style-10 & {
-            height: 40px;
+            height: auto;
             width: 259px;
           }
         }
@@ -176,6 +176,7 @@
       .cta-button-wrapper {
         flex-shrink: 0;
 
+        .keystone-header-style-1 &,
         .keystone-header-style-5 &,
         .keystone-header-style-10 & {
           display: none;
@@ -200,6 +201,7 @@
         width: 100%;
         max-width: 300px;
 
+        .keystone-header-style-1 &,
         .keystone-header-style-10 & {
           display: none;
         }

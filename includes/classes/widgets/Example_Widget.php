@@ -1,4 +1,7 @@
 <?php
+/**
+* Example taken from https://www.wpbeginner.com/wp-tutorials/how-to-create-a-custom-wordpress-widget/
+*/
 
 // Creating the widget
 class wpb_widget extends WP_Widget {
