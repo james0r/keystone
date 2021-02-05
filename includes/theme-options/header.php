@@ -13,6 +13,13 @@ $cmb2_box_header_options = new_cmb2_box(array(
   'parent_slug'  => 'cmb_main_options',
 ));
 
+$cmb2_box_header_options->add_field( array(
+	'name' => __('', 'keystone'),
+	'desc' => __('Mega Menu widgets can be configured ', 'keystone').'<a href="/wp-admin/widgets.php">'.__('here', 'keystone').'</a>',
+	'type' => 'title',
+	'id'   => 'wiki_test_title'
+) );
+
 $cmb2_group_header_style = $cmb2_box_header_options->add_field(array(
   'id'          => $prefix . 'group_style',
   'type'        => 'group',

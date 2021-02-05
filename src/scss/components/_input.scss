@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the input element.
+// -----------------------------------------------------------------------------
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  font-size: 14px;
+  line-height: 20px;
+  height: 45px;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  padding: 6px 12px;
+  border-radius: 0;
+  border: 1px solid #eeeeee;
+  max-width: 100%;
+  
+  @include on-event {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px 0px;
+    border-color: rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px 0px;
+    color: #404040;
+  }
+}

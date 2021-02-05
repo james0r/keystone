@@ -4,7 +4,15 @@
 
 .header-middle-bar {
   padding: 0 15px;
-  .keystone-header-style-1 & {
+
+  .keystone-header-style-6 &,
+  .keystone-header-style-8 &,
+  .keystone-header-style-9 & {
+    display: none;
+  }
+
+  .keystone-header-style-1 &,
+  .keystone-header-style-5 & {
     background-color: var(--keystone-background-color-gray-lighter);
   }
 
@@ -23,19 +31,29 @@
       justify-content: space-between;
       align-items: center;
 
+      .keystone-header-style-10 & {
+        justify-content: center;
+      }
+
       @include lg {
         flex-direction: column;
       }
 
       .logo-wrapper {
-
-        .keystone-header-style-3 & {
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
+        .keystone-header-style-5 & {
           display: none;
         }
-        
+
         img {
           height: 36px;
           width: 232px;
+
+          .keystone-header-style-10 & {
+            height: 40px;
+            width: 259px;
+          }
         }
       }
 
@@ -43,7 +61,12 @@
         display: flex;
         flex-wrap: wrap;
 
-        .keystone-header-style-3 & {
+        .keystone-header-style-10 & {
+          display: none;
+        }
+
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 & {
           flex-grow: 2;
           justify-content: space-between;
           max-width: 780px;
@@ -57,18 +80,20 @@
         .widget {
           margin-left: 20px;
           min-width: 180px;
-          
+
           &:first-child {
             margin-left: 0px;
           }
-          
+
           @include lg {
             flex: 1;
             margin-left: 0;
             margin-top: 30px;
             padding: 0 10px;
 
-            .keystone-header-style-3 & {
+            .keystone-header-style-3 &,
+            .keystone-header-style-4 &,
+            .keystone-header-style-5 & {
               margin-top: 0px;
               margin-bottom: 30px;
             }
@@ -96,11 +121,14 @@
             i {
               font-size: 30px;
               color: var(--keystone-primary-color);
+
+              .keystone-header-style-4 & {
+                color: #c0c0c0;
+              }
             }
           }
 
           .widget-text-box {
-
             @include lg {
               text-align: center;
             }
@@ -130,10 +158,67 @@
             }
           }
         }
+
+        .keystone-header-style-5 & {
+          .widget-1 {
+            margin-right: 60px;
+
+            @include lg {
+              margin-right: 0px;
+            }
+          }
+          .widget-3 {
+            display: none;
+          }
+        }
       }
 
       .cta-button-wrapper {
         flex-shrink: 0;
+
+        .keystone-header-style-5 &,
+        .keystone-header-style-10 & {
+          display: none;
+        }
+
+        .keystone-header-style-4 & {
+          .btn {
+            background-color: #eeeeee;
+            border-color: #eeeeee;
+            color: #333333;
+
+            @include on-event {
+              background-color: #d5d5d5;
+              border-color: #d5d5d5;
+            }
+          }
+        }
+      }
+
+      .search-form-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+
+        .keystone-header-style-10 & {
+          display: none;
+        }
+
+        form {
+          input[type="text"] {
+            width: 300px;
+            border-color: rgb(192, 192, 192);
+            max-width: 100%;
+          }
+        }
+        i {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          font-size: 16px;
+          cursor: pointer;
+        }
       }
     }
   }
