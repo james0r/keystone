@@ -103,7 +103,7 @@ $cmb2_options_clinic_info->add_field(array(
   'desc'         => __('Recommended Size: 1340px by 200px. Images uploaded with a different aspect ratio may display poorly on your website.', 'keystone'),
   'id'           => 'cmb_logo_wide',
   'type'         => 'file',
-  'preview_size' => 'large', // Image size to use when previewing in the admin.
+  'preview_size' => 'medium', // Image size to use when previewing in the admin.
   'text'         => array(
     'add_upload_file_text' => __('Upload Image', 'keystone') // Change upload button text. Default: "Add or Upload File"
   ),
@@ -119,7 +119,7 @@ $cmb2_options_clinic_info->add_field(array(
   'desc'         => __('This image will be shown when your logo appears in a dark themed element on the page. Recommended Size: 1340px by 200px.', 'keystone'),
   'id'           => 'cmb_logo_dark_wide',
   'type'         => 'file',
-  'preview_size' => 'large', // Image size to use when previewing in the admin.
+  'preview_size' => 'medium', // Image size to use when previewing in the admin.
   'text'         => array(
     'add_upload_file_text' => __('Upload Image', 'keystone') // Change upload button text. Default: "Add or Upload File"
   ),
@@ -135,7 +135,7 @@ $cmb2_options_clinic_info->add_field(array(
   'desc'         => __('Recommended Size: 500px by 500px.', 'keystone'),
   'id'           => 'cmb_logo_square',
   'type'         => 'file',
-  'preview_size' => 'large', // Image size to use when previewing in the admin.
+  'preview_size' => 'medium', // Image size to use when previewing in the admin.
   'text'         => array(
     'add_upload_file_text' => __('Upload Image', 'keystone') // Change upload button text. Default: "Add or Upload File"
   ),
@@ -151,7 +151,7 @@ $cmb2_options_clinic_info->add_field(array(
   'desc'         => __('Recommended Size: 500px by 500px.', 'keystone'),
   'id'           => 'cmb_logo_dark_square',
   'type'         => 'file',
-  'preview_size' => 'large', // Image size to use when previewing in the admin.
+  'preview_size' => 'medium', // Image size to use when previewing in the admin.
   'text'         => array(
     'add_upload_file_text' => __('Upload Image', 'keystone') // Change upload button text. Default: "Add or Upload File"
   ),

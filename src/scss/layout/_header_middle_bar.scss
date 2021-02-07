@@ -7,7 +7,10 @@
 
   .keystone-header-style-6 &,
   .keystone-header-style-8 &,
-  .keystone-header-style-9 & {
+  .keystone-header-style-9 &,
+  .keystone-header-style-11 &,
+  [class*="keystone-header-modern-style-4"] &,
+  [class*="keystone-header-modern-style-5"] & {
     display: none;
   }
 
@@ -20,10 +23,22 @@
     background-color: var(--keystone-background-color-gray-lightest);
   }
 
+  [class*="keystone-header-modern-style-1"] &,
+  [class*="keystone-header-modern-style-2"] &,
+  [class*="keystone-header-modern-style-3"] & {
+    padding-bottom: 45px;
+  }
+
   &-inner {
     padding: 30px 0;
     max-width: var(--keystone-module-inner-max-width);
     margin: auto;
+
+    [class*="keystone-header-modern-style-6"] & {
+      @include lg {
+        height: 330px;
+      }
+    }
 
     > .flex {
       display: flex;
@@ -33,6 +48,16 @@
 
       .keystone-header-style-10 & {
         justify-content: center;
+      }
+
+      [class*="keystone-header-modern-style-6"] & {
+        justify-content: center;
+        position: relative;
+
+        @include lg {
+          height: 100%;
+          align-items: center;
+        }
       }
 
       @include lg {
@@ -53,6 +78,13 @@
           .keystone-header-style-10 & {
             height: auto;
             width: 259px;
+          }
+
+          [class*="keystone-header-modern-style-6"] & {
+            @include lg {
+              width: 259px;
+              height: auto;
+            }
           }
         }
       }
@@ -77,12 +109,35 @@
           }
         }
 
+        [class*="keystone-header-modern-style-6"] & {
+          position: absolute;
+          width: 100%;
+          max-width: var(--keystone-module-inner-max-width);
+          justify-content: space-between;
+
+          @include lg {
+            flex-direction: column;
+            height: 100%;
+          }
+        }
+
+
         .widget {
           margin-left: 20px;
           min-width: 180px;
 
           &:first-child {
             margin-left: 0px;
+          }
+
+          &.widget-2 {
+            [class*="keystone-header-modern-style-6"] & {
+              @include lg {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+              }
+            }
           }
 
           @include lg {
@@ -96,6 +151,13 @@
             .keystone-header-style-5 & {
               margin-top: 0px;
               margin-bottom: 30px;
+            }
+
+            [class*="keystone-header-modern-style-6"] & {
+              @include lg {
+                margin-bottom: 0px;
+                margin-top: 0px;
+              }
             }
           }
 
@@ -171,6 +233,12 @@
             display: none;
           }
         }
+
+        [class*="keystone-header-modern-style-6"] & {
+          .widget-3 {
+            display: none;
+          }
+        }
       }
 
       .cta-button-wrapper {
@@ -178,7 +246,11 @@
 
         .keystone-header-style-1 &,
         .keystone-header-style-5 &,
-        .keystone-header-style-10 & {
+        .keystone-header-style-10 &,
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-3"] &,
+        [class*="keystone-header-modern-style-6"] & {
           display: none;
         }
 
@@ -202,7 +274,11 @@
         max-width: 300px;
 
         .keystone-header-style-1 &,
-        .keystone-header-style-10 & {
+        .keystone-header-style-10 &,
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-3"] &,
+        [class*="keystone-header-modern-style-6"] & {
           display: none;
         }
 
