@@ -13,11 +13,11 @@
 
       <!-- Top Bar Message Block End -->
 
-      <!-- Top Bar Social Links Start -->
+      <!-- Top Bar Social Squares Start -->
 
       <?php keystone_render_template('social-squares'); ?>
 
-      <!-- Top Bar Social Links End -->
+      <!-- Top Bar Social Squares End -->
 
       <!-- Top Bar Contact Block Start -->
 
@@ -27,9 +27,9 @@
         <?php apply_filters('keystone_render_icon', 'fas fa-phone-alt'); ?>
         <?php endif; ?>
         <button id="top-bar-contact-dropdown-toggle" aria-haspopup="listbox">
-      
-            <?php _e('Call Us', 'keystone') ?>:
-            <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>
+
+          <?php _e('Call Us', 'keystone') ?>:
+          <?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_new_patients_phone') ?>
           <?php apply_filters('keystone_render_icon', 'fas fa-caret-down'); ?>
           <ul id="top-bar-contact-dropdown" class="contact-list" style="display: none;" tabindex="-1"
             aria-role="listbox" aria-expanded="false">
@@ -129,11 +129,11 @@
 
       <!-- Language Toggler End -->
 
-      <!-- Top Bar Social Links Start -->
+      <!-- Top Bar Social Circles Start -->
 
       <?php keystone_render_template('social-circles'); ?>
 
-      <!-- Top Bar Social Links End -->
+      <!-- Top Bar Social Circles End -->
 
     </div>
   </div>

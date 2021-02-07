@@ -119,6 +119,13 @@
           <?php echo cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_cta')[0]['button-text'] ?>
         </button>
       </div>
+
+      <!-- Middle Bar Social Squares Start -->
+
+      <?php keystone_render_template('social-squares'); ?>
+
+      <!-- Middle Bar Social Squares End -->
+
       <div class="search-form-wrapper">
         <form role="search" method="get" id="headerSearchForm" class="searchform" action="/">
           <div>
