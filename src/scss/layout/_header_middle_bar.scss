@@ -121,6 +121,11 @@
           }
         }
 
+        [class*="keystone-header-modern-style-7"] & {
+          @include lg {
+            order: 3;
+          }
+        }
 
         .widget {
           margin-left: 20px;
@@ -153,11 +158,18 @@
               margin-bottom: 30px;
             }
 
+
+
             [class*="keystone-header-modern-style-6"] & {
               @include lg {
                 margin-bottom: 0px;
                 margin-top: 0px;
               }
+            }
+
+            [class*="keystone-header-modern-style-7"] & {
+              margin-top: 30px;
+              margin-bottom: 0px;
             }
           }
 
@@ -239,6 +251,18 @@
             display: none;
           }
         }
+
+        [class*="keystone-header-modern-style-7"] & {
+          .widget-3 {
+            @include xl {
+              display: none;
+            }
+            @include lg {
+              display: initial;
+            }
+          }
+
+        }
       }
 
       .cta-button-wrapper {
@@ -252,6 +276,12 @@
         [class*="keystone-header-modern-style-3"] &,
         [class*="keystone-header-modern-style-6"] & {
           display: none;
+        }
+
+        [class*="keystone-header-modern-style-7"] & {
+          @include lg {
+            margin-top: 30px;
+          }
         }
 
         .keystone-header-style-4 & {
@@ -278,7 +308,8 @@
         [class*="keystone-header-modern-style-1"] &,
         [class*="keystone-header-modern-style-2"] &,
         [class*="keystone-header-modern-style-3"] &,
-        [class*="keystone-header-modern-style-6"] & {
+        [class*="keystone-header-modern-style-6"] &,
+        [class*="keystone-header-modern-style-7"] & {
           display: none;
         }
 
