@@ -28,9 +28,16 @@
   [class*="keystone-header-modern-style-1"] &,
   [class*="keystone-header-modern-style-2"] &,
   [class*="keystone-header-modern-style-3"] &,
-  [class*="keystone-header-modern-style-7"] &,
-  [class*="keystone-header-modern-style-8"] & {
+  [class*="keystone-header-modern-style-7"] & {
     padding-bottom: 30px;
+
+    @include lg {
+      padding-bottom: 0px;
+    }
+  }
+
+  [class*="keystone-header-modern-style-8"] & {
+    padding-bottom: 70px;
 
     @include lg {
       padding-bottom: 0px;
