@@ -9,6 +9,7 @@
   .keystone-header-style-8 &,
   .keystone-header-style-9 &,
   .keystone-header-style-11 &,
+  .keystone-header-style-12 &,
   [class*="keystone-header-modern-style-4"] &,
   [class*="keystone-header-modern-style-5"] &,
   .keystone-header-floating-style-1 &,
@@ -296,6 +297,7 @@
         flex-shrink: 0;
 
         .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
         .keystone-header-style-5 &,
         .keystone-header-style-10 &,
         [class*="keystone-header-modern-style-1"] &,
@@ -332,6 +334,9 @@
         max-width: 300px;
 
         .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
         .keystone-header-style-10 &,
         [class*="keystone-header-modern-style-1"] &,
         [class*="keystone-header-modern-style-2"] &,
@@ -360,6 +365,20 @@
       }
 
       .social-squares {
+        .keystone-header-style-1 &,
+        .keystone-header-style-2 &,
+        .keystone-header-style-3 &,
+        .keystone-header-style-4 &,
+        .keystone-header-style-5 &,
+        .keystone-header-style-10 &,
+        [class*="keystone-header-modern-style-1"] &,
+        [class*="keystone-header-modern-style-2"] &,
+        [class*="keystone-header-modern-style-3"] &,
+        [class*="keystone-header-modern-style-6"] &,
+        [class*="keystone-header-modern-style-7"] & {
+          display: none;
+        }
+
         @include lg {
           margin-top: 20px;
         }

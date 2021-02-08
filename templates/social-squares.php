@@ -11,7 +11,7 @@ $pinterest = cmb2_get_option($box, 'pinterest');
 $youtube = cmb2_get_option($box, 'youtube');
 ?>
 
-<ul class="social-squares social-squares-list">
+<ul class="social-squares social-squares-list animate__animated animate__fadeInUp animate__faster">
   <?php if (!empty($facebook)) : ?>
   <li class="social-squares-list-item">
     <a target="_blank" href="<?php echo $facebook; ?>" class="social-squares-link facebook-link"

@@ -56,6 +56,7 @@ class Keystone {
       self::$instance->header = new Keystone_Header;
       self::$instance->tools = new Keystone_Tools;
       self::$instance->widgets = new Keystone_Widgets;
+      self::$instance->walker = new Keystone_Walker;
     }
 
     return self::$instance;

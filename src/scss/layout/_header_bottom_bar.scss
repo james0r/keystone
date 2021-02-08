@@ -1,0 +1,263 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.header-bottom-bar {
+  background-color: white;
+  padding: 0 15px;
+
+  &-inner {
+
+    > .flex {
+
+      .nav-wrapper {
+
+        .header-primary-menu {
+
+          // Menu Level 1
+          > li {
+            display: inline-flex;
+            height: 78px;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+
+            > a > i {
+              font-size: 10px;
+              margin-left: 5px;
+            }
+            
+            &:not(.menu-item-has-children) > a > i {
+              display: none;
+            }
+            
+            > a {
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: 600;
+              color: #888;
+              padding: 8px 16px;
+            }
+
+            > .sub-menu {
+              position: absolute;
+              top: 100%;
+              background-color: #fff;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+              display: none;
+
+              // Menu Links Number 2
+              > li {
+                position: relative;
+
+                &:not(.menu-item-has-children) > a > i {
+                  display: none;
+                }
+
+                > a {
+                  padding: 10px 22px;
+                  width: max-content;
+                  font-size: 14px;
+                  font-weight: 600;
+                  color: #888;
+                  line-height: 1.6;
+                  min-width: 230px;
+
+                  span {
+                    display: inline-block;
+                    transform: translateX(0px);
+                    transition: transform 200ms;
+                    transition-timing-function: linear;
+                  }
+
+                  > i {
+                    font-size: 12px;
+                    transform: rotate3d(0,0,1, -90deg) translateX(50%);
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                  }
+
+                  @include on-event {
+                    text-decoration: none;
+                  }
+                }
+
+                @include on-event {
+                  background-color: var(--keystone-primary-color-l1);
+
+                  > a {
+                    color: #fff;
+
+                    span {
+                      display: inline-block;
+                      transform: translateX(10px);
+                      transition: transform 200ms;
+                      transition-timing-function: linear;
+                    }
+                  }
+                }
+
+                > .sub-menu {
+                  position: absolute;
+                  left: 100%;
+                  top: 0;
+                  background-color: #fff;
+                  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                  display: none;
+
+                  // Menu Links Level 3
+                  > li {
+                    position: relative;
+
+                    &:not(.menu-item-has-children) > a > i {
+                      display: none;
+                    }
+    
+                    > a {
+                      padding: 10px 22px;
+                      width: max-content;
+                      font-size: 14px;
+                      font-weight: 600;
+                      color: #888;
+                      line-height: 1.6;
+                      min-width: 230px;
+    
+                      span {
+                        display: inline-block;
+                        transform: translateX(0px);
+                        transition: transform 200ms;
+                        transition-timing-function: linear;
+                      }
+    
+                      > i {
+                        font-size: 12px;
+                        transform: rotate3d(0,0,1, -90deg) translateX(50%);
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                      }
+    
+                      @include on-event {
+                        text-decoration: none;
+                      }
+                    }
+    
+                    @include on-event {
+                      background-color: var(--keystone-primary-color-l1);
+    
+                      > a {
+                        color: #fff;
+    
+                        span {
+                          display: inline-block;
+                          transform: translateX(10px);
+                          transition: transform 200ms;
+                          transition-timing-function: linear;
+                        }
+                      }
+                    }
+    
+                    > .sub-menu {
+                      position: absolute;
+                      left: 100%;
+                      top: 0;
+                      background-color: #fff;
+                      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                      display: none;
+
+                      // Menu Links Level 4
+                      > li {
+                        position: relative;
+
+                        &:not(.menu-item-has-children) > a > i {
+                          display: none;
+                        }
+        
+                        > a {
+                          padding: 10px 22px;
+                          width: max-content;
+                          font-size: 14px;
+                          font-weight: 600;
+                          color: #888;
+                          line-height: 1.6;
+                          min-width: 230px;
+        
+                          span {
+                            display: inline-block;
+                            transform: translateX(0px);
+                            transition: transform 200ms;
+                            transition-timing-function: linear;
+                          }
+        
+                          > i {
+                            font-size: 12px;
+                            transform: rotate3d(0,0,1, -90deg) translateX(50%);
+                            position: absolute;
+                            right: 10px;
+                            top: 50%;
+                          }
+        
+                          @include on-event {
+                            text-decoration: none;
+                          }
+                        }
+        
+                        @include on-event {
+                          background-color: var(--keystone-primary-color-l1);
+        
+                          > a {
+                            color: #fff;
+        
+                            span {
+                              display: inline-block;
+                              transform: translateX(10px);
+                              transition: transform 200ms;
+                              transition-timing-function: linear;
+                            }
+                          }
+                        }
+                      }
+                    }
+
+                    @include on-event {
+                      > .sub-menu {
+                        display: block;
+                      }
+                    }
+                  }
+                }
+
+                @include on-event {
+                  > .sub-menu {
+                    display: block;
+                  }
+                }
+              }
+            }
+
+            @include on-event {
+              > a {
+                background-color: var(--keystone-primary-color-l1);
+                color: #fff;
+              }
+
+              > .sub-menu {
+                display: block;
+              }
+            }
+
+            // -----------------------------------------------------------------------------
+            // FOR DEBUGGING 2ND LEVEL MENU
+            // -----------------------------------------------------------------------------
+            // &:first-child {
+            //   .sub-menu {
+            //     display: block;
+            //   }
+            // }
+          }
+        }
+      }
+    }
+  }
+}

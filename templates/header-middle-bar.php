@@ -10,6 +10,8 @@
 <div id="header-middle-bar" class="header-middle-bar">
   <div class="header-middle-bar-inner">
     <div class="flex">
+
+      <!-- Middle Bar Logo Start -->
       <div class="logo-wrapper flex-item">
         <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_wide'))) : ?>
         <img
@@ -21,6 +23,9 @@
           alt="Company Logo Image Missing">
         <?php endif; ?>
       </div>
+      <!-- Middle Bar Logo End -->
+
+      <!-- Middle Bar Widgets Start -->
       <ul class="widgets flex-item flex">
         <li class="widget widget-1">
           <?php $widget_1_meta = cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_widget_1')[0] ?>
@@ -114,18 +119,21 @@
           </div>
         </li>
       </ul>
+      <!-- Middle Bar Widgets End -->
+
+      <!-- Middle Bar CTA Button Start -->
       <div class="cta-button-wrapper">
         <button class="btn btn-flat btn-primary">
           <?php echo cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_cta')[0]['button-text'] ?>
         </button>
       </div>
+      <!-- Middle Bar CTA Button End -->
 
       <!-- Middle Bar Social Squares Start -->
-
       <?php keystone_render_template('social-squares'); ?>
-
       <!-- Middle Bar Social Squares End -->
 
+      <!-- Middle Bar Search Wrapper Start -->
       <div class="search-form-wrapper">
         <form role="search" method="get" id="headerSearchForm" class="searchform" action="/">
           <div>
@@ -136,6 +144,8 @@
         </form>
         <?php apply_filters('keystone_render_icon', 'fas fa-search', 'aria-hidden="true" onclick="document.getElementById(\'headerSearchForm\').submit()"') ?>
       </div>
+      <!-- Middle Bar Search Wrapper End -->
+
     </div>
   </div>
 </div>

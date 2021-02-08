@@ -21,8 +21,9 @@ class Keystone_Scripts {
     // Enqueue critical stylesheets
     wp_enqueue_style('style', get_template_directory_uri() . '/assets/css/main.css');
     wp_enqueue_style('font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css');
-    wp_enqueue_style('user-styles', get_template_directory_uri() . '/style.css');
     wp_enqueue_style('jquery-datetimepicker-css', get_template_directory_uri() . '/assets/css/jquery.datetimepicker.min.css');
+    wp_enqueue_style('animate-css', get_template_directory_uri() . '/assets/css/animate.min.css');
+    wp_enqueue_style('user-styles', get_template_directory_uri() . '/style.css');
     wp_enqueue_script('jquery-3.5.1', get_template_directory_uri() . '/assets/js/jquery-3.5.1.min.js', null, 1.0, false);
     wp_enqueue_script('header-js', get_template_directory_uri() . '/assets/js/header-bundle.js', null, 1.0, false);
     wp_enqueue_script('knockout', get_template_directory_uri() . '/assets/js/knockout-3.5.1.js', null, 1.0, true);
