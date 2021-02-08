@@ -219,20 +219,9 @@
                         }
                       }
                     }
-
-                    @include on-event {
-                      > .sub-menu {
-                        display: block;
-                      }
-                    }
                   }
                 }
 
-                @include on-event {
-                  > .sub-menu {
-                    display: block;
-                  }
-                }
               }
             }
 
@@ -240,10 +229,6 @@
               > a {
                 background-color: var(--keystone-primary-color-l1);
                 color: #fff;
-              }
-
-              > .sub-menu {
-                display: block;
               }
             }
 

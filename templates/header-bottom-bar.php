@@ -20,5 +20,12 @@
 </div>
 
 <script>
-
+  $(function() {
+    $('#header-bottom-bar').find('li').on('mouseenter', function(e) {
+      $(e.currentTarget).children('.sub-menu').slideDown('fast');
+    })
+    $('#header-bottom-bar').find('li').on('mouseleave', function(e) {
+      $(e.currentTarget).children('.sub-menu').slideUp('fast');
+    })
+  })
 </script>
