@@ -122,7 +122,7 @@
       <!-- Middle Bar Widgets End -->
 
       <!-- Middle Bar CTA Button Start -->
-      <div class="cta-button-wrapper">
+      <div id="middle-bar-cta-button-wrapper" class="cta-button-wrapper">
         <button class="btn btn-flat btn-primary">
           <?php echo cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_cta')[0]['button-text'] ?>
         </button>

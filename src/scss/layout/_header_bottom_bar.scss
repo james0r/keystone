@@ -7,10 +7,19 @@
   padding: 0 15px;
 
   &-inner {
+    max-width: var(--keystone-module-inner-max-width);
+    margin-left: auto;
+    margin-right: auto;
 
     > .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
       .nav-wrapper {
+        @include lg {
+          display: none;
+        }
 
         .header-primary-menu {
 
@@ -242,6 +251,113 @@
             // }
           }
         }
+      }
+
+      .header-search-toggler-wrapper {
+        margin-left: 30px;
+
+        @include lg {
+          margin-left: unset;
+          padding: 12px;
+        }
+
+        .header-search-toggler {
+          -webkit-appearance: none;
+          appearance: none;
+          -moz-appearance: none;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          opacity: .7;
+          padding: 6px;
+
+          img {
+            height: 16px;
+            width: auto;
+          }
+
+          @include on-event {
+            opacity: 1;
+          }
+        }
+      }
+
+      .header-cart-link {
+        margin-left: 30px;
+        text-decoration: none;
+        padding: 6px;
+
+        @include lg {
+          margin-left: unset;
+          padding: 12px;
+        }
+
+        .header-cart-icon-wrapper {
+          position: relative;
+
+          .header-cart-icon {
+            height: 18px;
+            width: auto;
+          }
+
+          .header-cart-item-count {
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 16px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--keystone-primary-color);
+            color: #fff;
+            transform: translate(60%, -60%);
+          }
+        }
+      }
+
+      .side-panel-toggler-wrapper,
+      .mobile-menu-toggler-wrapper {
+        margin-left: 30px;
+        opacity: .6;
+
+        @include lg {
+          margin-left: unset;
+          padding: 12px;
+        }
+
+        button {
+          -webkit-appearance: none;
+          appearance: none;
+          -moz-appearance: none;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          padding: 6px;
+
+          i {
+            font-size: 20px;
+          }
+        }
+
+        @include on-event {
+          opacity: 1;
+        }
+      }
+
+      .mobile-menu-toggler-wrapper {
+        display: none;
+
+        @include lg {
+          display: block;
+        }
+      }
+
+      .cta-button-wrapper {
+        margin-left: auto;
       }
     }
   }

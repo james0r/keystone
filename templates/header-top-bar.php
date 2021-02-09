@@ -102,7 +102,7 @@
             ));
           ?>
         </nav>
-        <button class="side-panel-toggler">
+        <button id="top-bar-side-panel-toggler" class="side-panel-toggler">
           <i class="fa fa-bars"></i>
         </button>
       </div>
