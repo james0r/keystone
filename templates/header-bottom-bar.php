@@ -3,7 +3,7 @@
     <div class="flex">
 
       <!-- Bottom Bar Navigation Start -->
-      <nav class="nav-wrapper">
+      <nav class="nav-wrapper" role="navigation">
         <?php
           wp_nav_menu(array(
             'menu'              => 'header-primary',
@@ -59,7 +59,7 @@
 
       <!-- Bottom Bar Side Panel Toggler Start -->
       <div class="mobile-menu-toggler-wrapper">
-        <button id="mobile-menu-toggler" class="mobile-menu-toggler">
+        <button id="mobile-menu-toggler" class="mobile-menu-toggler" alt="Menu" aria-controls="header-primary-menu-mobile" aria-expanded="false">
           <i class="fa fa-bars"></i>
         </button>
       </div>
@@ -68,33 +68,47 @@
     </div>
 
     <!-- Bottom Bar Mobile Navigation Start -->
-    <nav class="mobile-nav-wrapper">
+    <nav class="mobile-nav-wrapper" role="navigation">
       <?php
           wp_nav_menu(array(
-            'menu'              => 'header-primary',
-            'menu_class'        => 'header-primary-menu-mobile',
-            'menu_id'           => 'header-primary-menu-mobile',
-            'theme_location'    => 'header-primary',
-            'container'         => false,
-            'depth'             => 4,
-            'link_after'        => '<i class="fas fa-chevron-down"></i>',
-            'walker'            => Keystone()->walker
+            'menu'                 => 'header-primary',
+            'menu_class'           => 'header-primary-menu-mobile',
+            'menu_id'              => 'header-primary-menu-mobile',
+            'container_aria_label' => 'navigation',
+            'theme_location'       => 'header-primary',
+            'container'            => false,
+            'depth'                => 4,
+            'link_after'           => '<i class="fas fa-chevron-down"></i>',
+            'walker'               => Keystone()->walker_accordion
           ));
         ?>
     </nav>
     <!-- Bottom Bar Mobile Navigation End -->
-    
+
   </div>
 </div>
 
 <script>
-  // Handle roll-up and roll-down of header sub menus
   $(function() {
-    $('#header-bottom-bar').find('li').on('mouseenter', function(e) {
+    // Handle roll-up and roll-down of header navigation sub menus on desktop
+    $('#header-bottom-bar #header-primary-menu').find('li').on('mouseenter', function(e) {
       $(e.currentTarget).children('.sub-menu').slideDown('fast');
     })
-    $('#header-bottom-bar').find('li').on('mouseleave', function(e) {
+    $('#header-bottom-bar #header-primary-menu').find('li').on('mouseleave', function(e) {
       $(e.currentTarget).children('.sub-menu').slideUp('fast');
+    })
+
+    //Handle header mobile navigation animations
+    let $mobileParentListItems = $('#header-bottom-bar #header-primary-menu-mobile').find('li.menu-item-has-children');
+
+    $mobileParentListItems.children('a').on('click', function(e) {
+      e.preventDefault();
+    })
+
+    $mobileParentListItems.on('click', function(e) {
+      var $el = $(e.currentTarget);
+
+      $el.hasClass('is-active') ? $el.removeClass('is-active') : $el.addClass('is-active');
     })
   })
 </script>
