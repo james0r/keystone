@@ -525,6 +525,10 @@
       .nav-wrapper {
         display: flex;
 
+        @include xs {
+          display: none;
+        }
+
         .keystone-header-style-3 &,
         .keystone-header-style-4 &,
         .keystone-header-style-6 &,

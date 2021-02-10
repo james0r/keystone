@@ -2,6 +2,20 @@
   <div class="header-bottom-bar-inner">
     <div class="flex">
 
+      <!-- Bottom Bar Logo Start -->
+      <a href="/" class="logo-wrapper flex-item">
+        <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_wide'))) : ?>
+        <img
+          src="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_wide'); ?>"
+          alt="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_name'); ?> Logo">
+        <?php else : ?>
+        <img
+          src="<?php echo Keystone::$template_dir_url . '/assets/images/no-logo-found.png' ?>"
+          alt="Company Logo Image Missing">
+        <?php endif; ?>
+      </a>
+      <!-- Bottom Bar Logo End -->
+
       <!-- Bottom Bar Navigation Start -->
       <nav class="nav-wrapper" role="navigation">
         <?php
@@ -40,14 +54,6 @@
       </a>
       <!-- Bottom Bar Cart Icon End -->
 
-      <!-- Bottom Bar Side Panel Toggler Start -->
-      <div class="side-panel-toggler-wrapper">
-        <button id="bottom-bar-side-panel-toggler" class="side-panel-toggler">
-          <i class="fa fa-bars"></i>
-        </button>
-      </div>
-      <!-- Bottom Bar Side Panel Toggler End -->
-
       <!-- Bottom Bar CTA Button Start -->
       <div id="bottom-bar-cta-button-wrapper" class="cta-button-wrapper">
         <button class="btn btn-flat btn-primary">
@@ -59,8 +65,14 @@
 
       <!-- Bottom Bar Side Panel Toggler Start -->
       <div class="mobile-menu-toggler-wrapper">
-        <button id="mobile-menu-toggler" class="mobile-menu-toggler" alt="Menu" aria-controls="header-primary-menu-mobile" aria-expanded="false">
-          <i class="fa fa-bars"></i>
+        <button id="mobile-menu-toggler" class="mobile-menu-toggler" alt="Menu"
+          aria-controls="header-primary-menu-mobile" aria-expanded="false">
+          <img class="open"
+            src="<?php echo Keystone::$stylesheet_dir_url . '/assets/images/keystone-hamburger-icon.png' ?>"
+            alt="Mobile Menu Three Bars Icon">
+          <img class="close"
+            src="<?php echo Keystone::$stylesheet_dir_url . '/assets/images/keystone-close-icon.png' ?>"
+            alt="Mobile Menu Close Icon">
         </button>
       </div>
       <!-- Bottom Bar Side Panel Toggler End -->
@@ -68,7 +80,7 @@
     </div>
 
     <!-- Bottom Bar Mobile Navigation Start -->
-    <nav class="mobile-nav-wrapper" role="navigation">
+    <nav id="mobile-nav-wrapper" class="mobile-nav-wrapper" role="navigation">
       <?php
           wp_nav_menu(array(
             'menu'                 => 'header-primary',
@@ -90,7 +102,15 @@
 
 <script>
   $(function() {
+
     // Handle roll-up and roll-down of header navigation sub menus on desktop
+    let $ParentListItems = $('#header-bottom-bar #header-primary-menu').find(
+      'li.menu-item-has-children');
+
+    $ParentListItems.children('a').on('click', function(e) {
+      e.preventDefault();
+    })
+
     $('#header-bottom-bar #header-primary-menu').find('li').on('mouseenter', function(e) {
       $(e.currentTarget).children('.sub-menu').slideDown('fast');
     })
@@ -99,16 +119,45 @@
     })
 
     //Handle header mobile navigation animations
-    let $mobileParentListItems = $('#header-bottom-bar #header-primary-menu-mobile').find('li.menu-item-has-children');
+    let $mobileParentListItems = $('#header-bottom-bar #header-primary-menu-mobile').find(
+      'li.menu-item-has-children');
 
     $mobileParentListItems.children('a').on('click', function(e) {
       e.preventDefault();
     })
 
     $mobileParentListItems.on('click', function(e) {
+      e.stopPropagation();
       var $el = $(e.currentTarget);
-
+      console.log($el);
       $el.hasClass('is-active') ? $el.removeClass('is-active') : $el.addClass('is-active');
+      $el.children('ul').slideToggle('slow');
     })
+
+    function toggleMenu(event) {
+      var navBar = document.getElementById("mobile-nav-wrapper");
+      var expanded = event.currentTarget.getAttribute("aria-expanded");
+      var $button = $(event.currentTarget);
+      if (expanded === "true") {
+        $(event.currentTarget).find('.close').fadeOut('fast', function() {
+          $button.find('.open').fadeIn('fast');
+        });
+        $(navBar).slideUp();
+        navBar.classList.add("closed");
+        navBar.classList.remove("opened");
+        event.currentTarget.setAttribute('aria-expanded', 'false');
+      } else {
+        $(event.currentTarget).find('.open').fadeOut('fast', function() {
+          $button.find('.close').fadeIn('fast');
+        });
+        $(navBar).slideDown();
+        navBar.classList.add("opened");
+        navBar.classList.remove("closed");
+        event.currentTarget.setAttribute('aria-expanded', 'true');
+      }
+
+    }
+
+    document.getElementById('mobile-menu-toggler').addEventListener('click', toggleMenu, false);
   })
 </script>

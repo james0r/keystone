@@ -1,6 +1,7 @@
 const { series, dest, src, watch } = require("gulp");
 const babel = require("gulp-babel");
 const beeper = require("beeper");
+const webpack = require("webpack-stream");
 const browserSync = require("browser-sync");
 const concat = require("gulp-concat");
 const del = require("del");
@@ -25,9 +26,9 @@ const themeName = "keystone";
 /* -------------------------------------------------------------------------------------------------
 Header & Footer JavaScript Boundles
 -------------------------------------------------------------------------------------------------- */
-const headerJS = ["src/js/_header.js"];
+const headerJS = ["src/js/header.js"];
 
-const footerJS = ["src/js/**", "!src/js/_header.js"];
+const footerJS = ["src/js/**", "!src/js/header.js"];
 
 /* -------------------------------------------------------------------------------------------------
 Development Tasks
@@ -40,7 +41,7 @@ function devServer() {
     host: "127.0.0.1",
     port: "3010",
     open: "external",
-    notify: false
+    notify: false,
   });
 
   watch("**/**.php", Reload);
@@ -91,17 +92,44 @@ function stylesModulesDev() {
 
 function headerScriptsDev() {
   if (headerJS.length) {
-    return src(headerJS)
-      .pipe(plumber({ errorHandler: onError }))
-      .pipe(sourcemaps.init())
-      .pipe(
-        babel({
-          presets: ["@babel/preset-env"],
-        })
-      )
-      .pipe(concat("header-bundle.js"))
-      .pipe(sourcemaps.write("."))
-      .pipe(dest("assets/js/"));
+    return (
+      src(headerJS)
+        .pipe(
+          webpack({
+            module: {
+              rules: [
+                {
+                  test: /\.js$/,
+                  use: {
+                    loader: "babel-loader",
+                    options: {
+                      presets: [],
+                    },
+                  },
+                },
+              ],
+            },
+            mode: "development",
+            devtool: 'inline-source-map',
+            output: {
+              filename: "header-bundle.js",
+            },
+            externals: {
+              jquery: "jQuery",
+            },
+          })
+        )
+        // .pipe(plumber({ errorHandler: onError }))
+        // .pipe(sourcemaps.init({ loadMaps: true }))
+        // .pipe(
+        //   babel({
+        //     presets: ["@babel/preset-env"],
+        //   })
+        // )
+        // .pipe(concat("header-bundle.js"))
+        // .pipe(sourcemaps.write("."))
+        .pipe(dest("assets/js/"))
+    );
   } else {
     return del(
       ["assets/js/header-bundle.js", "assets/js/header-bundle.js.map"],
@@ -248,7 +276,7 @@ Utility Tasks
 
 const onError = (err) => {
   beeper();
-  log(wpFy + " - " + errorMsg + " " + err.toString());
+  log(errorMsg + " " + err.toString());
   this.emit("end");
 };
 

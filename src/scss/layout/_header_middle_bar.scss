@@ -32,6 +32,8 @@
   }
 
   .keystone-header-style-2 &,
+  .keystone-header-style-3 &,
+  .keystone-header-style-4 &,
   [class*="keystone-header-modern-style-7"] &,
   [class*="keystone-header-modern-style-8"] & {
     background-color: var(--keystone-background-color-gray-lightest);
@@ -333,6 +335,10 @@
         width: 100%;
         max-width: 300px;
 
+        @include sm {
+          max-width: unset;
+        }
+
         .keystone-header-style-1 &,
         .keystone-header-style-2 &,
         .keystone-header-style-3 &,
@@ -352,12 +358,16 @@
             width: 300px;
             border-color: rgb(192, 192, 192);
             max-width: 100%;
+
+            @include sm {
+              width: 100%;
+            }
           }
         }
         i {
           position: absolute;
           top: 50%;
-          right: 10px;
+          right: 14px;
           transform: translateY(-50%);
           font-size: 16px;
           cursor: pointer;
