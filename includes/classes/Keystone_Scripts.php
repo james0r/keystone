@@ -25,10 +25,9 @@ class Keystone_Scripts {
     wp_enqueue_style('animate-css', get_template_directory_uri() . '/assets/css/animate.min.css');
     wp_enqueue_style('user-styles', get_template_directory_uri() . '/style.css');
     wp_enqueue_script('jquery-3.5.1', get_template_directory_uri() . '/assets/js/jquery-3.5.1.min.js', null, 1.0, false);
-    wp_enqueue_script('header-js', get_template_directory_uri() . '/assets/js/header-bundle.js', null, 1.0, false);
     wp_enqueue_script('knockout', get_template_directory_uri() . '/assets/js/knockout-3.5.1.js', null, 1.0, true);
     wp_enqueue_script('alpine-js', get_template_directory_uri() . '/assets/js/alpine.js', null, 1.0, true);
-    wp_enqueue_script('footer-js', get_template_directory_uri() . '/assets/js/footer-bundle.js', array('jquery-3.5.1'), 1.0, true);
+    wp_enqueue_script('keystone-js', get_template_directory_uri() . '/assets/js/bundle.js', array('jquery-3.5.1'), 1.0, true);
     wp_enqueue_script('jquery-datetimepicker-js', get_template_directory_uri() . '/assets/js/jquery.datetimepicker.min.js', array('jquery-3.5.1'), 1.0, true);
   }
 

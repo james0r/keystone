@@ -4,8 +4,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-BoldItalic.woff2') format('woff2'),
-      url('../webfonts/OpenSans-BoldItalic.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-BoldItalic.woff') format('woff2'),
+      url('../../assets/webfonts/OpenSans-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -13,8 +13,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-Bold.woff2') format('woff2'),
-      url('../webfonts/OpenSans-Bold.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-Bold.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -22,8 +22,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-ExtraBold.woff2') format('woff2'),
-      url('../webfonts/OpenSans-ExtraBold.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-ExtraBold.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-ExtraBold.woff') format('woff');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -31,8 +31,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-ExtraBoldItalic.woff2') format('woff2'),
-      url('../webfonts/OpenSans-ExtraBoldItalic.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-ExtraBoldItalic.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-ExtraBoldItalic.woff') format('woff');
   font-weight: 800;
   font-style: italic;
   font-display: swap;
@@ -40,8 +40,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-Italic.woff2') format('woff2'),
-      url('../webfonts/OpenSans-Italic.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-Italic.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -49,8 +49,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-Light.woff2') format('woff2'),
-      url('../webfonts/OpenSans-Light.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-Light.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -58,8 +58,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-LightItalic.woff2') format('woff2'),
-      url('../webfonts/OpenSans-LightItalic.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-LightItalic.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-LightItalic.woff') format('woff');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -67,8 +67,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-Regular.woff2') format('woff2'),
-      url('../webfonts/OpenSans-Regular.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-Regular.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -76,8 +76,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-SemiBold.woff2') format('woff2'),
-      url('../webfonts/OpenSans-SemiBold.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-SemiBold.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -85,8 +85,8 @@
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('../webfonts/OpenSans-SemiBoldItalic.woff2') format('woff2'),
-      url('../webfonts/OpenSans-SemiBoldItalic.woff') format('woff');
+  src: url('../../assets/webfonts/OpenSans-SemiBoldItalic.woff2') format('woff2'),
+      url('../../assets/webfonts/OpenSans-SemiBoldItalic.woff') format('woff');
   font-weight: 600;
   font-style: italic;
   font-display: swap;
@@ -94,24 +94,24 @@
 
 @font-face {
   font-family: 'fontello';
-  src: url('../webfonts/fontello.eot?96731368');
-  src: url('../webfonts/fontello.eot?96731368#iefix') format('embedded-opentype'),
-       url('../webfonts/fontello.woff2?96731368') format('woff2'),
-       url('../webfonts/fontello.woff?96731368') format('woff'),
-       url('../webfonts/fontello.ttf?96731368') format('truetype'),
-       url('../webfonts/fontello.svg?96731368#fontello') format('svg');
+  src: url('../../assets/webfonts/fontello.eot?96731368');
+  src: url('../../assets/webfonts/fontello.eot?96731368#iefix') format('embedded-opentype'),
+       url('../../assets/webfonts/fontello.woff2?96731368') format('woff2'),
+       url('../../assets/webfonts/fontello.woff?96731368') format('woff'),
+       url('../../assets/webfonts/fontello.ttf?96731368') format('truetype'),
+       url('../../assets/webfonts/fontello.svg?96731368#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "flaticon-set-dental";
-  src: url("../webfonts/flaticon-set-dental.eot");
-  src: url("../webfonts/flaticon-set-dental.eot?#iefix")
+  src: url("../../assets/webfonts/flaticon-set-dental.eot");
+  src: url("../../assets/webfonts/flaticon-set-dental.eot?#iefix")
       format("embedded-opentype"),
-    url("../webfonts/flaticon-set-dental.woff") format("woff"),
-    url("../webfonts/flaticon-set-dental.ttf") format("truetype"),
-    url("../webfonts/flaticon-set-dental.svg#flaticon-set-dental")
+    url("../../assets/webfonts/flaticon-set-dental.woff") format("woff"),
+    url("../../assets/webfonts/flaticon-set-dental.ttf") format("truetype"),
+    url("../../assets/webfonts/flaticon-set-dental.svg#flaticon-set-dental")
       format("svg");
   font-weight: normal;
   font-style: normal;
@@ -120,7 +120,7 @@
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "flaticon-set-dental";
-    src: url("../webfonts/flaticon-set-dental.svg#flaticon-set-dental")
+    src: url("../../assets/webfonts/flaticon-set-dental.svg#flaticon-set-dental")
       format("svg");
   }
 }

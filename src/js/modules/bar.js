@@ -1,5 +1,3 @@
-class Bar {
-  print(msg) {
-    document.write(msg)
-  }
+export default function bar() {
+  console.log( 'hi bob' );
 }
