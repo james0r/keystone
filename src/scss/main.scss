@@ -1,45 +1,38 @@
 @charset "UTF-8";
 
 // 1. Configuration and helpers
-@import
-  'abstracts/variables',
-  'abstracts/functions',
-  'abstracts/mixins';
+@import "abstracts/variables", 
+        "abstracts/functions", 
+        "abstracts/mixins";
 
 // 2. Vendors
-@import
-  'vendors/normalize';
+@import "vendors/normalize";
 
 // 3. Base stuff
-@import
-  'base/base',
-  'base/fonts',
-  'base/typography',
-  'base/helpers',
-  'base/a11y',
-  'base/layout';
+@import "base/base", 
+        "base/fonts", 
+        "base/typography", 
+        "base/helpers",
+        "base/a11y", 
+        "base/layout";
 
 // 4. Layout
-@import
-'layout/header',
-'layout/header_top_bar',
-'layout/header_middle_bar',
-'layout/header_bottom_bar',
-'layout/footer';
+@import "layout/header", 
+        "layout/header_top_bar", 
+        "layout/header_middle_bar",
+        "layout/header_bottom_bar", 
+        "layout/footer";
 
 // 5. Components
-@import
-  'components/button',
-  'components/social_circles',
-  'components/social_squares',
-  'components/link',
-  'components/input',
-  'components/swiper-slider';
+@import "components/button", 
+        "components/social_circles",
+        "components/social_squares", 
+        "components/link", 
+        "components/input",
+        "components/swiper-slider";
 
 // 6. Page-specific styles
-@import
-  'pages/home';
+@import "pages/home";
 
 // 7. Themes
-@import
-  'themes/default';
+@import "themes/default";

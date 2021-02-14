@@ -6,9 +6,14 @@
   "author": "James <james.auble@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev-scripts": "parcel watch src/js/main.js --out-dir dist/",
-    "dev-styles": "sass --watch src/scss/main.scss:dist/main.css",
-    "dev": "npm-run-all --parallel dev-scripts dev-styles"
+    "dev-scripts": "parcel watch src/js/main.js --out-dir assets/js/ --out-file bundle.js",
+    "dev-styles": "sass --watch src/scss/main.scss:assets/css/bundle.css",
+    "dev-keystone-modules-styles": "sass --watch src/scss/modules:assets/css/modules",
+    "dev": "npm-run-all --parallel dev-scripts dev-styles dev-keystone-modules-styles",
+    "prod-scripts": "parcel build src/js/main.js --out-dir assets/js/ --out-file bundle.js",
+    "prod-styles": "sass src/scss/main.scss:assets/css/bundle.css --style=compressed",
+    "prod-keystone-modules-styles": "sass src/scss/modules:assets/css/modules",
+    "prod": "npm-run-all --parallel prod-scripts prod-styles prod-keystone-modules-styles"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5",

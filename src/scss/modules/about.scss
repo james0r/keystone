@@ -2,6 +2,8 @@
 // About Module Styles
 // -----------------------------------------------------------------------------
 
+@import '../abstracts/abstracts';
+
 .module-about {
   width: 100%;
   padding: 60px 15px;
@@ -26,9 +28,9 @@
       @include md {
         max-height: unset;
         width: 100%;
-        height: calc((100vw - 30px) * .764);
+        height: calc((100vw - 30px) * 0.764);
       }
-      
+
       .image-wrapper {
         height: 350px;
         width: 458px;
@@ -41,14 +43,13 @@
         @include md {
           width: 100%;
           max-height: unset;
-          height: calc((100vw - 30px) * .764);
+          height: calc((100vw - 30px) * 0.764);
         }
 
         img {
-
           @include md {
             width: 100%;
-            height: calc((100vw - 30px) * .764);
+            height: calc((100vw - 30px) * 0.764);
             max-height: unset;
           }
         }

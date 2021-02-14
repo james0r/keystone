@@ -15,9 +15,9 @@ class Keystone_Dynamic_CSS {
     public function filterRenderDynamicCSS($style_deps = []) {
         foreach ($style_deps as $dep) {
             switch ($dep) {
-            // If dependency handle is prefixed with module- then import the corresponding css file
+            // If dependency handle is prefixed with module- then import the corresponding css file from modules dir in /assets/
             case (preg_match('/module-*/', substr($dep, 0, -4)) ? true : false):
-              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/' . substr($dep, 0, -4) . '.css');
+              echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/modules/' . $this->clipModuleFileName($dep) . '.css');
               break;
             case 'twenty-twenty-css':
                 echo $this->addInlineStylesheet($dep, get_stylesheet_directory_uri() . '/assets/css/twenty-twenty.css');
@@ -47,6 +47,11 @@ class Keystone_Dynamic_CSS {
             echo '<!-- A style dependency failed to load -->';
             }
         }
+    }
+    
+    private function clipModuleFileName($filename) {
+      // remove the module prefix and the css suffix from module stylesheet dependency names
+      return substr($filename, 7, -4);
     }
 
     public function addInlineStylesheet($handle, $href) {

@@ -33,3 +33,6 @@ composer.lock
 main.css
 footer-bundle.js
 header-bundle.js
+
+# ignore cache dirs
+.cache/

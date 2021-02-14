@@ -1,75 +1,71 @@
-/*
-Error: Undefined mixin 'md'.
-        on line 9 of ./src/scss/modules/certs.scss, in `md'
-        from line 9 of ./src/scss/modules/certs.scss
+.module-certs {
+  background-color: var(--keystone-background-color-d1);
+  padding: 60px 15px;
+}
+@media (max-width: 768px) {
+  .module-certs {
+    padding: 40px 15px;
+  }
+}
 
-4: 
-5: .module-certs {
-6:   background-color: var(--keystone-background-color-d1);
-7:   padding: 60px 15px;
-8: 
-9:   @include md {
-10:     padding: 40px 15px;
-11:   }
-12: }
-13: 
-14: .certs-module-container {
+.certs-module-container-inner .certs-slider-inner {
+  visibility: hidden;
+  width: 100%;
+}
+@media (min-width: 1200px) {
+  .certs-module-container-inner .certs-slider-inner {
+    width: calc(100% + 128px);
+    margin-left: -64px;
+  }
+}
+.certs-module-container-inner .certs-slider-inner li {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
+.certs-module-container-inner .certs-slider-inner li img {
+  display: block;
+  margin: auto;
+  height: 154px;
+  width: auto;
+}
+.certs-module-container-inner .certs-slider-inner li a i {
+  visibility: hidden;
+  position: absolute;
+  background: transparent;
+}
+.certs-module-container-inner .certs-slider-inner li a:hover, .certs-module-container-inner .certs-slider-inner li a:active, .certs-module-container-inner .certs-slider-inner li a:focus {
+  position: relative;
+}
+.certs-module-container-inner .certs-slider-inner li a:hover i, .certs-module-container-inner .certs-slider-inner li a:active i, .certs-module-container-inner .certs-slider-inner li a:focus i {
+  visibility: visible;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  color: white;
+  transition: background 0.5s;
+}
+.certs-module-container-inner .certs-slider-inner li a:hover i::before, .certs-module-container-inner .certs-slider-inner li a:active i::before, .certs-module-container-inner .certs-slider-inner li a:focus i::before {
+  font-size: 28px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0.9;
+  transform: translate(-50%, -50%);
+}
+@media only screen and (max-width: 680px) {
+  .certs-module-container-inner .certs-slider-inner {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    visibility: visible;
+  }
+  .certs-module-container-inner .certs-slider-inner li {
+    margin: 15px auto;
+  }
+}
 
-Backtrace:
-./src/scss/modules/certs.scss:9:in `md'
-./src/scss/modules/certs.scss:9
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:98:in `block in with_mixin'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:98:in `with_mixin'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `each'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/plugin/compiler.rb:294:in `watch'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/plugin.rb:109:in `method_missing'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:358:in `watch_or_update'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:51:in `process_result'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
-/Library/Ruby/Gems/2.6.0/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined mixin 'md'.\A         on line 9 of ./src/scss/modules/certs.scss, in `md'\A         from line 9 of ./src/scss/modules/certs.scss\A \A 4: \A 5: .module-certs {\A 6:   background-color: var(--keystone-background-color-d1);\A 7:   padding: 60px 15px;\A 8: \A 9:   @include md {\A 10:     padding: 40px 15px;\A 11:   }\A 12: }\A 13: \A 14: .certs-module-container {"; }
+/*# sourceMappingURL=certs.css.map */

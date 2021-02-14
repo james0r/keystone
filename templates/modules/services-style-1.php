@@ -7,8 +7,8 @@ $instance = $template_args['instance'];
 
 $meta_prefix = 'cmb2_id_field_services_1_';
 
-$script_dependencies = Keystone()->modules->get_module_script_deps('about');
-$style_dependencies = Keystone()->modules->get_module_style_deps('about');
+$script_dependencies = Keystone()->modules->get_module_script_deps('services-style-1');
+$style_dependencies = Keystone()->modules->get_module_style_deps('services-style-1');
 
 Keystone()->render_progressive_assets($script_dependencies, $style_dependencies);
 
