@@ -117,27 +117,110 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"modules/bar.js":[function(require,module,exports) {
-"use strict";
+})({"modules/helpers.js":[function(require,module,exports) {
+exports.init = function () {
+  console.log('helpers is initialized!');
+};
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = bar;
+exports.isOverflowRight = function ($el) {
+  var width = $el.outerWidth();
+  var windowWidth = $(window).width();
+  var leftOffset = $el.offset().left;
+  var rightOffset = windowWidth - (width + leftOffset);
 
-function bar() {
-  console.log("hi bob");
-}
+  if (rightOffset < 0) {
+    return Math.abs(rightOffset);
+  } else {
+    return false;
+  }
+};
+},{}],"modules/menus.js":[function(require,module,exports) {
+var _this = this;
+
+exports.init = function () {
+  _this.initHeaderPrimaryMenu();
+
+  _this.initHeaderPrimaryMobileMenu();
+};
+
+exports.initHeaderPrimaryMenu = function () {
+  // Handle roll-up and roll-down of header navigation sub menus on desktop
+  var $ParentListItems = $("#header-bottom-bar #header-primary-menu").find("li.menu-item-has-children");
+  $ParentListItems.children("a").on("click", function (e) {
+    e.preventDefault();
+  });
+  $("#header-bottom-bar #header-primary-menu").find("li.menu-item-has-children").on("mouseenter", function (e) {
+    var $submenu = $(e.currentTarget).children(".sub-menu");
+    $submenu.slideDown("fast");
+
+    if (window.Keystone.helpers.isOverflowRight($submenu)) {
+      $submenu.css('left', '-100%');
+    }
+  }).on("mouseleave", function (e) {
+    $(e.currentTarget).children(".sub-menu").slideUp("fast");
+  });
+};
+
+exports.initHeaderPrimaryMobileMenu = function () {
+  //Handle header mobile navigation animations
+  var $mobileParentListItems = $("#header-bottom-bar #header-primary-menu-mobile").find("li.menu-item-has-children");
+  $mobileParentListItems.children("a").on("click", function (e) {
+    e.preventDefault();
+  });
+  $mobileParentListItems.on("click", function (e) {
+    e.stopPropagation();
+    var $el = $(e.currentTarget);
+    console.log($el);
+    $el.hasClass("is-active") ? $el.removeClass("is-active") : $el.addClass("is-active");
+    $el.children("ul").slideToggle("slow");
+  });
+
+  function toggleMenu(event) {
+    var navBar = document.getElementById("mobile-nav-wrapper");
+    var expanded = event.currentTarget.getAttribute("aria-expanded");
+    var $button = $(event.currentTarget);
+
+    if (expanded === "true") {
+      $(event.currentTarget).find(".close").fadeOut("fast", function () {
+        $button.find(".open").fadeIn("fast");
+      });
+      $(navBar).slideUp();
+      navBar.classList.add("closed");
+      navBar.classList.remove("opened");
+      event.currentTarget.setAttribute("aria-expanded", "false");
+    } else {
+      $(event.currentTarget).find(".open").fadeOut("fast", function () {
+        $button.find(".close").fadeIn("fast");
+      });
+      $(navBar).slideDown();
+      navBar.classList.add("opened");
+      navBar.classList.remove("closed");
+      event.currentTarget.setAttribute("aria-expanded", "true");
+    }
+  }
+
+  document.getElementById("mobile-menu-toggler").addEventListener("click", toggleMenu, false);
+};
 },{}],"main.js":[function(require,module,exports) {
 "use strict";
 
-var _bar = _interopRequireDefault(require("./modules/bar.js"));
+var _helpers2 = _interopRequireDefault(require("./modules/helpers"));
+
+var _menus2 = _interopRequireDefault(require("./modules/menus"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // This code will be transpiled from ES6 and output in the header.
-(0, _bar.default)();
-},{"./modules/bar.js":"modules/bar.js"}],"../../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(function (window) {
+  window.Keystone = window.Keystone || {};
+  window.Keystone.helpers = _helpers2.default;
+  window.Keystone.menus = _menus2.default; // Initialize all Keystone modules
+
+  for (var p in window.Keystone) {
+    window.Keystone[p].init();
+  }
+})(window);
+},{"./modules/helpers":"modules/helpers.js","./modules/menus":"modules/menus.js"}],"../../../../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

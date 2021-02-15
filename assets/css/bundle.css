@@ -1584,6 +1584,7 @@ Ex. .container, .grid, .col
   background-color: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   display: none;
+  z-index: 100;
 }
 .header-bottom-bar-inner > .flex .nav-wrapper .header-primary-menu > li > .sub-menu > li {
   position: relative;
@@ -1635,6 +1636,7 @@ Ex. .container, .grid, .col
   background-color: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   display: none;
+  z-index: 110;
 }
 .header-bottom-bar-inner > .flex .nav-wrapper .header-primary-menu > li > .sub-menu > li > .sub-menu > li {
   position: relative;
@@ -1686,6 +1688,7 @@ Ex. .container, .grid, .col
   background-color: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   display: none;
+  z-index: 120;
 }
 .header-bottom-bar-inner > .flex .nav-wrapper .header-primary-menu > li > .sub-menu > li > .sub-menu > li > .sub-menu > li {
   position: relative;
