@@ -21,6 +21,21 @@ class Keystone_Menus {
     ));
   }
 
+  public function get_menu_top_level_items_count($slug = '') {
+    if (!empty($slug)) {
+      $header_menu_items = wp_get_nav_menu_items($slug);
+      $header_top_level_items_count = 0;
+      foreach ($header_menu_items as $i) {
+        if ($i->menu_item_parent == 0) {
+          $header_top_level_items_count++;
+        }
+      }
+      return $header_top_level_items_count;
+    } else {
+      return false;
+    }
+  }
+
   public function generate_site_nav_menu($menu_name, $menu_items_array, $location_target) {
     $menu_primary = $menu_name;
     wp_create_nav_menu($menu_primary);

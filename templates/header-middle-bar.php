@@ -29,7 +29,6 @@
       <ul class="widgets flex-item flex">
         <li class="widget widget-1">
           <?php $widget_1_meta = cmb2_get_option('cmb2_key_header_styles_box', 'cmb2_id_header_group_widget_1')[0] ?>
-          <?php error_log(print_r($widget_1_meta, true)); ?>
           <div class="flex">
             <div class="icon-wrapper flex-item">
               <?php apply_filters('keystone_render_icon', $widget_1_meta['icon'], 'aria-hidden="true"') ?>

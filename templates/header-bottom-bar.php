@@ -5,9 +5,12 @@
       <!-- Bottom Bar Logo Start -->
       <a href="/" class="logo-wrapper flex-item">
         <?php if (!empty(cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_wide'))) : ?>
-        <img
+        <img class="logo-image-wide"
           src="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_wide'); ?>"
           alt="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_name'); ?> Logo">
+        <img class="logo-image-wide-dark"
+          src="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_dark_wide'); ?>"
+          alt="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_name'); ?> Dark Logo">
         <?php else : ?>
         <img
           src="<?php echo Keystone::$template_dir_url . '/assets/images/no-logo-found.png' ?>"
@@ -30,6 +33,14 @@
             'walker'            => Keystone()->walker
           ));
         ?>
+        <a href="/" class="square-logo-image-wrapper">
+          <img class="square-logo-image"
+            src="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_square'); ?>"
+            alt="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_name'); ?> Logo or Icon">
+          <img class="square-logo-image-dark"
+            src="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_logo_dark_square'); ?>"
+            alt="<?php echo cmb2_get_option('cmb_main_clinic_information', 'cmb_company_name'); ?> Logo or Icon">
+        </a>
       </nav>
       <!-- Bottom Bar Navigation End -->
 

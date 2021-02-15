@@ -1,6 +1,7 @@
 exports.init = () => {
   this.initHeaderPrimaryMenu();
   this.initHeaderPrimaryMobileMenu();
+  this.initSplitPrimaryMenu();
 };
 
 exports.initHeaderPrimaryMenu = () => {
@@ -81,3 +82,16 @@ exports.initHeaderPrimaryMobileMenu = () => {
     .getElementById("mobile-menu-toggler")
     .addEventListener("click", toggleMenu, false);
 };
+
+exports.initSplitPrimaryMenu = () => {
+  if ($(document.body).hasClass('keystone-header-style-11')) {
+    let $primary_menu_children = $('#header-primary-menu > li');
+    let num_children = $primary_menu_children.length;
+    let index_of_el_prior_to_split;
+    if (num_children) {
+      index_of_el_prior_to_split = (Math.floor(num_children / 2) - 1);
+    }
+
+    $primary_menu_children.eq(index_of_el_prior_to_split).addClass('split-preceding-element');
+  }
+}
