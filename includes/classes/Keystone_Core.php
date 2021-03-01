@@ -15,7 +15,7 @@ class Keystone_Core {
   public static $stylesheet_dir_path = '';
 
   public static $stylesheet_dir_url = '';
-
+  
   public static $scripts_dir_path = '';
 
   public static $scripts_dir_url = '';

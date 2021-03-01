@@ -4,55 +4,37 @@
 */
 
 class Keystone_Dynamic_Scripts {
-    private static $scriptsLoaded;
+  private static $scriptsLoaded;
 
-    public function __construct() {
-      self::$scriptsLoaded = array();
-        add_filter('render_dynamic_scripts', [$this, 'filterRenderDynamicScripts']);
-    }
+  public function __construct() {
+    self::$scriptsLoaded = array();
+    add_filter('render_dynamic_scripts', array($this, 'filterRenderDynamicScripts'));
+  }
 
-    public function filterRenderDynamicScripts($script_deps = []) {
-        foreach ($script_deps as $dep) {
-          switch ($dep) {
-          case 'twenty-twenty-js':
+  public function filterRenderDynamicScripts($script_deps = array()) {
+    foreach ($script_deps as $dep) {
+      switch ($dep) {
+          case 'jquery-js':
               echo $this->add_script($dep, get_template_directory_uri() . '/assets/js/jquery.twentytwenty.js');
-            break;
-          case 'event-move-js':
-            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/jquery.event.move.js');
-            break;
-          case 'slick-js':
-            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/slick.js');
-            break;
-          case 'swiper-bundle-js':
-            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/swiper-bundle.min.js');
-            break;
-          case 'slick-lightbox-js':
-            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/slick-lightbox.min.js');
-            break;
-          case 'countup-js':
-            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/countUp.min.js');
-            break;
-          case 'lightbox2-js':
-            echo  $this->add_script($dep, get_template_directory_uri() . '/assets/js/lightbox.min.js');
             break;
           default:
           return false;
         }
-        }
     }
+  }
 
-    public function add_script($handle, $href) {
-        if (!in_array($handle, self::$scriptsLoaded)) {
-            array_push(self::$scriptsLoaded, $handle);
-            $html = <<<EOT
+  public function add_script($handle, $href) {
+    if (!in_array($handle, self::$scriptsLoaded)) {
+      array_push(self::$scriptsLoaded, $handle);
+      $html = <<<EOT
 <script src="$href" id="dynamic-script-$handle"></script>
 EOT;
-            return $html;
-        } else {
-            $html = <<<EOT
+      return $html;
+    } else {
+      $html = <<<EOT
 <!-- A script has been requested but is already loaded in the document. -->
 EOT;
-            return $html;
-        }
+      return $html;
     }
+  }
 }

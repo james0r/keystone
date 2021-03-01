@@ -290,9 +290,9 @@
 }
 
 /* Hide advanced settings by default */
-#toplevel_page_cmb_main_options > ul > li:last-child {
+/* #toplevel_page_cmb_main_options > ul > li:last-child {
   display: none;
-}
+} */
 
 /* CMB2 field custom Keystone styles */
 

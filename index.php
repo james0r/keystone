@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<?php keystone_render_template('module-loop'); ?>
+<?php echo get_template_part('template-parts/module-loop'); ?>
 
 <?php get_footer(); ?> 
 

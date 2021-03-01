@@ -134,12 +134,12 @@ jQuery(function ($) {
   }
 
   // Reveal advanced settings if version is clicked on 3 times
-  var advanced_counter = 0;
-  $("#footer-upgrade").on("click", function () {
-    advanced_counter++;
-    if (advanced_counter >= 3) {
-      window.location.href = "admin.php?page=cmb2_key_box_advanced_settings";
-    }
-  });
+  // var advanced_counter = 0;
+  // $("#footer-upgrade").on("click", function () {
+  //   advanced_counter++;
+  //   if (advanced_counter >= 3) {
+  //     window.location.href = "admin.php?page=cmb2_key_box_advanced_settings";
+  //   }
+  // });
 
 });

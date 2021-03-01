@@ -27,7 +27,8 @@ class Keystone_Options {
     protected static function get_sections_map() {
         return [
             'company',
-            'social'
+            'social',
+            'advanced'
         ];
     }
 }

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <?php
     echo '<style id="keystone-css-vars">';
-      keystone_render_template('theme-css-vars');
+      get_template_part('template-parts/theme-css-vars');
     echo '</style>';
     echo '<script>console.log("Keystone Theme ' . KEYSTONE_VERSION . '")</script>';
 
@@ -26,7 +26,5 @@
 <body <?php body_class(); ?>>
 
   <!-- Begin wrapper for use with boxed layouts -->
-  <div id="wrapper">
-    <header>
-
-    </header>
+  <div id="keystone-wrapper">
+    <?php echo get_template_part('template-parts/header/site-header') ?>
