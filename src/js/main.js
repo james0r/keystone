@@ -10,7 +10,7 @@ import _menus from './modules/menus';
   window.Keystone.menus = _menus;
 
   // Initialize all Keystone modules
-  for (const p in window.Keystone) {
-    window.Keystone[p].init();
+  for (const m in window.Keystone) {
+    window.Keystone[m].init();
   }
 })(window)
