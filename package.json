@@ -1,6 +1,6 @@
 {
   "name": "keystone",
-  "version": "1.0.0",
+  "version": "9.0.0",
   "main": "index.js",
   "repository": "https://github.com/james0r/keystone.git",
   "author": "James <james.auble@gmail.com>",

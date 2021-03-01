@@ -1,7 +1,6 @@
-<?php wp_footer(); ?>
+  <?php wp_footer(); ?>
 
-<!-- End wrapper div -->
-</div>
-<?php keystone_render_template('appointment-modal') ?>
+  <!-- End wrapper div -->
+  </div>
 </body>
 </html>

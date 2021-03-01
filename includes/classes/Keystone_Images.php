@@ -22,7 +22,7 @@ class Keystone_Images {
     }
 
     public function filter_render_title_image($value, $alt = 'decorative image') {
-        $value = $value ? $value : Keystone::$template_dir_url . '/assets/images/title-icon.png';
+        $value = $value ? $value : Keystone_Core::$template_dir_url . '/assets/images/title-icon.png';
 
         $this->filter_render_image_template($value, $alt);
     }

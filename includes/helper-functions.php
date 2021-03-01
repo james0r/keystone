@@ -10,27 +10,6 @@ function bool2truthy($val) {
     return $val === '0' || $val == null || !isset($val) || $val === 0 ? false : true;
 }
 
-// Function removed in favor of cmb2_get_option
-// function keystone_get_option($box_key, $field_id = '', $default = false) {
-//     if (function_exists('cmb2_get_option')) {
-//         // Use cmb2_get_option as it passes through some key filters.
-//         return cmb2_get_option($box_key, $field_id, $default);
-//     }
-
-//     // Fallback to get_option if CMB2 is not loaded yet.
-//     $opts = get_option($box_key, $default);
-
-//     $val = $default;
-
-//     if ('all' == $key) {
-//         $val = $opts;
-//     } elseif (is_array($opts) && array_key_exists($key, $opts) && false !== $opts[$key]) {
-//         $val = $opts[$key];
-//     }
-
-//     return $val;
-// }
-
 function get_meta($id, $key) {
     $value = get_post_meta($id);
     return $value[$key][0];
@@ -39,50 +18,6 @@ function get_meta($id, $key) {
 function keystone_get_the_meta($key, $single = true) {
     $value = get_post_meta(get_the_ID(), $key, $single);
     return $value;
-}
-
-// Modified get_template_part to accept arguments. Base directory is /templates/
-function keystone_render_template($file, $template_args = [], $cache_args = []) {
-    $template_args = wp_parse_args($template_args);
-    $cache_args = wp_parse_args($cache_args);
-    if ($cache_args) {
-        foreach ($template_args as $key => $value) {
-            if (is_scalar($value) || is_array($value)) {
-                $cache_args[$key] = $value;
-            } elseif (is_object($value) && method_exists($value, 'get_id')) {
-                $cache_args[$key] = call_user_method('get_id', $value);
-            }
-        }
-        if (($cache = wp_cache_get($file, serialize($cache_args))) !== false) {
-            if (!empty($template_args['return'])) {
-                return $cache;
-            }
-            echo $cache;
-            return;
-        }
-    }
-    $file_handle = $file;
-    do_action('start_operation', 'hm_template_part::' . $file_handle);
-    if (file_exists(get_stylesheet_directory() . '/templates/' . $file . '.php')) {
-        $file = get_stylesheet_directory() . '/templates/' . $file . '.php';
-    } elseif (file_exists(get_template_directory() . '/templates/' . $file . '.php')) {
-        $file = get_template_directory() . '/templates/' . $file . '.php';
-    }
-    ob_start();
-    $return = require $file;
-    $data = ob_get_clean();
-    do_action('end_operation', 'hm_template_part::' . $file_handle);
-    if ($cache_args) {
-        wp_cache_set($file, $data, serialize($cache_args), 3600);
-    }
-    if (!empty($template_args['return'])) {
-        if ($return === false) {
-            return false;
-        } else {
-            return $data;
-        }
-    }
-    echo $data;
 }
 
 // --- helpers ---
@@ -113,37 +48,6 @@ function get_nav($menu_name, $args = []) {
     }
     return $return;
 }
-
-// COLOR HELPER FUNCTIONS
-
-// function hexToHsl($hex) {
-//     $hex_val = [$hex_val[0] . $hex_val[1], $hex_val[2] . $hex_val[3], $hex_val[4] . $hex_val[5]];
-//     $rgb_val = array_map(function ($part) {
-//         return hexdec($part) / 255;
-//     }, $hex_val);
-//     $max_val = max($rgb_val);
-//     $min_val = min($rgb_val);
-//     $l = ($max_val + $min_val) / 2;
-//     if ($max_val == $min_val) {
-//         $h = $s = 0;
-//     } else {
-//         $diff = $max_val - $min_val;
-//         $s = $l > 0.5 ? $diff / (2 - $max_val - $min_val) : $diff / ($max_val + $min_val);
-//         switch ($max_val) {
-//          case $rgb_val[0]:
-//          $h = ($rgb_val[1] - $rgb_val[2]) / $diff + ($rgb_val[1] < $rgb_val[2] ? 6 : 0);
-//          break;
-//          case $rgb_val[1]:
-//          $h = ($rgb_val[2] - $rgb_val[0]) / $diff + 2;
-//          break;
-//          case $rgb_val[2]:
-//          $h = ($rgb_val[0] - $rgb_val[1]) / $diff + 4;
-//          break;
-//       }
-//         $h /= 6;
-//     }
-//     return [$h, $s, $l];
-// }
 
 function keystone_hex2rgb($colour) {
     if ($colour[0] == '#') {

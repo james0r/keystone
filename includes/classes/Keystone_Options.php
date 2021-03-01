@@ -1,7 +1,6 @@
 <?php
 /**
-* THIS CLASS HANDLES THE GLOBAL KEYSTONE
-* THEME OPTIONS
+* This class handles Keystone theme options
 */
 
 class Keystone_Options {
@@ -27,14 +26,8 @@ class Keystone_Options {
 
     protected static function get_sections_map() {
         return [
-            'clinic',
-            'homepage-layout',
-            'colors-fonts',
-            'social',
-            'blog',
-            'header',
-            'footer',
-            'advanced'
+            'company',
+            'social'
         ];
     }
 }

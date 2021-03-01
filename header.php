@@ -7,10 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <?php
     echo '<style id="keystone-css-vars">';
-    keystone_render_template('theme-css-vars');
+      keystone_render_template('theme-css-vars');
     echo '</style>';
-    keystone_render_template('theme-fonts');
-    echo '<script>console.log("Keystone Theme ' . KEYSTONE_VERSION . ' https://www.clinicrevenue.com")</script>';
+    echo '<script>console.log("Keystone Theme ' . KEYSTONE_VERSION . '")</script>';
 
     if (cmb2_get_option('cmb2_key_box_advanced_settings', 'cmb2_id_field_script_load_method') == 'standard-script-loading') {
       Keystone()->modules->enqueue_module_script_deps(get_the_ID());
@@ -28,5 +27,6 @@
 
   <!-- Begin wrapper for use with boxed layouts -->
   <div id="wrapper">
-    <?php keystone_render_template('preloader') ?>
-    <?php Keystone()->header->render_header();
+    <header>
+
+    </header>

@@ -71,34 +71,35 @@ $us_state_abbrevs_names = array(
 $args = array(
   'id'              => 'cmb2_id_box_theme_options',
   'object_types'    => array('options-page'),
-  'title'           => __('Clinic Information', 'keystone'),
+  'title'           => __('Company Information', 'keystone'),
   'option_key'      => 'cmb_main_options',
   'menu_title'      => __('Keystone Options', 'keystone'),
+  'position'        => 2,
   'capability'      => 'unknown', // Cap required to view options-page.
 );
 
-$cmb2_options_clinic_info = new_cmb2_box($args);
+$cmb2_options_company_info = new_cmb2_box($args);
 
 $args = array(
   'id'              => 'cmb2_id_box_theme_options_1',
   'object_types'    => array('options-page'),
-  'option_key'      => 'cmb_main_clinic_information',
-  'menu_title'      => __('Clinic Information', 'keystone'),
-  'title'						     => __('Clinic Information', 'keystone'),
+  'option_key'      => 'cmb_main_company_information',
+  'menu_title'      => __('Company Information', 'keystone'),
+  'title'						     => __('Company Information', 'keystone'),
   'parent_slug'     => 'cmb_main_options',
   'position'        => 2,
   'capability'      => 'manage_options', // Cap required to view options-page.
 );
 
-$cmb2_options_clinic_info = new_cmb2_box($args);
+$cmb2_options_company_info = new_cmb2_box($args);
 
-$cmb2_options_clinic_info->add_field(array(
+$cmb2_options_company_info->add_field(array(
   'name' => __('Company Name', 'keystone'),
   'id'   => 'cmb_company_name',
   'type' => 'text_medium',
 ));
 
-$cmb2_options_clinic_info->add_field(array(
+$cmb2_options_company_info->add_field(array(
   'name'         => __('Wide Company Logo', 'keystone'),
   'desc'         => __('Recommended Size: 1340px by 200px. Images uploaded with a different aspect ratio may display poorly on your website.', 'keystone'),
   'id'           => 'cmb_logo_wide',
@@ -114,7 +115,7 @@ $cmb2_options_clinic_info->add_field(array(
 	),
 ));
 
-$cmb2_options_clinic_info->add_field(array(
+$cmb2_options_company_info->add_field(array(
   'name'         => __('Dark Wide Company Logo', 'keystone'),
   'desc'         => __('This image will be shown when your logo appears in a dark themed element on the page. Recommended Size: 1340px by 200px.', 'keystone'),
   'id'           => 'cmb_logo_dark_wide',
@@ -130,7 +131,7 @@ $cmb2_options_clinic_info->add_field(array(
 	),
 ));
 
-$cmb2_options_clinic_info->add_field(array(
+$cmb2_options_company_info->add_field(array(
   'name'         => __('Square Company Logo', 'keystone'),
   'desc'         => __('Recommended Size: 500px by 500px.', 'keystone'),
   'id'           => 'cmb_logo_square',
@@ -146,7 +147,7 @@ $cmb2_options_clinic_info->add_field(array(
 	),
 ));
 
-$cmb2_options_clinic_info->add_field(array(
+$cmb2_options_company_info->add_field(array(
   'name'         => __('Dark Square Company Logo', 'keystone'),
   'desc'         => __('Recommended Size: 500px by 500px.', 'keystone'),
   'id'           => 'cmb_logo_dark_square',
@@ -162,55 +163,55 @@ $cmb2_options_clinic_info->add_field(array(
 	),
 ));
 
-$cmb2_options_clinic_info->add_field(array(
+$cmb2_options_company_info->add_field(array(
   'name' => __('Company Tagline', 'keystone'),
   'id'   => 'cmb_company_tagline',
   'type' => 'text',
 ));
 
-$new_patient_phone = $cmb2_options_clinic_info->add_field(array(
+$new_patient_phone = $cmb2_options_company_info->add_field(array(
   'name' => __('New Patients Phone #', 'keystone'),
   'id'   => 'cmb_company_new_patients_phone',
   'type' => 'text_medium',
 ));
 
-$current_patient_phone = $cmb2_options_clinic_info->add_field(array(
+$current_patient_phone = $cmb2_options_company_info->add_field(array(
   'name' => __('Current Patients Phone #', 'keystone'),
   'id'   => 'cmb_company_current_patients_phone',
   'type' => 'text_medium',
 ));
 
-$company_fax = $cmb2_options_clinic_info->add_field(array(
+$company_fax = $cmb2_options_company_info->add_field(array(
   'name' => __('Company Fax #', 'keystone'),
   'id'   => 'cmb_company_fax',
   'type' => 'text_medium',
 ));
 
-$company_email = $cmb2_options_clinic_info->add_field(array(
+$company_email = $cmb2_options_company_info->add_field(array(
   'name' => __('Company Email Address', 'keystone'),
   'id'   => 'cmb_company_email',
   'type' => 'text_email',
 ));
 
-$address1 = $cmb2_options_clinic_info->add_field(array(
+$address1 = $cmb2_options_company_info->add_field(array(
   'name' => __('Address Line 1', 'keystone'),
   'id'   => 'cmb_company_address_1',
   'type' => 'text_medium',
 ));
 
-$address2 = $cmb2_options_clinic_info->add_field(array(
+$address2 = $cmb2_options_company_info->add_field(array(
   'name' => __('Address Line 2 (Optional)', 'keystone'),
   'id'   => 'cmb_company_address_2',
   'type' => 'text_medium',
 ));
 
-$city = $cmb2_options_clinic_info->add_field(array(
+$city = $cmb2_options_company_info->add_field(array(
   'name' => __('City', 'keystone'),
   'id'   => 'cmb_company_city',
   'type' => 'text_medium',
 ));
 
-$state = $cmb2_options_clinic_info->add_field(array(
+$state = $cmb2_options_company_info->add_field(array(
   'name'             => __('State or Territory', 'keystone'),
   'id'               => 'cmb_company_state',
   'type'             => 'select',
@@ -219,7 +220,7 @@ $state = $cmb2_options_clinic_info->add_field(array(
   'options'          => $us_state_abbrevs_names,
 ));
 
-$zip = $cmb2_options_clinic_info->add_field([
+$zip = $cmb2_options_company_info->add_field([
     'name'       => __('Zip Code', 'keystone'),
     'desc'       => __('Enter your 5 or 9 digit zip code. Example: 00966 or 00966-5555', 'keystone'),
     'id'         => 'cmb_company_zip',
@@ -229,7 +230,7 @@ $zip = $cmb2_options_clinic_info->add_field([
 if(!is_admin()){
 	return;
 }
-$cmb2GridInfo = new \Cmb2Grid\Grid\Cmb2Grid($cmb2_options_clinic_info);
+$cmb2GridInfo = new \Cmb2Grid\Grid\Cmb2Grid($cmb2_options_company_info);
 $rowInfo1 = $cmb2GridInfo->addRow();
 $rowInfo1->addColumns(array($new_patient_phone, $current_patient_phone));
 $rowInfo2 = $cmb2GridInfo->addRow();
@@ -241,14 +242,14 @@ $rowInfo4->addColumns(array($city, $state));
 $rowInfo5 = $cmb2GridInfo->addRow();
 $rowInfo5->addColumns(array($zip));
 
-$cmb2_options_clinic_info->add_field(array(
+$cmb2_options_company_info->add_field(array(
   'name'       => __('Business Hours', 'keystone'),
   'desc'       => __('Each line contains a label and a time range. Example: Sunday 8am - 4pm, Mon-Fri 8am - 7pm. You may create a line for each day of the week if you prefer.', 'keystone'),
   'id'         => 'cmb2_id_field',
   'type'       => 'title',
 ));
 
-$cmb2_options_clinic_hours = $cmb2_options_clinic_info->add_field(array(
+$cmb2_options_clinic_hours = $cmb2_options_company_info->add_field(array(
   'id'          => 'cmb2_id_group_field_hours_entry',
   'type'        => 'group',
   'options'     => array(
@@ -259,13 +260,13 @@ $cmb2_options_clinic_hours = $cmb2_options_clinic_info->add_field(array(
   ),
 ));
 
-$label = $cmb2_options_clinic_info->add_group_field($cmb2_options_clinic_hours, array(
+$label = $cmb2_options_company_info->add_group_field($cmb2_options_clinic_hours, array(
   'name' => __('Label', 'keystone'),
   'id'   => 'label',
   'type' => 'text_small',
 ));
 
-$start_time = $cmb2_options_clinic_info->add_group_field($cmb2_options_clinic_hours, array(
+$start_time = $cmb2_options_company_info->add_group_field($cmb2_options_clinic_hours, array(
   'name'       => __('Start Time', 'keystone'),
   'id'         => 'start_time',
   'type'       => 'text_time',
@@ -278,7 +279,7 @@ $start_time = $cmb2_options_clinic_info->add_group_field($cmb2_options_clinic_ho
   'time_format' => 'h:i:s A',
 ));
 
-$end_time = $cmb2_options_clinic_info->add_group_field($cmb2_options_clinic_hours, array(
+$end_time = $cmb2_options_company_info->add_group_field($cmb2_options_clinic_hours, array(
   'name'       => __('End Time', 'keystone'),
   'id'         => 'end_time',
   'type'       => 'text_time',
@@ -291,7 +292,7 @@ $end_time = $cmb2_options_clinic_info->add_group_field($cmb2_options_clinic_hour
   'time_format' => 'h:i:s A',
 ));
 
-$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid($cmb2_options_clinic_info);
+$cmb2Grid = new \Cmb2Grid\Grid\Cmb2Grid($cmb2_options_company_info);
 $cmb2GroupGrid = $cmb2Grid->addCmb2GroupGrid($cmb2_options_clinic_hours);
 $row = $cmb2GroupGrid->addRow();
 $row->addColumns(array($label, $start_time, $end_time));

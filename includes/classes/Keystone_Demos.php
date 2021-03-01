@@ -11,7 +11,7 @@ class Keystone_Demos {
 
     public function __construct() {
       self::$demo_images_base_url = 'https://clinicrevenue.com/keystone/demos/images/';
-      self::$demo_module_schemas_base_path = Keystone::$template_dir_path . '/assets/demos/';
+      self::$demo_module_schemas_base_path = Keystone_Core::$template_dir_path . '/assets/demos/';
     }
 
     private function get_module_schema_from_slug($slug) {

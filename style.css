@@ -1,19 +1,18 @@
 /*!
-Theme Name: Keystone 8
+Theme Name: Keystone 9
 Author: James Auble
 Author URI: https://www.jamesauble.com
 Description: Developed by James Auble
-Version: 8
+Version: 9
 Special thanks to Mark Serrano for providing inspiration for this theme.
 */
 
 /*
-	Source scss styles are located in the ~/_dev directory.
-	The compiled bundles are output to ~/assets/; The README.md
-	file contains instructions how to get the compilation
+	Source scss styles are located in the /src/ directory.
+	Javascript and CSS output bundle files are located in /assets/js/ and /assets/css/ respectively. 
+  The README.md file contains instructions how to get the compilation
 	process up & running.
 
-	If you need to make a quick fix, feel free to add CSS
-	below this comment. It will override bundled styles.
+	This file can be used to make CSS hot-fixes, but should be integrated into SASS code at some point.
 */
 

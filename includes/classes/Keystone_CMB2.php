@@ -11,8 +11,8 @@ class Keystone_CMB2 {
   private static $template_dir_path;
 
   public function __construct() {
-    self::$template_dir_url = Keystone::$template_dir_url;
-    self::$template_dir_path = Keystone::$template_dir_path;
+    self::$template_dir_url = Keystone_Core::$template_dir_url;
+    self::$template_dir_path = Keystone_Core::$template_dir_path;
 
     add_action('admin_enqueue_scripts', array($this, 'enqueue_cmb2_scripts'));
     add_action('admin_enqueue_scripts', array($this, 'enqueue_cmb2_style'));

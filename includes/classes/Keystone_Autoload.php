@@ -35,7 +35,7 @@ class Keystone_Autoload {
 			return;
 		}
 
-		$template_dir_path = Keystone::$template_dir_path;
+		$template_dir_path = Keystone_Core::$template_dir_path;
 
     $paths = [];
     
@@ -73,7 +73,7 @@ class Keystone_Autoload {
 	 * Get a class-map for some standard classes.
 	 */
 	// public function get_class_map() {
-	// 	$template_dir_path = Keystone::$template_dir_path;
+	// 	$template_dir_path = Keystone_Core::$template_dir_path;
 	// 	return [
   //     'Keystone_CMB2'    => $template_dir_path . '/includes/classes/Keystone_CMB2.php',
   //     'Keystone_Modules' => $template_dir_path . '/includes/classes/Keystone_Modules.php',

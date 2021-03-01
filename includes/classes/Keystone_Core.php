@@ -3,7 +3,7 @@
 * Core class for the Keystone Theme.
 */
 
-class Keystone {
+class Keystone_Core {
   public static $instance = null;
 
   private static $theme_prefix;
@@ -35,7 +35,7 @@ class Keystone {
 
   public static function getInstance() {
     if (self::$instance == null) {
-      self::$instance = new Keystone();
+      self::$instance = new Keystone_Core();
 
       self::$instance->init = new Keystone_Init;
       self::$instance->scripts = new Keystone_Scripts;
@@ -54,7 +54,6 @@ class Keystone {
       self::$instance->images = new Keystone_Images;
       self::$instance->a11y = new Keystone_A11y;
       self::$instance->header = new Keystone_Header;
-      self::$instance->tools = new Keystone_Tools;
       self::$instance->widgets = new Keystone_Widgets;
       self::$instance->walker = new Keystone_Walker;
       self::$instance->walker_accordion = new Keystone_Walker_Accordion;
